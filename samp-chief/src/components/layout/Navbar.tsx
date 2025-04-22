@@ -98,7 +98,7 @@ export default function Navbar() {
       
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-black">
+        <div className="md:hidden bg-white">
           <nav className="flex flex-col items-center py-4">
             <Link 
               href="/about"
