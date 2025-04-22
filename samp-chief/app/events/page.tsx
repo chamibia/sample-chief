@@ -22,11 +22,15 @@ export default function Events() {
   const totalEvents = eventData.length;
   
   // Function to format date
-  const formatDate = (dateString) => {
-    const options = { month: 'short', day: 'numeric' };
+  const formatDate = (dateString: string) => {
+    const options: Intl.DateTimeFormatOptions = { 
+      month: 'short' as const, 
+      day: 'numeric' as const 
+    };
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', options).toUpperCase();
-  };
+  }
+  
 
   return (
     <div className="min-h-screen text-black pb-16">
