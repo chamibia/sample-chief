@@ -2,6 +2,7 @@ import { Metadata, Viewport } from 'next'
 import "../styles/globals.css"
 import Navbar from "../src/components/layout/Navbar"
 import Footer from "@/components/layout/Footer";
+import DraggableSoundCloudPlayer from '@/components/layout/Draggable';
 
 export const metadata: Metadata = {
   title: "Sample Chief",
@@ -43,6 +44,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer/>
+       <DraggableSoundCloudPlayer/>
       </body>
     </html>
   );
