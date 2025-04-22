@@ -25,8 +25,8 @@ export default function Navbar() {
           <Image 
             src={sample_chief} 
             alt='Sample Chief Logo' 
-            width={150} 
-            height={150}
+            width={300} 
+            height={300}
             className='object-contain'
           />
         </Link>

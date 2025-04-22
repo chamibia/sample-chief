@@ -87,7 +87,7 @@ export default function Events() {
                 
                 {/* Event Details */}
                 <div className="md:col-span-4">
-                  <h2 className="text-2xl font-bold mb-3 text-[#C8102E]">{event.title}</h2>
+                  <h2 className="text-2xl font-bold mb-3">{event.title}</h2>
                   <p className="text-black/80 mb-4">
                     {event.description}
                   </p>
@@ -96,9 +96,9 @@ export default function Events() {
                 {/* Venue Info */}
                 <div className="md:col-span-2">
                   <div className="space-y-1">
-                    <p className="font-medium">{event.venue}</p>
-                    <p className="text-black/80">{event.address}</p>
-                    <p className="mt-4">Regular rates apply</p>
+                    <p className="font-medium text-[#F4C430]">{event.venue}</p>
+                    <p className="text-[#F4C430]">{event.address}</p>
+                    <p className="mt-4 text-[#F4C430]"> RA Link</p>
                   </div>
                 </div>
               </div>

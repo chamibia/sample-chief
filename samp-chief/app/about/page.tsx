@@ -1,26 +1,34 @@
 "use client";
-"use client";
-import ImageSlider from "@/components/layout/ImageSlider";
+import { useState } from 'react';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 export default function About() {
+  // Your actual partner logos
+  const partners = [
+    { id: 1, name: "Ace Hotel", logo: "/assets/ace.png" },
+    { id: 2, name: "Holt Renfrew", logo: "/assets/holts.png" },
+    { id: 3, name: "Okay Africa", logo: "/assets/okay.png" },
+    { id: 4, name: "Sony Music", logo: "/assets/sony.png" },
+    { id: 5, name: "The Standard", logo: "/assets/standard.jpg" },
+    { id: 6, name: "Sway Way", logo: "/assets/sway.png" },
+    { id: 7, name: "Universal", logo: "/assets/universal.png" },
+  ];
+
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
+
   return (
-    <div className="min-h-screen relative">
-      {/* Background split */}
-      <div className="absolute inset-0 z-0">
-        <div className="h-1/2 bg-[#ffffff]"></div>
-        <div className="h-1/2 bg-white"></div>
-      </div>
-  
+    <div className="min-h-screen relative">    
       {/* Content overlay */}
       <div className="relative z-10">
         <div className="max-w-7xl mx-auto pt-12 px-4 sm:px-6 lg:px-8">
-        <h1 className="text-8xl font-bold tracking-tight mb-16 text-black text-right" style={{ fontWeight: 400, lineHeight: '0.9' }}>
-          About
-        </h1>
+          <h1 className="text-8xl font-bold tracking-tight mb-16 text-black text-right" style={{ fontWeight: 400, lineHeight: '0.9' }}>
+            About
+          </h1>
           
           {/* Optional subtitle or count indicator similar to "Total Events" */}
           <div className="mb-12 flex items-center">
-            <span className="text-2xl text-[#F4C430] opacity-70">Our Story → </span>
+            <span className="text-2xl text-[#C8102E] opacity-70">Our Story → </span>
           </div>
           
           {/* About Content */}
@@ -29,7 +37,7 @@ export default function About() {
               {/* Left column - could be for dates in events, could be for categories or sections in about */}
               <div className="md:col-span-2">
                 <div className="space-y-1">
-                  <p className="text-sm uppercase text-[#F4C430] opacity-70">WHO WE ARE</p>
+                  <p className="text-sm uppercase text-[#C8102E] opacity-70">WHO WE ARE</p>
                 </div>
               </div>
               
@@ -49,19 +57,39 @@ export default function About() {
               {/* Right column - could be for additional info, similar to venue in events */}
               <div className="md:col-span-2">
                 <div className="space-y-1">
-                  <p className="text-sm uppercase text-[#F4C430] opacity-70">ESTABLISHED</p>
-                  <p className="font-medium text-[#F4C430]">2020</p>
+                  <p className="text-sm uppercase text-[#C8102E] opacity-70">ESTABLISHED</p>
+                  <p className="font-medium text-[#C8102E]">2020</p>
                 </div>
               </div>
             </div>
           </div>
-          
-          {/* Image Slider Section - positioned in the lower half with white background */}
-          <div className="mt-20 pt-12">
-            <ImageSlider />
+              <div className="mt-20 pt-12">
+            <h2 className="text-3xl font-bold mb-12 text-center">Our Collaborations</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 mb-20 mx-auto max-w-5xl">
+              {partners.map((partner) => (
+                <motion.div
+                  key={partner.id}
+                  className="flex items-center justify-center p-6 bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+                  whileHover={{ 
+                    scale: 1.05,
+                    y: -5,
+                    transition: { duration: 0.2 }
+                  }}
+                >
+                  <div className="flex items-center justify-center h-20 w-full">
+                    <img
+                      src={partner.logo}
+                      alt={`${partner.name} logo`}
+                      className="max-h-full max-w-full object-contain"
+                      style={{ filter: 'none' }} 
+                    />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
