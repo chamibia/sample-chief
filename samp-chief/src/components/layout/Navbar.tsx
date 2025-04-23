@@ -30,9 +30,7 @@ export default function Navbar() {
             className='object-contain'
           />
         </Link>
-        
-        {/* Mobile menu button */}
-        <button 
+          <button 
           className="md:hidden p-2"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
