@@ -1,4 +1,3 @@
-// components/DraggableSoundCloudPlayer.tsx
 "use client";
 import { useState, useEffect, useRef } from 'react';
 import SoundCloudPlayer from './SoundCloudPlayer';
@@ -9,15 +8,28 @@ export default function DraggableSoundCloudPlayer() {
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const playerRef = useRef<HTMLDivElement>(null);
   const [isMounted, setIsMounted] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(true); // Default to true to avoid flash on first render
 
   useEffect(() => {
     setIsMounted(true);
+    
+    // Check if we're on desktop
+    const checkIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 768); // Standard breakpoint for tablets/mobile
+    };
+    
+    // Set initial position
     if (typeof window !== 'undefined') {
-      setPosition({ 
-        x: window.innerWidth * 0.75 - 150, 
-        y: window.innerHeight / 2 - 83 
+      checkIsDesktop();
+      setPosition({
+        x: window.innerWidth * 0.75 - 150,
+        y: window.innerHeight / 2 - 83
       });
     }
+    
+    // Update on resize
+    window.addEventListener('resize', checkIsDesktop);
+    return () => window.removeEventListener('resize', checkIsDesktop);
   }, []);
 
   useEffect(() => {
@@ -46,19 +58,20 @@ export default function DraggableSoundCloudPlayer() {
     };
   }, [isDragging, dragStart, position, isMounted]);
 
-  if (!isMounted) return null;
+  // Don't render anything on mobile
+  if (!isMounted || !isDesktop) return null;
 
   return (
     <div
       ref={playerRef}
-      className="fixed z-50 bg-black bg-opacity-90 rounded-lg shadow-lg p-2 w-[400px]"
+      className="fixed z-50 bg-black bg-opacity-90 rounded-lg shadow-lg p-2 w-[400px] hidden md:block"
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
         cursor: isDragging ? 'grabbing' : 'grab'
       }}
     >
-      <div 
+      <div
         className="handle h-4 bg-[#176B2F] rounded-t-lg mb-2 flex items-center justify-center"
         onMouseDown={(e) => {
           setIsDragging(true);
@@ -68,7 +81,7 @@ export default function DraggableSoundCloudPlayer() {
         <div className="w-10 h-1 bg-white rounded-full"></div>
       </div>
       
-      <SoundCloudPlayer 
+      <SoundCloudPlayer
         url="https://soundcloud.com/samplechief/sample-chief-selekta-w-haruna?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
         visual={false}
         height={100}
