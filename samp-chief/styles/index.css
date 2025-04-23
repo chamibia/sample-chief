@@ -1,0 +1,66 @@
+    @import url('https://fonts.cdnfonts.com/css/magic-brush');
+    
+    .brush-nav-link {
+      position: relative;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .brush-text {
+      position: relative;
+      font-family: 'Magic Brush', sans-serif;
+      font-size: 1.5rem;
+      font-weight: normal;
+      background: #006636; 
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    
+    .brush-nav-link:hover .brush-text {
+      background: linear-gradient(45deg, #006636, #2E8B57);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: reveal-brush 0.5s forwards;
+    }
+    
+    .brush-text-mobile {
+      font-family: 'Magic Brush', sans-serif;
+      font-size: 1.8rem;
+      background: #006636;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    
+    .brush-text-mobile:hover {
+      background: linear-gradient(45deg, #006636, #2E8B57);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: reveal-brush 0.5s forwards;
+    }
+    
+    @keyframes reveal-brush {
+      0% {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+      }
+      100% {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+    
+    @supports not (font-family: 'Magic Brush') {
+      .brush-text, .brush-text-mobile {
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        font-weight: bold;
+      }
+    }
+  

@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from 'next/image';
 import { Instagram, XTwitter, Tiktok, Linkedin } from "../icons";
 import crown from '../../../public/assets/crown.webp';
-import { cn } from "@/lib/utils";
 
 export default function Footer() {
   return (

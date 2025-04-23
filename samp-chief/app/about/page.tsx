@@ -38,9 +38,9 @@ export default function About() {
           <h1 className="text-8xl font-bold brush-title">About</h1>
         </div>
           <div className="mb-24">
-          <div className="section-header">
+          {/* <div className="section-header">
             <span className="section-title">Our Story</span>
-          </div>
+          </div> */}
             <div className="about-card">
             <div className="grid md:grid-cols-12 gap-8">
               <div className="md:col-span-2">

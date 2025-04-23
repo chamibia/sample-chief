@@ -250,7 +250,7 @@ export default function Events() {
           flex-direction: column;
           gap: 0.5rem;
           margin-bottom: 1.5rem;
-          color: #D72638;
+          color: black;
         }
         
         .venue-info .icon {
