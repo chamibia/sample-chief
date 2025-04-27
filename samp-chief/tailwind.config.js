@@ -8,8 +8,10 @@ module.exports = {
     theme: {
       extend: {
         fontFamily: {
-          sans: ['Open Sans', 'sans-serif'],
+          sans: ['Jost', 'sans-serif'],
+          open: ['Open Sans', 'sans-serif'],
           carlito: ['Carlito', 'sans-serif'],
+          jost: ['Jost', 'sans-serif'],
         },
         colors: {
           border: "hsl(var(--border))",

@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
-import Image from 'next/image';
-import sample_chief from '../../../public/assets/sample_chief.webp';
+import Image from "next/image";
+import crown from '../../../public/assets/crown.webp';
 import { Menu, X } from "lucide-react";
-
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -12,185 +12,101 @@ import {
   NavigationMenuLink,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-
 import { cn } from "@/lib/utils";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   return (
-    <header>
-      <div className="mx-auto flex max-w-screen-xl items-center justify-between px-4 py-3">
-        <Link href="/" className="flex items-center">
-          <Image 
-            src={sample_chief} 
-            alt='Sample Chief Logo' 
-            width={300} 
-            height={300}
-            className='object-contain'
-          />
-        </Link>
-          <button 
-          className="md:hidden p-2"
+    <header
+      className={cn(
+        isHome
+          ? "fixed inset-x-0 top-0 z-30 bg-transparent text-white/75"
+          : "sticky bg-white text-black",
+        "py-3"
+      )}
+    >
+      <div className="relative mx-auto px-6">
+
+        {/* mobile menu button */}
+        <button
+          className={cn(
+            "md:hidden absolute left-4 top-1/2 transform -translate-y-1/2 p-2",
+            isHome ? "text-white/75" : "text-black"
+          )}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          {isMenuOpen ? (
-            <X className="h-6 w-6" />
-          ) : (
-            <Menu className="h-6 w-6" />
-          )}
+          {isMenuOpen
+            ? <X className="h-6 w-6" />
+            : <Menu className="h-6 w-6" />}
         </button>
-        
-        {/* Desktop Navigation */}
-        <div className="hidden md:block">
+
+        {/* logo */}
+        <Link href="/" className="flex justify-center">
+          <Image
+            src={crown}
+            alt="Sample Chief Logo"
+            width={70}
+            height={100}
+            className={cn(isHome ? "opacity-75" : "opacity-100")}
+          />
+        </Link>
+
+        {/* desktop nav on the left */}
+        <nav className="hidden md:flex absolute left-4 top-1/2 transform -translate-y-1/2 space-x-8 font-haas">
           <NavigationMenu>
-            <NavigationMenuList className="flex items-center space-x-4">
-              <NavigationMenuItem>
-                <Link href="/events" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      "brush-nav-link text-lg"
-                    )}
-                  >
-                    <span className="brush-text">Events</span>
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/about" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      "brush-nav-link text-lg"
-                    )}
-                  >
-                    <span className="brush-text">About</span>
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/contact" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      "brush-nav-link text-lg"
-                    )}
-                  >
-                    <span className="brush-text">Contact</span>
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
+            <NavigationMenuList className="flex space-x-4">
+              {["ABOUT", "EVENTS", "CONTACT"].map((label) => (
+                <NavigationMenuItem key={label}>
+                  <Link href={`/${label.toLowerCase()}`} legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={cn(
+                        navigationMenuTriggerStyle(),
+                        "text-lg",
+                        "transition-transform duration-200 ease-out transform hover:scale-105",
+                        isHome
+                          ? "text-white/75 hover:text-white"
+                          : "text-black hover:text-gray-700"
+                      )}
+                    >
+                      {label}
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              ))}
             </NavigationMenuList>
           </NavigationMenu>
-        </div>
+        </nav>
       </div>
-      
-      {/* Mobile menu */}
+
+      {/* mobile dropdown */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white">
-          <nav className="flex flex-col items-center py-4">
-            <Link 
-              href="/events"
-              className="block w-full py-2 px-4 text-center text-lg uppercase"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <span className="brush-text-mobile">Events</span>
-            </Link>
-            <Link 
-              href="/about"
-              className="block w-full py-2 px-4 text-center text-lg uppercase"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <span className="brush-text-mobile">About</span>
-            </Link>
-            <Link 
-              href="/contact"
-              className="block w-full py-2 px-4 text-center text-lg uppercase"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <span className="brush-text-mobile">Contact</span>
-            </Link>
+        <div
+          className={cn(
+            "md:hidden py-4",
+            isHome ? "bg-transparent" : "bg-white"
+          )}
+        >
+          <nav className="flex flex-col items-center space-y-2 font-haas">
+            {["ABOUT", "EVENTS", "CONTACT"].map((label) => (
+              <Link
+                key={label}
+                href={`/${label.toLowerCase()}`}
+                className={cn(
+                  "block w-full py-2 px-4 text-center uppercase text-lg",
+                  "transition-colors duration-150 ease-out hover:text-gray-500",
+                  isHome ? "text-white/75 hover:text-white" : "text-black"
+                )}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {label}
+              </Link>
+            ))}
           </nav>
         </div>
       )}
-
-      {/* CSS for brushstroke text effect */}
-      <style jsx global>{`
-        /* Import brush font */
-        @import url('https://fonts.cdnfonts.com/css/magic-brush');
-        
-        /* Base styles for navigation links */
-        .brush-nav-link {
-          position: relative;
-          padding: 0.5rem 1rem;
-          transition: all 0.3s ease;
-        }
-        
-        /* Brushstroke text effect for desktop */
-        .brush-text {
-          position: relative;
-          font-family: 'Magic Brush', sans-serif;
-          font-size: 1.5rem;
-          font-weight: normal;
-          background: #006636; /* Same green as logo */
-          color: transparent;
-          -webkit-background-clip: text;
-          background-clip: text;
-          transition: all 0.3s ease;
-          display: inline-block;
-        }
-        
-        /* Clip path animation on hover */
-        .brush-nav-link:hover .brush-text {
-          background: linear-gradient(45deg, #006636, #2E8B57);
-          -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent;
-          animation: reveal-brush 0.5s forwards;
-        }
-        
-        /* Mobile brushstroke text */
-        .brush-text-mobile {
-          font-family: 'Magic Brush', sans-serif;
-          font-size: 1.8rem;
-          background: #006636;
-          -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent;
-          transition: all 0.3s ease;
-          display: inline-block;
-        }
-        
-        /* Hover effect for mobile */
-        .brush-text-mobile:hover {
-          background: linear-gradient(45deg, #006636, #2E8B57);
-          -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent;
-          animation: reveal-brush 0.5s forwards;
-        }
-        
-        /* Keyframe animation for the brushstroke reveal */
-        @keyframes reveal-brush {
-          0% {
-            -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-          }
-          100% {
-            -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-          }
-        }
-        
-        /* Fallback for browsers that don't support the font */
-        @supports not (font-family: 'Magic Brush') {
-          .brush-text, .brush-text-mobile {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            font-weight: bold;
-          }
-        }
-      `}</style>
     </header>
   );
 }

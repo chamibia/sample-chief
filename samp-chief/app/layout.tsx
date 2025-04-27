@@ -2,7 +2,6 @@ import { Metadata, Viewport } from 'next'
 import "../styles/globals.css"
 import Navbar from "../src/components/layout/Navbar"
 import Footer from "@/components/layout/Footer";
-import DraggableSoundCloudPlayer from '@/components/layout/Draggable';
 
 export const metadata: Metadata = {
   title: "Sample Chief",
@@ -31,21 +30,15 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <head>
-        <script
-          src="https://kit.fontawesome.com/027db3ea3f.js"
-          crossOrigin="anonymous"
-          async
-        ></script>
-        {/* Additional scripts */}
       </head>
-      <body className="flex flex-col min-h-screen">
+      <body className="flex flex-col h-screen overflow-hidden">
         <Navbar/>
-        <main className="flex-1">
+        <main className="flex-1 min-h-0 overflow-y-auto">
           {children}
         </main>
-        <Footer/>
-       <DraggableSoundCloudPlayer/>
+
+        <Footer />
       </body>
     </html>
-  );
+  )
 }

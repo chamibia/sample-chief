@@ -1,32 +1,44 @@
 "use client";
-
+import { usePathname } from "next/navigation";
 import Link from "next/link";
-import Image from 'next/image';
 import { Instagram, XTwitter, Tiktok, Linkedin } from "../icons";
-import crown from '../../../public/assets/crown.webp';
+import SoundCloudPlayer from "./SoundCloudPlayer";
+import { cn } from "@/lib/utils";
 
 export default function Footer() {
-  return (
-    <footer className="w-full bg-[#000000] z-10">
-      <div className="mx-auto flex flex-col sm:flex-row max-w-screen-xl items-center justify-between px-4 py-3">
-        <Link href="/" className="mb-4 sm:mb-0">
-          <Image
-            src={crown}
-            alt="Sample Chief Logo"
-            width={120}
-            height={40}
-            className="object-contain p-2"
-          />
-        </Link>
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
-        <div className="flex items-center space-x-6">
+  return (
+    <footer
+      className={cn(
+        isHome
+          ? "inset-x-0 top-0 z-30 bg-transparent text-white/75"
+          : "bg-white text-black",
+        "py-3"
+      )}
+    >
+      <div className="flex items-end justify-between w-full px-4 pt-6 pb-0">
+        {/* SoundCloud aligned to the bottom of this container */}
+        <div className="w-1/2 pl-0">
+          <SoundCloudPlayer
+            url="https://soundcloud.com/samplechief/sample-chief-selekta-w-haruna?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+            visual={false}
+            height={100}
+            color="#176B2F"
+            hideRelated={true}
+          />
+        </div>
+
+        {/* Social icons remain centered vertically */}
+        <div className="flex items-center space-x-6 self-center">
           <Link
             href="https://www.instagram.com/samplechief/?hl=en"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
           >
-            <Instagram className="h-6 w-6 text-[#176B2F]"/>
+            <Instagram className="h-6 w-6" />
           </Link>
           <Link
             href="https://x.com/SampleChief"
@@ -34,7 +46,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             aria-label="X"
           >
-            <XTwitter className="h-6 w-6 text-[#176B2F]" />
+            <XTwitter className="h-6 w-6" />
           </Link>
           <Link
             href="https://www.linkedin.com/company/sample-chief"
@@ -42,7 +54,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             aria-label="LinkedIn"
           >
-            <Linkedin className="h-6 w-6 text-[#176B2F]" />
+            <Linkedin className="h-6 w-6" />
           </Link>
           <Link
             href="https://www.tiktok.com/@samplechief"
@@ -50,7 +62,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             aria-label="TikTok"
           >
-            <Tiktok className="h-6 w-6 text-[#176B2F]" />
+            <Tiktok className="h-6 w-6" />
           </Link>
         </div>
       </div>
