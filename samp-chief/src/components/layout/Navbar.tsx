@@ -32,9 +32,7 @@ export default function Navbar() {
     )}
     >
       <div className="relative mx-auto px-6">
-        
-        {/* mobile menu button */}
-        <button
+          <button
           className={cn(
             "md:hidden absolute left-4 top-1/2 transform -translate-y-1/2 p-2",
             isHome ? "text-white/75" : "text-gray-800"
@@ -45,9 +43,7 @@ export default function Navbar() {
             ? <X className="h-6 w-6" />
             : <Menu className="h-6 w-6" />}
         </button>
-        
-        {/* logo */}
-        <Link href="/" className="flex justify-center">
+                <Link href="/" className="flex justify-center md:justify-center">
           <Image
             src={crown}
             alt="Sample Chief Logo"
@@ -57,31 +53,58 @@ export default function Navbar() {
           />
         </Link>
         
-        {/* desktop nav on the left */}
-        <nav className="hidden md:flex absolute left-4 top-1/2 transform -translate-y-1/2 space-x-8 font-haas">
-          <NavigationMenu>
-            <NavigationMenuList className="flex space-x-4">
-              {["CONTACT", "EVENTS", "ABOUT"].map((label) => (
-                <NavigationMenuItem key={label}>
-                  <Link href={`/${label.toLowerCase()}`} legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={cn(
-                        navigationMenuTriggerStyle(),
-                        "text-lg",
-                        "transition-transform duration-200 ease-out transform hover:scale-105",
-                        isHome
-                          ? "text-white/75 hover:text-white"
-                          : "text-gray-800 hover:text-gray-700"
-                      )}
-                    >
-                      {label}
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-              ))}
-            </NavigationMenuList>
-          </NavigationMenu>
-        </nav>
+        {isAbout ? (
+          <div className="hidden md:flex absolute w-full top-1/2 transform -translate-y-1/2 font-haas">
+            <div className="absolute right-4">
+              <NavigationMenu>
+                <NavigationMenuList className="flex space-x-4">
+                  {["ABOUT", "EVENTS", "CONTACT"].map((label) => (
+                    <NavigationMenuItem key={label}>
+                      <Link href={`/${label.toLowerCase()}`} legacyBehavior passHref>
+                        <NavigationMenuLink
+                          className={cn(
+                            navigationMenuTriggerStyle(),
+                            "text-lg",
+                            "transition-transform duration-200 ease-out transform hover:scale-105",
+                            "text-gray-800 hover:text-gray-700",
+                            label === "ABOUT" && "font-medium"
+                          )}
+                        >
+                          {label}
+                        </NavigationMenuLink>
+                      </Link>
+                    </NavigationMenuItem>
+                  ))}
+                </NavigationMenuList>
+              </NavigationMenu>
+            </div>
+          </div>
+        ) : (
+          <nav className="hidden md:flex absolute left-4 top-1/2 transform -translate-y-1/2 space-x-8 font-haas">
+            <NavigationMenu>
+              <NavigationMenuList className="flex space-x-4">
+                {["ABOUT", "EVENTS", "CONTACT"].map((label) => (
+                  <NavigationMenuItem key={label}>
+                    <Link href={`/${label.toLowerCase()}`} legacyBehavior passHref>
+                      <NavigationMenuLink
+                        className={cn(
+                          navigationMenuTriggerStyle(),
+                          "text-lg",
+                          "transition-transform duration-200 ease-out transform hover:scale-105",
+                          isHome
+                            ? "text-white/75 hover:text-white"
+                            : "text-gray-800 hover:text-gray-700"
+                        )}
+                      >
+                        {label}
+                      </NavigationMenuLink>
+                    </Link>
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
+          </nav>
+        )}
       </div>
       
       {/* mobile dropdown */}
@@ -97,7 +120,7 @@ export default function Navbar() {
           )}
         >
           <nav className="flex flex-col items-center space-y-2 font-haas">
-            {["CONTACT", "EVENTS", "ABOUT"].map((label) => (
+            {["ABOUT", "EVENTS", "CONTACT"].map((label) => (
               <Link
                 key={label}
                 href={`/${label.toLowerCase()}`}
@@ -108,7 +131,8 @@ export default function Navbar() {
                     ? "text-white/75 hover:text-white" 
                     : isAbout
                       ? "text-gray-800 hover:text-gray-900" 
-                      : "text-black hover:text-gray-700"
+                      : "text-black hover:text-gray-700",
+                  isAbout && label === "ABOUT" && "font-medium"
                 )}
                 onClick={() => setIsMenuOpen(false)}
               >

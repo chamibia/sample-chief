@@ -7,7 +7,9 @@ import { useState, useEffect } from "react";
 export default function About() {
   const [showBanner, setShowBanner] = useState(true);
 
-  const text = `Sample Chief is a global community that celebrates African music culture. We're based in London, Toronto, Montreal and Lagos (Nigeria). Our mission is to promote music discovery by creating interactive experiences for a global audience, through media and events. We connect brands to a vibrant youth audience that is interested in digital content and music experiences.`;
+  // Split the text into headline and paragraph
+  const headline = "Sample Chief is a global community that celebrates African music culture.";
+  const paragraph = "We're based in London, Toronto, Montreal and Lagos (Nigeria). Our mission is to promote music discovery by creating interactive experiences for a global audience, through media and events. We connect brands to a vibrant youth audience that is interested in digital content and music experiences.";
 
   useEffect(() => {
     const onScroll = () => {
@@ -37,14 +39,26 @@ export default function About() {
     visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
   }
 
+  const paragraphContainer = {
+    hidden: {},
+    visible: { 
+      transition: { 
+        staggerChildren: 0.02,
+        delayChildren: 0.5 // Delay paragraph animation until after headline
+      } 
+    },
+  };
+
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { y: 0,  opacity: 1, transition: { duration: 0.5 } }
+    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } }
   }
+  
   const logoContainer = {
     hidden: {},
     visible: { transition: { staggerChildren: 0.15 } }
   }
+  
   const logoItem = {
     hidden: { y: 50, opacity: 0 },
     visible: {
@@ -56,7 +70,7 @@ export default function About() {
 
   return (
     <div className="min-h-screen bg-[#ff6139] font-serif">
-      {/* — Banner */}
+      {/* ABOUT Banner */}
       <motion.div
         initial={{ opacity: 1 }}
         animate={{
@@ -66,32 +80,54 @@ export default function About() {
         transition={{ duration: 0.3 }}
         className="overflow-hidden bg-[#ff6139] font-jost rounded-b-3xl"
       >
-        <div className="py-14 px-6 text-right">
+        <div className="w-full lg:w-4/5 mx-auto py-14 px-6">
           <div className='pb-10'>
-          <h2 className="uppercase font-light leading-none text-[3rem] md:text-[6rem] text-gray-800">
-            ABOUT
-          </h2>
+            <h2 className="uppercase font-light leading-none text-[3rem] md:text-[6rem] text-gray-800">
+              ABOUT
+            </h2>
           </div>
         </div>
       </motion.div>
 
-      <motion.div
-        className="w-full lg:w-4/5 mx-auto px-6 text-[1rem] md:text-[3rem] leading-[1.1] text-gray-800"
-        variants={textContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        {text.split(" ").map((word, i) => (
-          <motion.span
-            key={i}
-            variants={wordVariants}
-            className="inline-block mr-2"
-          >
-            {word}
-          </motion.span>
-        ))}
-      </motion.div>
+      <div className="w-full lg:w-4/5 mx-auto px-6 text-gray-800">
+        {/* Headline - larger text */}
+        <motion.div
+          className="text-[1.5rem] md:text-[3rem] leading-[1.1] mb-8"
+          variants={textContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {headline.split(" ").map((word, i) => (
+            <motion.span
+              key={i}
+              variants={wordVariants}
+              className="inline-block mr-2"
+            >
+              {word}
+            </motion.span>
+          ))}
+        </motion.div>
+
+        {/* Paragraph - smaller text */}
+        <motion.div
+          className="text-[1rem] md:text-[1.75rem] leading-[1.3] mt-4"
+          variants={paragraphContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {paragraph.split(" ").map((word, i) => (
+            <motion.span
+              key={i}
+              variants={wordVariants}
+              className="inline-block mr-2"
+            >
+              {word}
+            </motion.span>
+          ))}
+        </motion.div>
+      </div>
 
       <div className="mt-12 px-6">
         <motion.div
@@ -119,7 +155,7 @@ export default function About() {
                 alt=""
                 width={120}
                 height={80}
-                className="max-h-16 max-w-[120px] object-contain grayscale hover:grayscale-80 opacity-70 hover:opacity-100 transition-all duration-300"
+                className="max-h-16 max-w-[120px] object-contain grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300"
               />
             </motion.div>
           ))}
