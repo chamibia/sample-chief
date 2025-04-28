@@ -83,7 +83,7 @@ export default function Navbar() {
           <nav className="hidden md:flex absolute left-4 top-1/2 transform -translate-y-1/2 space-x-8 font-haas">
             <NavigationMenu>
               <NavigationMenuList className="flex space-x-4">
-                {["ABOUT", "EVENTS", "CONTACT"].map((label) => (
+                {["CONTACT", "EVENTS", "ABOUT"].map((label) => (
                   <NavigationMenuItem key={label}>
                     <Link href={`/${label.toLowerCase()}`} legacyBehavior passHref>
                       <NavigationMenuLink
