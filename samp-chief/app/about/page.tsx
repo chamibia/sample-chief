@@ -7,9 +7,10 @@ import { useState, useEffect } from "react";
 export default function About() {
   const [showBanner, setShowBanner] = useState(true);
 
-  // Split the text into headline and paragraph
+  // Split the text into headline and paragraphs
   const headline = "Sample Chief is a global community that celebrates African music culture.";
-  const paragraph = "We're based in London, Toronto, Montreal and Lagos (Nigeria). Our mission is to promote music discovery by creating interactive experiences for a global audience, through media and events. We connect brands to a vibrant youth audience that is interested in digital content and music experiences.";
+  const paragraph1 = "We're based in London, Toronto, Montreal and Lagos (Nigeria). Our mission is to promote music discovery by creating interactive experiences for a global audience, through media and events. We connect brands to a vibrant youth audience that is interested in digital content and music experiences.";
+  const paragraph2 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere.";
 
   useEffect(() => {
     const onScroll = () => {
@@ -109,7 +110,7 @@ export default function About() {
           ))}
         </motion.div>
 
-        {/* Paragraph - smaller text */}
+        {/* First paragraph */}
         <motion.div
           className="text-[1rem] md:text-[1.75rem] leading-[1.3] mt-4"
           variants={paragraphContainer}
@@ -117,7 +118,7 @@ export default function About() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {paragraph.split(" ").map((word, i) => (
+          {paragraph1.split(" ").map((word, i) => (
             <motion.span
               key={i}
               variants={wordVariants}
@@ -127,9 +128,28 @@ export default function About() {
             </motion.span>
           ))}
         </motion.div>
+        
+        {/* Second paragraph - Lorem ipsum */}
+        <motion.div
+          className="text-[1rem] md:text-[1.75rem] leading-[1.3] mt-8"
+          variants={paragraphContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {paragraph2.split(" ").map((word, i) => (
+            <motion.span
+              key={i + 1000} 
+              variants={wordVariants}
+              className="inline-block mr-2"
+            >
+              {word}
+            </motion.span>
+          ))}
+        </motion.div>
       </div>
 
-      <div className="mt-12 px-6">
+      <div className="mt-16 px-6">
         <motion.div
           className="
             flex flex-col            
@@ -162,7 +182,7 @@ export default function About() {
         </motion.div>
       </div>
       
-      <div className="pb-24 md:pb-32"></div>
+      <div className="pb-30 md:pb-45"></div>
     </div>
   );
 }
