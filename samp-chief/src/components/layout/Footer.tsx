@@ -8,15 +8,19 @@ import { cn } from "@/lib/utils";
 export default function Footer() {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const isAbout = pathname === "/about";
+
 
   return (
     <footer
-      className={cn(
-        isHome
-          ? "inset-x-0 top-0 z-30 bg-transparent text-white/75"
+    className={cn(
+      isHome
+        ? "inset-x-0 top-0 z-30 bg-transparent text-white/75"
+        : isAbout
+          ? "bg-black opacity-80 text-white"
           : "bg-white text-black",
-        "py-3"
-      )}
+      "py-2"
+    )}
     >
       <div className="flex items-end justify-between w-full px-4 pt-6 pb-0">
         {/* SoundCloud aligned to the bottom of this container */}

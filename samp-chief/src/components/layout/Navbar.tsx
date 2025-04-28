@@ -18,23 +18,26 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
-
+  const isAbout = pathname === "/about";
+  
   return (
     <header
-      className={cn(
-        isHome
-          ? "fixed inset-x-0 top-0 z-30 bg-transparent text-white/75"
-          : "sticky bg-white text-black",
-        "py-3"
-      )}
+    className={cn(
+      isHome
+        ? "fixed inset-x-0 top-0 z-30 bg-transparent text-white/75"
+        : isAbout
+          ? "sticky inset-x-0 top-0 z-30 bg-[#ff6139] text-gray-800"
+          : "sticky inset-x-0 top-0 z-30 bg-white text-gray-800",
+      "py-3"
+    )}
     >
       <div className="relative mx-auto px-6">
-
+        
         {/* mobile menu button */}
         <button
           className={cn(
             "md:hidden absolute left-4 top-1/2 transform -translate-y-1/2 p-2",
-            isHome ? "text-white/75" : "text-black"
+            isHome ? "text-white/75" : "text-gray-800"
           )}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
@@ -42,7 +45,7 @@ export default function Navbar() {
             ? <X className="h-6 w-6" />
             : <Menu className="h-6 w-6" />}
         </button>
-
+        
         {/* logo */}
         <Link href="/" className="flex justify-center">
           <Image
@@ -53,12 +56,12 @@ export default function Navbar() {
             className={cn(isHome ? "opacity-75" : "opacity-100")}
           />
         </Link>
-
+        
         {/* desktop nav on the left */}
         <nav className="hidden md:flex absolute left-4 top-1/2 transform -translate-y-1/2 space-x-8 font-haas">
           <NavigationMenu>
             <NavigationMenuList className="flex space-x-4">
-              {["ABOUT", "EVENTS", "CONTACT"].map((label) => (
+              {["CONTACT", "EVENTS", "ABOUT"].map((label) => (
                 <NavigationMenuItem key={label}>
                   <Link href={`/${label.toLowerCase()}`} legacyBehavior passHref>
                     <NavigationMenuLink
@@ -68,7 +71,7 @@ export default function Navbar() {
                         "transition-transform duration-200 ease-out transform hover:scale-105",
                         isHome
                           ? "text-white/75 hover:text-white"
-                          : "text-black hover:text-gray-700"
+                          : "text-gray-800 hover:text-gray-700"
                       )}
                     >
                       {label}
@@ -80,24 +83,32 @@ export default function Navbar() {
           </NavigationMenu>
         </nav>
       </div>
-
+      
       {/* mobile dropdown */}
       {isMenuOpen && (
         <div
           className={cn(
             "md:hidden py-4",
-            isHome ? "bg-transparent" : "bg-white"
+            isHome 
+              ? "bg-black/80 backdrop-blur-sm" 
+              : isAbout 
+                ? "bg-[#ff6139]" 
+                : "bg-white"
           )}
         >
           <nav className="flex flex-col items-center space-y-2 font-haas">
-            {["ABOUT", "EVENTS", "CONTACT"].map((label) => (
+            {["CONTACT", "EVENTS", "ABOUT"].map((label) => (
               <Link
                 key={label}
                 href={`/${label.toLowerCase()}`}
                 className={cn(
                   "block w-full py-2 px-4 text-center uppercase text-lg",
-                  "transition-colors duration-150 ease-out hover:text-gray-500",
-                  isHome ? "text-white/75 hover:text-white" : "text-black"
+                  "transition-colors duration-150 ease-out",
+                  isHome 
+                    ? "text-white/75 hover:text-white" 
+                    : isAbout
+                      ? "text-gray-800 hover:text-gray-900" 
+                      : "text-black hover:text-gray-700"
                 )}
                 onClick={() => setIsMenuOpen(false)}
               >
