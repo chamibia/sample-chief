@@ -32,21 +32,21 @@ export default function Events() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   
-  const formatDate = (dateString) => {
+  const formatDate = (dateString: string) => {
     const options = { 
       month: 'short', 
       day: 'numeric' 
     };
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', options).toUpperCase();
+    return date.toLocaleDateString('en-US').toUpperCase();
   };
   
-  const formatMonth = (dateString) => {
+  const formatMonth = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
   };
   
-  const formatDay = (dateString) => {
+  const formatDay = (dateString: string) => {
     const date = new Date(dateString);
     return date.getDate();
   };
