@@ -19,126 +19,111 @@ export default function Navbar() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const isAbout = pathname === "/about";
-  
+  const isEvents = pathname === "/events";
+
+  // Shared positioning + z-index
+  const basePosition = "sticky inset-x-0 top-0 z-30 py-3";
+
+  // Determine header background + text
+  const headerClasses = cn(
+    basePosition,
+    isHome
+      ? "bg-transparent text-white/75"
+      : isAbout
+      ? "bg-[#ff6139] text-gray-800"
+      : isEvents
+      ? "bg-[#ffdd80] text-gray-800"
+      : "bg-white text-gray-800"
+  );
+
+  // Determine mobile dropdown background
+  const mobileBg = isHome
+    ? "bg-black/80 backdrop-blur-sm"
+    : isAbout
+    ? "bg-[#ff6139]"
+    : isEvents
+    ? "bg-[#ffdd80]"
+    : "bg-white";
+
   return (
-    <header
-    className={cn(
-      isHome
-        ? "fixed inset-x-0 top-0 z-30 bg-transparent text-white/75"
-        : isAbout
-          ? "sticky inset-x-0 top-0 z-30 bg-[#ff6139] text-gray-800"
-          : "sticky inset-x-0 top-0 z-30 bg-white text-gray-800",
-      "py-3"
-    )}
-    >
+    <header className={headerClasses}>
       <div className="relative mx-auto px-6">
-          <button
-          className={cn(
-            "md:hidden absolute left-4 top-1/2 transform -translate-y-1/2 p-2",
-            isHome ? "text-white/75" : "text-gray-800"
-          )}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden absolute left-4 top-1/2 transform -translate-y-1/2 p-2"
+          onClick={() => setIsMenuOpen((o) => !o)}
         >
-          {isMenuOpen
-            ? <X className="h-6 w-6" />
-            : <Menu className="h-6 w-6" />}
+          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
-                <Link href="/" className="flex justify-center md:justify-center">
-          <Image
-            src={crown}
-            alt="Sample Chief Logo"
-            width={70}
-            height={100}
-            className={cn(isHome ? "opacity-75" : "opacity-100")}
-          />
-        </Link>
-        
-        {isAbout ? (
-          <div className="hidden md:flex absolute w-full top-1/2 transform -translate-y-1/2 font-haas">
-            <div className="absolute right-4">
-              <NavigationMenu>
-                <NavigationMenuList className="flex space-x-4">
-                  {["ABOUT", "EVENTS", "CONTACT"].map((label) => (
-                    <NavigationMenuItem key={label}>
-                      <Link href={`/${label.toLowerCase()}`} legacyBehavior passHref>
-                        <NavigationMenuLink
-                          className={cn(
-                            navigationMenuTriggerStyle(),
-                            "text-lg",
-                            "transition-transform duration-200 ease-out transform hover:scale-105",
-                            "text-gray-800 hover:text-gray-700",
-                            label === "ABOUT" && "font-medium"
-                          )}
-                        >
-                          {label}
-                        </NavigationMenuLink>
-                      </Link>
-                    </NavigationMenuItem>
-                  ))}
-                </NavigationMenuList>
-              </NavigationMenu>
-            </div>
-          </div>
-        ) : (
-          <nav className="hidden md:flex absolute left-4 top-1/2 transform -translate-y-1/2 space-x-8 font-haas">
-            <NavigationMenu>
-              <NavigationMenuList className="flex space-x-4">
-                {["CONTACT", "EVENTS", "ABOUT"].map((label) => (
+
+        {/* Logo */}
+        <div className="flex justify-center">
+          <Link href="/">
+            <Image
+              src={crown}
+              alt="Sample Chief Logo"
+              width={70}
+              height={100}
+              className={cn(isHome ? "opacity-75" : "opacity-100")}
+            />
+          </Link>
+        </div>
+
+        {/* Desktop nav */}
+        <nav className="hidden md:flex absolute right-6 top-1/2 transform -translate-y-1/2 font-haas">
+          <NavigationMenu>
+            <NavigationMenuList className="flex space-x-4">
+              {["ABOUT", "EVENTS", "CONTACT"].map((label) => {
+                const path = `/${label.toLowerCase()}`;
+                const isActive = pathname === path;
+                return (
                   <NavigationMenuItem key={label}>
-                    <Link href={`/${label.toLowerCase()}`} legacyBehavior passHref>
+                    <Link href={path} legacyBehavior passHref>
                       <NavigationMenuLink
                         className={cn(
                           navigationMenuTriggerStyle(),
-                          "text-lg",
-                          "transition-transform duration-200 ease-out transform hover:scale-105",
+                          "text-lg transition-transform duration-200 ease-out transform hover:scale-105",
                           isHome
                             ? "text-white/75 hover:text-white"
-                            : "text-gray-800 hover:text-gray-700"
+                            : "text-gray-800 hover:text-gray-700",
+                          isActive && "font-medium"
                         )}
                       >
                         {label}
                       </NavigationMenuLink>
                     </Link>
                   </NavigationMenuItem>
-                ))}
-              </NavigationMenuList>
-            </NavigationMenu>
-          </nav>
-        )}
+                );
+              })}
+            </NavigationMenuList>
+          </NavigationMenu>
+        </nav>
       </div>
-      
-      {/* mobile dropdown */}
+
+      {/* Mobile dropdown */}
       {isMenuOpen && (
-        <div
-          className={cn(
-            "md:hidden py-4",
-            isHome 
-              ? "bg-black/80 backdrop-blur-sm" 
-              : isAbout 
-                ? "bg-[#ff6139]" 
-                : "bg-white"
-          )}
-        >
+        <div className={cn("md:hidden py-4", mobileBg)}>
           <nav className="flex flex-col items-center space-y-2 font-haas">
-            {["ABOUT", "EVENTS", "CONTACT"].map((label) => (
-              <Link
-                key={label}
-                href={`/${label.toLowerCase()}`}
-                className={cn(
-                  "block w-full py-2 px-4 text-center uppercase text-lg",
-                  "transition-colors duration-150 ease-out",
-                  isHome 
-                    ? "text-white/75 hover:text-white" 
-                    : isAbout
-                      ? "text-gray-800 hover:text-gray-900" 
-                      : "text-black hover:text-gray-700",
-                  isAbout && label === "ABOUT" && "font-medium"
-                )}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {label}
-              </Link>
-            ))}
+            {["ABOUT", "EVENTS", "CONTACT"].map((label) => {
+              const path = `/${label.toLowerCase()}`;
+              const isActive = pathname === path;
+              return (
+                <Link
+                  key={label}
+                  href={path}
+                  className={cn(
+                    "block w-full py-2 px-4 text-center uppercase text-lg transition-colors duration-150 ease-out",
+                    isHome
+                      ? "text-white/75 hover:text-white"
+                      : "text-gray-800 hover:text-gray-900",
+                    isActive && "font-medium"
+                  )}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {label}
+                </Link>
+              );
+            })}
           </nav>
         </div>
       )}

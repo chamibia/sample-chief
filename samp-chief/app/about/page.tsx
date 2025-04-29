@@ -45,7 +45,7 @@ export default function About() {
     visible: { 
       transition: { 
         staggerChildren: 0.02,
-        delayChildren: 0.5 // Delay paragraph animation until after headline
+        delayChildren: 0.5 
       } 
     },
   };
@@ -91,7 +91,6 @@ export default function About() {
       </motion.div>
 
       <div className="w-full lg:w-4/5 mx-auto px-6 text-gray-800">
-        {/* Headline - larger text */}
         <motion.div
           className="text-[1.5rem] md:text-[3rem] leading-[1.1] mb-8"
           variants={textContainer}
@@ -110,7 +109,6 @@ export default function About() {
           ))}
         </motion.div>
 
-        {/* First paragraph */}
         <motion.div
           className="text-[1rem] md:text-[1.75rem] leading-[1.3] mt-4"
           variants={paragraphContainer}
@@ -129,7 +127,6 @@ export default function About() {
           ))}
         </motion.div>
         
-        {/* Second paragraph - Lorem ipsum */}
         <motion.div
           className="text-[1rem] md:text-[1.75rem] leading-[1.3] mt-8"
           variants={paragraphContainer}
