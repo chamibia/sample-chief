@@ -70,8 +70,7 @@ export default function About() {
   }
 
   return (
-    <div className="min-h-screen bg-[#ff6139] font-serif">
-      {/* ABOUT Banner */}
+    <div className="min-h-screen bg-[white] font-serif">
       <motion.div
         initial={{ opacity: 1 }}
         animate={{
@@ -90,7 +89,7 @@ export default function About() {
         </div>
       </motion.div>
 
-      <div className="w-full lg:w-4/5 mx-auto px-6 text-gray-800">
+      <div className="w-full lg:w-4/5 mx-auto px-6 text-gray-800 pt-40">
         <motion.div
           className="text-[1.5rem] md:text-[3rem] leading-[1.1] mb-8"
           variants={textContainer}
@@ -110,7 +109,7 @@ export default function About() {
         </motion.div>
 
         <motion.div
-          className="text-[1rem] md:text-[1.75rem] leading-[1.3] mt-4"
+          className="text-[1rem] md:text-[1.5rem] leading-[1.3] mt-4"
           variants={paragraphContainer}
           initial="hidden"
           whileInView="visible"
@@ -128,7 +127,7 @@ export default function About() {
         </motion.div>
         
         <motion.div
-          className="text-[1rem] md:text-[1.75rem] leading-[1.3] mt-8"
+          className="text-[1rem] md:text-[1.5rem] leading-[1.3] mt-8"
           variants={paragraphContainer}
           initial="hidden"
           whileInView="visible"

@@ -73,7 +73,7 @@ export default function Navbar() {
         <nav className="hidden md:flex absolute right-6 top-1/2 transform -translate-y-1/2 font-haas">
           <NavigationMenu>
             <NavigationMenuList className="flex space-x-4">
-              {["ABOUT", "EVENTS", "CONTACT"].map((label) => {
+              {["ABOUT", "EVENTS", "NEWSLETTER"].map((label) => {
                 const path = `/${label.toLowerCase()}`;
                 const isActive = pathname === path;
                 return (
@@ -104,7 +104,7 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className={cn("md:hidden py-4", mobileBg)}>
           <nav className="flex flex-col items-center space-y-2 font-haas">
-            {["ABOUT", "EVENTS", "CONTACT"].map((label) => {
+            {["ABOUT", "EVENTS", "NEWSLETTER"].map((label) => {
               const path = `/${label.toLowerCase()}`;
               const isActive = pathname === path;
               return (

@@ -112,7 +112,7 @@ export default function Events() {
         </div>
       </motion.div>
 
-      <div className="w-full lg:w-4/5 mx-auto pt-24 px-6 pb-16">
+      <div className="w-full lg:w-4/5 mx-auto pt-40 px-6 pb-16">
          <div className="space-y-24">
           {eventData.map((event) => (
             <motion.div 
@@ -132,13 +132,13 @@ export default function Events() {
                   whileHover="hover"
                   viewport={{ once: true }}
                 >
-                  <div className="h-full overflow-hidden rounded-lg shadow-lg">
+                  <div className="h-full overflow-hidden rounded-lg">
                     <Image
                       src={event.imageUrl} 
                       alt={event.title}
-                      width={500}
-                      height={500}
-                      className="event-image object-cover w-full h-full transition-all duration-500"
+                      width={400}
+                      height={200}
+                      className="event-image object-cover transition-all duration-500"
                     />
                   </div>
                 </motion.div>
@@ -205,15 +205,6 @@ export default function Events() {
           ))}
         </div>
       </div>
-
-      
-      {/* SVG Filter for brush effects */}
-      <svg width="0" height="0" style={{ position: "absolute" }}>
-        <filter id="brush-texture" x="-50%" y="-50%" width="200%" height="200%">
-          <feTurbulence baseFrequency="0.01" numOctaves="3" seed="1" />
-          <feDisplacementMap in="SourceGraphic" scale="10" />
-        </filter>
-      </svg>
       <div className="pb-30 md:pb-45"></div>
     </div>
   );
