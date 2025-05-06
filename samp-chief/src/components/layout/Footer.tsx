@@ -20,8 +20,7 @@ export default function Footer() {
           : isAbout || isEvent || isNewsletter
           ? "bg-black opacity-80 text-white"
           : "bg-white text-black",
-        // mobile: py-1; md+: py-2
-        "py-1 md:py-2"
+        "px-3 py-1 md:py-2"
       )}
     >
      <div className="flex items-end justify-center md:justify-between w-full px-4 pt-4 md:pt-6 pb-4">

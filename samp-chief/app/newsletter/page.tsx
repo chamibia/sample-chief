@@ -72,7 +72,7 @@ export default function NewsletterSignup() {
         className="overflow-hidden bg-[#e7fedc] rounded-b-3xl border-b-2 border-black"
       >
     <div className="w-full lg:w-4/5 mx-auto py-8 px-4 md:py-14 md:px-6">          
-        <div className="pb-10">
+        <div className="pb-2">
             <h2 className="leading-none text-[3rem] md:text-[6rem] text-gray-800">
               Newsletter
             </h2>
@@ -174,7 +174,7 @@ export default function NewsletterSignup() {
         </p>
       </div>
 
-      <div className="pb-30 md:pb-50"></div>
+      <div className="pb-30 md:pb-60"></div>
     </div>
   )
 }

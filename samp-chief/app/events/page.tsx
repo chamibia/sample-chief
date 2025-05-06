@@ -104,7 +104,7 @@ export default function Events() {
         className="overflow-hidden bg-[#ffdd80] rounded-b-3xl border-b-3 border-black"
       >
         <div className="w-full lg:w-4/5 mx-auto py-8 px-4 md:py-14 md:px-6">
-          <div className='pb-10'>
+          <div className='pb-2'>
             <h2 className="leading-none text-[3rem] md:text-[6rem] text-gray-800">
               Events
             </h2>
@@ -146,7 +146,7 @@ export default function Events() {
                 <div className="md:col-span-7">
                   <div className="event-details space-y-6">
                     <motion.h2 
-                      className="event-title text-3xl"
+                      className="event-title text-5xl"
                       variants={titleVariants}
                       initial="hidden"
                       whileInView="visible"
@@ -205,7 +205,7 @@ export default function Events() {
           ))}
         </div>
       </div>
-      <div className="pb-30 md:pb-50"></div>
+      <div className="pb-30 md:pb-60"></div>
     </div>
   );
 }

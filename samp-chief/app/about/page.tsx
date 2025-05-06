@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 export default function About() {
   const [showBanner, setShowBanner] = useState(true);
 
-  // Split the text into headline and paragraphs
   const headline = "Sample Chief is a global community that celebrates African music culture.";
   const paragraph1 = "We're based in London, Toronto, Montreal and Lagos (Nigeria). Our mission is to promote music discovery by creating interactive experiences for a global audience, through media and events. We connect brands to a vibrant youth audience that is interested in digital content and music experiences.";
   const paragraph2 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere.";
@@ -30,7 +29,6 @@ export default function About() {
     { id: 7, logo: "/assets/universal.png" },
   ];
 
-  // For word animation:
   const textContainer = {
     hidden: {},
     visible: { transition: { staggerChildren: 0.03 } },
@@ -81,7 +79,7 @@ export default function About() {
         className="overflow-hidden bg-[#ff6139] rounded-b-3xl border-b-3 border-black"
       >
         <div className="w-full lg:w-4/5 mx-auto py-8 px-4 md:py-14 md:px-6">
-          <div className='pb-10'>
+          <div className='pb-2'>
             <h2 className="leading-none text-[3rem] md:text-[6rem] text-gray-800">
               About
             </h2>
@@ -90,7 +88,7 @@ export default function About() {
       </motion.div>
       <div className="w-full lg:w-4/5 mx-auto px-4 md:px-6 text-gray-800 pt-20 md:pt-40">       
        <motion.div
-          className="text-2xl md:text-[3rem] leading-[1.2] mb-4 md:mb-8"
+          className="text-2xl md:text-[5rem] leading-[1.2] mb-4 md:mb-8"
           variants={textContainer}
           initial="hidden"
           whileInView="visible"
@@ -177,7 +175,7 @@ export default function About() {
         </motion.div>
       </div>
       
-      <div className="pb-30 md:pb-50"></div>
+      <div className="pb-30 md:pb-60"></div>
     </div>
   );
 }
