@@ -64,11 +64,11 @@ export default function NewsletterSignup() {
           height: showBanner ? "auto" : "0px",
         }}
         transition={{ duration: 0.3 }}
-        className="overflow-hidden bg-[#e7fedc] rounded-b-3xl border-b-2 border-black"
+       className="overflow-hidden rounded-b-3xl border-b-2 border-black ? bg-gradient-to-br from-[#e7fedc] via-[#d8f1c8] to-[#c7e8b2] text-gray-800"
       >
         <div className="w-full lg:w-4/5 mx-auto py-8 px-4 md:py-14 md:px-6">
-          <h2 className="leading-none text-[3rem] md:text-[6rem] text-gray-800">
-            Newsletter
+        <h2 className="leading-none text-[3rem] md:text-[6rem] drop-shadow-md">            
+          Newsletter
           </h2>
         </div>
       </motion.div>
