@@ -20,11 +20,10 @@ export default function Navbar() {
   const isHome = pathname === "/";
   const isAbout = pathname === "/about";
   const isEvents = pathname === "/events";
+  const isNewsletter = pathname === "/newsletter"
 
-  // Shared positioning + z-index
   const basePosition = "sticky inset-x-0 top-0 z-30 py-3";
 
-  // Determine header background + text
   const headerClasses = cn(
     basePosition,
     isHome
@@ -33,12 +32,13 @@ export default function Navbar() {
       ? "bg-[#ff6139] text-gray-800"
       : isEvents
       ? "bg-[#ffdd80] text-gray-800"
+      : isNewsletter
+      ?"bg-[#e7fedc] text-gray-800"
       : "bg-white text-gray-800"
   );
 
-  // Determine mobile dropdown background
   const mobileBg = isHome
-    ? "bg-black/80 backdrop-blur-sm"
+    ? "backdrop"
     : isAbout
     ? "bg-[#ff6139]"
     : isEvents
@@ -48,7 +48,6 @@ export default function Navbar() {
   return (
     <header className={headerClasses}>
       <div className="relative mx-auto px-6">
-        {/* Mobile Menu Button */}
         <button
           className="md:hidden absolute left-4 top-1/2 transform -translate-y-1/2 p-2"
           onClick={() => setIsMenuOpen((o) => !o)}
@@ -56,7 +55,6 @@ export default function Navbar() {
           {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
 
-        {/* Logo */}
         <div className="flex justify-center">
           <Link href="/">
             <Image
@@ -64,13 +62,12 @@ export default function Navbar() {
               alt="Sample Chief Logo"
               width={70}
               height={100}
-              className={cn(isHome ? "opacity-75" : "opacity-100")}
+              className={cn(isHome ? "opacity-80" : "opacity-95", " transform transition-transform duration-200 ease-out hover:scale-130 hover:-rotate-8", "pt-4")}
             />
           </Link>
         </div>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex absolute right-6 top-1/2 transform -translate-y-1/2 font-haas">
+        <nav className="hidden md:flex absolute right-6 top-1/2 transform -translate-y-1/2">
           <NavigationMenu>
             <NavigationMenuList className="flex space-x-4">
               {["ABOUT", "EVENTS", "NEWSLETTER"].map((label) => {
@@ -100,10 +97,9 @@ export default function Navbar() {
         </nav>
       </div>
 
-      {/* Mobile dropdown */}
       {isMenuOpen && (
         <div className={cn("md:hidden py-4", mobileBg)}>
-          <nav className="flex flex-col items-center space-y-2 font-haas">
+          <nav className="flex flex-col items-center space-y-2">
             {["ABOUT", "EVENTS", "NEWSLETTER"].map((label) => {
               const path = `/${label.toLowerCase()}`;
               const isActive = pathname === path;

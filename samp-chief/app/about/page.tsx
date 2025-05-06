@@ -70,7 +70,7 @@ export default function About() {
   }
 
   return (
-    <div className="min-h-screen bg-[white] font-serif">
+    <div className="min-h-screen bg-[white]">
       <motion.div
         initial={{ opacity: 1 }}
         animate={{
@@ -78,20 +78,19 @@ export default function About() {
           height: showBanner ? "auto" : "0px",
         }}
         transition={{ duration: 0.3 }}
-        className="overflow-hidden bg-[#ff6139] font-jost rounded-b-3xl"
+        className="overflow-hidden bg-[#ff6139] rounded-b-3xl border-b-3 border-black"
       >
-        <div className="w-full lg:w-4/5 mx-auto py-14 px-6">
+        <div className="w-full lg:w-4/5 mx-auto py-8 px-4 md:py-14 md:px-6">
           <div className='pb-10'>
-            <h2 className="uppercase font-light leading-none text-[3rem] md:text-[6rem] text-gray-800">
-              ABOUT
+            <h2 className="leading-none text-[3rem] md:text-[6rem] text-gray-800">
+              About
             </h2>
           </div>
         </div>
       </motion.div>
-
-      <div className="w-full lg:w-4/5 mx-auto px-6 text-gray-800 pt-40">
-        <motion.div
-          className="text-[1.5rem] md:text-[3rem] leading-[1.1] mb-8"
+      <div className="w-full lg:w-4/5 mx-auto px-4 md:px-6 text-gray-800 pt-20 md:pt-40">       
+       <motion.div
+          className="text-2xl md:text-[3rem] leading-[1.2] mb-4 md:mb-8"
           variants={textContainer}
           initial="hidden"
           whileInView="visible"
@@ -178,7 +177,7 @@ export default function About() {
         </motion.div>
       </div>
       
-      <div className="pb-30 md:pb-45"></div>
+      <div className="pb-30 md:pb-50"></div>
     </div>
   );
 }

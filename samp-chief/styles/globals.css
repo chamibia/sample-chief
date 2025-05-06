@@ -2,9 +2,28 @@
 @import "tailwindcss/preflight.css" layer(base);
 @import "tailwindcss/utilities.css" layer(utilities);
 
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap');
+@font-face {
+  font-family: 'MyFont';
+  src: url('/fonts/MyFont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MyFont';
+  src: url('/fonts/MyFont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+/* …additional weights/styles… */
 
-html {
+body {
+  font-family: 'MyFont', sans-serif;
+}
+
+
+/* html {
   font-family: 'Jost', sans-serif;
 }
 
@@ -24,4 +43,4 @@ html {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
   }
-}
+} */
