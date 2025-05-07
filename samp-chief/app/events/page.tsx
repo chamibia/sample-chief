@@ -94,7 +94,7 @@ export default function Events() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div>
     <motion.div
       initial={{ opacity: 1 }}
       animate={{
@@ -110,7 +110,7 @@ export default function Events() {
       }}
       className="overflow-hidden"
     >
-      <div className="w-full lg:w-4/5 mx-auto py-8 px-4 md:py-14 md:px-6">
+      <div className="w-full mx-auto py-8 px-4 md:py-14 md:px-6">
         <div className='pb-2'>
           <h2
             className={clsx(
@@ -126,20 +126,20 @@ export default function Events() {
         </div>
       </div>
     </motion.div>
-      <div className="w-full lg:w-4/5 mx-auto px-4 md:px-6 text-gray-800 pt-20 md:pt-40">
-         <div className="space-y-24">
+      <div className="w-full md:px-6 text-gray-800 md:pt-20">
+         <div className="">
           {eventData.map((event) => (
             <motion.div 
               key={event.id} 
-              className="text-2xl md:text-[1.5rem] leading-[1.2] mb-4 md:mb-8"
+              className="text-2xl md:text-[1.5rem] leading-[1.2] mb-4 md:mb-8 pt-20"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={eventCardVariants}
             >
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-                <motion.div 
-                  className="md:col-span-5"
+          <div className="grid grid-cols-1 md:grid-cols-12 md:gap-x-6 items-stretch">               
+                  <motion.div 
+                  className="md:col-span-4"
                   variants={imageVariants}
                   initial="hidden"
                   whileInView="visible"
@@ -157,7 +157,7 @@ export default function Events() {
                   </div>
                 </motion.div>
                 
-                <div className="md:col-span-7">
+                <div className="md:col-span-7 flex flex-col">                  
                   <div className="event-details space-y-6">
                     <motion.h2 
                       className="event-title text-4xl"

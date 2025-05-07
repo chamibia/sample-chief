@@ -73,7 +73,7 @@ export default function NewsletterSignup() {
       }}
       className="overflow-hidden"
     >
-      <div className="w-full lg:w-4/5 mx-auto py-8 px-4 md:py-14 md:px-6">
+      <div className="w-full mx-auto py-8 px-4 md:py-14 md:px-6">
         <h2
           className={clsx(
             radikalLight.className,
