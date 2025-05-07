@@ -219,6 +219,7 @@ export default function Events() {
           ))}
         </div>
       </div>
+      <div className="pb-30 md:pb-30"></div>
     </div>
   );
 }
