@@ -94,7 +94,7 @@ export default function NewsletterSignup() {
           transition={{ duration: 0.5 }}
           className="max-w-2xl mx-auto px-4 py-8 bg-transparent backdrop-blur-sm"
         >
-          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-6">
+          <h2 className="text-3xl md:text-4xl text-center mb-6 text-[#F4C430]">
             Join our Community
           </h2>
 
