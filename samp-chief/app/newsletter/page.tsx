@@ -176,7 +176,7 @@ export default function NewsletterSignup() {
           </p>
         </motion.div>
       </div>
-      <div className="pb-30 md:pb-60"></div>
+      <div className="pb-30 md:pb-30"></div>
     </div>
   );
 }

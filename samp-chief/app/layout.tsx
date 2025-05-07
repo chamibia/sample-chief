@@ -2,9 +2,7 @@ import { Viewport } from "next";
 import "../styles/globals.css";
 import Navbar from "../src/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import ScrollWrapper from "@/components/layout/ScrollWrapper";
 import localFont from 'next/font/local'
-import clsx from "clsx";
 
 export const radikalHeavy = localFont({
   src: [{ path: "./fonts/RadikalTrial-Black.otf", weight: "400", style: "normal" }],
@@ -13,7 +11,7 @@ export const radikalHeavy = localFont({
 });
 
 export const radikalLight = localFont({
-  src: [{ path: "./fonts/RadikalTrial-light.otf", weight: "200", style: "normal" }],
+  src: [{ path: "./fonts/RadikalTrial-Light.otf", weight: "200", style: "normal" }],
   variable: "--font-radikal-light",
   display: "swap",
 });

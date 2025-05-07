@@ -160,7 +160,7 @@ export default function Events() {
                 <div className="md:col-span-7">
                   <div className="event-details space-y-6">
                     <motion.h2 
-                      className="event-title text-5xl"
+                      className="event-title text-4xl"
                       variants={titleVariants}
                       initial="hidden"
                       whileInView="visible"
@@ -170,24 +170,24 @@ export default function Events() {
                     </motion.h2>
                     
                     <motion.div 
-                      className="venue-info space-y-3"
+                      className="venue-info space-y-3 text-xs"
                       variants={textVariants}
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true }}
                     >
                       <div className="flex items-center">
-                        <Calendar className="icon h-5 w-5 mr-2 text-gray-600" />
+                        <Calendar className="icon h-5 w-5 mr-2 text-gray-600 bg-amber-50" />
                         <span>{formatDate(event.startDate)}</span>
                       </div>
                       <div className="flex items-center">
-                        <MapPin className="icon h-5 w-5 mr-2 text-gray-600" />
+                        <MapPin className="icon h-5 w-5 mr-2 text-gray-600 bg-amber-50" />
                         <span>{event.venue}, {event.address}</span>
                       </div>
                     </motion.div>
                     
                     <motion.p 
-                      className="event-description text-lg leading-relaxed text-gray-800 max-w-full"
+                      className="event-description text-lg text-gray-800 max-w-full"
                       variants={textVariants}
                       initial="hidden"
                       whileInView="visible"
@@ -207,7 +207,7 @@ export default function Events() {
                         href={event.ticketLink} 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="inline-flex items-center justify-center px-8 py-3 border-2 border-black rounded-full text-black hover:bg-[#2E8B57] hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
+                        className="inline-flex items-center justify-center px-4 py-3 border-2 border-black rounded-full text-black hover:bg-[#2E8B57] hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
                       > 
                         Tickets
                       </Link>
@@ -218,7 +218,6 @@ export default function Events() {
             </motion.div>
           ))}
         </div>
-        <div className="pb-30 md:pb-30"></div>
       </div>
     </div>
   );
