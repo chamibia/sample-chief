@@ -102,9 +102,9 @@ export default function About() {
         </div>
       </div>
     </motion.div>
-      <div className="w-full lg:w-4/5 mx-auto px-4 md:px-6 text-gray-800 pt-20 md:pt-40">       
+      <div className="w-full lg:w-4/5 mx-auto px-4 md:px-6 text-gray-800 pt-20 md:pt-20">       
        <motion.div
-          className="text-2xl md:text-[5rem] leading-[1.2] mb-4 md:mb-8"
+          className="text-2xl md:text-[5rem] leading-[1.2] mb-4 md:mb-8 pb-4 md:pb-12"
           variants={textContainer}
           initial="hidden"
           whileInView="visible"

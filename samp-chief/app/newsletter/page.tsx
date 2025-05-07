@@ -87,7 +87,7 @@ export default function NewsletterSignup() {
         </h2>
       </div>
     </motion.div>
-      <div className="relative w-full lg:w-4/5 mx-auto px-4 md:px-6 pt-20 md:pt-40">
+      <div className="relative w-full lg:w-4/5 mx-auto px-4 md:px-6 pt-20 md:pt-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
