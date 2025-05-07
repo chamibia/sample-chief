@@ -2,11 +2,12 @@
 
 import React, { useState } from "react";
 import { getNames } from "country-list";
-import Image from "next/image";
-import sampleGif from "/public/assets/small.gif";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
+import { radikalLight } from ".././layout";
+import clsx from "clsx";
+
 
 export default function NewsletterSignup() {
   const [firstName, setFirstName] = useState("");
@@ -56,23 +57,36 @@ export default function NewsletterSignup() {
   };
 
   return (
-    <div className="overflow-y-auto">
-      <motion.div
-        initial={{ opacity: 1 }}
-        animate={{
-          opacity: showBanner ? 1 : 0,
-          height: showBanner ? "auto" : "0px",
-        }}
-        transition={{ duration: 0.3 }}
-       className="overflow-hidden rounded-b-3xl border-b-2 border-black ? bg-gradient-to-br from-[#e7fedc] via-[#d8f1c8] to-[#c7e8b2] text-gray-800"
-      >
-        <div className="w-full lg:w-4/5 mx-auto py-8 px-4 md:py-14 md:px-6">
-        <h2 className="leading-none text-[3rem] md:text-[6rem] drop-shadow-md">            
-          Newsletter
-          </h2>
-        </div>
-      </motion.div>
-
+    <div>
+    <motion.div
+      initial={{ opacity: 1 }}
+      animate={{
+        opacity: showBanner ? 1 : 0,
+        height: showBanner ? "auto" : "0px",
+      }}
+      transition={{ duration: 0.3 }}
+      style={{
+        background: "linear-gradient(to right, #e7fedc 0%, #d8f1c8 50%, #c7e8b2 100%)",
+        borderBottom: "3px solid black",
+        borderBottomLeftRadius: "1.5rem",
+        borderBottomRightRadius: "1.5rem"
+      }}
+      className="overflow-hidden"
+    >
+      <div className="w-full lg:w-4/5 mx-auto py-8 px-4 md:py-14 md:px-6">
+        <h2
+          className={clsx(
+            radikalLight.className,
+            "leading-none text-[3rem] md:text-[6rem] text-gray-800"
+          )}
+          style={{
+            textShadow: "2px 2px 0px rgba(255,255,255,0.5)"
+          }}
+        >
+          NEWSLETTER
+        </h2>
+      </div>
+    </motion.div>
       <div className="relative w-full lg:w-4/5 mx-auto px-4 md:px-6 pt-20 md:pt-40">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -162,7 +176,6 @@ export default function NewsletterSignup() {
           </p>
         </motion.div>
       </div>
-
       <div className="pb-30 md:pb-60"></div>
     </div>
   );

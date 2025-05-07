@@ -3,6 +3,8 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from "react";
+import { radikalLight } from ".././layout";
+import clsx from "clsx";
 
 export default function About() {
   const [showBanner, setShowBanner] = useState(true);
@@ -68,24 +70,38 @@ export default function About() {
   }
 
   return (
-    <div className="min-h-screen bg-[white]">
+    <div>
       <motion.div
-        initial={{ opacity: 1 }}
-        animate={{
-          opacity: showBanner ? 1 : 0,
-          height: showBanner ? "auto" : "0px",
-        }}
-        transition={{ duration: 0.3 }}
-        className="overflow-hidden bg-[#ff6139] rounded-b-3xl border-b-3 border-black"
-      >
-        <div className="w-full lg:w-4/5 mx-auto py-8 px-4 md:py-14 md:px-6">
-          <div className='pb-2'>
-            <h2 className="leading-none text-[3rem] md:text-[6rem] text-gray-800">
-              About
-            </h2>
-          </div>
+      initial={{ opacity: 1 }}
+      animate={{
+        opacity: showBanner ? 1 : 0,
+        height: showBanner ? "auto" : "0px",
+      }}
+      transition={{ duration: 0.3 }}
+      style={{
+        background: "linear-gradient(to right, #ff6139 0%, #ff7e5f 50%, #ff9a85 100%)",
+        borderBottom: "3px solid black",
+        borderBottomLeftRadius: "1.5rem",
+        borderBottomRightRadius: "1.5rem"
+      }}
+      className="overflow-hidden"
+    >
+      <div className="w-full lg:w-4/5 mx-auto py-8 px-4 md:py-14 md:px-6">
+        <div className='pb-2'>
+          <h2
+            className={clsx(
+              radikalLight.className,   
+              "leading-none text-[3rem] md:text-[6rem] text-gray-800"
+            )}
+            style={{
+              textShadow: "2px 2px 0px rgba(255,255,255,0.5)"
+            }}
+          >
+            ABOUT
+          </h2>
         </div>
-      </motion.div>
+      </div>
+    </motion.div>
       <div className="w-full lg:w-4/5 mx-auto px-4 md:px-6 text-gray-800 pt-20 md:pt-40">       
        <motion.div
           className="text-2xl md:text-[5rem] leading-[1.2] mb-4 md:mb-8"
@@ -143,39 +159,38 @@ export default function About() {
       </div>
 
       <div className="mt-16 px-6">
-        <motion.div
-          className="
-            flex flex-col            
-            md:flex-row md:flex-nowrap  
-            items-center justify-center 
-            space-y-6 md:space-y-0 md:space-x-16  
-            py-6 overflow-x-auto
-          "
-          variants={logoContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {partners.map((p) => (
-            <motion.div
-              key={p.id}
-              variants={logoItem}
-              whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
-              className="flex-shrink-0 flex items-center justify-center"
-            >
-              <Image
-                src={p.logo}
-                alt=""
-                width={120}
-                height={80}
-                className="max-h-16 max-w-[120px] object-contain grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300"
-              />
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-      
-      <div className="pb-30 md:pb-60"></div>
+  <motion.div
+    className="
+      flex flex-col            
+      md:flex-row
+      items-center justify-center 
+      space-y-6 md:space-y-0 md:space-x-16  
+      py-6 w-full
+    "
+    variants={logoContainer}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.2 }}
+  >
+    {partners.map((p) => (
+      <motion.div
+        key={p.id}
+        variants={logoItem}
+        whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+        className="flex-shrink-0 flex items-center justify-center"
+      >
+        <Image
+          src={p.logo}
+          alt=""
+          width={120}
+          height={80}
+          className="max-h-16 max-w-[120px] object-contain grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300"
+        />
+      </motion.div>
+    ))}
+  </motion.div>
+</div>
+<div className="pb-30 md:pb-30"></div>
     </div>
   );
 }

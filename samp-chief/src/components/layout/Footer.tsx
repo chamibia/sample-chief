@@ -34,16 +34,40 @@ export default function Footer() {
           />
         </div>
         <div className="flex items-center space-x-6 self-center">
-          <Link href="https://www.instagram.com/samplechief/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <Link 
+            href="https://www.instagram.com/samplechief/?hl=en" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label="Instagram"
+            className="transform transition-all duration-300 hover:scale-125 hover:text-[#E1306C] hover:opacity-100"
+          >
             <Instagram className="h-6 w-6" />
           </Link>
-          <Link href="https://x.com/SampleChief" target="_blank" rel="noopener noreferrer" aria-label="X">
+          <Link 
+            href="https://x.com/SampleChief" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label="X"
+            className="transform transition-all duration-300 hover:scale-125 hover:text-[#1DA1F2] hover:opacity-100"
+          >
             <XTwitter className="h-6 w-6" />
           </Link>
-          <Link href="https://www.linkedin.com/company/sample-chief" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <Link 
+            href="https://www.linkedin.com/company/sample-chief" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label="LinkedIn"
+            className="transform transition-all duration-300 hover:scale-125 hover:text-[#0077B5] hover:opacity-100"
+          >
             <Linkedin className="h-6 w-6" />
           </Link>
-          <Link href="https://www.tiktok.com/@samplechief" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <Link 
+            href="https://www.tiktok.com/@samplechief" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label="TikTok"
+            className="transform transition-all duration-300 hover:scale-125 hover:text-[#FF0050] hover:opacity-100"
+          >
             <Tiktok className="h-6 w-6" />
           </Link>
         </div>

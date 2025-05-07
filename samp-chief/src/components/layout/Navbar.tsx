@@ -40,89 +40,105 @@ export default function Navbar() {
   const mobileBg = isHome
     ? "backdrop"
     : isAbout
-    ? "bg-[#ff6139]"
+    ? "bg-[#0]"
     : isEvents
-    ? "bg-[#ffdd80]"
+    ? "bg-[#0]"
+    : isNewsletter
+    ? "bg-[#0]"
     : "bg-white";
 
-  return (
-    <header className={headerClasses}>
-      <div className="relative mx-auto px-6">
-        <button
-          className="md:hidden absolute left-4 top-1/2 transform -translate-y-1/2 p-2"
-          onClick={() => setIsMenuOpen((o) => !o)}
-        >
-          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+    const headerStyle = isNewsletter 
+    ? { 
+        background: "linear-gradient(to right, #e7fedc 0%, #d8f1c8 50%, #c7e8b2 100%)",
+      } 
+    : isEvents
+    ? {
+        background: "linear-gradient(to right, #ffdd80 0%, #ffe599 50%, #ffecb3 100%)",
+      }
+    : isAbout
+    ? {
+        background: "linear-gradient(to right, #ff6139 0%, #ff7e5f 50%, #ff9a85 100%)",
+      }
+    : {};
 
-        <div className="flex justify-center">
-          <Link href="/">
-            <Image
-              src={crown}
-              alt="Sample Chief Logo"
-              width={70}
-              height={100}
-              className={cn(isHome ? "opacity-80" : "opacity-95", " transform transition-transform duration-200 ease-out hover:scale-130 hover:-rotate-8", "pt-4")}
-            />
-          </Link>
+    return (
+      <header className={headerClasses} style={headerStyle}>
+        <div className="relative mx-auto px-6">
+          <button
+            className="md:hidden absolute left-4 top-1/2 transform -translate-y-1/2 p-2"
+            onClick={() => setIsMenuOpen((o) => !o)}
+          >
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+    
+          <div className="flex justify-center">
+            <Link href="/">
+              <Image
+                src={crown}
+                alt="Sample Chief Logo"
+                width={70}
+                height={100}
+                className={cn(isHome ? "opacity-80" : "opacity-95", " transform transition-transform duration-200 ease-out hover:scale-130 hover:-rotate-8", "pt-4")}
+              />
+            </Link>
+          </div>
+    
+          <nav className="hidden md:flex absolute right-6 top-1/2 transform -translate-y-1/2">
+            <NavigationMenu>
+              <NavigationMenuList className="flex space-x-4">
+                {["ABOUT", "EVENTS", "NEWSLETTER"].map((label) => {
+                  const path = `/${label.toLowerCase()}`;
+                  const isActive = pathname === path;
+                  return (
+                    <NavigationMenuItem key={label}>
+                      <Link href={path} legacyBehavior passHref>
+                        <NavigationMenuLink
+                          className={cn(
+                            navigationMenuTriggerStyle(),
+                            "text-lg transition-all duration-200 ease-out transform hover:scale-105",
+                            isHome
+                              ? "text-white/75 hover:text-white"
+                              : "text-gray-800 hover:text-white",
+                            isActive && "font-medium"
+                          )}
+                        >
+                          {label}
+                        </NavigationMenuLink>
+                      </Link>
+                    </NavigationMenuItem>
+                  );
+                })}
+              </NavigationMenuList>
+            </NavigationMenu>
+          </nav>
         </div>
-
-        <nav className="hidden md:flex absolute right-6 top-1/2 transform -translate-y-1/2">
-          <NavigationMenu>
-            <NavigationMenuList className="flex space-x-4">
+    
+        {isMenuOpen && (
+          <div className={cn("md:hidden py-4", mobileBg)}>
+            <nav className="flex flex-col items-center space-y-2">
               {["ABOUT", "EVENTS", "NEWSLETTER"].map((label) => {
                 const path = `/${label.toLowerCase()}`;
                 const isActive = pathname === path;
                 return (
-                  <NavigationMenuItem key={label}>
-                    <Link href={path} legacyBehavior passHref>
-                      <NavigationMenuLink
-                        className={cn(
-                          navigationMenuTriggerStyle(),
-                          "text-lg transition-transform duration-200 ease-out transform hover:scale-105",
-                          isHome
-                            ? "text-white/75 hover:text-white"
-                            : "text-gray-800 hover:text-gray-700",
-                          isActive && "font-medium"
-                        )}
-                      >
-                        {label}
-                      </NavigationMenuLink>
-                    </Link>
-                  </NavigationMenuItem>
+                  <Link
+                    key={label}
+                    href={path}
+                    className={cn(
+                      "block w-full py-2 px-4 text-center uppercase text-lg transition-colors duration-150 ease-out",
+                      isHome
+                        ? "text-white/75 hover:text-white"
+                        : "text-gray-800 hover:text-white",
+                      isActive && "font-medium"
+                    )}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {label}
+                  </Link>
                 );
               })}
-            </NavigationMenuList>
-          </NavigationMenu>
-        </nav>
-      </div>
-
-      {isMenuOpen && (
-        <div className={cn("md:hidden py-4", mobileBg)}>
-          <nav className="flex flex-col items-center space-y-2">
-            {["ABOUT", "EVENTS", "NEWSLETTER"].map((label) => {
-              const path = `/${label.toLowerCase()}`;
-              const isActive = pathname === path;
-              return (
-                <Link
-                  key={label}
-                  href={path}
-                  className={cn(
-                    "block w-full py-2 px-4 text-center uppercase text-lg transition-colors duration-150 ease-out",
-                    isHome
-                      ? "text-white/75 hover:text-white"
-                      : "text-gray-800 hover:text-gray-900",
-                    isActive && "font-medium"
-                  )}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {label}
-                </Link>
-              );
-            })}
-          </nav>
-        </div>
-      )}
-    </header>
-  );
-}
+            </nav>
+          </div>
+        )}
+      </header>
+    )
+  }

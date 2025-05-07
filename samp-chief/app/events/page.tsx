@@ -2,8 +2,10 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Calendar, MapPin, ExternalLink, Music } from 'lucide-react';
+import { Calendar, MapPin } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { radikalLight } from ".././layout";
+import clsx from "clsx";
 
 const eventData = [
   {
@@ -51,7 +53,6 @@ export default function Events() {
     return date.getDate();
   };
 
-  // Animation variants
   const eventCardVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { 
@@ -94,24 +95,37 @@ export default function Events() {
 
   return (
     <div className="min-h-screen bg-white">
-      <motion.div
-        initial={{ opacity: 1 }}
-        animate={{
-          opacity: showBanner ? 1 : 0,
-          height: showBanner ? "auto" : "0px",
-        }}
-        transition={{ duration: 0.3 }}
-        className="overflow-hidden bg-[#ffdd80] rounded-b-3xl border-b-3 border-black"
-      >
-        <div className="w-full lg:w-4/5 mx-auto py-8 px-4 md:py-14 md:px-6">
-          <div className='pb-2'>
-            <h2 className="leading-none text-[3rem] md:text-[6rem] text-gray-800">
-              Events
-            </h2>
-          </div>
+    <motion.div
+      initial={{ opacity: 1 }}
+      animate={{
+        opacity: showBanner ? 1 : 0,
+        height: showBanner ? "auto" : "0px",
+      }}
+      transition={{ duration: 0.3 }}
+      style={{
+        background: "linear-gradient(to right, #ffdd80 0%, #ffe599 50%, #ffecb3 100%)",
+        borderBottom: "3px solid black",
+        borderBottomLeftRadius: "1.5rem",
+        borderBottomRightRadius: "1.5rem"
+      }}
+      className="overflow-hidden"
+    >
+      <div className="w-full lg:w-4/5 mx-auto py-8 px-4 md:py-14 md:px-6">
+        <div className='pb-2'>
+          <h2
+            className={clsx(
+              radikalLight.className,   
+              "leading-none text-[3rem] md:text-[6rem] text-gray-800"
+            )}
+            style={{
+              textShadow: "2px 2px 0px rgba(255,255,255,0.5)"
+            }}
+          >
+            EVENTS
+          </h2>
         </div>
-      </motion.div>
-
+      </div>
+    </motion.div>
       <div className="w-full lg:w-4/5 mx-auto px-4 md:px-6 text-gray-800 pt-20 md:pt-40">
          <div className="space-y-24">
           {eventData.map((event) => (
@@ -204,8 +218,8 @@ export default function Events() {
             </motion.div>
           ))}
         </div>
+        <div className="pb-30 md:pb-30"></div>
       </div>
-      <div className="pb-30 md:pb-60"></div>
     </div>
   );
 }

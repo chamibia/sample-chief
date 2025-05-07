@@ -1,33 +1,22 @@
-import { Metadata, Viewport } from "next";
+import { Viewport } from "next";
 import "../styles/globals.css";
 import Navbar from "../src/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import ScrollWrapper from "@/components/layout/ScrollWrapper";
 import localFont from 'next/font/local'
 import clsx from "clsx";
 
+export const radikalHeavy = localFont({
+  src: [{ path: "./fonts/RadikalTrial-Black.otf", weight: "400", style: "normal" }],
+  variable: "--font-radikal-heavy",
+  display: "swap",
+});
 
-const radikal = localFont({
-src: [
-  {
-  path: './fonts/RadikalTrial-Black.otf',
-  weight: '400',
-  style: 'normal'
-  }
-],
-variable: '--font-myfont',
-display: 'swap',
-})
-
-export const metadata: Metadata = {
-  title: "Sample Chief",
-  description: "Sample Chief website",
-  openGraph: {
-    title: "Sample Chief",
-    description:
-      "A platform dedicated to unearthing African sounds in contemporary music",
-    images: ["/assets/sample_chief.webp"],
-  },
-};
+export const radikalLight = localFont({
+  src: [{ path: "./fonts/RadikalTrial-light.otf", weight: "200", style: "normal" }],
+  variable: "--font-radikal-light",
+  display: "swap",
+});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -38,18 +27,19 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
-    lang="en"
-    // merge the CSS‐variable class with any other html‐level classes
-    className={clsx(radikal.variable, 'antialiased bg-gray-50')}
-  >
-    <head />
-    <body
-      // apply the actual font‐family plus your existing flex layout
-      className={clsx(radikal.className, 'flex flex-col h-screen overflow-hidden')}
+      lang="en"
+      className={radikalHeavy.variable}
     >
-      <Navbar />
-      <ScrollWrapper>{children}</ScrollWrapper>
-    </body>
-  </html>
-)
+      <head />
+      <body className={`antialiased bg-gray-50 ${radikalHeavy.className}`}>
+        <div className="flex flex-col min-h-screen">
+          <Navbar />
+          <div className="flex-grow overflow-auto">
+            {children}
+          </div>
+          <Footer />
+        </div>
+      </body>
+    </html>
+  )
 }
