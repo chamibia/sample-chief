@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Calendar, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
-import { radikalLight } from ".././layout";
+import { radikalHeavy, radikalLight } from ".././layout";
 import clsx from "clsx";
 
 const eventData = [
@@ -39,8 +39,6 @@ export default function Events() {
       .toLocaleDateString("en-US", { month: "short", day: "numeric" })
       .toUpperCase();
 
-  // ... other formatters, animation variants unchanged ...
-
   return (
     <div>
       <motion.div
@@ -63,11 +61,11 @@ export default function Events() {
           <div className="pb-2">
             <h2
               className={clsx(
-                radikalLight.className,
-                "leading-none text-[3rem] md:text-[6rem] text-gray-800"
+                radikalHeavy.className,
+                "tracking-tight leading-tight text-[3rem] md:text-[6rem] text-gray-800"
               )}
               style={{
-                textShadow: "2px 2px 0px rgba(255,255,255,0.5)",
+                textShadow: "2px 4px 6px rgba(255,255,255,0.9)",
               }}
             >
               EVENTS
@@ -163,7 +161,8 @@ export default function Events() {
                     </motion.div>
 
                     <motion.p
-                      className="text-lg text-gray-800 max-w-full"
+                    className={clsx(
+                      radikalLight.className, "text-gray-800 max-w-full")}
                       variants={{
                         hidden: { opacity: 0, x: -20 },
                         visible: {
@@ -190,7 +189,8 @@ export default function Events() {
                         href={event.ticketLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center px-4 py-3 border-2 border-black rounded-full text-black hover:bg-[#2E8B57] hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
+                        className={clsx(
+                          radikalLight.className,"inline-flex items-center justify-center px-4 py-3 border-2 border-black rounded-full text-black hover:bg-[#2E8B57] hover:text-white transition-all duration-300 shadow-md hover:shadow-lg")}
                       >
                         Tickets
                       </Link>

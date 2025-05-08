@@ -5,7 +5,7 @@ import { getNames } from "country-list";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
-import { radikalLight } from ".././layout";
+import { radikalHeavy, radikalLight } from ".././layout";
 import clsx from "clsx";
 
 
@@ -74,17 +74,17 @@ export default function NewsletterSignup() {
       className="overflow-hidden"
     >
       <div className="w-full mx-auto py-8 px-4 md:py-14 md:px-6">
-        <h2
-          className={clsx(
-            radikalLight.className,
-            "leading-none text-[3rem] md:text-[6rem] text-gray-800"
-          )}
-          style={{
-            textShadow: "2px 2px 0px rgba(255,255,255,0.5)"
-          }}
-        >
-          NEWSLETTER
-        </h2>
+      <h2
+              className={clsx(
+                radikalHeavy.className,
+                "tracking-tight leading-tight uppercase text-[3rem] md:text-[6rem] text-gray-800"
+              )}
+              style={{
+                textShadow: "2px 4px 6px rgba(255,255,255,0.9)"
+              }}
+            >
+              Newsletter
+            </h2>
       </div>
     </motion.div>
       <div className="relative w-full lg:w-4/5 mx-auto px-4 md:px-6 pt-20 md:pt-20">

@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from "react";
-import { radikalLight } from ".././layout";
+import { radikalHeavy, radikalLight } from ".././layout";
 import clsx from "clsx";
 
 export default function About() {
@@ -90,11 +90,11 @@ export default function About() {
         <div className='pb-2'>
           <h2
             className={clsx(
-              radikalLight.className,   
-              "leading-none text-[3rem] md:text-[6rem] text-gray-800"
+              radikalHeavy.className,   
+              "tracking-tight leading-tight text-[3rem] md:text-[6rem] text-gray-800"
             )}
             style={{
-              textShadow: "2px 2px 0px rgba(255,255,255,0.5)"
+              textShadow: "2px 4px 6px rgba(255,255,255,0.9)"
             }}
           >
             ABOUT
@@ -132,7 +132,8 @@ export default function About() {
             <motion.span
               key={i}
               variants={wordVariants}
-              className="inline-block mr-2"
+              className={clsx(
+                radikalLight.className, "inline-block mr-2")}
             >
               {word}
             </motion.span>
@@ -140,7 +141,7 @@ export default function About() {
         </motion.div>
         
         <motion.div
-          className="text-[1rem] md:text-[1.5rem] leading-[1.3] mt-8"
+          className="md:text-[1.5rem] leading-[1.3] mt-8"
           variants={paragraphContainer}
           initial="hidden"
           whileInView="visible"
@@ -150,7 +151,8 @@ export default function About() {
             <motion.span
               key={i + 1000} 
               variants={wordVariants}
-              className="inline-block mr-2"
+              className={clsx(
+              radikalLight.className, "inline-block mr-2")}
             >
               {word}
             </motion.span>
