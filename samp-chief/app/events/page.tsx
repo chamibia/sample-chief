@@ -65,7 +65,7 @@ export default function Events() {
                 "tracking-tight leading-tight text-[3rem] md:text-[6rem] text-gray-800"
               )}
               style={{
-                textShadow: "2px 4px 6px rgba(255,255,255,0.9)",
+                textShadow: "2px 2px 0px rgba(255,255,255,0.9)"
               }}
             >
               EVENTS
@@ -162,7 +162,7 @@ export default function Events() {
 
                     <motion.p
                     className={clsx(
-                      radikalLight.className, "text-gray-800 max-w-full")}
+                      radikalLight.className, "text-gray-800 tracking-tight")}
                       variants={{
                         hidden: { opacity: 0, x: -20 },
                         visible: {

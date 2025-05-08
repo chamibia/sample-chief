@@ -80,7 +80,7 @@ export default function NewsletterSignup() {
                 "tracking-tight leading-tight uppercase text-[3rem] md:text-[6rem] text-gray-800"
               )}
               style={{
-                textShadow: "2px 4px 6px rgba(255,255,255,0.9)"
+                textShadow: "2px 2px 0px rgba(255,255,255,0.9)"
               }}
             >
               Newsletter
