@@ -59,35 +59,50 @@ export default function NewsletterSignup() {
   return (
     <div>
     <motion.div
-      initial={{ opacity: 1 }}
-      animate={{
-        opacity: showBanner ? 1 : 0,
-        height: showBanner ? "auto" : "0px",
-      }}
-      transition={{ duration: 0.3 }}
+  initial={{ opacity: 1 }}
+  animate={{
+    opacity: showBanner ? 1 : 0,
+    height: showBanner ? "auto" : "0px",
+  }}
+  transition={{ duration: 0.3 }}
+  className="relative overflow-hidden"      // ← make sure this is here
+  style={{
+    background: "linear-gradient(to right, #e7fedc 0%, #d8f1c8 50%, #c7e8b2 100%)",
+  }}
+>
+  <div className="w-full mx-auto py-8 px-4 md:py-14 md:px-6">
+    {/* <h2
+      className={clsx(
+        radikalHeavy.className,
+        "tracking-tight leading-tight uppercase text-[3rem] md:text-[6rem] text-gray-800"
+      )}
       style={{
-        background: "linear-gradient(to right, #e7fedc 0%, #d8f1c8 50%, #c7e8b2 100%)",
-        borderBottom: "3px solid black",
-        borderBottomLeftRadius: "1.5rem",
-        borderBottomRightRadius: "1.5rem"
+        textShadow: "2px 2px 0px rgba(255,255,255,0.9)",
       }}
-      className="overflow-hidden"
     >
-      <div className="w-full mx-auto py-8 px-4 md:py-14 md:px-6">
-      <h2
-              className={clsx(
-                radikalHeavy.className,
-                "tracking-tight leading-tight uppercase text-[3rem] md:text-[6rem] text-gray-800"
-              )}
-              style={{
-                textShadow: "2px 2px 0px rgba(255,255,255,0.9)"
-              }}
-            >
-              Newsletter
-            </h2>
-      </div>
-    </motion.div>
-      <div className="relative w-full lg:w-4/5 mx-auto px-4 md:px-6 pt-20 md:pt-20">
+      Newsletter
+    </h2> */}
+  </div>
+
+  {/*
+    This div holds the white wave at the bottom of the green banner.
+    Adjust the <path> to tweak the curve.
+  */}
+  <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none pointer-events-none">
+    <svg
+      className="relative block w-[calc(100%+1px)] h-16"
+      viewBox="0 0 1200 120"
+      preserveAspectRatio="none"
+    >
+      <path
+        d="M0,0 C300,80 900,0 1200,80 L1200,120 L0,120 Z"
+        fill="#fff"
+      />
+    </svg>
+  </div>
+</motion.div>
+
+      <div className="relative w-full lg:w-4/5 mx-auto px-4 md:px-6 pt-20 md:pt-20 bg-white">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

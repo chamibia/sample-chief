@@ -20,7 +20,7 @@ export default function Footer() {
           : isAbout || isEvent || isNewsletter
           ? "bg-black opacity-80 text-white"
           : "bg-white text-black",
-        "px-3 py-1 md:py-2"
+        "px-2 py-0 md:py-0"
       )}
     >
      <div className="flex items-end justify-center md:justify-between w-full px-4 pt-4 md:pt-6 pb-4">

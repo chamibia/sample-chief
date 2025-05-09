@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from "react";
-import { radikalHeavy, radikalLight } from ".././layout";
+import { radikalHeavy, radikalLight, radikalMedium, radikalRegular } from ".././layout";
 import clsx from "clsx";
 
 export default function About() {
@@ -71,40 +71,55 @@ export default function About() {
 
   return (
     <div>
-      <motion.div
-      initial={{ opacity: 1 }}
-      animate={{
-        opacity: showBanner ? 1 : 0,
-        height: showBanner ? "auto" : "0px",
-      }}
-      transition={{ duration: 0.3 }}
-      style={{
-        background: "linear-gradient(to right, #ff6139 0%, #ff7e5f 50%, #ff9a85 100%)",
-        borderBottom: "3px solid black",
-        borderBottomLeftRadius: "1.5rem",
-        borderBottomRightRadius: "1.5rem"
-      }}
-      className="overflow-hidden"
+<motion.div
+  initial={{ opacity: 1 }}
+  animate={{
+    opacity: showBanner ? 1 : 0,
+    height: showBanner ? "auto" : "0px",
+  }}
+  transition={{ duration: 0.3 }}
+  className="relative overflow-hidden"
+  style={{
+    background: "linear-gradient(to right, #ff6139 0%, #ff7e5f 50%, #ff9a85 100%)",
+    // borderBottom: "3px solid black",  ← removed
+    // borderBottomLeftRadius / borderBottomRightRadius no longer needed
+  }}
+>
+  <div className="w-full mx-auto py-8 px-4 md:py-14 md:px-6">
+    {/* <h2
+      className={clsx(
+        radikalMedium.className,
+        "tracking-tight leading-tight text-[3rem] md:text-[6rem] text-gray-800"
+      )}
+      style={{ textShadow: "2px 2px 0px rgba(255,255,255,0.9)" }}
     >
-      <div className="w-full mx-auto py-8 px-4 md:py-14 md:px-6">
-        <div className='pb-2'>
-          <h2
-            className={clsx(
-              radikalHeavy.className,   
-              "tracking-tight leading-tight text-[3rem] md:text-[6rem] text-gray-800"
-            )}
-            style={{
-              textShadow: "2px 2px 0px rgba(255,255,255,0.9)"
-            }}
-          >
-            ABOUT
-          </h2>
-        </div>
-      </div>
-    </motion.div>
-      <div className="w-full lg:w-4/5 mx-auto px-4 md:px-6 text-gray-800 pt-20 md:pt-20">       
+      ABOUT
+    </h2> */}
+  </div>
+  <div className="absolute bottom-0 left-0 w-full overflow-hidden pointer-events-none">
+    <svg
+      className="relative block w-[calc(100%+1px)] h-24"
+      viewBox="0 0 1200 120"
+      preserveAspectRatio="none"
+    >
+      <path
+        d="
+          M0,0
+          C300,80  900,-20  1200,80
+          L1200,120
+          L0,120
+          Z
+        "
+        fill="#fff"
+      />
+    </svg>
+  </div>
+</motion.div>
+
+      <div className="w-full mx-auto px-4 md:px-6 text-gray-800 pt-20 md:pt-20">       
        <motion.div
-          className="text-2xl md:text-[5rem] leading-[1.2] mb-4 md:mb-8 pb-4 md:pb-12"
+          className={clsx(
+        radikalRegular.className,"text-2xl lg:w-4/5 md:text-[5rem] leading-[1.2] mb-4 md:mb-8 pb-4 md:pb-12")}
           variants={textContainer}
           initial="hidden"
           whileInView="visible"

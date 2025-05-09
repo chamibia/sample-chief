@@ -78,7 +78,7 @@ export default function Navbar() {
                 alt="Sample Chief Logo"
                 width={70}
                 height={100}
-                className={cn(isHome ? "opacity-80" : "opacity-95", " transform transition-transform duration-200 ease-out hover:scale-130 hover:-rotate-8", "pt-4")}
+                className={cn(isHome ? "opacity-80" : "opacity-95", " transform transition-transform duration-200 ease-out hover:scale-124 hover:-rotate-8", "pt-4")}
               />
             </Link>
           </div>

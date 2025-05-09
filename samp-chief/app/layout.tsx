@@ -16,10 +16,23 @@ export const radikalLight = localFont({
   display: "swap",
 });
 
+export const radikalMedium = localFont({
+  src: [{ path: "./fonts/RadikalTrial-Medium.otf", weight: "200", style: "normal" }],
+  variable: "--font-radikal-light",
+  display: "swap",
+});
+
+export const radikalRegular = localFont({
+  src: [{ path: "./fonts/RadikalTrial-Regular.otf", weight: "200", style: "normal" }],
+  variable: "--font-radikal-light",
+  display: "swap",
+});
+
+
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
+  maximumScale: 2,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -29,7 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={radikalHeavy.variable}
     >
       <head />
-      <body className={`antialiased bg-gray-50 ${radikalHeavy.className}`}>
+      <body className={`antialiased ${radikalHeavy.className}`}>
         <div className="flex flex-col min-h-screen">
           <Navbar />
           <div className="flex-grow overflow-auto">

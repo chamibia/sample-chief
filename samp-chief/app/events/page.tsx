@@ -22,17 +22,17 @@ const eventData = [
     imageUrl: "/assets/may_17.jpg",
     ticketLink: "https://ra.co/events/2150643",
   },
-];
+]
 
 export default function Events() {
-  const [showBanner, setShowBanner] = useState(true);
+  const [showBanner, setShowBanner] = useState(true)
   const totalEvents = eventData.length;
 
   useEffect(() => {
-    const onScroll = () => setShowBanner(window.scrollY < 100);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const onScroll = () => setShowBanner(window.scrollY < 100)
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   const formatDate = (dateString: string) =>
     new Date(dateString)
@@ -114,7 +114,6 @@ export default function Events() {
                     />
                   </div>
                 </motion.div>
-
                 <div className="md:col-span-7 flex flex-col">
                   <div className="space-y-6">
                     <motion.h2
@@ -133,7 +132,6 @@ export default function Events() {
                     >
                       {event.title}
                     </motion.h2>
-
                     <motion.div
                       className="space-y-3 md:text-md"
                       variants={{
@@ -159,7 +157,6 @@ export default function Events() {
                         </span>
                       </div>
                     </motion.div>
-
                     <motion.p
                     className={clsx(
                       radikalLight.className, "text-gray-800 tracking-tight")}
@@ -202,7 +199,6 @@ export default function Events() {
           ))}
         </div>
       </div>
-
       <div className="pb-8 md:pb-30"></div>
     </div>
   );
