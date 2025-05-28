@@ -34,11 +34,10 @@ export default function Navbar() {
         : isEvents
           ? "bg-[#ffdd80] text-gray-800"
           : isContact
-            ? "bg-[#e7fedc] text-gray-800"
+            ? "bg-[#dcf7cf] text-gray-800"
             : "bg-white text-gray-800"
-  );
+  )
 
-  // Mobile background colors matching the header colors
   const mobileBg = isHome
     ? "bg-transparent"
     : isAbout
@@ -46,10 +45,10 @@ export default function Navbar() {
       : isEvents
         ? "bg-[#ffdd80]"
         : isContact
-          ? "bg-[#e7fedc]"
-          : "bg-white";
+          ? "bg-[#dcf7cf]"
+          : "bg-white"
 
-  const links = ["ABOUT", "EVENTS", "CONTACT"];
+  const links = ["ABOUT", "EVENTS", "CONTACT"]
 
   return (
     <header className={headerClasses}>

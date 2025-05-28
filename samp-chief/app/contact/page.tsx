@@ -64,7 +64,7 @@ export default function NewsletterSignup() {
 
   return (
     <div>
-      <div className={`overflow-hidden bg-[#e7fedc] rounded-b-2xl transition-all duration-300 ${showBanner ? 'h-auto' : 'h-0'}`}>
+      <div className={`overflow-hidden bg-[#dcf7cf] rounded-b-2xl transition-all duration-300 ${showBanner ? 'h-auto' : 'h-0'}`}>
         <div className="w-full mx-auto py-8 px-4 md:py-14 md:px-6">
         </div>
       </div>
