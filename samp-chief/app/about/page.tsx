@@ -1,213 +1,165 @@
 "use client";
 
-import Image from 'next/image';
-import { motion } from 'framer-motion';
+import Image from "next/image";
+import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { radikalHeavy, radikalLight, radikalMedium, radikalRegular } from ".././layout";
+import { radikalHeavy, radikalLight, radikalMedium, radikalRegular, radikalItalic } from ".././layout";
 import clsx from "clsx";
+
+// Better animation variants - animate by sections/phrases instead of words
+const sectionVariants = {
+  hidden: { 
+    opacity: 0,
+    y: 30
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  }
+};
+
+const staggerContainer = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1
+    }
+  }
+};
+
+const logoContainer = {
+  hidden: {},
+  visible: { 
+    transition: { 
+      staggerChildren: 0.15,
+      delayChildren: 0.3
+    } 
+  },
+};
+
+const logoItem = {
+  hidden: { y: 50, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+const partners = [
+  { id: 1, logo: "/assets/ace.png", name: "Ace" },
+  { id: 2, logo: "/assets/holts.png", name: "Holts" },
+  { id: 3, logo: "/assets/okay.png", name: "Okay" },
+  { id: 4, logo: "/assets/sony.png", name: "Sony" },
+  { id: 5, logo: "/assets/standard.jpg", name: "Standard" },
+  { id: 6, logo: "/assets/sway.png", name: "Sway" },
+  { id: 7, logo: "/assets/universal_logo.svg", name: "Universal" },
+]
 
 export default function About() {
   const [showBanner, setShowBanner] = useState(true);
 
-  const headline = "Sample Chief is a global community that celebrates African music culture.";
-  const paragraph1 = "We're based in London, Toronto, Montreal and Lagos (Nigeria). Our mission is to promote music discovery by creating interactive experiences for a global audience, through media and events. We connect brands to a vibrant youth audience that is interested in digital content and music experiences.";
-  const paragraph2 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere.";
-
   useEffect(() => {
-    const onScroll = () => {
-      setShowBanner(window.scrollY < 100);
-    };
+    const onScroll = () => setShowBanner(window.scrollY < 100);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [])
 
-  const partners = [
-    { id: 1, logo: "/assets/ace.png" },
-    { id: 2, logo: "/assets/holts.png" },
-    { id: 3, logo: "/assets/okay.png" },
-    { id: 4, logo: "/assets/sony.png" },
-    { id: 5, logo: "/assets/standard.jpg" },
-    { id: 6, logo: "/assets/sway.png" },
-    { id: 7, logo: "/assets/universal.png" },
+  const headline = "SAMPLE CHIEF is a global community that celebrates African music culture.";
+  const paragraphs = [
+    "From Toronto to Montreal, London to Lagos — our rhythm is global and on the move.",
+    "We're on a mission to spark music discovery through immersive, unexpected, and genre-bending experiences — both digital and live. We create moments where sound tells a story.",
+    "We bridge brands and bold youth audiences — those who crave beats, connection, and something beyond the algorithm"
   ];
-
-  const textContainer = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.03 } },
-  };
-  const wordVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
-  }
-
-  const paragraphContainer = {
-    hidden: {},
-    visible: { 
-      transition: { 
-        staggerChildren: 0.02,
-        delayChildren: 0.5 
-      } 
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } }
-  }
-  
-  const logoContainer = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.15 } }
-  }
-  
-  const logoItem = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
-  }
 
   return (
     <div>
-<motion.div
-  initial={{ opacity: 1 }}
-  animate={{
-    opacity: showBanner ? 1 : 0,
-    height: showBanner ? "auto" : "0px",
-  }}
-  transition={{ duration: 0.3 }}
-  className="relative overflow-hidden"
-  style={{
-    background: "linear-gradient(to right, #ff6139 0%, #ff7e5f 50%, #ff9a85 100%)",
-    // borderBottom: "3px solid black",  ← removed
-    // borderBottomLeftRadius / borderBottomRightRadius no longer needed
-  }}
->
-  <div className="w-full mx-auto py-8 px-4 md:py-14 md:px-6">
-    {/* <h2
-      className={clsx(
-        radikalMedium.className,
-        "tracking-tight leading-tight text-[3rem] md:text-[6rem] text-gray-800"
-      )}
-      style={{ textShadow: "2px 2px 0px rgba(255,255,255,0.9)" }}
-    >
-      ABOUT
-    </h2> */}
-  </div>
-  <div className="absolute bottom-0 left-0 w-full overflow-hidden pointer-events-none">
-    <svg
-      className="relative block w-[calc(100%+1px)] h-24"
-      viewBox="0 0 1200 120"
-      preserveAspectRatio="none"
-    >
-      <path
-        d="
-          M0,0
-          C300,80  900,-20  1200,80
-          L1200,120
-          L0,120
-          Z
-        "
-        fill="#fff"
-      />
-    </svg>
-  </div>
-</motion.div>
+      <div
+        className={clsx(
+          "overflow-hidden bg-[#ff6139] rounded-b-2xl transition-all duration-300",
+          showBanner ? "h-auto" : "h-0"
+        )}
+      >
+        <div className="w-full mx-auto py-8 px-4 md:py-14 md:px-6" />
+      </div>
 
-      <div className="w-full mx-auto px-4 md:px-6 text-gray-800 pt-20 md:pt-20">       
-       <motion.div
+      <div className="w-full px-5 md:px-9 text-gray-800 pt-20">
+        {/* Headline with phrase-based animation */}
+        <motion.div
           className={clsx(
-        radikalRegular.className,"text-2xl lg:w-4/5 md:text-[5rem] leading-[1.2] mb-4 md:mb-8 pb-4 md:pb-12")}
-          variants={textContainer}
+            radikalRegular.className,
+            "text-[1.4rem] md:text-[3.0rem] leading-[1.2] mb-4 md:mb-8 pb-4 md:pb-12 lg:w-4/5"
+          )}
+          variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {headline.split(" ").map((word, i) => (
-            <motion.span
-              key={i}
-              variants={wordVariants}
-              className="inline-block mr-2"
-            >
-              {word}
-            </motion.span>
-          ))}
+          <span className={clsx(radikalItalic.className, "text-gray-700")}>
+            SAMPLE CHIEF
+          </span>
+          {" "}
+          <span className="text-gray-700 leading-relaxed">
+            is a global community that celebrates African music culture.
+          </span>
         </motion.div>
 
+        {/* Paragraphs with cleaner animation */}
         <motion.div
-          className="text-[1rem] md:text-[1.5rem] leading-[1.3] mt-4"
-          variants={paragraphContainer}
+          variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {paragraph1.split(" ").map((word, i) => (
-            <motion.span
-              key={i}
-              variants={wordVariants}
+          {paragraphs.map((paragraph, idx) => (
+            <motion.p
+              key={idx}
+              variants={sectionVariants}
               className={clsx(
-                radikalLight.className, "inline-block mr-2")}
+                radikalLight.className,
+                "mb-8 leading-relaxed text-base md:text-lg lg:text-xl text-gray-700"
+              )}
             >
-              {word}
-            </motion.span>
-          ))}
-        </motion.div>
-        
-        <motion.div
-          className="md:text-[1.5rem] leading-[1.3] mt-8"
-          variants={paragraphContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {paragraph2.split(" ").map((word, i) => (
-            <motion.span
-              key={i + 1000} 
-              variants={wordVariants}
-              className={clsx(
-              radikalLight.className, "inline-block mr-2")}
-            >
-              {word}
-            </motion.span>
+              {paragraph}
+            </motion.p>
           ))}
         </motion.div>
       </div>
 
+      {/* Partner logos with existing animation */}
       <div className="mt-16 px-6">
-  <motion.div
-    className="
-      flex flex-col            
-      md:flex-row
-      items-center justify-center 
-      space-y-6 md:space-y-0 md:space-x-16  
-      py-6 w-full
-    "
-    variants={logoContainer}
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, amount: 0.2 }}
-  >
-    {partners.map((p) => (
-      <motion.div
-        key={p.id}
-        variants={logoItem}
-        whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
-        className="flex-shrink-0 flex items-center justify-center"
-      >
-        <Image
-          src={p.logo}
-          alt=""
-          width={120}
-          height={80}
-          className="max-h-16 max-w-[120px] object-contain grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300"
-        />
-      </motion.div>
-    ))}
-  </motion.div>
-</div>
-<div className="pb-30 md:pb-30"></div>
+        <motion.div
+          className="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 py-6 w-full"
+          variants={logoContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {partners.map((p) => (
+            <motion.div
+              key={p.id}
+              variants={logoItem}
+              whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+              className="flex-shrink-0 flex items-center justify-center"
+            >
+              <Image
+                src={p.logo}
+                alt={`${p.name} logo`}
+                width={120}
+                height={80}
+                className="max-h-16 max-w-[120px] object-contain hover:grayscale-0 transition-all duration-300"
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+
+      <div className="pb-8 md:pb-8" />
     </div>
   );
 }

@@ -1,8 +1,15 @@
 "use client";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { Instagram, XTwitter, Tiktok, Linkedin } from "../icons";
-import SoundCloudPlayer from "./SoundCloudPlayer";
+import {
+  SiInstagram,
+  SiX,
+  SiLinkedin,
+  SiTiktok,
+  SiSoundcloud,
+  SiYoutube,
+  SiSpotify,
+} from "react-icons/si";
 import { cn } from "@/lib/utils";
 
 export default function Footer() {
@@ -10,65 +17,83 @@ export default function Footer() {
   const isHome = pathname === "/";
   const isAbout = pathname === "/about";
   const isEvent = pathname === "/events";
-  const isNewsletter = pathname === "/newsletter";
+  const isNewsletter = pathname === "/contact";
 
   return (
     <footer
       className={cn(
         isHome
-          ? "inset-x-0 top-0 z-30 bg-transparent text-white/75"
+          ? "absolute inset-x-0 bottom-0 z-30 bg-transparent text-white/75"
           : isAbout || isEvent || isNewsletter
-          ? "bg-black opacity-80 text-white"
-          : "bg-white text-black",
+            ? "bg-black text-white"
+            : "bg-white text-black",
         "px-2 py-0 md:py-0"
       )}
     >
-     <div className="flex items-end justify-center md:justify-between w-full px-4 pt-4 md:pt-6 pb-4">
-      <div className="w-1/3 hidden md:block pl-0">
-          <SoundCloudPlayer
-            url="https://soundcloud.com/samplechief/sample-chief-selekta-w-haruna?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
-            visual={false}
-            height={100}
-            color="#176B2F"
-            hideRelated={true}
-          />
-        </div>
-        <div className="flex items-center space-x-6 self-center">
-          <Link 
-            href="https://www.instagram.com/samplechief/?hl=en" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+      <div className="flex items-center justify-center w-full px-4 pt-4 pb-4">
+        <div className="flex items-center space-x-6">
+          <Link
+            href="https://www.instagram.com/samplechief/?hl=en"
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="Instagram"
             className="transform transition-all duration-300 hover:scale-125 hover:text-[#E1306C] hover:opacity-100"
           >
-            <Instagram className="h-6 w-6" />
+            <SiInstagram className="h-6 w-6" />
           </Link>
-          <Link 
-            href="https://x.com/SampleChief" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            aria-label="X"
+          <Link
+            href="https://x.com/SampleChief"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="X (formerly Twitter)"
             className="transform transition-all duration-300 hover:scale-125 hover:text-[#1DA1F2] hover:opacity-100"
           >
-            <XTwitter className="h-6 w-6" />
+            <SiX className="h-6 w-6" />
           </Link>
-          <Link 
-            href="https://www.linkedin.com/company/sample-chief" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <Link
+            href="https://www.linkedin.com/company/sample-chief"
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="LinkedIn"
             className="transform transition-all duration-300 hover:scale-125 hover:text-[#0077B5] hover:opacity-100"
           >
-            <Linkedin className="h-6 w-6" />
+            <SiLinkedin className="h-6 w-6" />
           </Link>
-          <Link 
-            href="https://www.tiktok.com/@samplechief" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <Link
+            href="https://www.tiktok.com/@samplechief"
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="TikTok"
             className="transform transition-all duration-300 hover:scale-125 hover:text-[#FF0050] hover:opacity-100"
           >
-            <Tiktok className="h-6 w-6" />
+            <SiTiktok className="h-6 w-6" />
+          </Link>
+          <Link
+            href="https://soundcloud.com/samplechief"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="SoundCloud"
+            className="transform transition-all duration-300 hover:scale-125 hover:text-[#FF5500] hover:opacity-100"
+          >
+            <SiSoundcloud className="h-6 w-6" />
+          </Link>
+          <Link
+            href="https://www.youtube.com/channel/UC2HjhV9Dv-_n1PXGw2P4SXg?app=desktop"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="YouTube"
+            className="transform transition-all duration-300 hover:scale-125 hover:text-[#FF0000] hover:opacity-100"
+          >
+            <SiYoutube className="h-6 w-6" />
+          </Link>
+          <Link
+            href="https://open.spotify.com/user/x3zc0sdr8mdvs4b7uzqxqdnnf"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Spotify"
+            className="transform transition-all duration-300 hover:scale-125 hover:text-[#1DB954] hover:opacity-100"
+          >
+            <SiSpotify className="h-6 w-6" />
           </Link>
         </div>
       </div>

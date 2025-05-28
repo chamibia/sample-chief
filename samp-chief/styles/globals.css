@@ -16,31 +16,8 @@
   font-style: normal;
   font-display: swap;
 }
-/* …additional weights/styles… */
 
-body {
+html, body {
   font-family: 'MyFont', sans-serif;
+  height: 100%;
 }
-
-
-/* html {
-  font-family: 'Jost', sans-serif;
-}
-
-@layer base {
-  html, body {
-    font-family: 'Jost', sans-serif;
-    font-size: 1rem;
-    font-weight: 800;
-    line-height: 1.2;  }
-  
-  * {
-    border-color: hsl(var(--border));
-    outline-color: hsl(var(--ring) / 0.5);
-  }
-  
-  body {
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
-  }
-} */

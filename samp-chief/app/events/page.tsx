@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Calendar, MapPin } from "lucide-react";
+import { Calendar, MapPin, CalendarPlus } from "lucide-react";
 import { motion } from "framer-motion";
-import { radikalHeavy, radikalLight } from ".././layout";
+import { radikalRegular, radikalLight, radikalHeavy } from ".././layout";
 import clsx from "clsx";
 
 const eventData = [
@@ -13,12 +13,12 @@ const eventData = [
     id: 1,
     title: "Village Boogie",
     description:
-      "Standard Time welcomes the return of Sample Chief! The highly anticipated Village Boogie! makes its Toronto return on May 11th! Inspired by the diverse dance music genres from the Motherland (groovy Afrodisco rhythms of the 80s, to heavy-heat GQOM and Amapiano basslines), Sample Chief invites you on an eclectic and immersive sonic expedition into African Dance Music.",
+      "Standard Time welcomes the return of Sample Chief and the highly anticipated Village Boogie! on May 11 in Toronto. Inspired by diverse dance genres from the Motherland—from groovy 80s Afrodisco to heavy GQOM and Amapiano—Sample Chief leads an immersive sonic expedition in African dance music.",
     startDate: "2025-05-17",
     endDate: "2025-05-17",
     time: "9PM - LATE",
     venue: "Standard Time",
-    address: "165 Geary Ave Toronto, ON M6H 2B8, Canada",
+    address: "165 Geary Ave Toronto, Canada",
     imageUrl: "/assets/may_17.jpg",
     ticketLink: "https://ra.co/events/2150643",
   },
@@ -36,44 +36,38 @@ export default function Events() {
 
   const formatDate = (dateString: string) =>
     new Date(dateString)
-      .toLocaleDateString("en-US", { month: "short", day: "numeric" })
-      .toUpperCase();
+      .toLocaleDateString("en-US", { month: "short", day: "numeric" });
+
+  const generateCalendarLink = (event: typeof eventData[0]) => {
+    const startDate = new Date(`${event.startDate}T21:00:00`)
+    const endDate = new Date(`${event.endDate}T23:59:00`)
+
+    const formatDateForGoogle = (date: Date) => {
+      return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+    };
+
+    const params = {
+      action: 'TEMPLATE',
+      text: encodeURIComponent(event.title),
+      dates: `${formatDateForGoogle(startDate)}/${formatDateForGoogle(endDate)}`,
+      details: encodeURIComponent(event.description),
+      location: encodeURIComponent(`${event.venue}, ${event.address}`),
+    };
+
+    const queryString = Object.entries(params)
+      .map(([key, value]) => `${key}=${value}`)
+      .join('&');
+
+    return `https://calendar.google.com/calendar/render?${queryString}`;
+  }
 
   return (
     <div>
-      <motion.div
-        initial={{ opacity: 1 }}
-        animate={{
-          opacity: showBanner ? 1 : 0,
-          height: showBanner ? "auto" : "0px",
-        }}
-        transition={{ duration: 0.3 }}
-        style={{
-          background:
-            "linear-gradient(to right, #ffdd80 0%, #ffe599 50%, #ffecb3 100%)",
-          borderBottom: "3px solid black",
-          borderBottomLeftRadius: "1.5rem",
-          borderBottomRightRadius: "1.5rem",
-        }}
-        className="overflow-hidden"
-      >
+      <div className={`overflow-hidden bg-[#ffdd80] rounded-b-2xl transition-all duration-300 ${showBanner ? 'h-auto' : 'h-0'}`}>
         <div className="w-full mx-auto py-8 px-4 md:py-14 md:px-6">
-          <div className="pb-2">
-            <h2
-              className={clsx(
-                radikalHeavy.className,
-                "tracking-tight leading-tight text-[3rem] md:text-[6rem] text-gray-800"
-              )}
-              style={{
-                textShadow: "2px 2px 0px rgba(255,255,255,0.9)"
-              }}
-            >
-              EVENTS
-            </h2>
-          </div>
         </div>
-      </motion.div>
-      <div className="w-full px-5 md:px-9 text-gray-800 pt-8 md:pt-20">
+      </div>
+      <div className="w-full px-5 md:px-9 text-gray-800">
         <div>
           {eventData.map((event) => (
             <motion.div
@@ -105,19 +99,29 @@ export default function Events() {
                   viewport={{ once: true }}
                 >
                   <div className="h-full overflow-hidden rounded-lg">
-                    <Image
-                      src={event.imageUrl}
-                      alt={event.title}
-                      width={400}
-                      height={200}
-                      className="event-image object-cover transition-all duration-500"
-                    />
+                    <Link
+                      href={event.ticketLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block h-full"
+                    >
+                      <Image
+                        src={event.imageUrl}
+                        alt={event.title}
+                        width={400}
+                        height={200}
+                        loading="lazy"
+                        className="event-image object-cover transition-all duration-500"
+                      />
+                    </Link>
                   </div>
                 </motion.div>
                 <div className="md:col-span-7 flex flex-col">
                   <div className="space-y-6">
-                    <motion.h2
-                      className="md:text-5xl"
+                    <motion.h1 className={clsx(
+                        radikalHeavy.className, 
+                        "text-3xl mt-8 md:text-5xl lg:text-5xl md:mb-14"
+                      )}
                       variants={{
                         hidden: { opacity: 0, y: -20 },
                         visible: {
@@ -129,11 +133,13 @@ export default function Events() {
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true }}
-                    >
-                      {event.title}
-                    </motion.h2>
+                    > 
+                      {event.title} 
+                    </motion.h1>
+                    
                     <motion.div
-                      className="space-y-3 md:text-md"
+                      className={clsx(
+                        radikalRegular.className, "space-y-4 text-lg md:text-xl")}
                       variants={{
                         hidden: { opacity: 0, x: -20 },
                         visible: {
@@ -147,19 +153,19 @@ export default function Events() {
                       viewport={{ once: true }}
                     >
                       <div className="flex items-center">
-                        <Calendar className="h-5 w-5 mr-2 text-gray-600" />
-                        <span>{formatDate(event.startDate)}</span>
+                        <Calendar className="h-6 w-6 mr-3 text-gray-600" />
+                        <span className="font-medium">{formatDate(event.startDate)}</span>
                       </div>
                       <div className="flex items-center">
-                        <MapPin className="h-5 w-5 mr-2 text-gray-600" />
+                        <MapPin className="h-6 w-6 mr-3 text-gray-600" />
                         <span>
                           {event.venue}, {event.address}
                         </span>
                       </div>
                     </motion.div>
                     <motion.p
-                    className={clsx(
-                      radikalLight.className, "text-gray-800 tracking-tight")}
+                      className={clsx(
+                        radikalLight.className, "mb-8 leading-relaxed text-base md:text-lg lg:text-xl text-gray-700")}
                       variants={{
                         hidden: { opacity: 0, x: -20 },
                         visible: {
@@ -180,17 +186,32 @@ export default function Events() {
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.4, duration: 0.2 }}
                       viewport={{ once: true }}
-                      whileHover={{ scale: 1.05 }}
+                      className="flex flex-col sm:flex-row gap-4"
                     >
-                      <Link
-                        href={event.ticketLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={clsx(
-                          radikalLight.className,"inline-flex items-center justify-center px-4 py-3 border-2 border-black rounded-full text-black hover:bg-[#2E8B57] hover:text-white transition-all duration-300 shadow-md hover:shadow-lg")}
-                      >
-                        Tickets
-                      </Link>
+                      <motion.div whileHover={{ scale: 1.02 }}>
+                        <Link
+                          href={event.ticketLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={clsx(
+                            radikalLight.className,"inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 border-2 rounded-full text-base md:text-lg text-black hover:bg-[#2E8B57] hover:text-white transition-all duration-200 min-w-[120px] md:min-w-[140px]")}
+                        >
+                          Tickets
+                        </Link>
+                      </motion.div>
+                      
+                      <motion.div whileHover={{ scale: 1.02 }}>
+                        <Link
+                          href={generateCalendarLink(event)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={clsx(
+                            radikalLight.className,"inline-flex items-center justify-center px-4 py-3 md:px-6 md:py-4 rounded-lg text-sm md:text-base text-gray-600 hover:text-gray-800 transition-all duration-200")}
+                        >
+                          <CalendarPlus className="h-4 w-4 mr-2" />
+                          Add to Calendar
+                        </Link>
+                      </motion.div>
                     </motion.div>
                   </div>
                 </div>
@@ -201,5 +222,5 @@ export default function Events() {
       </div>
       <div className="pb-8 md:pb-30"></div>
     </div>
-  );
+  )
 }
