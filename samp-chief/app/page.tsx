@@ -21,6 +21,7 @@ export default function Home() {
               src="/assets/home1.jpg"
               alt="Sample Chief Event 1"
               fill
+              loading="lazy"
               className="object-cover object-center"
             />
           </div>
@@ -30,6 +31,7 @@ export default function Home() {
               src="/assets/home4.jpg"
               alt="Sample Chief DJ Set"
               fill
+              loading="lazy"
               className="object-cover object-center"
             />
           </div>
@@ -39,6 +41,7 @@ export default function Home() {
               src="/assets/home5.jpg"
               alt="Sample Chief Performance"
               fill
+              loading="lazy"
               className="object-cover object-center"
             />
           </div>
@@ -52,6 +55,7 @@ export default function Home() {
               src="/assets/home6.jpg"
               alt="Sample Chief Home 6"
               fill
+              loading="lazy"
               className="object-cover object-center"
             />
           </div>
@@ -69,13 +73,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Updated last section with relative positioning */}
       <section className="relative w-full">
         <div className="relative bg-gray-100 min-h-[100vh]">
           <Image
             src="/assets/home3.JPG"
             alt="Sample Chief Crowd"
             fill
+            loading="lazy"
             className="object-cover object-center"
           />
         </div>
