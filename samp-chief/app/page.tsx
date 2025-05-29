@@ -3,16 +3,16 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="relative w-full">
-      <section className="relative w-full h-screen -mt-16 pt-16">
-        <video
-          src="/videos/sample.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-      </section>
+<section className="relative w-full h-screen -mt-16 pt-16">
+<video
+    src="/videos/sample.mp4"
+    autoPlay
+    loop
+    muted
+    playsInline
+    className="absolute inset-0 w-full h-full object-cover"
+  />
+</section>
 
       <section className="w-full">
         <div className="grid grid-cols-3 auto-rows-[70vh]">

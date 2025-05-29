@@ -52,7 +52,7 @@ export default function Navbar() {
 
   return (
     <header className={headerClasses}>
-      <div className="relative mx-auto px-6">
+      <div className={cn("relative mx-auto px-6", isHome && "bg-transparent")}>
         <button
           className="md:hidden absolute left-4 top-1/2 -translate-y-1/2 p-2"
           onClick={() => setIsMenuOpen((o) => !o)}
@@ -76,8 +76,8 @@ export default function Navbar() {
         </div>
 
         <nav className="hidden md:flex absolute right-6 top-1/2 -translate-y-1/2">
-          <NavigationMenu>
-            <NavigationMenuList className="flex space-x-4">
+          <NavigationMenu className={isHome ? "bg-transparent" : ""}>
+            <NavigationMenuList className={cn("flex space-x-4", isHome && "bg-transparent")}>
               {links.map((label) => {
                 const path = `/${label.toLowerCase()}`;
                 const isActive = pathname === path;
@@ -89,7 +89,7 @@ export default function Navbar() {
                           navigationMenuTriggerStyle(),
                           "text-lg transition-all duration-200 ease-out transform hover:scale-105",
                           isHome
-                            ? "text-white/75 hover:text-white"
+                            ? "text-white/75 hover:text-white bg-transparent"
                             : isActive
                               ? "text-white font-medium"
                               : "text-gray-800"
@@ -107,31 +107,37 @@ export default function Navbar() {
       </div>
 
       {isMenuOpen && (
-        <div className={cn("md:hidden py-4", mobileBg)}>
-          <nav className="flex flex-col items-center space-y-2">
-            {links.map((label) => {
-              const path = `/${label.toLowerCase()}`;
-              const isActive = pathname === path;
-              return (
-                <Link
-                  key={label}
-                  href={path}
-                  className={cn(
-                    "block w-full py-2 px-4 text-center uppercase text-lg transition-colors duration-150 ease-out",
-                    isHome
-                      ? "text-white/75 hover:text-white"
-                      : "text-gray-800",
-                    isActive && "font-medium"
-                  )}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {label}
-                </Link>
-              );
-            })}
-          </nav>
-        </div>
-      )}
-    </header>
-  );
+  <div
+    className={cn(
+      "md:hidden absolute inset-x-0 top-full z-40 py-4",
+      // transparent on Home, colored elsewhere
+      isHome ? "bg-transparent" : mobileBg
+    )}
+  >
+    <nav className="flex flex-col items-center space-y-2 uppercase text-lg">
+      {links.map((label) => {
+        const path = `/${label.toLowerCase()}`;
+        const isActive = pathname === path;
+        return (
+          <Link
+            key={label}
+            href={path}
+            className={cn(
+              "block w-full py-2 px-4 text-center transition-colors duration-150 ease-out",
+              isActive && "font-medium",
+              isHome
+                ? "text-white/75 hover:text-white"
+                : "text-gray-800 hover:text-gray-600"
+            )}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            {label}
+          </Link>
+        );
+      })}
+    </nav>
+  </div>
+)}
+</header>
+  )
 }

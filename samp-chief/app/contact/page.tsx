@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
 import { ArrowRight} from 'lucide-react';
-import { radikalHeavy, radikalLight, radikalRegular } from "../layout";
+import { radikalRegular } from "../layout";
 import clsx from "clsx";
 
 export default function NewsletterSignup() {
@@ -90,15 +90,13 @@ export default function NewsletterSignup() {
             </p>
             <div className="w-16 h-1 bg-[#2E8B57] mx-auto rounded-full"></div>
           </motion.div>
-
-          {/* Form Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             {formStatus === "success" && (
-              <div className="px-6 py-4 mb-8 bg-[#2E8B57] bg-opacity-10 border border-[#2E8B57] text-[#2E8B57] rounded-lg text-center">
+              <div className="px-6 py-4 mb-8 bg-[#2E8B57] text-white bg-opacity-10 border border-[#2E8B57] rounded-lg text-center">
                 {statusMessage}
               </div>
             )}

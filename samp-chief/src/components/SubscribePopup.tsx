@@ -110,7 +110,6 @@ export default function SubscribePopup() {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
       <div className="relative w-full max-w-md rounded-lg bg-white p-4 sm:p-6 shadow-lg">
-        {/* Close button */}
         <button
           onClick={() => setIsOpen(false)}
           className="absolute right-4 top-4 text-gray-500 hover:text-gray-700"
@@ -218,7 +217,7 @@ export default function SubscribePopup() {
 
             <Button
               type="submit"
-              className="w-full bg-[#2E8B57] hover:bg-[#2E8B57]/90"
+              className="w-full text-white bg-[#2E8B57] hover:bg-[#2E8B57]/90"
               disabled={isSubmitting}
             >
               {isSubmitting ? "Subscribing..." : "Subscribe"}

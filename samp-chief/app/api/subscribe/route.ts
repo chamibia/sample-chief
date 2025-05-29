@@ -1,15 +1,13 @@
 import { NextResponse } from 'next/server'
 import mailchimp from '@mailchimp/mailchimp_marketing'
-import crypto from 'crypto'  // Import the Node.js crypto module
+import crypto from 'crypto'  
 
-// Define response types
 interface MailchimpMemberResponse {
   id: string;
   email_address: string;
   status: string;
 }
 
-// Configure Mailchimp
 mailchimp.setConfig({
   apiKey: process.env.MAILCHIMP_API_KEY!,
   server: process.env.MAILCHIMP_SERVER_PREFIX!,
@@ -46,9 +44,7 @@ export async function POST(request: Request) {
   } catch (err: any) {
     console.error('Mailchimp error:', err)
     
-    // Check for "Member Exists" error
     if (err.response?.body?.title === "Member Exists") {
-      // Option 1: Return a friendly message
       return NextResponse.json(
         { 
           success: true, 
@@ -57,15 +53,12 @@ export async function POST(request: Request) {
         { status: 200 }
       )
       
-      // Option 2: If you want to implement UPDATE functionality
       try {
-        // Calculate MD5 hash of lowercase email correctly in Node.js
         const subscriberHash = crypto
           .createHash('md5')
           .update(email.toLowerCase())
           .digest('hex');
           
-        // Update the existing member
         const updateResponse = await mailchimp.lists.updateListMember(
           process.env.MAILCHIMP_LIST_ID!,
           subscriberHash,
