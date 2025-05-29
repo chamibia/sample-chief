@@ -69,7 +69,7 @@ export default function Navbar() {
               height={200}
               className={cn(
                 isHome ? "opacity-90" : "opacity-95",
-                "transform transition-transform duration-200 ease-out hover:scale-107 hover:-rotate-8 pt-4"
+                "transform transition-transform duration-200 ease-out hover:scale-107 hover:-rotate-8"
               )}
             />
           </Link>
@@ -107,37 +107,37 @@ export default function Navbar() {
       </div>
 
       {isMenuOpen && (
-  <div
-    className={cn(
-      "md:hidden absolute inset-x-0 top-full z-40 py-4",
-      // transparent on Home, colored elsewhere
-      isHome ? "bg-transparent" : mobileBg
-    )}
-  >
-    <nav className="flex flex-col items-center space-y-2 uppercase text-lg">
-      {links.map((label) => {
-        const path = `/${label.toLowerCase()}`;
-        const isActive = pathname === path;
-        return (
-          <Link
-            key={label}
-            href={path}
-            className={cn(
-              "block w-full py-2 px-4 text-center transition-colors duration-150 ease-out",
-              isActive && "font-medium",
-              isHome
-                ? "text-white/75 hover:text-white"
-                : "text-gray-800 hover:text-gray-600"
-            )}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            {label}
-          </Link>
-        );
-      })}
-    </nav>
-  </div>
-)}
-</header>
+        <div
+          className={cn(
+            "md:hidden absolute inset-x-0 top-full z-40 py-4",
+            // transparent on Home, colored elsewhere
+            isHome ? "bg-transparent" : mobileBg
+          )}
+        >
+          <nav className="flex flex-col items-center space-y-2 uppercase text-lg">
+            {links.map((label) => {
+              const path = `/${label.toLowerCase()}`;
+              const isActive = pathname === path;
+              return (
+                <Link
+                  key={label}
+                  href={path}
+                  className={cn(
+                    "block w-full py-2 px-4 text-center transition-colors duration-150 ease-out",
+                    isActive && "font-medium",
+                    isHome
+                      ? "text-white/75 hover:text-white"
+                      : "text-gray-800 hover:text-gray-600"
+                  )}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {label}
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
+      )}
+    </header>
   )
 }
