@@ -38,7 +38,7 @@ export default function Home() {
 
           <div className="relative bg-gray-100">
             <Image
-              src="/assets/home5.jpg"
+              src="/assets/home9.webp"
               alt="Sample Chief Performance"
               fill
               loading="lazy"
@@ -52,7 +52,7 @@ export default function Home() {
         <div className="grid grid-cols-2 h-[90vh]">
           <div className="relative bg-gray-100">
             <Image
-              src="/assets/home6.jpg"
+              src="/assets/home8.webp"
               alt="Sample Chief Home 6"
               fill
               loading="lazy"
@@ -76,7 +76,7 @@ export default function Home() {
       <section className="relative w-full">
         <div className="relative bg-gray-100 min-h-[100vh]">
           <Image
-            src="/assets/home3.JPG"
+            src="/assets/home10.webp"
             alt="Sample Chief Crowd"
             fill
             loading="lazy"

@@ -30,7 +30,7 @@ export default function Footer() {
         "px-2 py-0 md:py-0"
       )}
     >
-      <div className="flex items-center justify-center w-full px-4 pt-4 pb-2">
+      <div className="relative flex items-center justify-center w-full px-4 pt-4 pb-2">
         <div className="flex items-center space-x-6">
           <Link
             href="https://www.instagram.com/samplechief/?hl=en"
@@ -96,9 +96,9 @@ export default function Footer() {
             <SiSpotify className="h-6 w-6" />
           </Link>
         </div>
-      </div>
-      <div className="text-center pb-2 pt-4 text-sm">
-        Website was supported by Ontario Creates
+        <div className="absolute right-4 text-xs">
+          Supported by Ontario Creates
+        </div>
       </div>
     </footer>
   );
