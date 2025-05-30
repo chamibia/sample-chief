@@ -98,38 +98,32 @@ export default function SubscribePopup() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
-      <div className="relative w-full max-w-3xl rounded-lg bg-white p-0 sm:p-6 shadow-lg flex flex-col sm:flex-row">
+      <div className="relative w-full max-w-[280px] sm:max-w-xs rounded-lg bg-white shadow-lg overflow-hidden flex flex-col">
         <button
           onClick={() => setIsOpen(false)}
           className="absolute right-4 top-4 text-gray-500 hover:text-gray-700 z-10"
           aria-label="Close"
         >
-          <X className="text-black" size={20} />
+          <X className="text-white font-bold" size={20} />
         </button>
-
-        {/* Image Section: always visible, top on mobile, left on desktop */}
-        <div className="w-full sm:w-1/2 relative h-48 sm:h-auto sm:max-h-screen">
+        <div className="w-full relative h-70">
           <Image
             src="/assets/popupimage.webp"
             alt="Subscribe"
             fill
-            className="object-cover object-top rounded-t-lg sm:rounded-l-lg sm:rounded-tr-none"
+            className="object-cover object-top"
           />
         </div>
-
-        {/* Form Section */}
-        <div className="w-full sm:w-1/2 p-6 flex flex-col justify-center">
-          <div className="mb-6 text-center sm:text-left">
-            <h2 className="mb-2 text-2xl font-bold">Join Our Mailing List</h2>
-            <p className="text-gray-600">
-              Stay updated with the latest news, events, and releases.
-            </p>
-          </div>
+        <div className="w-full p-3 sm:p-4 flex flex-col items-center">
+          <h2 className="mb-2 text-lg sm:text-xl font-bold text-center">Join Our Mailing List</h2>
+          <p className="mb-3 sm:mb-4 text-sm sm:text-base text-gray-600 text-center">
+            Stay updated with the latest news, events, and releases.
+          </p>
 
           {submitStatus.type && (
             <div
               className={cn(
-                "mb-4 rounded-md p-3",
+                "mb-4 rounded-md p-3 text-center",
                 submitStatus.type === "success"
                   ? "bg-green-50 text-green-800"
                   : "bg-red-50 text-red-800"
@@ -140,7 +134,7 @@ export default function SubscribePopup() {
           )}
 
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4">
               <FormField
                 control={form.control}
                 name="email"
@@ -151,6 +145,7 @@ export default function SubscribePopup() {
                       <Input
                         type="email"
                         placeholder="Email"
+                        className="w-full"
                         {...field}
                       />
                     </FormControl>
@@ -161,7 +156,7 @@ export default function SubscribePopup() {
 
               <Button
                 type="submit"
-                className="w-full text-white bg-[#2E8B57] hover:bg-[#2E8B57]/90"
+                className="w-full text-sm sm:text-base text-white bg-[#2E8B57] hover:bg-[#2E8B57]/90"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Subscribing..." : "Subscribe"}
@@ -171,5 +166,5 @@ export default function SubscribePopup() {
         </div>
       </div>
     </div>
-  )
+  );
 }
