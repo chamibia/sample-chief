@@ -18,8 +18,8 @@ export default function Home() {
         <div className="grid grid-cols-3 auto-rows-[70vh]">
           <div className="relative bg-gray-100">
             <Image
-              src="/assets/home1.jpg"
-              alt="Sample Chief Event 1"
+              src="/assets/home1.webp"
+              alt="Sample Chief girls"
               fill
               loading="lazy"
               className="object-cover object-center"
@@ -29,7 +29,7 @@ export default function Home() {
           <div className="relative bg-gray-100">
             <Image
               src="/assets/holts.webp"
-              alt="Sample Chief DJ Set"
+              alt="Holt Renfrew store front"
               fill
               loading="lazy"
               className="object-cover object-center"
@@ -39,7 +39,7 @@ export default function Home() {
           <div className="relative bg-gray-100">
             <Image
               src="/assets/home9.webp"
-              alt="Sample Chief Performance"
+              alt="Sample Chief talk"
               fill
               loading="lazy"
               className="object-cover object-center"
@@ -53,7 +53,7 @@ export default function Home() {
           <div className="relative bg-gray-100">
             <Image
               src="/assets/home8.webp"
-              alt="Sample Chief Home 6"
+              alt="Sami on decks"
               fill
               loading="lazy"
               className="object-cover object-center"
@@ -77,7 +77,7 @@ export default function Home() {
         <div className="relative bg-gray-100 min-h-[100vh]">
           <Image
             src="/assets/home10.webp"
-            alt="Sample Chief Crowd"
+            alt="Holts Renfrew event"
             fill
             loading="lazy"
             className="object-cover object-center"

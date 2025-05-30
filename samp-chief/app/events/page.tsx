@@ -7,6 +7,7 @@ import { Calendar, MapPin, CalendarPlus } from "lucide-react";
 import { motion } from "framer-motion";
 import { radikalRegular, radikalLight, radikalHeavy } from ".././layout";
 import clsx from "clsx";
+import { title } from "process";
 
 const eventData = [
   {
@@ -22,6 +23,28 @@ const eventData = [
     imageUrl: "/assets/may_17.jpg",
     ticketLink: "https://ra.co/events/2150643",
   },
+  {
+    id: 2, 
+    title: "Sample Chief Social: Vinyl Night",
+    description: "Join us at The Little Jerry (418 College Street) on Friday June 6th. Please note: Due to limited venue capacity, an RSVP does not guarantee entry",
+    startDate: "2025-06-06",
+    endDate: "2025-06-07",
+    time: "9pm - LATE",
+    venue: "The Little Jerry, 418 College Street, Toronto, Canada",
+    imageUrl: "/assets/social-vinyl-night.jpg",
+    ticketLink: "https://docs.google.com/forms/d/e/1FAIpQLSfzD1A6wJYXnRrFXAT0DgOVkJwbexESCO5cV1uupaeYnSAcGg/viewform",
+  },
+  {
+    id: 3,
+    title: "Sample Chief Socal",
+    description: "Join us at Sweeties, The Standard on Thursday June 19th. Please note: Due to limited venue capacity, an RSVP does not guarantee entry",
+    startDate: "2025-06-19",
+    endDate: "2025-06-20",
+    time: "9pm - LATE",
+    venue: "Sweeties, 10th Floor, 10 Argyle St, London WC1H 8EG, United Kingdom",
+    imageUrl: "/assets/social-vinyl-night.jpg",
+    ticketLink: "https://docs.google.com/forms/d/e/1FAIpQLScEnyFLRuDOPs7vZxZiEJ9fG1EUjc9nNaDBwW5kt5Cx48UGew/viewform?usp=header",
+  }
 ]
 
 export default function Events() {
@@ -69,7 +92,7 @@ export default function Events() {
       </div>
       <div className="w-full px-5 md:px-9 text-gray-800">
         <div>
-          {eventData.map((event) => (
+          {eventData.slice().reverse().map((event) => (
             <motion.div
               key={event.id}
               className="text-2xl md:text-[1.5rem] leading-[1.2] mb-8 pt-10 md:pt-20"
@@ -98,6 +121,7 @@ export default function Events() {
                   whileHover="hover"
                   viewport={{ once: true }}
                 >
+                  
                   <div className="h-full overflow-hidden rounded-lg">
                     <Link
                       href={event.ticketLink}
