@@ -108,8 +108,6 @@ export default function About() {
             is a global community that celebrates African music culture.
           </span>
         </motion.div>
-
-        {/* Paragraphs with cleaner animation */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -130,8 +128,6 @@ export default function About() {
           ))}
         </motion.div>
       </div>
-
-      {/* Partner logos with existing animation */}
       <div className="mt-16 px-6">
         <motion.div
           className="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 py-6 w-full"
