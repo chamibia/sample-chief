@@ -28,7 +28,7 @@ export default function Home() {
 
           <div className="relative bg-gray-100">
             <Image
-              src="/assets/home4.jpg"
+              src="/assets/holts.webp"
               alt="Sample Chief DJ Set"
               fill
               loading="lazy"
