@@ -84,7 +84,7 @@ export default function Navbar() {
                       <NavigationMenuLink
                         className={`${
                           navigationMenuTriggerStyle()
-                        } font-radikal font-bold text-lg transition-all duration-200 ease-out transform hover:scale-105 ${
+                        } font-radikal font-bold text-[1.1rem] transition-all duration-200 ease-out transform hover:scale-105 ${
                           isHome
                             ? "text-white/75 hover:text-white bg-transparent"
                             : isActive
@@ -104,7 +104,7 @@ export default function Navbar() {
       </div>
       {isMenuOpen && (
         <div className={`md:hidden absolute inset-x-0 top-full z-40 py-4 ${mobileBg}`}>
-          <nav className="flex flex-col items-center space-y-2 uppercase font-radikal text-lg font-bold">
+          <nav className="flex flex-col items-center space-y-2">
             {links.map((label) => {
               const path = `/${label.toLowerCase()}`;
               const isActive = pathname === path;
@@ -113,8 +113,8 @@ export default function Navbar() {
                 <Link
                   key={label}
                   href={path}
-                  className={`block w-full py-2 px-4 text-center transition-colors duration-150 ease-out ${
-                    isHome ? "text-white/75 hover:text-white" : "text-gray-800 hover:text-gray-600 font-radikal font-bold text-lg"
+                  className={`block w-full py-2 px-4 text-center font-radikal font-bold text-sm sm:text-base uppercase transition-colors duration-150 ease-out no-underline ${
+                    isHome ? "text-white/75 hover:text-white" : "text-gray-800 hover:text-gray-600"
                   } ${isActive ? "underline" : ""}`}
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -126,5 +126,5 @@ export default function Navbar() {
         </div>
       )}
     </header>
-  );
+  )
 }

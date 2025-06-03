@@ -1,24 +1,5 @@
-/* Inject Preflight (reset + base styles) */
-@tailwind base;
 
-/* Inject only the utilities layer (v4 no longer has a separate components layer) */
-@tailwind utilities;
-
-
-@font-face {
-  font-family: 'MyFont';
-  src: url('/fonts/MyFont-Regular.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'MyFont';
-  src: url('/fonts/MyFont-Bold.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
+@import "tailwindcss";
 
 @font-face {
   font-family: 'RadikalTrial';
@@ -64,6 +45,6 @@
 }
 
 html, body {
-  font-family: 'MyFont', sans-serif;
+  font-family: 'RadikalTrial', sans-serif;
   height: 100%;
 }
