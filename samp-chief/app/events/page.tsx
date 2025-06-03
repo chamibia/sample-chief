@@ -5,9 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Calendar, MapPin, CalendarPlus } from "lucide-react";
 import { motion } from "framer-motion";
-import { radikalRegular, radikalLight, radikalHeavy } from ".././layout";
 import clsx from "clsx";
-import { title } from "process";
 
 const eventData = [
   {
@@ -142,10 +140,7 @@ export default function Events() {
                 </motion.div>
                 <div className="md:col-span-7 flex flex-col">
                   <div className="space-y-6">
-                    <motion.h1 className={clsx(
-                        radikalHeavy.className, 
-                        "text-3xl mt-8 md:text-5xl lg:text-5xl md:mb-14"
-                      )}
+                    <motion.h1 className="font-radikal text-3xl mt-8 md:text-5xl lg:text-5xl md:mb-14"
                       variants={{
                         hidden: { opacity: 0, y: -20 },
                         visible: {
@@ -162,8 +157,7 @@ export default function Events() {
                     </motion.h1>
                     
                     <motion.div
-                      className={clsx(
-                        radikalRegular.className, "space-y-4 text-lg md:text-xl")}
+                      className="space-y-4 text-lg md:text-xl"
                       variants={{
                         hidden: { opacity: 0, x: -20 },
                         visible: {
@@ -178,18 +172,17 @@ export default function Events() {
                     >
                       <div className="flex items-center">
                         <Calendar className="h-6 w-6 mr-3 text-gray-600" />
-                        <span className="font-medium">{formatDate(event.startDate)}</span>
+                        <span className="font-radikal font-normal">{formatDate(event.startDate)}</span>
                       </div>
                       <div className="flex items-center">
                         <MapPin className="h-6 w-6 mr-3 text-gray-600" />
-                        <span>
+                        <span className="font-radikal">
                           {event.venue}, {event.address}
                         </span>
                       </div>
                     </motion.div>
                     <motion.p
-                      className={clsx(
-                        radikalLight.className, "mb-8 leading-relaxed text-base md:text-lg lg:text-xl text-gray-700")}
+                      className="mb-8 font-radikal font-light leading-relaxed text-base md:text-lg lg:text-xl text-gray-700"
                       variants={{
                         hidden: { opacity: 0, x: -20 },
                         visible: {
@@ -217,8 +210,7 @@ export default function Events() {
                           href={event.ticketLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={clsx(
-                            radikalLight.className,"inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 border-2 rounded-full text-base md:text-lg text-black hover:bg-[#2E8B57] hover:text-white transition-all duration-200 min-w-[120px] md:min-w-[140px]")}
+                          className="font-radikal inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 border-2 rounded-full text-base md:text-lg text-black hover:bg-[#2E8B57] hover:text-white transition-all duration-200 min-w-[120px] md:min-w-[140px]"
                         >
                           Tickets
                         </Link>
@@ -229,8 +221,7 @@ export default function Events() {
                           href={generateCalendarLink(event)}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={clsx(
-                            radikalLight.className,"inline-flex items-center justify-center px-4 py-3 md:px-6 md:py-4 rounded-lg text-sm md:text-base text-gray-600 hover:text-gray-800 transition-all duration-200")}
+                          className="font-radikal inline-flex items-center justify-center px-4 py-3 md:px-6 md:py-4 rounded-lg text-sm md:text-base text-gray-600 hover:text-gray-800 transition-all duration-200"
                         >
                           <CalendarPlus className="h-4 w-4 mr-2" />
                           Add to Calendar

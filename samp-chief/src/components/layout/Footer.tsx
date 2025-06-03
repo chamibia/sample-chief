@@ -91,12 +91,11 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Spotify"
-            className="transform transition-all duration-300 hover:scale-125 hover:text-[#1DB954] hover:opacity-100"
-          >
+            className="transform transition-all duration-300 hover:scale-125 hover:text-[#1DB954] hover:opacity-100">
             <SiSpotify className="h-6 w-6" />
           </Link>
         </div>
-        <div className="mt-4 md:mt-0 md:absolute md:right-4 text-xs">
+        <div className="font-radikal font-bold mt-4 md:mt-0 md:absolute md:right-4 text-xs">
           Supported by Ontario Creates
         </div>
       </div>

@@ -1,4 +1,33 @@
 import Image from "next/image";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Sample Chief | African Music Culture",
+  description: "Sample Chief is a global community celebrating African music culture through immersive experiences, events, and digital content.",
+  keywords: ["Sample Chief", "African music", "music culture", "events", "global community"],
+  openGraph: {
+    title: "Sample Chief | African Music Culture",
+    description: "Sample Chief is a global community celebrating African music culture through immersive experiences, events, and digital content.",
+    url: "https://samplechief.com",
+    siteName: "Sample Chief",
+    images: [
+      {
+        url: "/assets/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Sample Chief",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sample Chief | African Music Culture",
+    description: "Sample Chief is a global community celebrating African music culture through immersive experiences, events, and digital content.",
+    images: ["/assets/og-image.png"],
+  },
+};
 
 export default function Home() {
   return (

@@ -1,6 +1,9 @@
-@import "tailwindcss/theme.css" layer(theme);
-@import "tailwindcss/preflight.css" layer(base);
-@import "tailwindcss/utilities.css" layer(utilities);
+/* Inject Preflight (reset + base styles) */
+@tailwind base;
+
+/* Inject only the utilities layer (v4 no longer has a separate components layer) */
+@tailwind utilities;
+
 
 @font-face {
   font-family: 'MyFont';
@@ -14,6 +17,49 @@
   src: url('/fonts/MyFont-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'RadikalTrial';
+  src: url('/fonts/RadikalTrial-Black.otf')   format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'RadikalTrial';
+  src: url('/fonts/RadikalTrial-Light.otf')   format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'RadikalTrial';
+  src: url('/fonts/RadikalTrial-Medium.otf')  format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'RadikalTrial';
+  src: url('/fonts/RadikalTrial-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'RadikalTrial';
+  src: url('/fonts/RadikalTrial-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'RadikalTrial';
+  src: url('/fonts/RadikalTrial-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
   font-display: swap;
 }
 

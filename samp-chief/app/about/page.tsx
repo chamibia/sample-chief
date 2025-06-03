@@ -3,12 +3,9 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { radikalHeavy, radikalLight, radikalMedium, radikalRegular, radikalItalic } from ".././layout";
-import clsx from "clsx";
 
-// Better animation variants - animate by sections/phrases instead of words
 const sectionVariants = {
-  hidden: { 
+  hidden: {
     opacity: 0,
     y: 30
   },
@@ -34,11 +31,11 @@ const staggerContainer = {
 
 const logoContainer = {
   hidden: {},
-  visible: { 
-    transition: { 
+  visible: {
+    transition: {
       staggerChildren: 0.15,
       delayChildren: 0.3
-    } 
+    }
   },
 };
 
@@ -80,53 +77,43 @@ export default function About() {
   return (
     <div>
       <div
-        className={clsx(
-          "overflow-hidden bg-[#ff6139] rounded-b-2xl transition-all duration-300",
-          showBanner ? "h-auto" : "h-0"
-        )}
+       className={`overflow-hidden bg-[#ff6139] rounded-b-2xl transition-all duration-300 ${
+        showBanner ? "h-auto" : "h-0"
+      }`}
       >
         <div className="w-full mx-auto py-8 px-4 md:py-14 md:px-6" />
       </div>
 
       <div className="w-full px-5 md:px-9 text-gray-800 pt-20">
-        {/* Headline with phrase-based animation */}
         <motion.div
-          className={clsx(
-            radikalRegular.className,
-            "text-[1.4rem] md:text-[3.0rem] leading-[1.2] mb-4 md:mb-8 pb-4 md:pb-12 lg:w-4/5"
-          )}
+          className="font-radikal font-normal text-[1.8rem] md:text-[3.0rem] leading-[1.2] mb-4 md:mb-8 pb-4 md:pb-12 lg:w-4/5"
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
         >
-          <span className={clsx(radikalItalic.className, "text-gray-700")}>
+          <span className="font-radikal font-bold italic text-gray-700">
             SAMPLE CHIEF
-          </span>
-          {" "}
-          <span className="text-gray-700 leading-relaxed">
+          </span>{" "}
+          <span className="font-radikal font-light text-gray-700 leading-relaxed">
             is a global community that celebrates African music culture.
           </span>
         </motion.div>
         <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {paragraphs.map((paragraph, idx) => (
-            <motion.p
-              key={idx}
-              variants={sectionVariants}
-              className={clsx(
-                radikalLight.className,
-                "mb-8 leading-relaxed text-base md:text-lg lg:text-xl text-gray-700"
-              )}
-            >
-              {paragraph}
-            </motion.p>
-          ))}
-        </motion.div>
+  variants={staggerContainer}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.2 }}
+>
+  {paragraphs.map((p, idx) => (
+    <motion.p
+      key={idx}
+      variants={sectionVariants}
+      className="font-radikal font-light mb-8 leading-relaxed text-base md:text-lg lg:text-xl text-gray-700"
+    >
+      {p}
+    </motion.p>
+  ))}
+</motion.div>
       </div>
       <div className="mt-16 px-6">
         <motion.div
@@ -157,5 +144,5 @@ export default function About() {
 
       <div className="pb-8 md:pb-8" />
     </div>
-  );
+  )
 }

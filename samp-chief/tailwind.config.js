@@ -7,6 +7,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        // Your default sans → MyFont
+        sans: ['MyFont', 'sans-serif'],
+
+        radikal: ['RadikalTrial', 'sans-serif'],
+      },
       colors: {
         border:      'hsl(var(--border))',
         background:  'hsl(var(--background))',
