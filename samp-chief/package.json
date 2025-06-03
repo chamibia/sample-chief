@@ -31,7 +31,7 @@
     "zod": "^3.25.20"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.4",
+    "@tailwindcss/postcss": "^4.1.8",
     "@types/country-list": "^2.1.4",
     "@types/mailchimp__mailchimp_marketing": "^3.0.21",
     "@types/node": "^20",
