@@ -140,7 +140,7 @@ export default function Events() {
                 </motion.div>
                 <div className="md:col-span-7 flex flex-col">
                   <div className="space-y-6">
-                    <motion.h1 className="font-radikal text-3xl mt-8 md:text-5xl lg:text-5xl md:mb-14"
+                    <motion.h1 className="font-radikal text-2xl mt-8 md:text-4xl lg:text-4xl md:mb-10"
                       variants={{
                         hidden: { opacity: 0, y: -20 },
                         visible: {
