@@ -80,7 +80,7 @@ export default function NewsletterSignup() {
   };
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <div
         className={`overflow-hidden bg-[#dcf7cf] rounded-b-2xl transition-all duration-300 ${
           showBanner ? "h-auto" : "h-0"
@@ -89,7 +89,7 @@ export default function NewsletterSignup() {
         <div className="w-full mx-auto py-8 px-4 md:py-14 md:px-6" />
       </div>
 
-      <div className="w-full px-5 md:px-9 text-gray-800 pt-20">
+      <div className="flex-1 w-full px-5 md:px-9 text-gray-800 pt-20">
         <div className="max-w-2xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -241,7 +241,10 @@ export default function NewsletterSignup() {
           </motion.div>
         </div>
       </div>
-      <div className="pb-16 md:pb-32" />
+      
+      {/* Fixed bottom spacing for mobile */}
+      <div className="pb-24 md:pb-16" 
+           style={{ paddingBottom: "calc(6rem + env(safe-area-inset-bottom))" }} />
     </div>
   );
 }
