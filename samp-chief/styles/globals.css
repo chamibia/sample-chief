@@ -1,17 +1,5 @@
-
 @import "tailwindcss";
 
-:root {
-  --vh: 1vh
-}
-
-@media (max-width: 768px) {
-  .min-h-screen {
-    min-height: 100vh;
-    min-height: calc(var(--vh, 1vh) * 100);
-  }
-  
-}
 @font-face {
   font-family: 'RadikalTrial';
   src: url('/fonts/RadikalTrial-Black.otf')   format('opentype');
@@ -55,7 +43,37 @@
   font-display: swap;
 }
 
+/* Mobile viewport height fixes */
+:root {
+  --vh: 1vh;
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+}
+
 html, body {
   font-family: 'RadikalTrial', sans-serif;
   height: 100%;
+  /* Prevent iOS Safari from bouncing */
+  overscroll-behavior-y: none;
+  /* Prevent horizontal scrolling */
+  overflow-x: hidden;
+}
+
+/* Dynamic viewport height support */
+@supports (height: 100dvh) {
+  .min-h-screen {
+    min-height: 100dvh;
+  }
+}
+
+/* Mobile-specific utilities */
+@media (max-width: 768px) {
+  /* Ensure content doesn't get cut off on mobile */
+  .mobile-safe-bottom {
+    padding-bottom: calc(2rem + var(--safe-area-inset-bottom));
+  }
+  
+  /* Mobile viewport height fix */
+  .min-h-screen {
+    min-height: calc(var(--vh, 1vh) * 100);
+  }
 }
