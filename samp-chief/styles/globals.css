@@ -1,6 +1,17 @@
 
 @import "tailwindcss";
 
+:root {
+  --vh: 1vh
+}
+
+@media (max-width: 768px) {
+  .min-h-screen {
+    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
+  }
+  
+}
 @font-face {
   font-family: 'RadikalTrial';
   src: url('/fonts/RadikalTrial-Black.otf')   format('opentype');

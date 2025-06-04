@@ -83,12 +83,13 @@ export default function Events() {
   }
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <div className={`overflow-hidden bg-[#ffdd80] rounded-b-2xl transition-all duration-300 ${showBanner ? 'h-auto' : 'h-0'}`}>
         <div className="w-full mx-auto py-8 px-4 md:py-14 md:px-6">
         </div>
       </div>
-      <div className="w-full px-5 md:px-9 text-gray-800">
+      
+      <div className="flex-1 w-full px-5 md:px-9 text-gray-800">
         <div>
           {eventData.slice().reverse().map((event) => (
             <motion.div
@@ -235,7 +236,8 @@ export default function Events() {
           ))}
         </div>
       </div>
-      <div className="pb-8 md:pb-30"></div>
+            <div className="pb-24 md:pb-16" 
+           style={{ paddingBottom: "calc(6rem + env(safe-area-inset-bottom))" }} />
     </div>
   )
 }

@@ -75,7 +75,7 @@ export default function About() {
   ];
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <div
        className={`overflow-hidden bg-[#ff6139] rounded-b-2xl transition-all duration-300 ${
         showBanner ? "h-auto" : "h-0"
@@ -84,7 +84,7 @@ export default function About() {
         <div className="w-full mx-auto py-8 px-4 md:py-14 md:px-6" />
       </div>
 
-      <div className="w-full px-5 md:px-9 text-gray-800 pt-20">
+      <div className="flex-1 w-full px-5 md:px-9 text-gray-800 pt-20">
         <motion.div
           className="font-radikal font-normal text-[1.8rem] md:text-[3.0rem] leading-[1.2] mb-4 md:mb-8 pb-4 md:pb-12 lg:w-4/5"
           variants={sectionVariants}
@@ -142,7 +142,9 @@ export default function About() {
         </motion.div>
       </div>
 
-      <div className="pb-8 md:pb-8" />
+      {/* Fixed bottom spacing for mobile */}
+      <div className="pb-24 md:pb-16" 
+           style={{ paddingBottom: "calc(6rem + env(safe-area-inset-bottom))" }} />
     </div>
   )
 }

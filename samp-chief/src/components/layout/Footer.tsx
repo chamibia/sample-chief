@@ -27,8 +27,13 @@ export default function Footer() {
           : isAbout || isEvent || isNewsletter
             ? "bg-black text-white"
             : "bg-white text-black",
-        "px-2 py-0 md:py-0"
+        // Add consistent padding and safe area support for mobile
+        "px-2 py-4 md:py-6 pb-safe"
       )}
+      style={{
+        // Ensure footer is always visible on mobile
+        paddingBottom: isHome ? undefined : "calc(1rem + env(safe-area-inset-bottom))"
+      }}
     >
       <div className="flex flex-col md:relative items-center justify-center w-full px-4 pt-4 pb-2">
         <div className="flex items-center space-x-6">
@@ -100,5 +105,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  );
+  )
 }

@@ -122,6 +122,7 @@ export default function SubscribePopup() {
             src="/assets/popupimage.webp"
             alt="Subscribe"
             fill
+            loading="lazy"
             className="object-cover object-top"
           />
         </div>
