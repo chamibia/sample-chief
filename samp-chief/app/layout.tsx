@@ -1,8 +1,10 @@
+// app/layout.tsx (Server Component)
 import { Metadata, Viewport } from "next";
 import "../styles/globals.css";
 import Navbar from "../src/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SubscribePopup from "@/components/SubscribePopup";
+import ClientLayout from "./ClientLayout"; // New client component
 
 export const metadata: Metadata = {
   title: "Sample Chief",
@@ -45,24 +47,27 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-}
+  viewportFit: "cover", // Add this for safe area support
+};
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html
-      lang="en"
-    >
+    <html lang="en">
       <head />
       <body className="antialiased font-sans">
-        <div className="flex flex-col h-screen overflow-y-auto">
+        <ClientLayout>
           <Navbar />
-          <main className="flex-grow">
+          <main className="flex-1">
             {children}
           </main>
           <Footer />
           <SubscribePopup />
-        </div>
+        </ClientLayout>
       </body>
     </html>
-  )
+  );
 }
