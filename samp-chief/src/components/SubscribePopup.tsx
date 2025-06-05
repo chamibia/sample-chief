@@ -4,9 +4,9 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { getNames } from "country-list";
 import { X } from "lucide-react";
+import popupImage from "../../public/assets/popupimage.jpg";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 const countries = getNames();
 
@@ -119,7 +119,7 @@ export default function SubscribePopup() {
 
         <div className="relative h-64 w-full">
           <Image
-            src="/assets/popupimage.jpg"
+            src={popupImage}
             alt="Subscribe"
             fill
             sizes="(max-width: 640px) 100vw, 280px"
@@ -137,12 +137,11 @@ export default function SubscribePopup() {
 
           {submitStatus.type && (
             <div
-              className={cn(
-                "mb-4 w-full rounded-md p-3 text-center",
+              className={`mb-4 w-full rounded-md p-3 text-center ${
                 submitStatus.type === "success"
                   ? "bg-green-50 text-green-800"
                   : "bg-red-50 text-red-800"
-              )}
+              }`}
             >
               {submitStatus.message}
             </div>
