@@ -119,10 +119,10 @@ export default function SubscribePopup() {
 
         <div className="relative h-64 w-full">
           <Image
-            src="/assets/popupimage.webp"
+            src="/assets/popupimage.jpg"
             alt="Subscribe"
             fill
-            loading="lazy"
+            sizes="(max-width: 640px) 100vw, 280px"
             className="object-cover object-top"
           />
         </div>
