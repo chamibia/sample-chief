@@ -114,8 +114,12 @@ export default function Navbar() {
                   key={label}
                   href={path}
                   className={`block w-full py-2 px-4 text-center font-radikal font-bold text-sm sm:text-base uppercase transition-colors duration-150 ease-out no-underline ${
-                    isHome ? "text-white/75 hover:text-white" : "text-gray-800 hover:text-gray-600"
-                  } ${isActive ? "underline" : ""}`}
+                    isHome
+                      ? "text-white/75 hover:text-white"
+                      : isActive
+                      ? "text-white"
+                      : "text-gray-800 hover:text-gray-600"
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {label}
