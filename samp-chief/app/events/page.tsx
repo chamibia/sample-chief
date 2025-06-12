@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Calendar, MapPin, CalendarPlus } from "lucide-react";
 import { motion } from "framer-motion";
-import clsx from "clsx";
 
 const eventData = [
   {
@@ -22,7 +21,7 @@ const eventData = [
     ticketLink: "https://ra.co/events/2150643",
   },
   {
-    id: 2, 
+    id: 2,
     title: "Sample Chief Social: Vinyl Night",
     description: "Join us at The Little Jerry (418 College Street) on Friday June 6th. Please note: Due to limited venue capacity, an RSVP does not guarantee entry",
     startDate: "2025-06-06",
@@ -40,7 +39,7 @@ const eventData = [
     endDate: "2025-06-20",
     time: "9pm - LATE",
     venue: "Sweeties, 10th Floor, 10 Argyle St, London WC1H 8EG, United Kingdom",
-    imageUrl: "/assets/social-vinyl-night.jpg",
+    imageUrl: "/assets/london_june_19.jpeg",
     ticketLink: "https://docs.google.com/forms/d/e/1FAIpQLScEnyFLRuDOPs7vZxZiEJ9fG1EUjc9nNaDBwW5kt5Cx48UGew/viewform?usp=header",
   }
 ]
@@ -55,9 +54,12 @@ export default function Events() {
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
-  const formatDate = (dateString: string) =>
-    new Date(dateString)
-      .toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  const formatDate = (dateString: string) => {
+    const [year, month, day] = dateString.split('-').map(num => parseInt(num, 10));
+    
+    const date = new Date(year, month - 1, day);
+    return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  };
 
   const generateCalendarLink = (event: typeof eventData[0]) => {
     const startDate = new Date(`${event.startDate}T21:00:00`)
@@ -88,7 +90,6 @@ export default function Events() {
         <div className="w-full mx-auto py-8 px-4 md:py-14 md:px-6">
         </div>
       </div>
-      
       <div className="flex-1 w-full px-5 md:px-9 text-gray-800">
         <div>
           {eventData.slice().reverse().map((event) => (
@@ -120,7 +121,7 @@ export default function Events() {
                   whileHover="hover"
                   viewport={{ once: true }}
                 >
-                  
+
                   <div className="h-full overflow-hidden rounded-lg">
                     <Link
                       href={event.ticketLink}
@@ -153,10 +154,10 @@ export default function Events() {
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true }}
-                    > 
-                      {event.title} 
+                    >
+                      {event.title}
                     </motion.h1>
-                    
+
                     <motion.div
                       className="space-y-4 text-lg md:text-xl"
                       variants={{
@@ -216,7 +217,7 @@ export default function Events() {
                           Tickets
                         </Link>
                       </motion.div>
-                      
+
                       <motion.div whileHover={{ scale: 1.02 }}>
                         <Link
                           href={generateCalendarLink(event)}
@@ -236,8 +237,8 @@ export default function Events() {
           ))}
         </div>
       </div>
-            <div className="pb-24 md:pb-16" 
-           style={{ paddingBottom: "calc(6rem + env(safe-area-inset-bottom))" }} />
+      <div className="pb-24 md:pb-16"
+        style={{ paddingBottom: "calc(6rem + env(safe-area-inset-bottom))" }} />
     </div>
   )
 }

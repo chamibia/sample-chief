@@ -1,47 +1,46 @@
-"use client";
+"use client"
 
-import Image from "next/image";
-import { useState, useEffect } from "react";
-import { getNames } from "country-list";
-import { X } from "lucide-react";
-import popupImage from "../../public/assets/popupimage.jpg";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import Image from "next/image"
+import { useState, useEffect } from "react"
+import { getNames } from "country-list"
+import { X } from "lucide-react"
+import popupImage from "../../public/assets/popupimage.jpeg"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
 
-const countries = getNames();
+const countries = getNames()
 
 export default function SubscribePopup() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [email, setEmail] = useState("");
-  const [country, setCountry] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
+  const [email, setEmail] = useState("")
+  const [country, setCountry] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<{
-    type: "success" | "error" | null;
-    message: string;
-  }>({ type: null, message: "" });
+    type: "success" | "error" | null
+    message: string
+  }>({ type: null, message: "" })
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 5000);
+      setIsOpen(true)
+    }, 5000)
     return () => clearTimeout(timer);
-  }, []);
+  }, [])
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+    e.preventDefault()
 
-    // reset any previous status
-    setSubmitStatus({ type: null, message: "" });
+    setSubmitStatus({ type: null, message: "" })
 
     if (!email.trim() || !country.trim()) {
       setSubmitStatus({
         type: "error",
         message: "Both email and country are required.",
       });
-      return;
+      return
     }
 
-    setIsSubmitting(true);
+    setIsSubmitting(true)
 
     try {
       const response = await fetch("/api/subscribe", {
@@ -53,8 +52,7 @@ export default function SubscribePopup() {
       const result = await response.json();
 
       if (response.ok) {
-        // Normalize success message
-        let successMessage = "";
+        let successMessage = ""
         if (typeof result.message === "string") {
           successMessage = result.message;
         } else if (result.message && typeof result.message === "object") {
