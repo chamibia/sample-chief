@@ -33,7 +33,7 @@ const eventData = [
   },
   {
     id: 3,
-    title: "Sample Chief Socal",
+    title: "Sample Chief Social UK",
     description: "Join us at Sweeties, The Standard on Thursday June 19th. Please note: Due to limited venue capacity, an RSVP does not guarantee entry",
     startDate: "2025-06-19",
     endDate: "2025-06-20",
