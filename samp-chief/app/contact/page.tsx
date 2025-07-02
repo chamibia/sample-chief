@@ -81,14 +81,6 @@ export default function NewsletterSignup() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <div
-        className={`overflow-hidden bg-[#dcf7cf] rounded-b-2xl transition-all duration-300 ${
-          showBanner ? "h-auto" : "h-0"
-        }`}
-      >
-        <div className="w-full mx-auto py-8 px-4 md:py-14 md:px-6" />
-      </div>
-
       <div className="flex-1 w-full px-5 md:px-9 text-gray-800 pt-20">
         <div className="max-w-2xl mx-auto">
           <motion.div
@@ -97,10 +89,10 @@ export default function NewsletterSignup() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h1 className="font-radikal font-light text-4xl md:text-5xl mb-6 tracking-wider">
+            <h1 className="font-radikal font-light leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-gray-700">
               Join the Community
             </h1>
-            <p className="font-radikal font-normal text-sm md:text-sm leading-relaxed mb-8">
+            <p className="font-radikal font-light mb-8 leading-relaxed text-base md:text-lg lg:text-xl text-gray-700">
               We're a global collective. Our sounds travel across borders, each curation telling a story.
               Join a tribe of music lovers, tastemakers, and cultural connectors shaping the next wave.
             </p>
@@ -133,7 +125,7 @@ export default function NewsletterSignup() {
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     required
-                    className="font-radikal font-normal w-full bg-transparent border-0 border-b-2 border-gray-300 py-4 px-0 text-lg focus:outline-none focus:border-[#2E8B57] transition-colors duration-300 group-hover:border-gray-400"
+                    className="font-radikal font-normal leading-relaxed text-base w-full text-gray-700 bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#2E8B57] transition-colors duration-300 group-hover:border-gray-400"
                   />
                 </div>
                 <div className="relative group">
@@ -143,7 +135,7 @@ export default function NewsletterSignup() {
                     placeholder="Last Name"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    className="font-radikal font-normal w-full bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 text-lg focus:outline-none focus:border-[#2E8B57] transition-colors duration-300 group-hover:border-gray-400"
+                    className="font-radikal font-normal leading-relaxed text-base w-full text-gray-700 bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#2E8B57] transition-colors duration-300 group-hover:border-gray-400"
                   />
                 </div>
                 <div className="relative group">
@@ -154,7 +146,7 @@ export default function NewsletterSignup() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="font-radikal font-normal w-full bg-transparent border-0 border-b-2 border-gray-300 py-4 px-0 text-lg focus:outline-none focus:border-[#2E8B57] transition-colors duration-300 group-hover:border-gray-400"
+                  className="font-radikal font-normal leading-relaxed text-base w-full text-gray-700 bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#2E8B57] transition-colors duration-300 group-hover:border-gray-400"
                   />
                 </div>
                 <div className="relative group">
@@ -163,7 +155,7 @@ export default function NewsletterSignup() {
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     required
-                    className="font-radikal font-normal w-full bg-transparent border-0 border-b-2 border-gray-300 py-4 px-0 text-lg focus:outline-none focus:border-[#2E8B57] appearance-none transition-colors duration-300 cursor-pointer group-hover:border-gray-400"
+                    className="font-radikal font-normal leading-relaxed text-base w-full text-gray-700 bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#2E8B57] transition-colors duration-300 group-hover:border-gray-400"
                   >
                     <option value="" disabled className="bg-white">
                       Select Country *
@@ -196,7 +188,7 @@ export default function NewsletterSignup() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="font-radikal font-normal bg-transparent border-2 border-gray-800 hover:bg-[#2E8B57] hover:border-[#2E8B57] hover:text-white rounded-full text-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center px-6 py-3"
+                  className="font-radikal font-light leading-relaxed text-base bg-transparent border-2 border-gray-800 hover:bg-[#2E8B57] hover:border-[#2E8B57] hover:text-white rounded-full transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center px-6 py-3 text-gray-700"
                 >
                   {isSubmitting ? (
                     <span className="animate-pulse">Joining...</span>
@@ -217,22 +209,19 @@ export default function NewsletterSignup() {
               viewport={{ once: true, amount: 0.2 }}
               className="text-center mt-12 pt-8 border-t border-gray-200"
             >
-              <h3 className="font-radikal font-normal text-xl mb-4">
-                Stay in the Loop
+              <h3 className="font-radikal font-light leading-relaxed text-gray-700 text-xl mb-4">
+                Get in Touch
               </h3>
-              <p className="font-radikal font-normal mb-6 leading-relaxed">
-                Sign up to get early access to our events, merch drops, and
-                curated discoveries.
-                <br />
-                We'll only hit your inbox when there's something worth hearing.
+              <p className="font-radikal font-light mb-6 leading-relaxed text-gray-700">
+                Curious about what we do or want to collaborate? Hit us up — we’d love to hear from you.
               </p>
               <div className="flex justify-center items-center space-x-2">
-                <span className="font-radikal font-normal text-sm">
+                <span className="font-radikal font-light leading-relaxed text-base text-gray-700">
                   Email:
                 </span>
                 <a
                   href="mailto:contactus@samplechief.com"
-                  className="text-[#2E8B57] hover:underline transition-all duration-300 font-radikal font-medium"
+                  className="text-[#2E8B57] hover:underline transition-all duration-300 font-radikal font-light leading-relaxed text-base"
                 >
                   contactus@samplechief.com
                 </a>

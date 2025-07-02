@@ -127,12 +127,11 @@ export default function SubscribePopup() {
 
         <div className="w-full p-3 sm:p-4 flex flex-col items-center">
           <h2 className="font-radikal mb-2 text-lg sm:text-xl font-bold text-center">
-            Join Our Mailing List
+            Stay in the loop
           </h2>
           <p className="font-radikal mb-3 sm:mb-4 text-sm sm:text-base text-gray-600 text-center">
-            Stay updated with the latest news, events, and releases.
+          We'll only hit your inbox when there's something worth hearing.        
           </p>
-
           {submitStatus.type && (
             <div
               className={`mb-4 w-full rounded-md p-3 text-center ${

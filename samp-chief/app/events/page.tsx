@@ -41,7 +41,7 @@ const eventData = [
     venue: "Sweeties, 10th Floor, 10 Argyle St, London WC1H 8EG, United Kingdom",
     imageUrl: "/assets/london_june_19.jpeg",
     ticketLink: "https://docs.google.com/forms/d/e/1FAIpQLScEnyFLRuDOPs7vZxZiEJ9fG1EUjc9nNaDBwW5kt5Cx48UGew/viewform?usp=header",
-  }
+  },
 ]
 
 export default function Events() {
@@ -56,7 +56,7 @@ export default function Events() {
 
   const formatDate = (dateString: string) => {
     const [year, month, day] = dateString.split('-').map(num => parseInt(num, 10));
-    
+
     const date = new Date(year, month - 1, day);
     return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
   };
@@ -86,16 +86,12 @@ export default function Events() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <div className={`overflow-hidden bg-[#ffdd80] rounded-b-2xl transition-all duration-300 ${showBanner ? 'h-auto' : 'h-0'}`}>
-        <div className="w-full mx-auto py-8 px-4 md:py-14 md:px-6">
-        </div>
-      </div>
-      <div className="flex-1 w-full px-5 md:px-9 text-gray-800">
+      <div className="flex-1 w-full px-5 md:px-9 text-gray-800 pt-10">
         <div>
           {eventData.slice().reverse().map((event) => (
             <motion.div
               key={event.id}
-              className="text-2xl md:text-[1.5rem] leading-[1.2] mb-8 pt-10 md:pt-20"
+              className="text-2xl md:text-[1.5rem] leading-[1.2] mb-8 pt-10"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -142,7 +138,7 @@ export default function Events() {
                 </motion.div>
                 <div className="md:col-span-7 flex flex-col">
                   <div className="space-y-6">
-                    <motion.h1 className="font-radikal text-2xl mt-8 md:text-4xl lg:text-4xl md:mb-10"
+                    <motion.h1 className="font-radikal font-light leading-relaxed text-2xl mt-8 md:text-4xl lg:text-4xl md:mb-10 text-gray-700"
                       variants={{
                         hidden: { opacity: 0, y: -20 },
                         visible: {
@@ -157,7 +153,6 @@ export default function Events() {
                     >
                       {event.title}
                     </motion.h1>
-
                     <motion.div
                       className="space-y-4 text-lg md:text-xl"
                       variants={{
@@ -173,12 +168,12 @@ export default function Events() {
                       viewport={{ once: true }}
                     >
                       <div className="flex items-center">
-                        <Calendar className="h-6 w-6 mr-3 text-gray-600" />
-                        <span className="font-radikal font-normal">{formatDate(event.startDate)}</span>
+                        <Calendar className="h-6 w-6 mr-3 text-gray-700" />
+                        <span className="font-radikal font-light text-base leading-relaxed text-gray-700">{formatDate(event.startDate)}</span>
                       </div>
                       <div className="flex items-center">
-                        <MapPin className="h-6 w-6 mr-3 text-gray-600" />
-                        <span className="font-radikal">
+                        <MapPin className="h-6 w-6 mr-3 text-gray-700" />
+                        <span className="font-radikal font-light text-gray-700 leading-relaxed text-base">
                           {event.venue}, {event.address}
                         </span>
                       </div>
@@ -212,20 +207,19 @@ export default function Events() {
                           href={event.ticketLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="font-radikal inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 border-2 rounded-full text-base md:text-lg text-black hover:bg-[#2E8B57] hover:text-white transition-all duration-200 min-w-[120px] md:min-w-[140px]"
+                          className="font-radikal font-light leading-relaxed text-gray-700 inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 border-2 rounded-full text-base md:text-lg hover:bg-[#2E8B57] hover:text-white transition-all duration-200 min-w-[120px] md:min-w-[140px]"
                         >
                           Tickets
                         </Link>
                       </motion.div>
-
                       <motion.div whileHover={{ scale: 1.02 }}>
                         <Link
                           href={generateCalendarLink(event)}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="font-radikal inline-flex items-center justify-center px-4 py-3 md:px-6 md:py-4 rounded-lg text-sm md:text-base text-gray-600 hover:text-gray-800 transition-all duration-200"
+                          className="font-radikal font-light leading-relaxed inline-flex items-center justify-center px-4 py-3 md:px-6 md:py-4 rounded-lg text-sm md:text-base text-gray-700 hover:text-gray-800 transition-all duration-200"
                         >
-                          <CalendarPlus className="h-4 w-4 mr-2" />
+                          <CalendarPlus className="h-6 w-6 mr-2" />
                           Add to Calendar
                         </Link>
                       </motion.div>

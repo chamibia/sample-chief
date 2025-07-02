@@ -17,6 +17,7 @@ export default function Footer() {
   const isHome = pathname === "/";
   const isAbout = pathname === "/about";
   const isEvent = pathname === "/events";
+  const isMusic = pathname === "/music"
   const isNewsletter = pathname === "/contact";
 
   return (
@@ -24,7 +25,7 @@ export default function Footer() {
       className={cn(
         isHome
           ? "absolute inset-x-0 bottom-0 z-30 bg-transparent text-white/75"
-          : isAbout || isEvent || isNewsletter
+          : isAbout || isEvent || isMusic || isNewsletter
             ? "bg-black text-white"
             : "bg-white text-black",
         // Add consistent padding and safe area support for mobile
