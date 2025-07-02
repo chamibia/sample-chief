@@ -10,10 +10,9 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel"
+} from '@/components/ui/carousel';
 
-export default function Music() {
-  // Sample data for playlists
+export default function MusicPage() {
   const playlists = Array.from({ length: 9 }, (_, i) => ({
     id: i + 1,
     title: `Curated Playlist ${i + 1}`,
@@ -22,7 +21,6 @@ export default function Music() {
     link: `/playlist/${i + 1}`
   }));
 
-  // Sample data for mixes
   const mixes = Array.from({ length: 9 }, (_, i) => ({
     id: i + 1,
     title: `DJ Mix ${i + 1}`,
@@ -47,14 +45,14 @@ export default function Music() {
     image: string;
     link: string;
   }
-  
+
   interface CarouselSectionProps {
     title: string;
     items: CarouselItem[];
     seeAllLink: string;
     delay?: number;
   }
-  
+
   const CarouselSection = ({ title, items, seeAllLink, delay = 0 }: CarouselSectionProps) => (
     <motion.div
       variants={sectionVariants}
@@ -68,18 +66,20 @@ export default function Music() {
         <h2 className="font-radikal font-light leading-relaxed text-3xl md:text-4xl text-gray-700 tracking-wider">
           {title}
         </h2>
-        <Link 
+        <Link
           href={seeAllLink}
           className="font-radikal font-light leading-relaxed text-base text-[#2E8B57] hover:underline transition-all duration-300"
         >
           See all
         </Link>
       </div>
-      
-      <Carousel className="w-full">
+
+      <Carousel className="w-full" opts={{
+        slidesToScroll: 3,
+      }}>
         <CarouselContent className="-ml-2 md:-ml-4">
           {items.map((item) => (
-            <CarouselItem key={item.id} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/5">
+            <CarouselItem key={item.id} className="pl-2 md:pl-4 basis-1/3">
               <Link href={item.link} className="group">
                 <Card className="bg-transparent border-0 hover:transform hover:scale-105 transition-all duration-300 cursor-pointer">
                   <CardContent className="p-0">
@@ -105,8 +105,8 @@ export default function Music() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="bg-white border-2 border-gray-300 text-gray-700 hover:bg-[#2E8B57] hover:border-[#2E8B57] hover:text-white transition-all duration-300 -left-6" />
-        <CarouselNext className="bg-white border-2 border-gray-300 text-gray-700 hover:bg-[#2E8B57] hover:border-[#2E8B57] hover:text-white transition-all duration-300 -right-6" />
+        <CarouselPrevious className="bg-white border-2 border-gray-300 text-gray-700 hover:bg-[#2E8B57] hover:border-[#2E8B57] hover:text-white transition-all duration-300 -left-6 top-[40%] -translate-y-1/2" />
+        <CarouselNext className="bg-white border-2 border-gray-300 text-gray-700 hover:bg-[#2E8B57] hover:border-[#2E8B57] hover:text-white transition-all duration-300 -right-6 top-[40%] -translate-y-1/2" />
       </Carousel>
     </motion.div>
   );
@@ -135,7 +135,7 @@ export default function Music() {
             seeAllLink="/playlists"
             delay={0.2}
           />
-          
+
           <CarouselSection
             title="Mixes"
             items={mixes}
@@ -144,9 +144,10 @@ export default function Music() {
           />
         </div>
       </div>
-      
-      <div className="pb-24 md:pb-16" 
-           style={{ paddingBottom: "calc(6rem + env(safe-area-inset-bottom))" }} />
+
+      {/* Fixed bottom spacing for mobile */}
+      <div className="pb-24 md:pb-16"
+        style={{ paddingBottom: "calc(6rem + env(safe-area-inset-bottom))" }} />
     </div>
   );
 }
