@@ -40,7 +40,22 @@ export default function Music() {
     },
   };
 
-  const CarouselSection = ({ title, items, seeAllLink, delay = 0 }) => (
+  interface CarouselItem {
+    id: number;
+    title: string;
+    artist: string;
+    image: string;
+    link: string;
+  }
+  
+  interface CarouselSectionProps {
+    title: string;
+    items: CarouselItem[];
+    seeAllLink: string;
+    delay?: number;
+  }
+  
+  const CarouselSection = ({ title, items, seeAllLink, delay = 0 }: CarouselSectionProps) => (
     <motion.div
       variants={sectionVariants}
       initial="hidden"
