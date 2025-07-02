@@ -76,7 +76,7 @@ export default function About() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <div className="flex-1 w-full px-5 md:px-9 text-gray-800 pt-30">
+      <div className="flex-1 w-full px-5 md:px-9 text-gray-800 pt-20">
         <motion.div
           className="font-radikal font-normal text-[1.8rem] md:text-[3.0rem] leading-[1.2] mb-4 md:mb-8 pb-4 md:pb-12 lg:w-4/5"
           variants={sectionVariants}
