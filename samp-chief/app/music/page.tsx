@@ -17,7 +17,7 @@ export default function MusicPage() {
     id: i + 1,
     title: `Curated Playlist ${i + 1}`,
     artist: `Various Artists`,
-    image: `https://picsum.photos/200/200?random=${i + 1}`,
+    image: `/assets/womens_samples.jpg`,
     link: `/playlist/${i + 1}`
   }));
 
@@ -74,9 +74,7 @@ export default function MusicPage() {
         </Link>
       </div>
 
-      <Carousel className="w-full" opts={{
-        slidesToScroll: 3,
-      }}>
+      <Carousel className="w-full" opts={{ slidesToScroll: 3 }}>
         <CarouselContent className="-ml-2 md:-ml-4">
           {items.map((item) => (
             <CarouselItem key={item.id} className="pl-2 md:pl-4 basis-1/3">
@@ -89,7 +87,12 @@ export default function MusicPage() {
                         alt={item.title}
                         className="w-full h-full object-cover group-hover:opacity-80 transition-opacity duration-300"
                       />
-                      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300" />
+                      {/* Overlay with Example Text */}
+                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center p-4">
+                        <p className="text-white text-center text-sm md:text-lg font-semibold">
+                          Example Text {item.id}
+                        </p>
+                      </div>
                     </div>
                     <div className="space-y-1">
                       <p className="font-radikal font-normal leading-relaxed text-sm text-gray-700 truncate">
