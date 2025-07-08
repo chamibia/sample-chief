@@ -13,21 +13,62 @@ import {
 } from '@/components/ui/carousel';
 
 export default function MusicPage() {
-  const playlists = Array.from({ length: 9 }, (_, i) => ({
-    id: i + 1,
-    title: `Curated Playlist ${i + 1}`,
-    artist: `Various Artists`,
-    image: `/assets/womens_samples.jpg`,
-    link: `/playlist/${i + 1}`
-  }));
+  const playlists = [
+    {
+      id: 1,
+      image: '/assets/womens_samples.jpg',
+      link: '/playlist/',
+      title: 'Motherland Magic',
+      subtitle: 'Women in sound'
+    },
+    {
+      id: 2,
+      image: '/assets/guitar-music.webp',
+      link: '/playlist/',
+      title: 'At The Funktion',
+      subtitle: 'Sounds of the diaspora'
+    },
+    {
+      id: 3,
+      image: '/assets/kwaito.jpg',
+      link: 'playlist',
+      title: 'Desert Blues',
+      subtitle: 'Malian guitar'
+    },
+    {
+      id: 4,
+      image: '/assets/makossa.jpg',
+      link: 'playlists',
+      title: 'Amapiano Anthems',
+      subtitle: 'Sounds of South Africa'
+    },
+    {
+      id: 5,
+      image: '/assets/uncle-waffles.avif',
+      link: 'playlists',
+      title: 'Global Grooves',
+      subtitle: 'Internationally known'
+    },
+    {
+      id: 6,
+      image: '/assets/wassolou.jpg',
+      link: 'playlists',
+      title: 'Wassoulou',
+      subtitle: 'Sounds of Wassoulou'
+    }
+  ];
 
-  const mixes = Array.from({ length: 9 }, (_, i) => ({
-    id: i + 1,
-    title: `DJ Mix ${i + 1}`,
-    artist: `DJ Collection`,
-    image: `https://picsum.photos/200/200?random=${i + 10}`,
-    link: `/mix/${i + 1}`
-  }));
+  const mixes = [
+    { id: 1, image: '/assets/four-people.png', link: 'https://on.soundcloud.com/WYrFVHX5eW8u3JNURR', title: 'Live at Pianos', subtitle: 'NYC' },
+    { id: 2, image: '/assets/no-signal.png', link: 'https://on.soundcloud.com/H91AkEKJPwyjWAIZHB', title: 'No Signal', subtitle: 'Radio' },
+    { id: 3, image: '/assets/two-animation.png', link: 'https://on.soundcloud.com/QFYTemWrIBJcHFmcWR', title: 'Everyday People', subtitle: 'Live Set' },
+    { id: 4, image: '/assets/two-guys.png', link: 'https://on.soundcloud.com/EAYjbpsE9pIAcO9cp8', title: 'The Lot Radio', subtitle: 'Live Set' },
+    { id: 5, image: '/assets/two-people.png', link: 'https://on.soundcloud.com/G2DNi8ASzp7Dj25Qfj', title: 'NTS Radio', subtitle: 'Live Set' },
+    { id: 6, image: '/assets/yellow-top.png', link: 'https://on.soundcloud.com/FXPqh37GyDFvqSH5hb', title: 'The Getaway', subtitle: 'Live Set' },
+    { id: 7, image: '/assets/home9.webp', link: '/mix/7', title: 'Boiler Room', subtitle: 'London' },
+    { id: 8, image: '/assets/home10.webp', link: '/mix/8', title: 'Soho Radio', subtitle: 'London' },
+    { id: 9, image: '/assets/london_june_19.jpeg', link: '/mix/9', title: 'Recess', subtitle: 'Live Set' }
+  ];
 
   const sectionVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -40,10 +81,10 @@ export default function MusicPage() {
 
   interface CarouselItem {
     id: number;
-    title: string;
-    artist: string;
     image: string;
     link: string;
+    title: string;
+    subtitle: string;
   }
 
   interface CarouselSectionProps {
@@ -78,29 +119,21 @@ export default function MusicPage() {
         <CarouselContent className="-ml-2 md:-ml-4">
           {items.map((item) => (
             <CarouselItem key={item.id} className="pl-2 md:pl-4 basis-1/3">
-              <Link href={item.link} className="group">
-                <Card className="bg-transparent border-0 hover:transform hover:scale-105 transition-all duration-300 cursor-pointer">
+              <Link href={item.link} className="group block rounded-2xl overflow-hidden">
+                <Card className="bg-transparent border-0 cursor-pointer">
                   <CardContent className="p-0">
-                    <div className="aspect-square relative mb-3 overflow-hidden rounded-lg">
+                    <div className="aspect-square relative">
                       <img
                         src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover group-hover:opacity-80 transition-opacity duration-300"
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                       />
-                      {/* Overlay with Example Text */}
-                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center p-4">
-                        <p className="text-white text-center text-sm md:text-lg font-semibold">
-                          Example Text {item.id}
-                        </p>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      <div className="absolute top-4 left-4">
+                        <h3 className="font-radikal font-bold text-white text-lg">{item.title}</h3>
                       </div>
-                    </div>
-                    <div className="space-y-1">
-                      <p className="font-radikal font-normal leading-relaxed text-sm text-gray-700 truncate">
-                        {item.title}
-                      </p>
-                      <p className="font-radikal font-light leading-relaxed text-xs text-gray-500 truncate">
-                        {item.artist}
-                      </p>
+                      <div className="absolute bottom-4 left-4">
+                        <p className="font-radikal font-light text-white text-sm">{item.subtitle}</p>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -108,8 +141,8 @@ export default function MusicPage() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="bg-white border-2 border-gray-300 text-gray-700 hover:bg-[#2E8B57] hover:border-[#2E8B57] hover:text-white transition-all duration-300 -left-6 top-[40%] -translate-y-1/2" />
-        <CarouselNext className="bg-white border-2 border-gray-300 text-gray-700 hover:bg-[#2E8B57] hover:border-[#2E8B57] hover:text-white transition-all duration-300 -right-6 top-[40%] -translate-y-1/2" />
+        <CarouselPrevious className="bg-white border-2 border-gray-300 text-gray-700 hover:bg-[#2E8B57] hover:border-[#2E8B57] hover:text-white transition-all duration-300 -left-6 top-1/2 -translate-y-1/2" />
+        <CarouselNext className="bg-white border-2 border-gray-300 text-gray-700 hover:bg-[#2E8B57] hover:border-[#2E8B57] hover:text-white transition-all duration-300 -right-6 top-1/2 -translate-y-1/2" />
       </Carousel>
     </motion.div>
   );
@@ -135,14 +168,14 @@ export default function MusicPage() {
           <CarouselSection
             title="Playlists"
             items={playlists}
-            seeAllLink="/playlists"
+            seeAllLink="https://open.spotify.com/user/x3zc0sdr8mdvs4b7uzqxqdnnf?si=64880b5504514516"
             delay={0.2}
           />
 
           <CarouselSection
             title="Mixes"
             items={mixes}
-            seeAllLink="/mixes"
+            seeAllLink="https://soundcloud.com/samplechief"
             delay={0.4}
           />
         </div>
