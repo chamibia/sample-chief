@@ -40,8 +40,8 @@ export default function Navbar() {
         : isContact
           ? "bg-[#dcf7cf]"
           : isMusic
-          ? "bg-[#dcf7cf]"
-          : "bg-white";
+            ? "bg-[#dcf7cf]"
+            : "bg-white";
 
   const textColor = isHome && !isScrolled ? "text-white" : "text-gray-800";
 
@@ -52,60 +52,60 @@ export default function Navbar() {
     rounded-b-2xl
   `;
 
-  const links = ["ABOUT", "EVENTS", "MUSIC","CONTACT"];
+  const links = ["ABOUT", "EVENTS", "MUSIC", "CONTACT"];
 
   return (
-    <header className={headerClasses}>
-      <div className="relative flex items-center justify-center mx-auto px-6">
-        {/* Mobile menu toggle */}
-        <button
-          className="md:hidden absolute left-4 top-1/2 -translate-y-1/2 p-2"
-          onClick={() => setIsMenuOpen((o) => !o)}
-        >
-          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+  <header className={headerClasses}>
+    <div className="relative flex items-center justify-center mx-auto px-6">
+      {/* Mobile menu toggle */}
+      <button
+        className="md:hidden absolute left-4 top-1/2 -translate-y-1/2 p-2"
+        onClick={() => setIsMenuOpen((o) => !o)}
+      >
+        {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+      </button>
 
-        {/* Logo */}
-        <Link href="/" className="transition-transform hover:scale-105 hover:-rotate-12">
-          <Image
-            src={logo}
-            alt="Sample Chief Logo"
-            width={isScrolled ? 120 : 160}
-            height={isScrolled ? 120 : 160}
-            className="transition-all duration-300 ease-in-out"
-          />
-        </Link>
+      {/* Logo */}
+      <Link href="/" className="transition-transform hover:scale-105 hover:-rotate-12">
+        <Image
+          src={logo}
+          alt="Sample Chief Logo"
+          width={isScrolled ? 120 : 160}
+          height={isScrolled ? 120 : 160}
+          className="transition-all duration-300 ease-in-out"
+        />
+      </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex absolute right-6 top-1/2 -translate-y-1/2">
-          <NavigationMenu>
-            <NavigationMenuList className="flex space-x-6">
-              {links.map((label) => {
-                const path = `/${label.toLowerCase()}`;
-                const isActive = pathname === path;
+      {/* Desktop nav */}
+      <nav className="hidden md:flex absolute right-6 top-1/2 -translate-y-1/2">
+        <NavigationMenu>
+          <NavigationMenuList className="flex space-x-6">
+            {links.map((label) => {
+              const path = `/${label.toLowerCase()}`;
+              const isActive = pathname === path;
 
-                return (
-                  <NavigationMenuItem key={label}>
-                    <Link href={path} legacyBehavior passHref>
-                      <NavigationMenuLink
-                        className={`${navigationMenuTriggerStyle()} font-radikal font-bold text-[1rem] transition-all duration-200 ease-out transform hover:scale-105 ${isHome && !isScrolled ? "text-white" : isActive ? "text-white" : "text-gray-800"
-                          }`}
-                      >
-                        {label}
-                      </NavigationMenuLink>
-                    </Link>
-                  </NavigationMenuItem>
-                );
-              })}
-            </NavigationMenuList>
-          </NavigationMenu>
-        </nav>
-      </div>
+              return (
+                <NavigationMenuItem key={label}>
+                  <Link href={path} legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={`${navigationMenuTriggerStyle()} font-radikal font-bold text-[1rem] transition-all duration-200 ease-out transform hover:scale-105 ${
+                        isHome && !isScrolled ? "text-white" : isActive ? "text-white" : "text-gray-800"
+                      }`}
+                    >
+                      {label}
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              );
+            })}
+          </NavigationMenuList>
+        </NavigationMenu>
+      </nav>
 
-      {/* Mobile nav dropdown */}
+      {/* Mobile nav dropdown - positioned absolutely within header */}
       {isMenuOpen && (
-        <div className={`md:hidden mt-3 px-6 ${backgroundColor}`}>
-          <nav className="flex flex-col items-center space-y-3">
+        <div className="md:hidden absolute top-full left-0 right-0 z-50">
+          <nav className="flex flex-col items-center space-y-3 px-6 py-3">
             {links.map((label) => {
               const path = `/${label.toLowerCase()}`;
               const isActive = pathname === path;
@@ -114,8 +114,7 @@ export default function Navbar() {
                 <Link
                   key={label}
                   href={path}
-                  className={`block w-full text-center font-radikal font-bold text-base uppercase py-2 px-4 transition duration-150 rounded ${isHome && !isScrolled ? "text-white" : isActive ? "text-white" : "text-gray-800 hover:text-gray-600"
-                    }`}
+                  className="block w-full text-center font-radikal font-bold text-base uppercase py-2 px-4 transition duration-150 rounded text-white hover:text-gray-300"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {label}
@@ -125,6 +124,7 @@ export default function Navbar() {
           </nav>
         </div>
       )}
-    </header>
-  );
+    </div>
+  </header>
+);
 }

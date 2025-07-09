@@ -118,23 +118,25 @@ export default function MusicPage() {
       <Carousel className="w-full" opts={{ slidesToScroll: 3 }}>
         <CarouselContent className="-ml-2 md:-ml-4">
           {items.map((item) => (
-            <CarouselItem key={item.id} className="pl-2 md:pl-4 basis-1/3">
+<CarouselItem key={item.id} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3">
               <Link href={item.link} className="group block rounded-2xl overflow-hidden">
                 <Card className="bg-transparent border-0 cursor-pointer">
                   <CardContent className="p-0">
-                    <div className="aspect-square relative">
-                      <img
-                        src={item.image}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                      <div className="absolute top-4 left-4">
-                        <h3 className="font-radikal font-bold text-white text-lg">{item.title}</h3>
-                      </div>
-                      <div className="absolute bottom-4 left-4">
-                        <p className="font-radikal font-light text-white text-sm">{item.subtitle}</p>
-                      </div>
-                    </div>
+                   <div className="aspect-square relative">
+  <img
+    src={item.image}
+    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+  />
+    <div className="absolute inset-0 bg-neutral-700/30 group-hover:opacity-0 transition-opacity duration-500 z-10" />
+  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-20" />
+
+  <div className="absolute top-4 left-4 z-30">
+    <h3 className="font-radikal font-bold text-white text-lg">{item.title}</h3>
+  </div>
+  <div className="absolute bottom-4 left-4 z-30">
+    <p className="font-radikal font-light text-white text-sm">{item.subtitle}</p>
+  </div>
+</div>
                   </CardContent>
                 </Card>
               </Link>
@@ -168,7 +170,7 @@ export default function MusicPage() {
           <CarouselSection
             title="Playlists"
             items={playlists}
-            seeAllLink="https://open.spotify.com/user/x3zc0sdr8mdvs4b7uzqxqdnnf?si=64880b5504514516"
+            seeAllLink="https://open.spotify.com/user/x3zc0sdr8mdvs4b7uzqxqdnnf/playlists"
             delay={0.2}
           />
 
@@ -185,5 +187,5 @@ export default function MusicPage() {
       <div className="pb-24 md:pb-16"
         style={{ paddingBottom: "calc(6rem + env(safe-area-inset-bottom))" }} />
     </div>
-  );
+  )
 }
