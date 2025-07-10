@@ -16,46 +16,88 @@ export default function MusicPage() {
   const playlists = [
     {
       id: 1,
-      image: '/assets/womens_samples.jpg',
-      link: '/playlist/',
-      title: 'Motherland Magic',
-      subtitle: 'Women in sound'
+      image: '/assets/amapiano.avif',
+      link: 'https://open.spotify.com/playlist/6WsIf9FtJQ3xX7ksYXHznq',
+      title: 'Amapiano Anthems',
+      subtitle: 'Log drums. Soul. Street heat. The biggest Amapiano tracks, all here'
     },
     {
       id: 2,
-      image: '/assets/guitar-music.webp',
-      link: '/playlist/',
-      title: 'At The Funktion',
-      subtitle: 'Sounds of the diaspora'
+      image: '/assets/guitar.webp',
+      link: 'https://open.spotify.com/playlist/7KlCMmUFJVdGfhZolbst3n',
+      title: 'Strings of Africa',
+      subtitle: 'Timeless riffs and rhythms — African guitar classics from coast to coast'
     },
     {
       id: 3,
-      image: '/assets/kwaito.jpg',
-      link: 'playlist',
-      title: 'Desert Blues',
-      subtitle: 'Malian guitar'
+      image: '/assets/divas.jpg',
+      link: 'https://open.spotify.com/playlist/4tpdZBRLlf8jZcO0y1gUuD',
+      title: 'Disco Divas',
+      subtitle: 'Dancefloor magic from the queens of African disco and funk'
     },
     {
       id: 4,
-      image: '/assets/makossa.jpg',
-      link: 'playlists',
-      title: 'Amapiano Anthems',
-      subtitle: 'Sounds of South Africa'
+      image: '/assets/kwaito.jpg',
+      link: 'https://open.spotify.com/playlist/7chMRFAkUlghZhq5yuQ88j',
+      title: 'Kwaito Klassics',
+      subtitle: 'Trompies, Alaska, Brothers of Peace and more - Kwaito’s golden era lives here'
     },
     {
       id: 5,
-      image: '/assets/uncle-waffles.avif',
-      link: 'playlists',
-      title: 'Global Grooves',
-      subtitle: 'Internationally known'
+      image: '/assets/retro.jpeg',
+      link: 'https://open.spotify.com/playlist/5xJldtAX9Ss9iNvZlHhQOl',
+      title: 'Global Retro SA Pop',
+      subtitle: 'Neon nights and township vibes. Feel the nostalgia of SA bubblegum pop'
     },
     {
       id: 6,
       image: '/assets/wassolou.jpg',
-      link: 'playlists',
-      title: 'Wassoulou',
-      subtitle: 'Sounds of Wassoulou'
-    }
+      link: 'https://open.spotify.com/playlist/6PZXfm7wG56T6s4tnvllBL',
+      title: 'Women of Wassoulou',
+      subtitle: 'Powerful voices and ancient rhythms from Mali and Senegal’s Wassoulou women'
+    },
+    {
+      id: 7,
+      image: '/assets/connecting.png',
+      link: 'https://open.spotify.com/playlist/6PZXfm7wG56T6s4tnvllBL',
+      title: 'Connecting Continents',
+      subtitle: 'Past to present, Africa to world . A musical journey curated by Sample Chief x Holt Renfrew.'
+    },
+    {
+      id: 8,
+      image: '/assets/wassolou.jpg',
+      link: 'https://open.spotify.com/playlist/3mrVbtIitb4TtYFQz9MBJq?si=X4Thj_JATkK5px3en1w3WQ',
+      title: 'Feeling Flute-y?',
+      subtitle: 'The finest of African flute sounds'
+    },
+    {
+      id: 9,
+      image: '/assets/wassolou.jpg',
+      link: 'https://open.spotify.com/playlist/3LeTfzqHKdRHO34MPIgJgF',
+      title: '‘07 Naija',
+      subtitle: '15 years later, these 2007 Naija hits stood the test of time'
+    },
+     {
+      id: 10,
+      image: '/assets/village.PNG',
+      link: 'https://open.spotify.com/playlist/4g3AqxygO3j4HwSkhXtLfP',
+      title: 'Village Boogie! 🪩',
+      subtitle: 'African funk and disco tracks for the soul, named after our flagship event'
+    },
+    {
+      id: 11,
+      image: '/assets/fela.jpeg',
+      link: 'https://open.spotify.com/playlist/2pvfeJ0kEyEkV7tfKfvU0f',
+      title: 'The Fela Effect',
+      subtitle: 'Fela’s classics and the tracks they inspired'
+    },
+     {
+      id: 12,
+      image: '/assets/fela.jpeg',
+      link: 'https://open.spotify.com/user/x3zc0sdr8mdvs4b7uzqxqdnnf/playlists',
+      title: 'Explore More',
+      subtitle: 'Check out all our playlists'
+    },
   ];
 
   const mixes = [
