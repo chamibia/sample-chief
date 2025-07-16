@@ -30,6 +30,7 @@ export default function Navbar() {
   const isEvents = pathname === "/events"
   const isMusic = pathname === "/music"
   const isContact = pathname === "/contact"
+  const isShop = pathname === "/shop"
 
   const backgroundColor = isHome
     ? "bg-transparent"
@@ -40,6 +41,8 @@ export default function Navbar() {
         : isContact
           ? "bg-[#dcf7cf]"
           : isMusic
+            ? "bg-[#dcf7cf]"
+            : isShop 
             ? "bg-[#dcf7cf]"
             : "bg-white";
 
