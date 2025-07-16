@@ -76,14 +76,6 @@ export default function About() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <div
-       className={`overflow-hidden bg-[#ff6139] rounded-b-2xl transition-all duration-300 ${
-        showBanner ? "h-auto" : "h-0"
-      }`}
-      >
-        <div className="w-full mx-auto py-8 px-4 md:py-14 md:px-6" />
-      </div>
-
       <div className="flex-1 w-full px-5 md:px-9 text-gray-800 pt-20">
         <motion.div
           className="font-radikal font-normal text-[1.8rem] md:text-[3.0rem] leading-[1.2] mb-4 md:mb-8 pb-4 md:pb-12 lg:w-4/5"
@@ -99,21 +91,21 @@ export default function About() {
           </span>
         </motion.div>
         <motion.div
-  variants={staggerContainer}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, amount: 0.2 }}
->
-  {paragraphs.map((p, idx) => (
-    <motion.p
-      key={idx}
-      variants={sectionVariants}
-      className="font-radikal font-light mb-8 leading-relaxed text-base md:text-lg lg:text-xl text-gray-700"
-    >
-      {p}
-    </motion.p>
-  ))}
-</motion.div>
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {paragraphs.map((p, idx) => (
+            <motion.p
+              key={idx}
+              variants={sectionVariants}
+              className="font-radikal font-light mb-8 leading-relaxed text-base md:text-lg lg:text-xl text-gray-700"
+            >
+              {p}
+            </motion.p>
+          ))}
+        </motion.div>
       </div>
       <div className="mt-16 px-6">
         <motion.div
@@ -143,8 +135,8 @@ export default function About() {
       </div>
 
       {/* Fixed bottom spacing for mobile */}
-      <div className="pb-24 md:pb-16" 
-           style={{ paddingBottom: "calc(6rem + env(safe-area-inset-bottom))" }} />
+      <div className="pb-24 md:pb-16"
+        style={{ paddingBottom: "calc(6rem + env(safe-area-inset-bottom))" }} />
     </div>
   )
 }
