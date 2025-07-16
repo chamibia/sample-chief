@@ -72,14 +72,14 @@ export default function MusicPage() {
     },
     {
       id: 9,
-      image: '/assets/wassolou.jpg',
+      image: '/assets/07-tracks.jpg',
       link: 'https://open.spotify.com/playlist/3LeTfzqHKdRHO34MPIgJgF',
       title: '‘07 Naija',
       subtitle: '15 years later, these 2007 Naija hits stood the test of time'
     },
      {
       id: 10,
-      image: '/assets/village.PNG',
+      image: '/assets/village-boogie.png',
       link: 'https://open.spotify.com/playlist/4g3AqxygO3j4HwSkhXtLfP',
       title: 'Village Boogie! 🪩',
       subtitle: 'African funk and disco tracks for the soul, named after our flagship event'
@@ -109,7 +109,7 @@ export default function MusicPage() {
     { id: 6, image: '/assets/martinses.png', link: 'https://soundcloud.com/samplechief/radio-ep-5-w-martinses-razaqeltoro-on-n10as?si=00ba9a37a79c4a44959cb889e54829b4&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', title: 'Martinses & Razaq El Toro on Sample Chief Radio', subtitle: '' },
     { id: 7, image: '/assets/symposium.jpg', link: 'https://soundcloud.com/samplechief/sunday-symposium-panel-talk-at-the-standard-london?si=2a0d98bf09a54a6bb1c544cd7f80c13a&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', title: 'Sunday Symposium Panel Talk', subtitle: '' },
     { id: 8, image: '/assets/kazeem.jpg', link: 'https://soundcloud.com/samplechief/samplechief-radio-w-kazeemkuteyi-milesfreedom-on-n10as?si=02a154bcc68148b99fc2d2a58ed9cbdf&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', title: 'Kazeem Kuteyi x Miles Freedom on Sample Chief Radio', subtitle: '' },
-    { id: 9, image: '', link: '/mix/9', title: 'Explore More', subtitle: 'Check out all our mixes' }
+    { id: 9, image: '/assets/explore-more.jpg', link: 'https://soundcloud.com/samplechief', title: 'Explore More', subtitle: 'Check out all our mixes' }
   ];
 
   const sectionVariants = {
