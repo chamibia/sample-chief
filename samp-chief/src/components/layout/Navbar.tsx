@@ -114,7 +114,7 @@ export default function Navbar() {
                 <Link
                   key={label}
                   href={path}
-                  className="block w-full text-center font-radikal font-bold text-base uppercase py-1 px-3 transition duration-150 rounded-lg text-white hover:text-gray-300"
+                  className="block w-full text-center font-radikal font-bold text-sm md:text-base uppercase py-1 px-3 transition duration-150 rounded-lg text-white hover:text-gray-300"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {label}
