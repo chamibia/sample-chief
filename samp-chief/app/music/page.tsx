@@ -93,7 +93,7 @@ export default function MusicPage() {
     },
      {
       id: 12,
-      image: '/assets/explore.png',
+      image: '/assets/explore-more.jpg',
       link: 'https://open.spotify.com/user/x3zc0sdr8mdvs4b7uzqxqdnnf/playlists',
       title: 'Explore More',
       subtitle: 'Check out all our playlists'
@@ -109,7 +109,7 @@ export default function MusicPage() {
     { id: 6, image: '/assets/martinses.png', link: 'https://soundcloud.com/samplechief/radio-ep-5-w-martinses-razaqeltoro-on-n10as?si=00ba9a37a79c4a44959cb889e54829b4&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', title: 'Martinses & Razaq El Toro on Sample Chief Radio', subtitle: '' },
     { id: 7, image: '/assets/symposium.jpg', link: 'https://soundcloud.com/samplechief/sunday-symposium-panel-talk-at-the-standard-london?si=2a0d98bf09a54a6bb1c544cd7f80c13a&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', title: 'Sunday Symposium Panel Talk', subtitle: '' },
     { id: 8, image: '/assets/kazeem.jpg', link: 'https://soundcloud.com/samplechief/samplechief-radio-w-kazeemkuteyi-milesfreedom-on-n10as?si=02a154bcc68148b99fc2d2a58ed9cbdf&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', title: 'Kazeem Kuteyi x Miles Freedom on Sample Chief Radio', subtitle: '' },
-    { id: 9, image: '/assets/explore-more.jpg', link: 'https://soundcloud.com/samplechief', title: 'Explore More', subtitle: 'Check out all our mixes' }
+    { id: 9, image: '/assets/explore.png', link: 'https://soundcloud.com/samplechief', title: 'Explore More', subtitle: 'Check out all our mixes' }
   ];
 
   const sectionVariants = {
@@ -163,7 +163,7 @@ export default function MusicPage() {
         <CarouselContent className="-ml-2 md:-ml-4">
           {items.map((item) => (
 <CarouselItem key={item.id} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3">
-              <Link href={item.link} className="group block rounded-2xl overflow-hidden">
+              <Link href={item.link} target="_blank" rel='noopener noreferrer' className="group block rounded-2xl overflow-hidden">
                 <Card className="bg-transparent border-0 cursor-pointer">
                   <CardContent className="p-0">
                    <div className="aspect-square relative">

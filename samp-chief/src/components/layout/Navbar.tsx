@@ -104,7 +104,7 @@ export default function Navbar() {
 
       {/* Mobile nav dropdown - positioned absolutely within header */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 z-50">
+        <div className={`md:hidden absolute top-full left-0 right-0 z-50 ${backgroundColor} rounded-b-2xl overflow-hidden`}>
           <nav className="flex flex-col items-center space-y-3 px-6 py-3">
             {links.map((label) => {
               const path = `/${label.toLowerCase()}`;
@@ -114,7 +114,7 @@ export default function Navbar() {
                 <Link
                   key={label}
                   href={path}
-                  className="block w-full text-center font-radikal font-bold text-base uppercase py-2 px-4 transition duration-150 rounded text-white hover:text-gray-300"
+                  className="block w-full text-center font-radikal font-bold text-base uppercase py-1 px-3 transition duration-150 rounded-lg text-white hover:text-gray-300"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {label}
