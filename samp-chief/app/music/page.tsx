@@ -54,14 +54,14 @@ export default function MusicPage() {
       image: '/assets/wassolou.jpg',
       link: 'https://open.spotify.com/playlist/6PZXfm7wG56T6s4tnvllBL',
       title: 'Women of Wassoulou',
-      subtitle: 'Powerful voices and ancient rhythms from Mali and Senegal’s Wassoulou women'
+      subtitle: 'Powerful voices and ancient rhythms from West Africa’s Wassoulou women'
     },
     {
       id: 7,
       image: '/assets/connecting.png',
       link: 'https://open.spotify.com/playlist/6PZXfm7wG56T6s4tnvllBL',
       title: 'Connecting Continents',
-      subtitle: 'Past to present, Africa to world . A musical journey curated by Sample Chief x Holt Renfrew.'
+      subtitle: 'A musical journey curated by Sample Chief x Holt Renfrew.'
     },
     {
       id: 8,
@@ -75,7 +75,7 @@ export default function MusicPage() {
       image: '/assets/07-tracks.jpg',
       link: 'https://open.spotify.com/playlist/3LeTfzqHKdRHO34MPIgJgF',
       title: '‘07 Naija',
-      subtitle: '15 years later, these 2007 Naija hits stood the test of time'
+      subtitle: '15 years later, these 2007 Naija hits have stood the test of time'
     },
      {
       id: 10,
