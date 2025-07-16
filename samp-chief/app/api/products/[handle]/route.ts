@@ -46,18 +46,13 @@ const GET_PRODUCT = /* GraphQL */ `
   }
 `;
 
-interface RouteParams {
-  params: Promise<{ handle: string }> | { handle: string };
-}
-
 export async function GET(
   _req: Request,
-  context: RouteParams
+  { params }: { params: Promise<{ handle: string }> }
 ) {
   try {
-    // Handle both Promise and non-Promise params for Next.js compatibility
-    const params = await Promise.resolve(context.params);
-    const { handle } = params;
+    // Await the params Promise
+    const { handle } = await params;
 
     if (!handle || typeof handle !== 'string') {
       return NextResponse.json(
