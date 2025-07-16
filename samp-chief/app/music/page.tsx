@@ -65,7 +65,7 @@ export default function MusicPage() {
     },
     {
       id: 8,
-      image: '/assets/wassolou.jpg',
+      image: '/assets/feeling-flute.jpg',
       link: 'https://open.spotify.com/playlist/3mrVbtIitb4TtYFQz9MBJq?si=X4Thj_JATkK5px3en1w3WQ',
       title: 'Feeling Flute-y?',
       subtitle: 'The finest of African flute sounds'
@@ -93,7 +93,7 @@ export default function MusicPage() {
     },
      {
       id: 12,
-      image: '/assets/fela.jpeg',
+      image: '/assets/explore.png',
       link: 'https://open.spotify.com/user/x3zc0sdr8mdvs4b7uzqxqdnnf/playlists',
       title: 'Explore More',
       subtitle: 'Check out all our playlists'
@@ -101,15 +101,15 @@ export default function MusicPage() {
   ];
 
   const mixes = [
-    { id: 1, image: '/assets/four-people.png', link: 'https://on.soundcloud.com/WYrFVHX5eW8u3JNURR', title: 'Live at Pianos', subtitle: 'NYC' },
-    { id: 2, image: '/assets/no-signal.png', link: 'https://on.soundcloud.com/H91AkEKJPwyjWAIZHB', title: 'No Signal', subtitle: 'Radio' },
-    { id: 3, image: '/assets/two-animation.png', link: 'https://on.soundcloud.com/QFYTemWrIBJcHFmcWR', title: 'Everyday People', subtitle: 'Live Set' },
-    { id: 4, image: '/assets/two-guys.png', link: 'https://on.soundcloud.com/EAYjbpsE9pIAcO9cp8', title: 'The Lot Radio', subtitle: 'Live Set' },
-    { id: 5, image: '/assets/two-people.png', link: 'https://on.soundcloud.com/G2DNi8ASzp7Dj25Qfj', title: 'NTS Radio', subtitle: 'Live Set' },
-    { id: 6, image: '/assets/yellow-top.png', link: 'https://on.soundcloud.com/FXPqh37GyDFvqSH5hb', title: 'The Getaway', subtitle: 'Live Set' },
-    { id: 7, image: '/assets/home9.webp', link: '/mix/7', title: 'Boiler Room', subtitle: 'London' },
-    { id: 8, image: '/assets/home10.webp', link: '/mix/8', title: 'Soho Radio', subtitle: 'London' },
-    { id: 9, image: '/assets/london_june_19.jpeg', link: '/mix/9', title: 'Recess', subtitle: 'Live Set' }
+    { id: 1, image: '/assets/haruna.png', link: 'https://soundcloud.com/samplechief/sample-chief-selekta-w-haruna?si=25a8dbd70e2b4fe4858efd43d2b72e22&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', title: 'Haruna on Sample Chief Radio', subtitle: '' },
+    { id: 2, image: '/assets/village-b.png', link: 'https://soundcloud.com/samplechief/village-boogie-5-toronto?si=4d643c310415427aa4ea562e588ba79a&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', title: 'Village Boogie May 2024 mix', subtitle: '' },
+    { id: 3, image: '/assets/michelle.PNG', link: 'https://soundcloud.com/samplechief/sample-chief-radio-w-michelle-on-n10as?si=6422569a33b94db187c403816497dbe1&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', title: 'Michelle on Sample Chief Radio', subtitle: '' },
+    { id: 4, image: '/assets/ore.jpg', link: 'https://soundcloud.com/samplechief/highlife-and-sunshine-show-w-ore?si=6bec083352ae431bb1398776526758d1&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', title: 'Nigerian Disco Mix with Orè (NTS Radio)', subtitle: '' },
+    { id: 5, image: '/assets/fro.png', link: 'https://soundcloud.com/samplechief/sample-chief-radio-on-balamii-w-kisa-tryb?si=f414964736a445ff997e942e9243dcd6&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', title: 'Afro-Grooves with Kisa (NTS Radio)', subtitle: '' },
+    { id: 6, image: '/assets/martinses.png', link: 'https://soundcloud.com/samplechief/radio-ep-5-w-martinses-razaqeltoro-on-n10as?si=00ba9a37a79c4a44959cb889e54829b4&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', title: 'Martinses & Razaq El Toro on Sample Chief Radio', subtitle: '' },
+    { id: 7, image: '/assets/symposium.jpg', link: 'https://soundcloud.com/samplechief/sunday-symposium-panel-talk-at-the-standard-london?si=2a0d98bf09a54a6bb1c544cd7f80c13a&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', title: 'Sunday Symposium Panel Talk', subtitle: '' },
+    { id: 8, image: '/assets/kazeem.jpg', link: 'https://soundcloud.com/samplechief/samplechief-radio-w-kazeemkuteyi-milesfreedom-on-n10as?si=02a154bcc68148b99fc2d2a58ed9cbdf&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', title: 'Kazeem Kuteyi x Miles Freedom on Sample Chief Radio', subtitle: '' },
+    { id: 9, image: '', link: '/mix/9', title: 'Explore More', subtitle: 'Check out all our mixes' }
   ];
 
   const sectionVariants = {
@@ -151,6 +151,8 @@ export default function MusicPage() {
         </h2>
         <Link
           href={seeAllLink}
+          target='_blank'
+          rel='noopener noreferrer'
           className="font-radikal font-light leading-relaxed text-base text-[#2E8B57] hover:underline transition-all duration-300"
         >
           See all
@@ -170,20 +172,22 @@ export default function MusicPage() {
     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
   />
     <div className="absolute inset-0 bg-neutral-700/30 group-hover:opacity-0 transition-opacity duration-500 z-10" />
-  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-20" />
+  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent z-20" />
 
   <div className="absolute top-4 left-4 z-30">
     <h3 className="font-radikal font-bold text-white text-lg">{item.title}</h3>
   </div>
   <div className="absolute bottom-4 left-4 z-30">
-    <p className="font-radikal font-light text-white text-sm">{item.subtitle}</p>
+    <p className="font-radikal font-light text-white text-sm pr-4">
+      {item.subtitle}
+      </p>
   </div>
 </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            </CarouselItem>
-          ))}
+  </CardContent>
+    </Card>
+    </Link>
+    </CarouselItem>
+    ))}
         </CarouselContent>
         <CarouselPrevious className="bg-white border-2 border-gray-300 text-gray-700 hover:bg-[#2E8B57] hover:border-[#2E8B57] hover:text-white transition-all duration-300 -left-6 top-1/2 -translate-y-1/2" />
         <CarouselNext className="bg-white border-2 border-gray-300 text-gray-700 hover:bg-[#2E8B57] hover:border-[#2E8B57] hover:text-white transition-all duration-300 -right-6 top-1/2 -translate-y-1/2" />
