@@ -102,7 +102,7 @@ export default function MusicPage() {
 
   const mixes = [
     { id: 1, image: '/assets/haruna.png', link: 'https://soundcloud.com/samplechief/sample-chief-selekta-w-haruna?si=25a8dbd70e2b4fe4858efd43d2b72e22&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', title: 'Haruna on Sample Chief Radio', subtitle: '' },
-    { id: 2, image: '/assets/village-b.png', link: 'https://soundcloud.com/samplechief/village-boogie-5-toronto?si=4d643c310415427aa4ea562e588ba79a&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', title: 'Village Boogie May 2024 mix', subtitle: '' },
+    { id: 2, image: '/assets/village-b.PNG', link: 'https://soundcloud.com/samplechief/village-boogie-5-toronto?si=4d643c310415427aa4ea562e588ba79a&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', title: 'Village Boogie May 2024 mix', subtitle: '' },
     { id: 3, image: '/assets/michelle.PNG', link: 'https://soundcloud.com/samplechief/sample-chief-radio-w-michelle-on-n10as?si=6422569a33b94db187c403816497dbe1&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', title: 'Michelle on Sample Chief Radio', subtitle: '' },
     { id: 4, image: '/assets/ore.jpg', link: 'https://soundcloud.com/samplechief/highlife-and-sunshine-show-w-ore?si=6bec083352ae431bb1398776526758d1&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', title: 'Nigerian Disco Mix with Orè (NTS Radio)', subtitle: '' },
     { id: 5, image: '/assets/fro.png', link: 'https://soundcloud.com/samplechief/sample-chief-radio-on-balamii-w-kisa-tryb?si=f414964736a445ff997e942e9243dcd6&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', title: 'Afro-Grooves with Kisa (NTS Radio)', subtitle: '' },
@@ -163,7 +163,7 @@ export default function MusicPage() {
         <CarouselContent className="-ml-2 md:-ml-4">
           {items.map((item) => (
 <CarouselItem key={item.id} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3">
-              <Link href={item.link} target="_blank" rel='noopener noreferrer' className="group block rounded-2xl overflow-hidden">
+              <a href={item.link} target="_blank" rel='noopener noreferrer' className="group block rounded-2xl overflow-hidden">
                 <Card className="bg-transparent border-0 cursor-pointer">
                   <CardContent className="p-0">
                    <div className="aspect-square relative">
@@ -185,7 +185,7 @@ export default function MusicPage() {
 </div>
   </CardContent>
     </Card>
-    </Link>
+    </a>
     </CarouselItem>
     ))}
         </CarouselContent>
