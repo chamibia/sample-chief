@@ -15,6 +15,7 @@
     "@radix-ui/react-navigation-menu": "^1.2.6",
     "@radix-ui/react-select": "^2.2.2",
     "@radix-ui/react-slot": "^1.2.3",
+    "@shopify/storefront-api-client": "^1.0.8",
     "add": "^2.0.6",
     "carousel": "^0.0.3",
     "class-variance-authority": "^0.7.1",

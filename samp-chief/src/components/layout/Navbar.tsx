@@ -52,7 +52,7 @@ export default function Navbar() {
     rounded-b-2xl
   `;
 
-  const links = ["ABOUT", "EVENTS", "MUSIC", "CONTACT"];
+  const links = ["ABOUT", "EVENTS", "MUSIC", "SHOP", "CONTACT"];
 
   return (
   <header className={headerClasses}>
