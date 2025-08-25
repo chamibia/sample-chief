@@ -64,7 +64,7 @@ export default function Navbar() {
       <div className="relative flex mx-auto px-6">
         {/* Mobile menu toggle */}
         <button
-          className="md:hidden absolute left-4 top-1/2 -translate-y-1/2 p-2"
+          className="md:hidden absolute right-4 top-1/2 -translate-y-1/2 p-2"
           onClick={() => setIsMenuOpen((o) => !o)}
         >
           {isMenuOpen ? (
