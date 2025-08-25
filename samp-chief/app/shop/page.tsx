@@ -126,7 +126,7 @@ export default async function ShopPage() {
         <div className="max-w-7xl mx-auto">
           {/* Header Section */}
           <div className="text-center mb-16">
-            <h1 className="font-radikal font-light leading-relaxed text-5xl md:text-6xl mb-8 tracking-wider text-gray-800">
+            <h1 className="font-radikal font-light leading-relaxed text-5xl md:text-6xl mb-8 tracking-wider text-[#202020]">
               Shop
             </h1>
             <p className="font-radikal font-light mb-12 leading-relaxed text-lg md:text-xl lg:text-2xl text-[#202020] max-w-3xl mx-auto">
@@ -136,11 +136,11 @@ export default async function ShopPage() {
           </div>
 
           {/* Products Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 pb-16">
-            {edges.map(({ node }) => (
-              <ProductCard key={node.id} node={node} />
-            ))}
-          </div>
+         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12 xl:gap-16 pb-24">
+  {edges.map(({ node }) => (
+    <ProductCard key={node.id} node={node} />
+  ))}
+</div>
         </div>
       </div>
     </div>

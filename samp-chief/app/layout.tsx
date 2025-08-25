@@ -9,16 +9,42 @@ import ClientLayout from "./ClientLayout";
 // ✅ add this
 import { CartProvider } from "@/components/CartProvider";
 
-export const metadata: Metadata = { /* ...unchanged... */ };
-export const viewport: Viewport = { /* ...unchanged... */ };
+export const metadata: Metadata = {
+  /* ...unchanged... */
+};
+export const viewport: Viewport = {
+  /* ...unchanged... */
+};
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <head>
-        <link rel="preload" href="/fonts/AlteHaasGroteskRegular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/AlteHaasGroteskBold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/RuderPlakatLL.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+        <link
+          rel="preload"
+          href="/fonts/AlteHaasGroteskRegular.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/AlteHaasGroteskBold.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/RuderPlakatLL.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className="antialiased font-sans">
         {/* ✅ Cart context available everywhere */}
