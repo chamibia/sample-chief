@@ -122,7 +122,7 @@ export default async function ShopPage() {
 
   return (
     <div className="min-h-screen text-gray-800">
-      <div className="flex-1 w-full px-5 md:px-9 pt-20">
+      <div className="flex-1 w-full px-5 md:px-9 pt-10">
         <div className="max-w-7xl mx-auto">
           {/* Header Section */}
           <div className="text-center mb-16">
