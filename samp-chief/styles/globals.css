@@ -1,62 +1,63 @@
 @import "tailwindcss";
 
+/* Use WOFF2 later if you can, but TTF is OK */
 @font-face {
-  font-family: 'RadikalTrial';
-  src: url('/fonts/RadikalTrial-Black.otf')   format('opentype');
-  font-weight: 900;
+  font-family: 'RuderPlakatLL';
+  src: url('/fonts/RuderPlakatLL.ttf') format('truetype');
+  font-weight: 400; /* this file is a single cut—don't request other weights */
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'RadikalTrial';
-  src: url('/fonts/RadikalTrial-Light.otf')   format('opentype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'RadikalTrial';
-  src: url('/fonts/RadikalTrial-Medium.otf')  format('opentype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'RadikalTrial';
-  src: url('/fonts/RadikalTrial-Regular.otf') format('opentype');
+  font-family: 'AlteHaasGrotesk';
+  src: url('/fonts/AlteHaasGroteskRegular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'RadikalTrial';
-  src: url('/fonts/RadikalTrial-Bold.otf') format('opentype');
+  font-family: 'AlteHaasGrotesk';
+  src: url('/fonts/AlteHaasGroteskBold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
-@font-face {
-  font-family: 'RadikalTrial';
-  src: url('/fonts/RadikalTrial-BoldItalic.otf') format('opentype');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
 
-/* Mobile viewport height fixes */
-:root {
-  --vh: 1vh;
-  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
-}
-
+/* Default to Alte Haas for body; Ruder only where explicitly applied */
 html, body {
-  font-family: 'RadikalTrial', sans-serif;
+  font-family: 'AlteHaasGrotesk', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   height: 100%;
-  /* Prevent iOS Safari from bouncing */
   overscroll-behavior-y: none;
-  /* Prevent horizontal scrolling */
   overflow-x: hidden;
+  letter-spacing: 0.025em;
+
+  /* better rendering + no faux styles */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+  font-synthesis-weight: none;
+  font-synthesis-style: none;
 }
+
+/* Add relaxed letter spacing for better readability */
+.font-radikal {
+  font-family: 'RuderPlakatLL', sans-serif;
+  letter-spacing: 0.09em;
+}
+.font-alte {
+  font-family: 'AlteHaasGroteskRegular', sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 0.04em;
+}
+p {
+  letter-spacing: 0.025em;
+  line-height: 1.7;
+}
+
+/* Optional: tiny tracking for Ruder at display sizes */
+.font-ruder-tune { letter-spacing: 0.01em; }
 
 /* Dynamic viewport height support */
 @supports (height: 100dvh) {

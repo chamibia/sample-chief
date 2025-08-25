@@ -89,14 +89,13 @@ export default function NewsletterSignup() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h1 className="font-radikal font-light leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-gray-700">
+            <h1 className="font-radikal leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-[#202020]">
               Join the Community
             </h1>
-            <p className="font-radikal font-light mb-8 leading-relaxed text-base md:text-lg lg:text-xl text-gray-700">
-              We're a global collective. Our sounds travel across borders, each curation telling a story.
-              Join a tribe of music lovers, tastemakers, and cultural connectors shaping the next wave.
+            <p className="font-radikal font-light mb-8 leading-relaxed text-base md:text-lg lg:text-xl text-[#202020]">
+              Be part of a tribe of music lovers and tastemakers.
             </p>
-            <div className="w-16 h-1 bg-[#2E8B57] mx-auto rounded-full" />
+            <div className="w-16 h-1 bg-[#07693A] mx-auto rounded-full" />
           </motion.div>
 
           <motion.div
@@ -105,12 +104,12 @@ export default function NewsletterSignup() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
              {formStatus === "success" && (
-              <div className="mb-4 px-4 py-2 bg-[#2E8B57] text-white rounded text-center font-radikal font-light w-50 opacity-90">
+              <div className="mb-4 px-4 py-2 bg-[#07693A] text-white rounded text-center font-radikal font-light w-50 opacity-90">
                 {statusMessage}
               </div>
             )}
             {formStatus === "error" && (
-              <div className="mb-4 px-4 py-2 bg-red-100 text-red-800 rounded">
+              <div className="mb-4 px-4 py-2 bg-red-100 text-[#DA232A] rounded">
                 {statusMessage}
               </div>
             )}
@@ -125,7 +124,7 @@ export default function NewsletterSignup() {
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     required
-                    className="font-radikal font-normal leading-relaxed text-base w-full text-gray-700 bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#2E8B57] transition-colors duration-300 group-hover:border-gray-400"
+                    className="font-radikal font-normal leading-relaxed text-base w-full text-[#202020] bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#07693A] transition-colors duration-300 group-hover:border-gray-400"
                   />
                 </div>
                 <div className="relative group">
@@ -135,7 +134,7 @@ export default function NewsletterSignup() {
                     placeholder="Last Name"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    className="font-radikal font-normal leading-relaxed text-base w-full text-gray-700 bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#2E8B57] transition-colors duration-300 group-hover:border-gray-400"
+                    className="font-radikal font-normal leading-relaxed text-base w-full text-[#202020]bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#07693A] transition-colors duration-300 group-hover:border-gray-400"
                   />
                 </div>
                 <div className="relative group">
@@ -146,7 +145,7 @@ export default function NewsletterSignup() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                  className="font-radikal font-normal leading-relaxed text-base w-full text-gray-700 bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#2E8B57] transition-colors duration-300 group-hover:border-gray-400"
+                  className="font-radikal font-normal leading-relaxed text-base w-full text-[#202020] bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#07693A] transition-colors duration-300 group-hover:border-gray-400"
                   />
                 </div>
                 <div className="relative group">
@@ -155,7 +154,7 @@ export default function NewsletterSignup() {
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     required
-                    className="font-radikal font-normal leading-relaxed text-base w-full text-gray-700 bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#2E8B57] transition-colors duration-300 group-hover:border-gray-400"
+                    className="font-radikal font-normal leading-relaxed text-base w-full text-[#202020] bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#07693A] transition-colors duration-300 group-hover:border-gray-400"
                   >
                     <option value="" disabled className="bg-white">
                       Select Country *
@@ -175,7 +174,7 @@ export default function NewsletterSignup() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="font-radikal font-light leading-relaxed text-base bg-transparent border-2 border-gray-800 hover:bg-[#2E8B57] hover:border-[#2E8B57] hover:text-white rounded-full transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center px-6 py-3 text-gray-700"
+                  className="font-radikal font-light leading-relaxed text-base bg-transparent border-2 border-gray-800 hover:bg-[#202020] hover:border-[#202020] hover:text-white rounded-full transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center px-6 py-3 text-[#202020]"
                 >
                   {isSubmitting ? (
                     <span className="animate-pulse">Joining...</span>
@@ -196,19 +195,19 @@ export default function NewsletterSignup() {
               viewport={{ once: true, amount: 0.2 }}
               className="text-center mt-12 pt-8 border-t border-gray-200"
             >
-              <h3 className="font-radikal font-light leading-relaxed text-gray-700 text-xl mb-4">
+              <h3 className="font-radikal font-light leading-relaxed text-[#202020] text-xl mb-4">
                 Get in Touch
               </h3>
-              <p className="font-radikal font-light mb-6 leading-relaxed text-gray-700">
+              <p className="font-radikal font-light mb-6 leading-relaxed text-[#202020]">
                 Curious about what we do or want to collaborate? Hit us up — we’d love to hear from you.
               </p>
               <div className="flex justify-center items-center space-x-2">
-                <span className="font-radikal font-light leading-relaxed text-base text-gray-700">
+                <span className="font-radikal font-light leading-relaxed text-base text-[#202020]">
                   Email:
                 </span>
                 <a
                   href="mailto:contactus@samplechief.com"
-                  className="text-[#2E8B57] hover:underline transition-all duration-300 font-radikal font-light leading-relaxed text-base"
+                  className="text-[#07693A] hover:underline transition-all duration-300 font-radikal font-light leading-relaxed text-base"
                 >
                   contactus@samplechief.com
                 </a>

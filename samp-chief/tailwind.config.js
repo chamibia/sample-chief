@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+// tailwind.config.js
 module.exports = {
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
@@ -8,14 +8,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-      sans: ['RadikalTrial', 'sans-serif'], 
-      radikal: ['RadikalTrial', 'sans-serif'],
-      },
-      colors: {
-        border:      'hsl(var(--border))',
-        background:  'hsl(var(--background))',
-        foreground:  'hsl(var(--foreground))',
-        ring:        'hsl(var(--ring))',
+        // default body
+        sans: ['AlteHaasGrotesk', 'system-ui', 'sans-serif'],
+        // utilities
+        alte: ['AlteHaasGrotesk', 'system-ui', 'sans-serif'],
+        ruder: ['RuderPlakatLL', 'sans-serif'],
       },
     },
   },

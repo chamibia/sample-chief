@@ -77,7 +77,7 @@ export default function MusicPage() {
       title: '‘07 Naija',
       subtitle: '15 years later, these 2007 Naija hits have stood the test of time'
     },
-     {
+    {
       id: 10,
       image: '/assets/village-boogie.png',
       link: 'https://open.spotify.com/playlist/4g3AqxygO3j4HwSkhXtLfP',
@@ -91,7 +91,7 @@ export default function MusicPage() {
       title: 'The Fela Effect',
       subtitle: 'Fela’s classics and the tracks they inspired'
     },
-     {
+    {
       id: 12,
       image: '/assets/explore-more.jpg',
       link: 'https://open.spotify.com/user/x3zc0sdr8mdvs4b7uzqxqdnnf/playlists',
@@ -146,14 +146,14 @@ export default function MusicPage() {
       className="mb-12"
     >
       <div className="flex items-center justify-between mb-6">
-        <h2 className="font-radikal font-light leading-relaxed text-3xl md:text-4xl text-gray-700 tracking-wider">
+        <h2 className="font-radikal leading-relaxed text-3xl md:text-4xl text-[#202020] tracking-wider">
           {title}
         </h2>
         <Link
           href={seeAllLink}
           target='_blank'
           rel='noopener noreferrer'
-          className="font-radikal font-light leading-relaxed text-base text-[#2E8B57] hover:underline transition-all duration-300"
+          className="font-radikal font-light leading-relaxed text-base text-[#07693A] hover:underline transition-all duration-300"
         >
           See all
         </Link>
@@ -162,32 +162,32 @@ export default function MusicPage() {
       <Carousel className="w-full" opts={{ slidesToScroll: 3 }}>
         <CarouselContent className="-ml-2 md:-ml-4">
           {items.map((item) => (
-<CarouselItem key={item.id} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3">
+            <CarouselItem key={item.id} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3">
               <a href={item.link} target="_blank" rel='noopener noreferrer' className="group block rounded-2xl overflow-hidden">
                 <Card className="bg-transparent border-0 cursor-pointer">
                   <CardContent className="p-0">
-                   <div className="aspect-square relative">
-  <img
-    src={item.image}
-    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-  />
-    <div className="absolute inset-0 bg-neutral-700/30 group-hover:opacity-0 transition-opacity duration-500 z-10" />
-  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent z-20" />
+                    <div className="aspect-square relative">
+                      <img
+                        src={item.image}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-neutral-700/30 group-hover:opacity-0 transition-opacity duration-500 z-10" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent z-20" />
 
-  <div className="absolute top-4 left-4 z-30">
-    <h3 className="font-radikal font-bold text-white text-lg">{item.title}</h3>
-  </div>
-  <div className="absolute bottom-4 left-4 z-30">
-    <p className="font-radikal font-light text-white text-sm pr-4">
-      {item.subtitle}
-      </p>
-  </div>
-</div>
-  </CardContent>
-    </Card>
-    </a>
-    </CarouselItem>
-    ))}
+                      <div className="absolute top-4 left-4 z-30">
+                        <h3 className="font-radikal text-white text-lg">{item.title}</h3>
+                      </div>
+                      <div className="absolute bottom-4 left-4 z-30">
+                        <p className="font-radikal text-white text-sm pr-4">
+                          {item.subtitle}
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </a>
+            </CarouselItem>
+          ))}
         </CarouselContent>
         <CarouselPrevious className="hidden md:flex bg-white border-2 border-gray-300 text-gray-700 hover:bg-[#2E8B57] hover:border-[#2E8B57] hover:text-white transition-all duration-300 -left-6 top-1/2 -translate-y-1/2" />
         <CarouselNext className="hidden md:flex bg-white border-2 border-gray-300 text-gray-700 hover:bg-[#2E8B57] hover:border-[#2E8B57] hover:text-white transition-all duration-300 -right-6 top-1/2 -translate-y-1/2" />
@@ -205,11 +205,11 @@ export default function MusicPage() {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <h1 className="font-radikal font-light leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-gray-700">
-              Discover Music
+            <h1 className="font-radikal leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-[#202020]">
+              From Our Ears to Yours
             </h1>
-            <p className="font-radikal font-light mb-8 leading-relaxed text-base md:text-lg lg:text-xl text-gray-700 max-w-2xl mx-auto">
-              From curated playlists to exclusive mixes, explore sounds that move cultures and connect communities across the globe.
+            <p className="font-radikal leading-relaxed text-base md:text-lg lg:text-xl text-[#202020] max-w-2xl mx-auto">
+              Enjoy our selection of playlists and mixes, curated for every mood
             </p>
           </motion.div>
 
