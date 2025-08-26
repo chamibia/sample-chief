@@ -37,15 +37,15 @@ export default function Navbar() {
   const backgroundColor = isHome
     ? "bg-transparent"
     : isAbout
-    ? "bg-[#07693A]"
+    ? "bg-[#F8C722]"
     : isEvents
-    ? "bg-[#DA232A]"
+    ? "bg-[#F8C722]"
     : isContact
-    ? "bg-[#07693A]"
+    ? "bg-[#F8C722]"
     : isMusic
     ? "bg-[#F8C722]"
     : isShop
-    ? "bg-[#F07416]"
+    ? "bg-[#F8C722]"
     : "bg-white";
 
   const textColor = isHome && !isScrolled ? "text-white" : "text-gray-800";
@@ -82,7 +82,7 @@ export default function Navbar() {
           <Image
             src={logo}
             alt="Sample Chief Logo"
-            width={isScrolled ? 240 : 200}
+            width={isScrolled ? 220 : 200}
             height={isScrolled ? 140 : 160}
             className="transition-all duration-300 ease-in-out"
           />
@@ -159,7 +159,7 @@ export default function Navbar() {
               {/* Mobile Cart Link */}
               <Link
                 href="/shop/cart"
-                className="block w-full text-center font-bold text-sm md:text-base uppercase py-1 px-3 transition duration-150 rounded-lg text-white hover:text-gray-300 flex items-center justify-center space-x-2"
+                className="block w-full text-center font-bold text-sm md:text-base uppercase py-1 px-3 transition duration-150 rounded-lg text-white hover:text-gray-300 items-center justify-center space-x-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 <ShoppingCart className="h-5 w-5" />

@@ -101,7 +101,8 @@ export default function ProductAddToCart({
                   {variant.title}
                 </span>
                 <span className="font-radikal font-bold text-gray-800">
-                  ${variant.price.amount} {variant.price.currencyCode}
+                  <span className="currency-symbol">$</span>
+                  {variant.price.amount} {variant.price.currencyCode}
                 </span>
               </button>
             ))}

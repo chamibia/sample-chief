@@ -2,30 +2,32 @@
 
 /* Use WOFF2 later if you can, but TTF is OK */
 @font-face {
-  font-family: 'RuderPlakatLL';
-  src: url('/fonts/RuderPlakatLL.ttf') format('truetype');
+  font-family: "RuderPlakatLL";
+  src: url("/fonts/RuderPlakatLL.ttf") format("truetype");
   font-weight: 400; /* this file is a single cut—don't request other weights */
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'AlteHaasGrotesk';
-  src: url('/fonts/AlteHaasGroteskRegular.ttf') format('truetype');
+  font-family: "AlteHaasGrotesk";
+  src: url("/fonts/AlteHaasGroteskRegular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'AlteHaasGrotesk';
-  src: url('/fonts/AlteHaasGroteskBold.ttf') format('truetype');
+  font-family: "AlteHaasGrotesk";
+  src: url("/fonts/AlteHaasGroteskBold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 /* Default to Alte Haas for body; Ruder only where explicitly applied */
-html, body {
-  font-family: 'AlteHaasGrotesk', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+html,
+body {
+  font-family: "AlteHaasGrotesk", system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial, sans-serif;
   height: 100%;
   overscroll-behavior-y: none;
   overflow-x: hidden;
@@ -42,13 +44,18 @@ html, body {
 
 /* Add relaxed letter spacing for better readability */
 .font-radikal {
-  font-family: 'RuderPlakatLL', sans-serif;
+  font-family: "RuderPlakatLL", sans-serif;
   letter-spacing: 0.09em;
 }
 .font-alte {
-  font-family: 'AlteHaasGroteskRegular', sans-serif;
+  font-family: "AlteHaasGroteskRegular", sans-serif;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   letter-spacing: 0.04em;
 }
 p {
@@ -57,7 +64,9 @@ p {
 }
 
 /* Optional: tiny tracking for Ruder at display sizes */
-.font-ruder-tune { letter-spacing: 0.01em; }
+.font-ruder-tune {
+  letter-spacing: 0.01em;
+}
 
 /* Dynamic viewport height support */
 @supports (height: 100dvh) {
@@ -72,9 +81,22 @@ p {
   .mobile-safe-bottom {
     padding-bottom: calc(2rem + var(--safe-area-inset-bottom));
   }
-  
+
   /* Mobile viewport height fix */
   .min-h-screen {
     min-height: calc(var(--vh, 1vh) * 100);
   }
+}
+
+/* Fix for symbols in custom fonts */
+.font-radikal .symbol,
+.font-radikal .price-symbol,
+.font-radikal .currency-symbol {
+  font-family: Arial, Helvetica, system-ui, sans-serif !important;
+}
+
+/* Alternative: Use CSS to replace symbols with better alternatives */
+.price-with-symbol::before {
+  content: "$";
+  font-family: Arial, Helvetica, system-ui, sans-serif;
 }

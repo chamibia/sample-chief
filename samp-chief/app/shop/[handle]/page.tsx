@@ -179,7 +179,8 @@ export default async function ProductPage({ params }: PageProps) {
                 {hasVariants && (
                   <div className="mb-8">
                     <span className="font-radikal font-bold text-3xl text-gray-800">
-                      ${variants[0].price.amount}{" "}
+                      <span className="currency-symbol">$</span>
+                      {variants[0].price.amount}{" "}
                       <span className="text-gray-500 text-lg">
                         {variants[0].price.currencyCode}
                       </span>
@@ -214,7 +215,8 @@ export default async function ProductPage({ params }: PageProps) {
                           {variant.title}
                         </span>
                         <span className="font-radikal font-bold text-gray-800">
-                          ${variant.price.amount} {variant.price.currencyCode}
+                          <span className="currency-symbol">$</span>
+                          {variant.price.amount} {variant.price.currencyCode}
                         </span>
                       </div>
                     ))}

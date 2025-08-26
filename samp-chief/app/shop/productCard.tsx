@@ -80,7 +80,8 @@ export default function ProductCard({ node }: { node: any }) {
         {node.priceRange?.minVariantPrice && (
           <div className="mt-3 flex items-center justify-between">
             <p className="text-[15px] font-radikal text-[#202020]">
-              ${node.priceRange.minVariantPrice.amount}
+              <span className="currency-symbol">$</span>
+              {node.priceRange.minVariantPrice.amount}
             </p>
             <button
               onClick={handleQuickAddToCart}

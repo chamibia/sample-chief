@@ -188,7 +188,7 @@ export default function SubscribePopup() {
 
             <Button
               type="submit"
-              className="w-full font-radikal text-sm sm:text-base text-white bg-[#2E8B57] hover:bg-[#2E8B57]/90"
+              className="w-full font-radikal text-sm sm:text-base text-white bg-[#07693A] hover:bg-[#2E8B57]/90"
               disabled={isSubmitting}
             >
               {isSubmitting ? "Subscribing..." : "Subscribe"}

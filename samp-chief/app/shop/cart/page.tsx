@@ -92,7 +92,8 @@ export default function CartPage() {
                         {item.title}
                       </h3>
                       <p className="font-radikal font-bold text-xl text-white">
-                        ${item.price} {item.currencyCode}
+                        <span className="currency-symbol">$</span>
+                        {item.price} {item.currencyCode}
                       </p>
                     </div>
 
@@ -141,7 +142,10 @@ export default function CartPage() {
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between text-gray-300">
                     <span>Items ({cart.totalQuantity})</span>
-                    <span>${cart.totalPrice.toFixed(2)}</span>
+                    <span>
+                      <span className="currency-symbol">$</span>
+                      {cart.totalPrice.toFixed(2)}
+                    </span>
                   </div>
                   <div className="flex justify-between text-gray-300">
                     <span>Shipping</span>
@@ -150,7 +154,10 @@ export default function CartPage() {
                   <div className="border-t border-gray-700 pt-4">
                     <div className="flex justify-between font-radikal font-bold text-xl text-white">
                       <span>Total</span>
-                      <span>${cart.totalPrice.toFixed(2)}</span>
+                      <span>
+                        <span className="currency-symbol">$</span>
+                        {cart.totalPrice.toFixed(2)}
+                      </span>
                     </div>
                   </div>
                 </div>
