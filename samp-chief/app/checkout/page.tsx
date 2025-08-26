@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useCart } from "@/src/components/CartProvider";
+import { useCart } from "@/components/CartProvider";
 
 interface CartItem {
   id: string;
