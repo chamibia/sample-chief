@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { getNames } from "country-list";
 import { motion } from "framer-motion";
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight } from "lucide-react";
 
 export default function NewsletterSignup() {
   const [showBanner, setShowBanner] = useState(true);
@@ -12,7 +12,9 @@ export default function NewsletterSignup() {
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formStatus, setFormStatus] = useState<"success" | "error" | null>(null);
+  const [formStatus, setFormStatus] = useState<"success" | "error" | null>(
+    null
+  );
   const [statusMessage, setStatusMessage] = useState("");
 
   const bottomVariants = {
@@ -68,7 +70,9 @@ export default function NewsletterSignup() {
         }
       } else {
         setFormStatus("error");
-        setStatusMessage(data.error?.title || "Something went wrong—please try again.");
+        setStatusMessage(
+          data.error?.title || "Something went wrong—please try again."
+        );
       }
     } catch (err) {
       console.error(err);
@@ -103,7 +107,7 @@ export default function NewsletterSignup() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-             {formStatus === "success" && (
+            {formStatus === "success" && (
               <div className="mb-4 px-4 py-2 bg-[#07693A] text-white rounded text-center font-radikal font-light w-50 opacity-90">
                 {statusMessage}
               </div>
@@ -124,7 +128,7 @@ export default function NewsletterSignup() {
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     required
-                    className="font-radikal font-normal leading-relaxed text-base w-full text-[#202020] bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#07693A] transition-colors duration-300 group-hover:border-gray-400"
+                    className="font-alte font-light leading-relaxed text-base w-full text-[#202020] bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#07693A] transition-colors duration-300 group-hover:border-gray-400"
                   />
                 </div>
                 <div className="relative group">
@@ -134,7 +138,7 @@ export default function NewsletterSignup() {
                     placeholder="Last Name"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    className="font-radikal font-normal leading-relaxed text-base w-full text-[#202020]bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#07693A] transition-colors duration-300 group-hover:border-gray-400"
+                    className="font-alte font-light leading-relaxed text-base w-full text-[#202020] bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#07693A] transition-colors duration-300 group-hover:border-gray-400"
                   />
                 </div>
                 <div className="relative group">
@@ -145,7 +149,7 @@ export default function NewsletterSignup() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                  className="font-radikal font-normal leading-relaxed text-base w-full text-[#202020] bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#07693A] transition-colors duration-300 group-hover:border-gray-400"
+                    className="font-alte font-light leading-relaxed text-base w-full text-[#202020] bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#07693A] transition-colors duration-300 group-hover:border-gray-400"
                   />
                 </div>
                 <div className="relative group">
@@ -154,7 +158,7 @@ export default function NewsletterSignup() {
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     required
-                    className="font-radikal font-normal leading-relaxed text-base w-full text-[#202020] bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#07693A] transition-colors duration-300 group-hover:border-gray-400"
+                    className="font-alte font-light leading-relaxed text-base w-full text-[#202020] bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#07693A] transition-colors duration-300 group-hover:border-gray-400"
                   >
                     <option value="" disabled className="bg-white">
                       Select Country *
@@ -165,8 +169,7 @@ export default function NewsletterSignup() {
                       </option>
                     ))}
                   </select>
-                  <div className="absolute inset-y-0 right-0 flex items-center pointer-events-none">
-                  </div>
+                  <div className="absolute inset-y-0 right-0 flex items-center pointer-events-none"></div>
                 </div>
               </div>
 
@@ -199,7 +202,8 @@ export default function NewsletterSignup() {
                 Get in Touch
               </h3>
               <p className="font-radikal font-light mb-6 leading-relaxed text-[#202020]">
-                Curious about what we do or want to collaborate? Hit us up — we’d love to hear from you.
+                Curious about what we do or want to collaborate? Hit us up —
+                we’d love to hear from you.
               </p>
               <div className="flex justify-center items-center space-x-2">
                 <span className="font-radikal font-light leading-relaxed text-base text-[#202020]">
@@ -216,10 +220,12 @@ export default function NewsletterSignup() {
           </motion.div>
         </div>
       </div>
-      
+
       {/* Fixed bottom spacing for mobile */}
-      <div className="pb-24 md:pb-16" 
-           style={{ paddingBottom: "calc(6rem + env(safe-area-inset-bottom))" }} />
+      <div
+        className="pb-24 md:pb-16"
+        style={{ paddingBottom: "calc(6rem + env(safe-area-inset-bottom))" }}
+      />
     </div>
   );
 }

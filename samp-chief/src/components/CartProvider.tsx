@@ -193,6 +193,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
     setLoading(true);
     try {
+      console.log("Sending checkout request with items:", cart.items);
+
       const response = await fetch("/api/checkout", {
         method: "POST",
         headers: {
@@ -207,15 +209,28 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       });
 
       const data = await response.json();
+      console.log("Checkout API response:", data);
+
+      if (!response.ok) {
+        throw new Error(
+          data.error || `HTTP ${response.status}: ${response.statusText}`
+        );
+      }
 
       if (data.checkoutUrl) {
+        console.log("Redirecting to checkout URL:", data.checkoutUrl);
         window.location.href = data.checkoutUrl;
       } else {
-        throw new Error("No checkout URL received");
+        console.error("No checkout URL in response:", data);
+        throw new Error("No checkout URL received from server");
       }
     } catch (error) {
       console.error("Checkout error:", error);
-      alert("Failed to proceed to checkout. Please try again.");
+      alert(
+        `Failed to proceed to checkout: ${
+          error instanceof Error ? error.message : "Unknown error"
+        }`
+      );
     } finally {
       setLoading(false);
     }
