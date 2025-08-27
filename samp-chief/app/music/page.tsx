@@ -225,7 +225,7 @@ export default function MusicPage() {
         </Link>
       </div>
 
-      <Carousel className="w-full" opts={{ slidesToScroll: 3 }}>
+      <Carousel className="w-full" opts={{ slidesToScroll: 2 }}>
         <CarouselContent className="-ml-2 md:-ml-4">
           {items.map((item) => (
             <CarouselItem
@@ -265,6 +265,8 @@ export default function MusicPage() {
             </CarouselItem>
           ))}
         </CarouselContent>
+        <CarouselPrevious className="flex md:hidden bg-white border-2 border-gray-300 text-gray-700 hover:bg-[#2E8B57] hover:border-[#2E8B57] hover:text-white transition-all duration-300 -left-2 top-1/2 -translate-y-1/2 h-8 w-8" />
+        <CarouselNext className="flex md:hidden bg-white border-2 border-gray-300 text-gray-700 hover:bg-[#2E8B57] hover:border-[#2E8B57] hover:text-white transition-all duration-300 -right-2 top-1/2 -translate-y-1/2 h-8 w-8" />
         <CarouselPrevious className="hidden md:flex bg-white border-2 border-gray-300 text-gray-700 hover:bg-[#2E8B57] hover:border-[#2E8B57] hover:text-white transition-all duration-300 -left-6 top-1/2 -translate-y-1/2" />
         <CarouselNext className="hidden md:flex bg-white border-2 border-gray-300 text-gray-700 hover:bg-[#2E8B57] hover:border-[#2E8B57] hover:text-white transition-all duration-300 -right-6 top-1/2 -translate-y-1/2" />
       </Carousel>
