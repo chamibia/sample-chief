@@ -98,7 +98,8 @@ export default function About() {
             <motion.p
               key={idx}
               variants={sectionVariants}
-              className="font-sans font-light mb-8 text-[#202020] text-md md:text-lg lg:text-2xl"
+              className="font-sans font-light mb-8 text-[#202020] text-lg md:text-xl lg:text-2xl leading-loose tracking-wider"
+
             >
               {p}
             </motion.p>
@@ -115,7 +116,7 @@ export default function About() {
             <motion.p
               key={idx}
               variants={sectionVariants}
-              className="font-sans font-light mb-8 text-[#202020] text-md md:text-lg lg:text-2xl"
+              className="font-sans font-light mb-8 text-[#202020] text-lg md:text-xl lg:text-2xl leading-loose tracking-wider"
             >
               {p}
             </motion.p>
