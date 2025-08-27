@@ -67,11 +67,11 @@ export default function ProductCard({ node }: { node: any }) {
 
       {/* Info block BELOW image - centered */}
       <div className="px-2 text-center">
-        <h3 className="font-radikal font-light text-[15px] leading-6 tracking-[0.06em] uppercase text-black">
+        <h3 className="font-sans font-light text-[15px] leading-6 tracking-[0.06em] uppercase text-black">
           {node.title} <span className="align-middle">●</span>
         </h3>
         {subtitle ? (
-          <p className="mt-1 italic text-[15px] leading-6 text-black/80">
+          <p className="mt-1 italic text-[15px] leading-6 text-black/80 font-sans">
             {subtitle}
           </p>
         ) : null}

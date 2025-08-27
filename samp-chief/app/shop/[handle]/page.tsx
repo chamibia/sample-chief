@@ -140,7 +140,7 @@ export default async function ProductPage({ params }: PageProps) {
                 </div>
               ) : (
                 <div className="aspect-square bg-gray-100 border border-gray-200 rounded-2xl flex items-center justify-center">
-                  <span className="font-radikal font-light text-gray-500 text-lg">
+                  <span className="font-sans font-light text-gray-500 text-lg">
                     No Image Available
                   </span>
                 </div>
@@ -172,13 +172,13 @@ export default async function ProductPage({ params }: PageProps) {
             {/* Product Info */}
             <div className="space-y-8">
               <div>
-                <h1 className="font-radikal font-light leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-gray-800">
+                <h1 className="font-ruder font-light leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-gray-800">
                   {product.title}
                 </h1>
 
                 {hasVariants && (
                   <div className="mb-8">
-                    <span className="font-radikal font-bold text-3xl text-gray-800">
+                    <span className="font-sans font-bold text-3xl text-gray-800">
                       <span className="currency-symbol">$</span>
                       {variants[0].price.amount}{" "}
                       <span className="text-gray-500 text-lg">
@@ -191,10 +191,10 @@ export default async function ProductPage({ params }: PageProps) {
 
               {product.description && (
                 <div className="space-y-4">
-                  <h3 className="font-radikal font-light text-xl text-gray-800">
+                  <h3 className="font-ruder font-light text-xl text-gray-800">
                     Description
                   </h3>
-                  <p className="font-radikal font-light leading-relaxed text-gray-600">
+                  <p className="font-sans font-light leading-relaxed text-gray-600">
                     {product.description}
                   </p>
                 </div>
@@ -202,7 +202,7 @@ export default async function ProductPage({ params }: PageProps) {
 
               {hasVariants && variants.length > 1 && (
                 <div className="space-y-4">
-                  <h3 className="font-radikal font-light text-xl text-gray-800">
+                  <h3 className="font-ruder font-light text-xl text-gray-800">
                     Options
                   </h3>
                   <div className="space-y-3">
@@ -211,10 +211,10 @@ export default async function ProductPage({ params }: PageProps) {
                         key={variant.id}
                         className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:border-gray-300 transition-colors bg-white"
                       >
-                        <span className="font-radikal font-light text-gray-800">
+                        <span className="font-sans font-light text-gray-800">
                           {variant.title}
                         </span>
-                        <span className="font-radikal font-bold text-gray-800">
+                        <span className="font-sans font-bold text-gray-800">
                           <span className="currency-symbol">$</span>
                           {variant.price.amount} {variant.price.currencyCode}
                         </span>
@@ -230,7 +230,7 @@ export default async function ProductPage({ params }: PageProps) {
               {/* Stock Info */}
               {hasVariants && variants[0].quantityAvailable !== undefined && (
                 <div className="text-center">
-                  <span className="font-radikal font-light text-sm text-gray-500">
+                  <span className="font-sans font-light text-sm text-gray-500">
                     {variants[0].quantityAvailable > 0
                       ? `${variants[0].quantityAvailable} in stock`
                       : "Out of stock"}

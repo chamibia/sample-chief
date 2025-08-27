@@ -94,10 +94,10 @@ export default function Navbar() {
                   <NavigationMenuItem key={label}>
                     <Link href={path} legacyBehavior passHref>
                       <NavigationMenuLink
-                        className={`${navigationMenuTriggerStyle()} font-radikal font-bold text-base transition-all duration-200 ease-out transform hover:scale-105 ${
+                        className={`group inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-lg font-ruder font-bold transition-all duration-200 ease-out transform hover:scale-105 ${
                           isHome && !isScrolled
-                            ? "text-white"
-                            : "text-[#202020]"
+                            ? "text-white hover:text-white"
+                            : "text-[#202020] hover:text-[#202020]"
                         } ${
                           isActive
                             ? "underline underline-offset-4 decoration-2"
@@ -162,7 +162,7 @@ export default function Navbar() {
                   <Link
                     key={label}
                     href={path}
-                    className="block w-full text-left font-bold text-sm md:text-base uppercase py-1 px-3 transition duration-150 rounded-lg text-white hover:text-gray-300"
+                    className="block w-full text-left font-ruder font-bold text-lg md:text-xl uppercase py-2 px-3 transition duration-150 rounded-lg text-white hover:text-gray-300"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {label}
@@ -173,7 +173,7 @@ export default function Navbar() {
               {/* Mobile Cart Link */}
               <Link
                 href="/shop/cart"
-                className="block w-full text-left font-bold text-sm md:text-base uppercase py-1 px-3 transition duration-150 rounded-lg text-white hover:text-gray-300"
+                className="block w-full text-left font-ruder font-bold text-lg md:text-xl uppercase py-2 px-3 transition duration-150 rounded-lg text-white hover:text-gray-300"
                 onClick={() => setIsMenuOpen(false)}
               >
                 CART {cart.totalQuantity > 0 && `(${cart.totalQuantity})`}

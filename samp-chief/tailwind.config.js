@@ -9,13 +9,12 @@ module.exports = {
     extend: {
       fontFamily: {
         // default body
-        sans: ["AlteHaasGrotesk", "system-ui", "sans-serif"],
+        sans: ["AlteHaasGroteskRegular", "system-ui", "sans-serif"],
         // utilities
-        alte: ["AlteHaasGrotesk", "system-ui", "sans-serif"],
+        alte: ["AlteHaasGroteskBold", "system-ui", "sans-serif"],
         ruder: ["RuderPlakatLL", "sans-serif"],
-        radikal: ["Radikal", "sans-serif"],
         // Symbol fallback font stack
-        symbols: ["Arial", "Helvetica", "system-ui", "sans-serif"],
+        symbols: ["AlteHaasGroteskRegular", "system-ui", "sans-serif"],
       },
       fontWeight: {
         // Radikal font weights

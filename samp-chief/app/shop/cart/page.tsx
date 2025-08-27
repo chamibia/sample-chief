@@ -25,13 +25,13 @@ export default function CartPage() {
             </div>
 
             <div className="text-center py-20">
-              <h1 className="font-radikal font-light text-4xl md:text-5xl mb-6 tracking-wider text-white">
+              <h1 className="font-ruder font-light text-4xl md:text-5xl mb-6 tracking-wider text-white">
                 Your Cart
               </h1>
               <p className="text-gray-400 mb-8">Your cart is empty</p>
               <Link
                 href="/shop"
-                className="bg-white text-[#202020] px-8 py-4 rounded-lg font-radikal font-medium hover:bg-gray-100 transition-colors duration-300"
+                className="bg-white text-[#202020] px-8 py-4 rounded-lg font-sans font-medium hover:bg-gray-100 transition-colors duration-300"
               >
                 Continue Shopping
               </Link>
@@ -56,7 +56,7 @@ export default function CartPage() {
             </Link>
           </div>
 
-          <h1 className="font-radikal font-light text-4xl md:text-5xl mb-8 tracking-wider text-white">
+          <h1 className="font-ruder font-light text-4xl md:text-5xl mb-8 tracking-wider text-white">
             Your Cart
           </h1>
 
@@ -88,10 +88,10 @@ export default function CartPage() {
 
                     {/* Product Info */}
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-radikal font-medium text-lg text-white mb-2">
+                      <h3 className="font-sans font-medium text-lg text-white mb-2">
                         {item.title}
                       </h3>
-                      <p className="font-radikal font-bold text-xl text-white">
+                      <p className="font-sans font-bold text-xl text-white">
                         <span className="currency-symbol">$</span>
                         {item.price} {item.currencyCode}
                       </p>
@@ -107,7 +107,7 @@ export default function CartPage() {
                       >
                         <Minus className="h-4 w-4" />
                       </button>
-                      <span className="font-radikal font-light text-lg w-8 text-center">
+                      <span className="font-sans font-light text-lg w-8 text-center">
                         {item.quantity}
                       </span>
                       <button
@@ -135,7 +135,7 @@ export default function CartPage() {
             {/* Order Summary */}
             <div className="lg:col-span-1">
               <div className="bg-black/20 rounded-2xl p-6 border border-gray-800/50 sticky top-24">
-                <h2 className="font-radikal font-light text-2xl mb-6 text-white">
+                <h2 className="font-ruder font-light text-2xl mb-6 text-white">
                   Order Summary
                 </h2>
 
@@ -152,7 +152,7 @@ export default function CartPage() {
                     <span>Free</span>
                   </div>
                   <div className="border-t border-gray-700 pt-4">
-                    <div className="flex justify-between font-radikal font-bold text-xl text-white">
+                    <div className="flex justify-between font-sans font-bold text-xl text-white">
                       <span>Total</span>
                       <span>
                         <span className="currency-symbol">$</span>
@@ -165,14 +165,14 @@ export default function CartPage() {
                 <button
                   onClick={goToCheckout}
                   disabled={loading || cart.items.length === 0}
-                  className="w-full bg-white text-[#202020] px-8 py-4 rounded-lg font-radikal font-medium text-lg hover:bg-gray-100 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-white text-[#202020] px-8 py-4 rounded-lg font-sans font-medium text-lg hover:bg-gray-100 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {loading ? "Processing..." : "Proceed to Checkout"}
                 </button>
 
                 <Link
                   href="/shop"
-                  className="block w-full text-center bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-radikal font-medium text-lg hover:bg-white hover:text-[#202020] transition-all duration-300 mt-4"
+                  className="block w-full text-center bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-sans font-medium text-lg hover:bg-white hover:text-[#202020] transition-all duration-300 mt-4"
                 >
                   Continue Shopping
                 </Link>

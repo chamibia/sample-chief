@@ -212,14 +212,14 @@ export default function MusicPage() {
       className="mb-12"
     >
       <div className="flex items-center justify-between mb-6">
-        <h2 className="font-radikal font-light leading-relaxed text-3xl md:text-4xl text-[#202020] tracking-wider">
+        <h2 className="font-ruder leading-relaxed text-3xl md:text-4xl text-[#202020] tracking-wider">
           {title}
         </h2>
         <Link
           href={seeAllLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-radikal font-light leading-relaxed text-base text-[#07693A] hover:underline transition-all duration-300"
+          className="font-sans font-light leading-relaxed text-base text-[#07693A] hover:underline transition-all duration-300"
         >
           See all
         </Link>
@@ -249,12 +249,12 @@ export default function MusicPage() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent z-20" />
 
                       <div className="absolute top-4 left-4 z-30">
-                        <h3 className="font-radikal font-light text-white text-lg">
+                        <h3 className="font-sans text-white text-lg">
                           {item.title}
                         </h3>
                       </div>
                       <div className="absolute bottom-4 left-4 z-30">
-                        <p className="font-radikal font-light text-white text-sm pr-4">
+                        <p className="font-sans text-white text-sm pr-4">
                           {item.subtitle}
                         </p>
                       </div>
@@ -283,10 +283,10 @@ export default function MusicPage() {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <h1 className="font-radikal font-light leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-[#202020]">
+            <h1 className="font-ruder leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-[#202020]">
               From Our Ears to Yours
             </h1>
-            <p className="font-radikal font-light leading-relaxed text-lg md:text-xl lg:text-2xl text-[#202020] max-w-2xl mx-auto">
+            <p className="font-sans font-light leading-relaxed text-lg md:text-xl lg:text-2xl text-[#202020] max-w-2xl mx-auto">
               Enjoy our selection of playlists and mixes, curated for every mood
             </p>
           </motion.div>

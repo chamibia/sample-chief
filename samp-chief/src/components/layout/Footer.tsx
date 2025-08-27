@@ -17,7 +17,7 @@ export default function Footer() {
   const isHome = pathname === "/";
   const isAbout = pathname === "/about";
   const isEvent = pathname === "/events";
-  const isMusic = pathname === "/music"
+  const isMusic = pathname === "/music";
   const isNewsletter = pathname === "/contact";
   const isShop = pathname === "/shop";
 
@@ -27,14 +27,16 @@ export default function Footer() {
         isHome
           ? "absolute inset-x-0 bottom-0 z-30 bg-transparent text-white/75"
           : isAbout || isEvent || isMusic || isNewsletter || isShop
-            ? "bg-black text-white"
-            : "bg-white text-black",
+          ? "bg-black text-white"
+          : "bg-white text-black",
         // Add consistent padding and safe area support for mobile
         "px-2 py-4 md:py-6 pb-safe"
       )}
       style={{
         // Ensure footer is always visible on mobile
-        paddingBottom: isHome ? undefined : "calc(1rem + env(safe-area-inset-bottom))"
+        paddingBottom: isHome
+          ? undefined
+          : "calc(1rem + env(safe-area-inset-bottom))",
       }}
     >
       <div className="flex flex-col md:relative items-center justify-center w-full px-4 pt-4 pb-2">
@@ -98,14 +100,15 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Spotify"
-            className="transform transition-all duration-300 hover:scale-125 hover:text-[#1DB954] hover:opacity-100">
+            className="transform transition-all duration-300 hover:scale-125 hover:text-[#1DB954] hover:opacity-100"
+          >
             <SiSpotify className="h-6 w-6" />
           </Link>
         </div>
-        <div className="font-radikal font-bold mt-4 md:mt-0 md:absolute md:right-4 text-xs">
+        <div className="font-ruder font-bold mt-4 md:mt-0 md:absolute md:right-4 text-sm">
           Supported by Ontario Creates
         </div>
       </div>
     </footer>
-  )
+  );
 }

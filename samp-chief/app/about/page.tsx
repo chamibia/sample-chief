@@ -78,12 +78,12 @@ export default function About() {
     <div className="min-h-screen flex flex-col">
       <div className="flex-1 w-full px-5 md:px-9 pt-20 text-[#202020]">
         <motion.div
-          className="font-radikal font-light text-[2rem] md:text-[3.5rem] lg:text-[4rem] md:mb-12 pb-6 md:pb-8 lg:w-4/5"
+          className="font-ruder font-light text-[2rem] md:text-[3.5rem] lg:text-[4rem] md:mb-12 pb-6 md:pb-8 lg:w-4/5"
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
         >
-          <div className="font-radikal font-medium text-[#202020] leading-tight text-[2.5rem] md:text-[3rem] lg:text-[3.5rem]">
+          <div className="font-ruder font-medium text-[#202020] leading-tight text-[2.5rem] md:text-[3rem] lg:text-[3.5rem]">
             SAMPLE CHIEF is more than an agency. We are a global movement
             dedicated to celebrating African music and culture.
           </div>
@@ -98,7 +98,7 @@ export default function About() {
             <motion.p
               key={idx}
               variants={sectionVariants}
-              className="font-radikal font-light mb-8 text-[#202020] text-lg md:text-xl lg:text-2xl leading-relaxed"
+              className="font-sans font-light mb-8 text-[#202020] text-md md:text-lg lg:text-2xl"
             >
               {p}
             </motion.p>
@@ -115,7 +115,7 @@ export default function About() {
             <motion.p
               key={idx}
               variants={sectionVariants}
-              className="font-radikal font-light mb-8 text-[#202020] text-lg md:text-xl lg:text-2xl leading-relaxed"
+              className="font-sans font-light mb-8 text-[#202020] text-md md:text-lg lg:text-2xl"
             >
               {p}
             </motion.p>

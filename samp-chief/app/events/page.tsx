@@ -153,7 +153,7 @@ export default function Events() {
                   <div className="md:col-span-7 flex flex-col">
                     <div className="space-y-4">
                       <motion.h1
-                        className="font-radikal font-light leading-relaxed text-3xl md:text-4xl lg:text-5xl text-[#202020]"
+                        className="font-ruder font-light leading-relaxed text-3xl md:text-4xl lg:text-5xl text-[#202020]"
                         variants={{
                           hidden: { opacity: 0, y: -20 },
                           visible: {
@@ -169,7 +169,7 @@ export default function Events() {
                         {event.title}
                       </motion.h1>
                       <motion.p
-                        className="font-radikal font-light text-base md:text-lg text-[#202020]"
+                        className="font-sans font-light text-base md:text-lg text-[#202020]"
                         variants={{
                           hidden: { opacity: 0, x: -20 },
                           visible: {
@@ -200,13 +200,13 @@ export default function Events() {
                       >
                         <div className="flex items-center">
                           <MapPin className="h-5 w-5 mr-3 text-[#202020] flex-shrink-0" />
-                          <span className="font-radikal font-light text-[#202020] leading-relaxed text-sm md:text-base">
+                          <span className="font-sans font-light text-[#202020] leading-relaxed text-sm md:text-base">
                             {event.venue}, {event.address}
                           </span>
                         </div>
                         <div className="flex items-center">
                           <Calendar className="h-5 w-5 mr-3 text-[#202020] flex-shrink-0" />
-                          <span className="font-radikal font-light text-sm md:text-base leading-relaxed text-[#202020]">
+                          <span className="font-sans font-light text-sm md:text-base leading-relaxed text-[#202020]">
                             {formatDate(event.startDate)}
                           </span>
                         </div>
@@ -225,7 +225,7 @@ export default function Events() {
                           href={event.ticketLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="font-radikal font-light leading-relaxed text-[#202020] inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 border-2 rounded-full text-sm md:text-base hover:bg-[#202020] hover:text-white transition-all duration-200 min-w-[120px] md:min-w-[140px]"
+                          className="font-sans font-light leading-relaxed text-[#202020] inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 border-2 rounded-full text-sm md:text-base hover:bg-[#202020] hover:text-white transition-all duration-200 min-w-[120px] md:min-w-[140px]"
                         >
                           Tickets
                         </Link>
@@ -235,7 +235,7 @@ export default function Events() {
                           href={generateCalendarLink(event)}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="font-radikal font-light leading-relaxed inline-flex items-center justify-center px-4 py-3 md:px-6 md:py-4 rounded-lg text-sm md:text-base text-[#202020] hover:text-[#202020] transition-all duration-200"
+                          className="font-sans font-light leading-relaxed inline-flex items-center justify-center px-4 py-3 md:px-6 md:py-4 rounded-lg text-sm md:text-base text-[#202020] hover:text-[#202020] transition-all duration-200"
                         >
                           <CalendarPlus className="h-5 w-5 mr-2" />
                           Add to Calendar
