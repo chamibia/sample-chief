@@ -106,7 +106,7 @@ export default function Events() {
             .map((event) => (
               <motion.div
                 key={event.id}
-                className="text-2xl md:text-[1.5rem] leading-[1.2] mb-8 pt-10"
+                className="text-2xl md:text-[1.5rem] leading-[1.2] mb-16 pt-10"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -151,9 +151,9 @@ export default function Events() {
                     </div>
                   </motion.div>
                   <div className="md:col-span-7 flex flex-col">
-                    <div className="space-y-8">
+                    <div className="space-y-4">
                       <motion.h1
-                        className="font-radikal leading-relaxed text-2xl mt-8 md:text-4xl lg:text-4xl md:mb-10 text-[#202020]"
+                        className="font-radikal font-light leading-relaxed text-3xl md:text-4xl lg:text-5xl text-[#202020]"
                         variants={{
                           hidden: { opacity: 0, y: -20 },
                           visible: {
@@ -169,7 +169,7 @@ export default function Events() {
                         {event.title}
                       </motion.h1>
                       <motion.p
-                        className="font-alte font-light text-base md:text-md lg:text-xl text-[#202020]"
+                        className="font-radikal font-light text-base md:text-lg text-[#202020]"
                         variants={{
                           hidden: { opacity: 0, x: -20 },
                           visible: {
@@ -185,7 +185,7 @@ export default function Events() {
                         {event.description}
                       </motion.p>
                       <motion.div
-                        className="space-y-6 text-lg md:text-xl"
+                        className="space-y-3"
                         variants={{
                           hidden: { opacity: 0, x: -20 },
                           visible: {
@@ -199,49 +199,49 @@ export default function Events() {
                         viewport={{ once: true }}
                       >
                         <div className="flex items-center">
-                          <MapPin className="h-6 w-6 mr-4 text-[#202020] flex-shrink-0" />
-                          <span className="font-radikal text-[#202020] leading-relaxed text-base md:text-lg">
+                          <MapPin className="h-5 w-5 mr-3 text-[#202020] flex-shrink-0" />
+                          <span className="font-radikal font-light text-[#202020] leading-relaxed text-sm md:text-base">
                             {event.venue}, {event.address}
                           </span>
                         </div>
                         <div className="flex items-center">
-                          <Calendar className="h-6 w-6 mr-4 text-[#202020] flex-shrink-0" />
-                          <span className="font-radikal text-base md:text-lg leading-relaxed text-[#202020]">
+                          <Calendar className="h-5 w-5 mr-3 text-[#202020] flex-shrink-0" />
+                          <span className="font-radikal font-light text-sm md:text-base leading-relaxed text-[#202020]">
                             {formatDate(event.startDate)}
                           </span>
                         </div>
                       </motion.div>
-
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.4, duration: 0.2 }}
-                        viewport={{ once: true }}
-                        className="flex flex-col sm:flex-row gap-6 pt-2"
-                      >
-                        <motion.div whileHover={{ scale: 1.02 }}>
-                          <Link
-                            href={event.ticketLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-radikal leading-relaxed text-[#202020] inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 border-2 rounded-full text-base md:text-lg hover:bg-[#202020] hover:text-white transition-all duration-200 min-w-[120px] md:min-w-[140px]"
-                          >
-                            Tickets
-                          </Link>
-                        </motion.div>
-                        <motion.div whileHover={{ scale: 1.02 }}>
-                          <Link
-                            href={generateCalendarLink(event)}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-radikal leading-relaxed inline-flex items-center justify-center px-4 py-3 md:px-6 md:py-4 rounded-lg text-sm md:text-base text-[#202020] hover:text-[#202020] transition-all duration-200"
-                          >
-                            <CalendarPlus className="h-6 w-6 mr-2" />
-                            Add to Calendar
-                          </Link>
-                        </motion.div>
-                      </motion.div>
                     </div>
+
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4, duration: 0.2 }}
+                      viewport={{ once: true }}
+                      className="flex flex-col sm:flex-row gap-4 mt-10"
+                    >
+                      <motion.div whileHover={{ scale: 1.02 }}>
+                        <Link
+                          href={event.ticketLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-radikal font-light leading-relaxed text-[#202020] inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 border-2 rounded-full text-sm md:text-base hover:bg-[#202020] hover:text-white transition-all duration-200 min-w-[120px] md:min-w-[140px]"
+                        >
+                          Tickets
+                        </Link>
+                      </motion.div>
+                      <motion.div whileHover={{ scale: 1.02 }}>
+                        <Link
+                          href={generateCalendarLink(event)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-radikal font-light leading-relaxed inline-flex items-center justify-center px-4 py-3 md:px-6 md:py-4 rounded-lg text-sm md:text-base text-[#202020] hover:text-[#202020] transition-all duration-200"
+                        >
+                          <CalendarPlus className="h-5 w-5 mr-2" />
+                          Add to Calendar
+                        </Link>
+                      </motion.div>
+                    </motion.div>
                   </div>
                 </div>
               </motion.div>

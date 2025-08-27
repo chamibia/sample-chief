@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import logo from "../../../public/assets/logo.png";
+import whiteLogo from "../../../public/assets/white-logo.png";
 import { Menu, X, ShoppingCart } from "lucide-react";
 import { useCart } from "@/components/CartProvider";
 import {
@@ -51,47 +52,40 @@ export default function Navbar() {
   const textColor = isHome && !isScrolled ? "text-white" : "text-gray-800";
 
   const headerClasses = `
-    sticky top-0 z-50 transition-all duration-300 ease-in-out 
+    ${
+      isHome ? "absolute top-0 left-0 right-0" : "sticky top-0"
+    } z-50 transition-all duration-300 ease-in-out 
     ${backgroundColor} ${textColor} 
     ${isScrolled ? "py-2 shadow-sm" : isHome ? "py-4" : "py-6 md:py-8"} 
-    rounded-b-2xl
+    ${isHome ? "" : "rounded-b-2xl"}
   `;
 
   const links = ["ABOUT", "EVENTS", "MUSIC", "SHOP", "CONTACT"];
 
+  // Choose logo based on page and scroll state
+  const currentLogo = isHome && !isScrolled ? whiteLogo : logo;
+
   return (
     <header className={headerClasses}>
-      <div className="relative flex mx-auto px-6">
-        {/* Mobile menu toggle */}
-        <button
-          className="md:hidden absolute right-4 top-1/2 -translate-y-1/2 p-2"
-          onClick={() => setIsMenuOpen((o) => !o)}
-        >
-          {isMenuOpen ? (
-            <X className="h-6 w-6" />
-          ) : (
-            <Menu className="h-6 w-6" />
-          )}
-        </button>
-
+      <div className="relative flex items-center justify-between mx-auto px-4 md:px-6 w-full">
         {/* Logo */}
         <Link
           href="/"
-          className="transition-transform hover:scale-105 hover:-rotate-12"
+          className="transition-transform hover:scale-105 hover:-rotate-12 z-10"
         >
           <Image
-            src={logo}
+            src={currentLogo}
             alt="Sample Chief Logo"
-            width={isScrolled ? 220 : 200}
-            height={isScrolled ? 140 : 160}
-            className="transition-all duration-300 ease-in-out"
+            width={isScrolled ? 180 : 160}
+            height={isScrolled ? 120 : 140}
+            className="transition-all duration-300 ease-in-out md:w-auto w-32"
           />
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex absolute right-6 top-1/2 -translate-y-1/2 items-center space-x-8">
+        <nav className="hidden md:flex items-center space-x-6">
           <NavigationMenu>
-            <NavigationMenuList className="flex space-x-8">
+            <NavigationMenuList className="flex space-x-6">
               {links.map((label) => {
                 const path = `/${label.toLowerCase()}`;
                 const isActive = pathname === path;
@@ -100,7 +94,7 @@ export default function Navbar() {
                   <NavigationMenuItem key={label}>
                     <Link href={path} legacyBehavior passHref>
                       <NavigationMenuLink
-                        className={`${navigationMenuTriggerStyle()} font-radikal font-bold text-[1.1rem] transition-all duration-200 ease-out transform hover:scale-105 ${
+                        className={`${navigationMenuTriggerStyle()} font-radikal font-bold text-base transition-all duration-200 ease-out transform hover:scale-105 ${
                           isHome && !isScrolled
                             ? "text-white"
                             : "text-[#202020]"
@@ -134,12 +128,32 @@ export default function Navbar() {
           </Link>
         </nav>
 
+        {/* Mobile menu toggle */}
+        <button
+          className="md:hidden p-2 z-10"
+          onClick={() => setIsMenuOpen((o) => !o)}
+        >
+          {isMenuOpen ? (
+            <X
+              className={`h-6 w-6 ${
+                isHome && !isScrolled ? "text-white" : "text-[#202020]"
+              }`}
+            />
+          ) : (
+            <Menu
+              className={`h-6 w-6 ${
+                isHome && !isScrolled ? "text-white" : "text-[#202020]"
+              }`}
+            />
+          )}
+        </button>
+
         {/* Mobile nav dropdown - positioned absolutely within header */}
         {isMenuOpen && (
           <div
             className={`md:hidden absolute top-full left-0 right-0 z-50 ${backgroundColor} rounded-b-2xl overflow-hidden`}
           >
-            <nav className="flex flex-col items-center space-y-3 px-6 py-3">
+            <nav className="flex flex-col items-start space-y-3 px-6 py-3">
               {links.map((label) => {
                 const path = `/${label.toLowerCase()}`;
                 const isActive = pathname === path;
@@ -148,7 +162,7 @@ export default function Navbar() {
                   <Link
                     key={label}
                     href={path}
-                    className="block w-full text-center font-bold text-sm md:text-base uppercase py-1 px-3 transition duration-150 rounded-lg text-white hover:text-gray-300"
+                    className="block w-full text-left font-bold text-sm md:text-base uppercase py-1 px-3 transition duration-150 rounded-lg text-white hover:text-gray-300"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {label}
@@ -159,16 +173,10 @@ export default function Navbar() {
               {/* Mobile Cart Link */}
               <Link
                 href="/shop/cart"
-                className="block w-full text-center font-bold text-sm md:text-base uppercase py-1 px-3 transition duration-150 rounded-lg text-white hover:text-gray-300 items-center justify-center space-x-2"
+                className="block w-full text-left font-bold text-sm md:text-base uppercase py-1 px-3 transition duration-150 rounded-lg text-white hover:text-gray-300"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <ShoppingCart className="h-5 w-5" />
-                <span>CART</span>
-                {cart.totalQuantity > 0 && (
-                  <span className="bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">
-                    {cart.totalQuantity}
-                  </span>
-                )}
+                CART {cart.totalQuantity > 0 && `(${cart.totalQuantity})`}
               </Link>
             </nav>
           </div>

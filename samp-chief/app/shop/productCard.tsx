@@ -65,9 +65,9 @@ export default function ProductCard({ node }: { node: any }) {
         </Link>
       </div>
 
-      {/* Info block BELOW image */}
-      <div className="px-2">
-        <h3 className="font-radikal text-[15px] leading-6 tracking-[0.06em] uppercase text-black">
+      {/* Info block BELOW image - centered */}
+      <div className="px-2 text-center">
+        <h3 className="font-radikal font-light text-[15px] leading-6 tracking-[0.06em] uppercase text-black">
           {node.title} <span className="align-middle">●</span>
         </h3>
         {subtitle ? (
@@ -75,24 +75,6 @@ export default function ProductCard({ node }: { node: any }) {
             {subtitle}
           </p>
         ) : null}
-
-        {/* Price + BUY button in same row */}
-        {node.priceRange?.minVariantPrice && (
-          <div className="mt-3 flex items-center justify-between">
-            <p className="text-[15px] font-radikal text-[#202020]">
-              <span className="currency-symbol">$</span>
-              {node.priceRange.minVariantPrice.amount}
-            </p>
-            <button
-              onClick={handleQuickAddToCart}
-              disabled={addingToCart || !node.variants?.edges?.[0]?.node?.id}
-              className="inline-flex items-center gap-1 rounded-none border border-black px-4 py-2 text-[12px] font-radikal uppercase tracking-[0.1em] text-black transition-colors
-                         hover:bg-black hover:text-white disabled:opacity-40 disabled:cursor-not-allowed"
-            >
-              {addingToCart ? "…" : "Buy"}
-            </button>
-          </div>
-        )}
       </div>
     </div>
   );

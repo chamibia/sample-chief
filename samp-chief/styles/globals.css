@@ -1,13 +1,15 @@
 @import "tailwindcss";
 
-/* Use WOFF2 later if you can, but TTF is OK */
+/* RuderPlakatLL Font */
 @font-face {
   font-family: "RuderPlakatLL";
-  src: url("/fonts/RuderPlakatLL.ttf") format("truetype");
-  font-weight: 400; /* this file is a single cut—don't request other weights */
+  src: url("/fonts/RuderPlakatLL-Regular.otf") format("opentype");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
+
+/* AlteHaasGrotesk Fonts */
 @font-face {
   font-family: "AlteHaasGrotesk";
   src: url("/fonts/AlteHaasGroteskRegular.ttf") format("truetype");
@@ -23,7 +25,107 @@
   font-display: swap;
 }
 
-/* Default to Alte Haas for body; Ruder only where explicitly applied */
+/* Radikal Font Family - All Variants */
+@font-face {
+  font-family: "Radikal";
+  src: url("/app/fonts/RadikalTrial-UltraThin.otf") format("opentype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Radikal";
+  src: url("/app/fonts/RadikalTrial-UltraThinItalic.otf") format("opentype");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Radikal";
+  src: url("/app/fonts/RadikalTrial-Thin.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Radikal";
+  src: url("/app/fonts/RadikalTrial-ThinItalic.otf") format("opentype");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Radikal";
+  src: url("/app/fonts/RadikalTrial-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Radikal";
+  src: url("/app/fonts/RadikalTrial-LightItalic.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Radikal";
+  src: url("/app/fonts/RadikalTrial-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Radikal";
+  src: url("/app/fonts/RadikalTrial-RegularItalic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Radikal";
+  src: url("/app/fonts/RadikalTrial-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Radikal";
+  src: url("/app/fonts/RadikalTrial-MediumItalic.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Radikal";
+  src: url("/app/fonts/RadikalTrial-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Radikal";
+  src: url("/app/fonts/RadikalTrial-BoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Radikal";
+  src: url("/app/fonts/RadikalTrial-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Radikal";
+  src: url("/app/fonts/RadikalTrial-BlackItalic.otf") format("opentype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Default body styles */
 html,
 body {
   font-family: "AlteHaasGrotesk", system-ui, -apple-system, Segoe UI, Roboto,
@@ -42,14 +144,21 @@ body {
   font-synthesis-style: none;
 }
 
-/* Add relaxed letter spacing for better readability */
+/* Font utility classes */
 .font-radikal {
-  font-family: "RuderPlakatLL", sans-serif;
+  font-family: "Radikal", sans-serif;
   letter-spacing: 0.09em;
 }
+
 .font-alte {
-  font-family: "AlteHaasGroteskRegular", sans-serif;
+  font-family: "AlteHaasGrotesk", sans-serif;
 }
+
+.font-ruder {
+  font-family: "RuderPlakatLL", sans-serif;
+}
+
+/* Typography enhancements */
 h1,
 h2,
 h3,
@@ -58,6 +167,7 @@ h5,
 h6 {
   letter-spacing: 0.04em;
 }
+
 p {
   letter-spacing: 0.025em;
   line-height: 1.7;
@@ -88,10 +198,31 @@ p {
   }
 }
 
-/* Fix for symbols in custom fonts */
-.font-radikal .symbol,
+/* Symbol fallback system - ensures symbols display properly */
+.symbol-fallback {
+  font-family: Arial, Helvetica, system-ui, sans-serif !important;
+}
+
+/* Currency symbol fallback */
+.currency-symbol {
+  font-family: Arial, Helvetica, system-ui, sans-serif !important;
+}
+
+/* Price symbol fallback */
+.price-symbol {
+  font-family: Arial, Helvetica, system-ui, sans-serif !important;
+}
+
+/* Specific symbol fallbacks for different fonts */
+.font-radikal .currency-symbol,
 .font-radikal .price-symbol,
-.font-radikal .currency-symbol {
+.font-radikal .symbol-fallback {
+  font-family: Arial, Helvetica, system-ui, sans-serif !important;
+}
+
+.font-alte .currency-symbol,
+.font-alte .price-symbol,
+.font-alte .symbol-fallback {
   font-family: Arial, Helvetica, system-ui, sans-serif !important;
 }
 

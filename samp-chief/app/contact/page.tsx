@@ -93,10 +93,10 @@ export default function NewsletterSignup() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h1 className="font-radikal leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-[#202020]">
+            <h1 className="font-radikal font-light leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-[#202020]">
               Join the Community
             </h1>
-            <p className="font-radikal font-light mb-8 leading-relaxed text-base md:text-lg lg:text-xl text-[#202020]">
+            <p className="font-radikal font-light mb-8 leading-relaxed text-lg md:text-xl lg:text-2xl text-[#202020]">
               Be part of a tribe of music lovers and tastemakers.
             </p>
             <div className="w-16 h-1 bg-[#07693A] mx-auto rounded-full" />
@@ -128,7 +128,7 @@ export default function NewsletterSignup() {
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     required
-                    className="font-alte font-light leading-relaxed text-base w-full text-[#202020] bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#07693A] transition-colors duration-300 group-hover:border-gray-400"
+                    className="font-radikal font-light leading-relaxed text-base w-full text-[#202020] bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#07693A] transition-colors duration-300 group-hover:border-gray-400"
                   />
                 </div>
                 <div className="relative group">
@@ -138,7 +138,7 @@ export default function NewsletterSignup() {
                     placeholder="Last Name"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    className="font-alte font-light leading-relaxed text-base w-full text-[#202020] bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#07693A] transition-colors duration-300 group-hover:border-gray-400"
+                    className="font-radikal font-light leading-relaxed text-base w-full text-[#202020] bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#07693A] transition-colors duration-300 group-hover:border-gray-400"
                   />
                 </div>
                 <div className="relative group">
@@ -149,7 +149,7 @@ export default function NewsletterSignup() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="font-alte font-light leading-relaxed text-base w-full text-[#202020] bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#07693A] transition-colors duration-300 group-hover:border-gray-400"
+                    className="font-radikal font-light leading-relaxed text-base w-full text-[#202020] bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#07693A] transition-colors duration-300 group-hover:border-gray-400"
                   />
                 </div>
                 <div className="relative group">
@@ -158,7 +158,7 @@ export default function NewsletterSignup() {
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     required
-                    className="font-alte font-light leading-relaxed text-base w-full text-[#202020] bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#07693A] transition-colors duration-300 group-hover:border-gray-400"
+                    className="font-radikal font-light leading-relaxed text-base w-full text-[#202020] bg-transparent border-0 border-b-2 border-gray-300 placeholder-gray-500 py-4 px-0 focus:outline-none focus:border-[#07693A] transition-colors duration-300 group-hover:border-gray-400"
                   >
                     <option value="" disabled className="bg-white">
                       Select Country *

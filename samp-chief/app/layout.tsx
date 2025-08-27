@@ -24,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Preload AlteHaasGrotesk fonts */}
         <link
           rel="preload"
           href="/fonts/AlteHaasGroteskRegular.ttf"
@@ -38,11 +39,43 @@ export default function RootLayout({
           type="font/ttf"
           crossOrigin="anonymous"
         />
+
+        {/* Preload RuderPlakatLL font */}
         <link
           rel="preload"
-          href="/fonts/RuderPlakatLL.ttf"
+          href="/fonts/RuderPlakatLL-Regular.otf"
           as="font"
-          type="font/ttf"
+          type="font/otf"
+          crossOrigin="anonymous"
+        />
+
+        {/* Preload key Radikal fonts */}
+        <link
+          rel="preload"
+          href="/app/fonts/RadikalTrial-Regular.otf"
+          as="font"
+          type="font/otf"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/app/fonts/RadikalTrial-Bold.otf"
+          as="font"
+          type="font/otf"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/app/fonts/RadikalTrial-Light.otf"
+          as="font"
+          type="font/otf"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/app/fonts/RadikalTrial-Medium.otf"
+          as="font"
+          type="font/otf"
           crossOrigin="anonymous"
         />
       </head>

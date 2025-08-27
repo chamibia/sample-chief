@@ -74,8 +74,7 @@ export default async function ShopPage() {
                 Shop
               </h1>
               <p className="font-radikal font-light mb-8 leading-relaxed text-base md:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto">
-                Discover our curated collection of merchandise that celebrate
-                African sounds and stories.
+                Merchandise for the Movement. Enjoy our curated collections
               </p>
             </div>
 
@@ -101,8 +100,7 @@ export default async function ShopPage() {
                 Shop
               </h1>
               <p className="font-radikal font-light mb-8 leading-relaxed text-base md:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto">
-                Discover our curated collection of merchandise that celebrate
-                African sounds and stories.
+                Merchandise for the Movement. Enjoy our curated collections
               </p>
             </div>
 
@@ -130,8 +128,7 @@ export default async function ShopPage() {
               Shop
             </h1>
             <p className="font-radikal font-light mb-12 leading-relaxed text-lg md:text-xl lg:text-2xl text-[#202020] max-w-3xl mx-auto">
-              Discover our curated collection of merchandise that celebrate
-              African sounds and stories.
+              Merchandise for the Movement. Enjoy our curated collections
             </p>
           </div>
 

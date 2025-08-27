@@ -7,16 +7,16 @@ import { useState, useEffect } from "react";
 const sectionVariants = {
   hidden: {
     opacity: 0,
-    y: 30
+    y: 30,
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.6,
-      ease: "easeOut"
-    }
-  }
+      ease: "easeOut",
+    },
+  },
 };
 
 const staggerContainer = {
@@ -24,9 +24,9 @@ const staggerContainer = {
   visible: {
     transition: {
       staggerChildren: 0.2,
-      delayChildren: 0.1
-    }
-  }
+      delayChildren: 0.1,
+    },
+  },
 };
 
 const logoContainer = {
@@ -34,8 +34,8 @@ const logoContainer = {
   visible: {
     transition: {
       staggerChildren: 0.15,
-      delayChildren: 0.3
-    }
+      delayChildren: 0.3,
+    },
   },
 };
 
@@ -56,7 +56,7 @@ const partners = [
   { id: 5, logo: "/assets/standard.jpg", name: "Standard" },
   { id: 6, logo: "/assets/sway.png", name: "Sway" },
   { id: 7, logo: "/assets/universal_logo.svg", name: "Universal" },
-]
+];
 
 export default function About() {
   const [showBanner, setShowBanner] = useState(true);
@@ -65,27 +65,27 @@ export default function About() {
     const onScroll = () => setShowBanner(window.scrollY < 100);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [])
+  }, []);
 
-  const headline = ["From Toronto to London to Montreal, our mission is to promote music discovery and knowledge. We do this by creating interactive experiences for a global audience, through immersive media and unforgettable events. Our purpose is to educate and entertain."];
+  const headline = [
+    "From Toronto to London to Montreal, our mission is to promote music discovery and knowledge. We do this by creating interactive experiences for a global audience, through immersive media and unforgettable events. Our purpose is to educate and entertain.",
+  ];
   const paragraphs = [
-    "At the heart of it, we bridge brands and audiences that seek captivating experiences beyond the algorithm."
+    "At the heart of it, we bridge brands and audiences that seek captivating experiences beyond the algorithm.",
   ];
 
   return (
     <div className="min-h-screen flex flex-col">
       <div className="flex-1 w-full px-5 md:px-9 pt-20 text-[#202020]">
         <motion.div
-          className="font-radikal text-[1.7rem] md:text-[3.0rem] leading-[1.2] mb-4 md:mb-8 pb-4 md:pb-12 lg:w-4/5"
+          className="font-radikal font-light text-[2rem] md:text-[3.5rem] lg:text-[4rem] md:mb-12 pb-6 md:pb-8 lg:w-4/5"
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
         >
-          <div className="font-radikal text-[#202020] leading-relaxed text-base mb-4 text-[3rem]">
-            Sample Chief is more than an agency.
-          </div>
-          <div className="font-radikal text-[#202020]">
-            We are a global movement dedicated to celebrating African music and culture.
+          <div className="font-radikal font-medium text-[#202020] leading-tight text-[2.5rem] md:text-[3rem] lg:text-[3.5rem]">
+            SAMPLE CHIEF is more than an agency. We are a global movement
+            dedicated to celebrating African music and culture.
           </div>
         </motion.div>
         <motion.div
@@ -98,7 +98,7 @@ export default function About() {
             <motion.p
               key={idx}
               variants={sectionVariants}
-              className="font-alte font-light mb-6 text-[#202020] text-[1.4rem]"
+              className="font-radikal font-light mb-8 text-[#202020] text-lg md:text-xl lg:text-2xl leading-relaxed"
             >
               {p}
             </motion.p>
@@ -115,7 +115,7 @@ export default function About() {
             <motion.p
               key={idx}
               variants={sectionVariants}
-              className="font-alte font-light mb-6 text-[#202020] text-[1.4rem]"
+              className="font-radikal font-light mb-8 text-[#202020] text-lg md:text-xl lg:text-2xl leading-relaxed"
             >
               {p}
             </motion.p>
@@ -150,8 +150,10 @@ export default function About() {
       </div>
 
       {/* Fixed bottom spacing for mobile */}
-      <div className="pb-24 md:pb-16"
-        style={{ paddingBottom: "calc(6rem + env(safe-area-inset-bottom))" }} />
+      <div
+        className="pb-24 md:pb-16"
+        style={{ paddingBottom: "calc(6rem + env(safe-area-inset-bottom))" }}
+      />
     </div>
-  )
+  );
 }

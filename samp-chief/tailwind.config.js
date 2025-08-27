@@ -13,14 +13,19 @@ module.exports = {
         // utilities
         alte: ["AlteHaasGrotesk", "system-ui", "sans-serif"],
         ruder: ["RuderPlakatLL", "sans-serif"],
-        // Add a font stack that includes symbols
-        "font-symbols": [
-          "AlteHaasGrotesk",
-          "Arial",
-          "Helvetica",
-          "system-ui",
-          "sans-serif",
-        ],
+        radikal: ["Radikal", "sans-serif"],
+        // Symbol fallback font stack
+        symbols: ["Arial", "Helvetica", "system-ui", "sans-serif"],
+      },
+      fontWeight: {
+        // Radikal font weights
+        "ultra-thin": "100",
+        thin: "200",
+        light: "300",
+        normal: "400",
+        medium: "500",
+        bold: "700",
+        black: "900",
       },
     },
   },
