@@ -3,11 +3,19 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Sample Chief | African Music Culture",
-  description: "Sample Chief is a global community celebrating African music culture through immersive experiences, events, and digital content.",
-  keywords: ["Sample Chief", "African music", "music culture", "events", "global community"],
+  description:
+    "Sample Chief is a global community celebrating African music culture through immersive experiences, events, and digital content.",
+  keywords: [
+    "Sample Chief",
+    "African music",
+    "music culture",
+    "events",
+    "global community",
+  ],
   openGraph: {
     title: "Sample Chief | African Music Culture",
-    description: "Sample Chief is a global community celebrating African music culture through immersive experiences, events, and digital content.",
+    description:
+      "Sample Chief is a global community celebrating African music culture through immersive experiences, events, and digital content.",
     url: "https://samplechief.com",
     siteName: "Sample Chief",
     images: [
@@ -24,7 +32,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Sample Chief | African Music Culture",
-    description: "Sample Chief is a global community celebrating African music culture through immersive experiences, events, and digital content.",
+    description:
+      "Sample Chief is a global community celebrating African music culture through immersive experiences, events, and digital content.",
     images: ["/assets/og-image.png"],
   },
 };
@@ -32,7 +41,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="relative w-full">
-      <section className="relative w-full h-screen -mt-16 pt-16">
+      <section className="relative w-full h-[100vh]">
         <video
           src="/videos/sample.mp4"
           autoPlay
@@ -114,5 +123,5 @@ export default function Home() {
         </div>
       </section>
     </div>
-  )
+  );
 }

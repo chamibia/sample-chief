@@ -1,61 +1,81 @@
 @import "tailwindcss";
 
+/* RuderPlakatLL Font */
 @font-face {
-  font-family: 'RadikalTrial';
-  src: url('/fonts/RadikalTrial-Black.otf')   format('opentype');
-  font-weight: 900;
+  font-family: "RuderPlakatLL";
+  src: url("/fonts/RuderPlakatLL-Regular.otf") format("opentype");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
+
+/* AlteHaasGrotesk Fonts */
 @font-face {
-  font-family: 'RadikalTrial';
-  src: url('/fonts/RadikalTrial-Light.otf')   format('opentype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'RadikalTrial';
-  src: url('/fonts/RadikalTrial-Medium.otf')  format('opentype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'RadikalTrial';
-  src: url('/fonts/RadikalTrial-Regular.otf') format('opentype');
+  font-family: "AlteHaasGrotesk";
+  src: url("/fonts/AlteHaasGroteskRegular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'RadikalTrial';
-  src: url('/fonts/RadikalTrial-Bold.otf') format('opentype');
+  font-family: "AlteHaasGrotesk";
+  src: url("/fonts/AlteHaasGroteskBold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
-@font-face {
-  font-family: 'RadikalTrial';
-  src: url('/fonts/RadikalTrial-BoldItalic.otf') format('opentype');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
 
-/* Mobile viewport height fixes */
-:root {
-  --vh: 1vh;
-  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
-}
-
-html, body {
-  font-family: 'RadikalTrial', sans-serif;
+/* Default body styles */
+html,
+body {
+  font-family: "AlteHaasGrotesk", system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial, sans-serif;
   height: 100%;
-  /* Prevent iOS Safari from bouncing */
   overscroll-behavior-y: none;
-  /* Prevent horizontal scrolling */
   overflow-x: hidden;
+  letter-spacing: 0.025em;
+
+  /* better rendering + no faux styles */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+  font-synthesis-weight: none;
+  font-synthesis-style: none;
+}
+
+/* Font utility classes */
+.font-radikal {
+  font-family: "Radikal", sans-serif;
+  letter-spacing: 0.09em;
+}
+
+.font-alte {
+  font-family: "AlteHaasGrotesk", sans-serif;
+}
+
+.font-ruder {
+  font-family: "RuderPlakatLL", sans-serif;
+}
+
+/* Typography enhancements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: 0.04em;
+}
+
+p {
+  letter-spacing: 0.025em;
+  line-height: 1.7;
+}
+
+/* Optional: tiny tracking for Ruder at display sizes */
+.font-ruder-tune {
+  letter-spacing: 0.01em;
 }
 
 /* Dynamic viewport height support */
@@ -71,9 +91,43 @@ html, body {
   .mobile-safe-bottom {
     padding-bottom: calc(2rem + var(--safe-area-inset-bottom));
   }
-  
+
   /* Mobile viewport height fix */
   .min-h-screen {
     min-height: calc(var(--vh, 1vh) * 100);
   }
+}
+
+/* Symbol fallback system - ensures symbols display properly */
+.symbol-fallback {
+  font-family: Arial, Helvetica, system-ui, sans-serif !important;
+}
+
+/* Currency symbol fallback */
+.currency-symbol {
+  font-family: Arial, Helvetica, system-ui, sans-serif !important;
+}
+
+/* Price symbol fallback */
+.price-symbol {
+  font-family: Arial, Helvetica, system-ui, sans-serif !important;
+}
+
+/* Specific symbol fallbacks for different fonts */
+.font-radikal .currency-symbol,
+.font-radikal .price-symbol,
+.font-radikal .symbol-fallback {
+  font-family: Arial, Helvetica, system-ui, sans-serif !important;
+}
+
+.font-alte .currency-symbol,
+.font-alte .price-symbol,
+.font-alte .symbol-fallback {
+  font-family: Arial, Helvetica, system-ui, sans-serif !important;
+}
+
+/* Alternative: Use CSS to replace symbols with better alternatives */
+.price-with-symbol::before {
+  content: "$";
+  font-family: Arial, Helvetica, system-ui, sans-serif;
 }

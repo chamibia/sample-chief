@@ -1,7 +1,8 @@
 // app/ClientLayout.tsx (Client Component)
 "use client";
 
-import { useEffect } from 'react';
+import { useEffect } from "react";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default function ClientLayout({
   children,
@@ -12,7 +13,7 @@ export default function ClientLayout({
   useEffect(() => {
     function setViewportHeight() {
       const vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
     }
 
     // Set initial value
@@ -29,24 +30,25 @@ export default function ClientLayout({
       setTimeout(setViewportHeight, 100);
     };
 
-    window.addEventListener('resize', handleResize);
-    window.addEventListener('orientationchange', handleOrientationChange);
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("orientationchange", handleOrientationChange);
 
     // Cleanup
     return () => {
-      window.removeEventListener('resize', handleResize);
-      window.removeEventListener('orientationchange', handleOrientationChange);
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("orientationchange", handleOrientationChange);
     };
   }, []);
 
   return (
-    <div 
+    <div
       className="min-h-screen flex flex-col"
       style={{
-        minHeight: 'calc(var(--vh, 1vh) * 100)'
+        minHeight: "calc(var(--vh, 1vh) * 100)",
       }}
     >
       {children}
+      <ScrollToTop />
     </div>
   );
 }

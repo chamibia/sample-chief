@@ -7,16 +7,16 @@ import { useState, useEffect } from "react";
 const sectionVariants = {
   hidden: {
     opacity: 0,
-    y: 30
+    y: 30,
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.6,
-      ease: "easeOut"
-    }
-  }
+      ease: "easeOut",
+    },
+  },
 };
 
 const staggerContainer = {
@@ -24,9 +24,9 @@ const staggerContainer = {
   visible: {
     transition: {
       staggerChildren: 0.2,
-      delayChildren: 0.1
-    }
-  }
+      delayChildren: 0.1,
+    },
+  },
 };
 
 const logoContainer = {
@@ -34,8 +34,8 @@ const logoContainer = {
   visible: {
     transition: {
       staggerChildren: 0.15,
-      delayChildren: 0.3
-    }
+      delayChildren: 0.3,
+    },
   },
 };
 
@@ -56,7 +56,7 @@ const partners = [
   { id: 5, logo: "/assets/standard.jpg", name: "Standard" },
   { id: 6, logo: "/assets/sway.png", name: "Sway" },
   { id: 7, logo: "/assets/universal_logo.svg", name: "Universal" },
-]
+];
 
 export default function About() {
   const [showBanner, setShowBanner] = useState(true);
@@ -65,31 +65,47 @@ export default function About() {
     const onScroll = () => setShowBanner(window.scrollY < 100);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [])
+  }, []);
 
-  const headline = "SAMPLE CHIEF is a global community that celebrates African music culture.";
+  const headline = [
+    "From Toronto to London to Montreal, our mission is to promote music discovery and knowledge. We do this by creating interactive experiences for a global audience, through immersive media and unforgettable events. Our purpose is to educate and entertain.",
+  ];
   const paragraphs = [
-    "From Toronto to Montreal, London to Lagos — our rhythm is global and on the move.",
-    "We're on a mission to spark music discovery through immersive, unexpected, and genre-bending experiences — both digital and live. We create moments where sound tells a story.",
-    "We bridge brands and bold youth audiences — those who crave beats, connection, and something beyond the algorithm"
+    "At the heart of it, we bridge brands and audiences that seek captivating experiences beyond the algorithm.",
   ];
 
   return (
     <div className="min-h-screen flex flex-col">
-      <div className="flex-1 w-full px-5 md:px-9 text-gray-800 pt-20">
+      <div className="flex-1 w-full px-5 md:px-9 pt-20 text-[#202020]">
         <motion.div
-          className="font-radikal font-normal text-[1.8rem] md:text-[3.0rem] leading-[1.2] mb-4 md:mb-8 pb-4 md:pb-12 lg:w-4/5"
+          className="font-ruder font-light text-[2rem] md:text-[3.5rem] lg:text-[4rem] md:mb-12 pb-6 md:pb-8 lg:w-4/5"
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
         >
-          <span className="font-radikal font-bold italic text-gray-700">
-            SAMPLE CHIEF
-          </span>{" "}
-          <span className="font-radikal font-light text-gray-700 leading-relaxed">
-            is a global community that celebrates African music culture.
-          </span>
+          <div className="font-ruder font-medium text-[#202020] leading-tight text-[2.5rem] md:text-[3rem] lg:text-[3.5rem]">
+            SAMPLE CHIEF is more than an agency. We are a global movement
+            dedicated to celebrating African music and culture.
+          </div>
         </motion.div>
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {headline.map((p, idx) => (
+            <motion.p
+              key={idx}
+              variants={sectionVariants}
+              className="font-sans font-light mb-8 text-[#202020] text-lg md:text-xl lg:text-2xl leading-loose tracking-wider"
+
+            >
+              {p}
+            </motion.p>
+          ))}
+        </motion.div>
+
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -100,7 +116,7 @@ export default function About() {
             <motion.p
               key={idx}
               variants={sectionVariants}
-              className="font-radikal font-light mb-8 leading-relaxed text-base md:text-lg lg:text-xl text-gray-700"
+              className="font-sans font-light mb-8 text-[#202020] text-lg md:text-xl lg:text-2xl leading-loose tracking-wider"
             >
               {p}
             </motion.p>
@@ -135,8 +151,10 @@ export default function About() {
       </div>
 
       {/* Fixed bottom spacing for mobile */}
-      <div className="pb-24 md:pb-16"
-        style={{ paddingBottom: "calc(6rem + env(safe-area-inset-bottom))" }} />
+      <div
+        className="pb-24 md:pb-16"
+        style={{ paddingBottom: "calc(6rem + env(safe-area-inset-bottom))" }}
+      />
     </div>
-  )
+  );
 }

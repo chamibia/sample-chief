@@ -1,46 +1,46 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import { useState, useEffect } from "react"
-import { getNames } from "country-list"
-import { X } from "lucide-react"
-import popupImage from "../../public/assets/popupimage.jpeg"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import { getNames } from "country-list";
+import { X } from "lucide-react";
+import popupImage from "../../public/assets/popupimage.jpeg";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
-const countries = getNames()
+const countries = getNames();
 
 export default function SubscribePopup() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [email, setEmail] = useState("")
-  const [country, setCountry] = useState("")
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [country, setCountry] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
-    type: "success" | "error" | null
-    message: string
-  }>({ type: null, message: "" })
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsOpen(true)
-    }, 5000)
+      setIsOpen(true);
+    }, 5000);
     return () => clearTimeout(timer);
-  }, [])
+  }, []);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
+    e.preventDefault();
 
-    setSubmitStatus({ type: null, message: "" })
+    setSubmitStatus({ type: null, message: "" });
 
     if (!email.trim() || !country.trim()) {
       setSubmitStatus({
         type: "error",
         message: "Both email and country are required.",
       });
-      return
+      return;
     }
 
-    setIsSubmitting(true)
+    setIsSubmitting(true);
 
     try {
       const response = await fetch("/api/subscribe", {
@@ -52,7 +52,7 @@ export default function SubscribePopup() {
       const result = await response.json();
 
       if (response.ok) {
-        let successMessage = ""
+        let successMessage = "";
         if (typeof result.message === "string") {
           successMessage = result.message;
         } else if (result.message && typeof result.message === "object") {
@@ -126,11 +126,11 @@ export default function SubscribePopup() {
         </div>
 
         <div className="w-full p-3 sm:p-4 flex flex-col items-center">
-          <h2 className="font-radikal mb-2 text-lg sm:text-xl font-bold text-center">
+          <h2 className="font-ruder mb-2 text-lg sm:text-xl font-bold text-center">
             Stay in the loop
           </h2>
-          <p className="font-radikal mb-3 sm:mb-4 text-sm sm:text-base text-gray-600 text-center">
-          We'll only hit your inbox when there's something worth hearing.        
+          <p className="font-sans mb-3 sm:mb-4 text-sm sm:text-base text-gray-600 text-center">
+            We'll only hit your inbox when there's something worth hearing.
           </p>
           {submitStatus.type && (
             <div
@@ -144,11 +144,11 @@ export default function SubscribePopup() {
             </div>
           )}
 
-          <form onSubmit={onSubmit} className="w-full space-y-4 font-radikal">
+          <form onSubmit={onSubmit} className=" font-sans font-light w-full space-y-4">
             <div className="flex flex-col">
               <label
                 htmlFor="email"
-                className="mb-1 text-sm font-medium text-gray-700"
+                className="font-sans font-lightmb-1 text-sm font-medium text-black"
               >
                 Email
               </label>
@@ -156,7 +156,7 @@ export default function SubscribePopup() {
                 id="email"
                 type="email"
                 placeholder="you@example.com"
-                className="w-full font-radikal"
+                className="w-full font-sans"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={isSubmitting}
@@ -166,18 +166,18 @@ export default function SubscribePopup() {
             <div className="flex flex-col">
               <label
                 htmlFor="country"
-                className="mb-1 text-sm font-medium text-gray-700"
+                className="mb-1 text-sm font-medium text-black font-sans"
               >
                 Country
               </label>
               <select
                 id="country"
-                className="w-full rounded border border-gray-300 bg-white px-3 py-2 font-radikal text-gray-700 focus:border-[#2E8B57] focus:outline-none"
+                className="w-full rounded font-light border border-gray-300 bg-white px-3 py-2 font-alte text-gray-700 focus:border-[#2E8B57] focus:outline-none"
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
                 disabled={isSubmitting}
               >
-                <option value="">Select a country</option>
+                <option className="font-alte" value="">Select a country</option>
                 {countries.map((c) => (
                   <option key={c} value={c}>
                     {c}
@@ -188,7 +188,7 @@ export default function SubscribePopup() {
 
             <Button
               type="submit"
-              className="w-full font-radikal text-sm sm:text-base text-white bg-[#2E8B57] hover:bg-[#2E8B57]/90"
+              className="w-full font-sans text-sm sm:text-base text-white bg-[#07693A] hover:bg-[#2E8B57]/90"
               disabled={isSubmitting}
             >
               {isSubmitting ? "Subscribing..." : "Subscribe"}
