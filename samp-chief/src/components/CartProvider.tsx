@@ -195,7 +195,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     try {
       console.log("Sending checkout request with items:", cart.items);
 
-      const response = await fetch("/api/checkout", {
+      const response = await fetch("/api/cart/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -209,7 +209,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       });
 
       const data = await response.json();
-      console.log("Checkout API response:", data);
+      console.log("Cart creation API response:", data);
 
       if (!response.ok) {
         throw new Error(
@@ -217,9 +217,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         );
       }
 
-      if (data.checkoutUrl) {
-        console.log("Redirecting to checkout URL:", data.checkoutUrl);
-        window.location.href = data.checkoutUrl;
+      if (data.cart?.checkoutUrl) {
+        console.log("Redirecting to checkout URL:", data.cart.checkoutUrl);
+        window.location.href = data.cart.checkoutUrl;
       } else {
         console.error("No checkout URL in response:", data);
         throw new Error("No checkout URL received from server");
