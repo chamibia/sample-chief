@@ -83,7 +83,7 @@ export default function ProductAddToCart({
       {/* Variant Selection */}
       {variants.length > 1 && (
         <div className="space-y-4">
-          <h3 className="font-radikal font-light text-xl text-gray-800">
+          <h3 className="font-sans font-light text-xl text-gray-800">
             Options
           </h3>
           <div className="space-y-3">
@@ -91,16 +91,15 @@ export default function ProductAddToCart({
               <button
                 key={variant.id}
                 onClick={() => setSelectedVariant(variant)}
-                className={`w-full flex items-center justify-between p-4 border rounded-lg transition-all duration-300 ${
-                  selectedVariant?.id === variant.id
+                className={`w-full flex items-center justify-between p-4 border rounded-lg transition-all duration-300 ${selectedVariant?.id === variant.id
                     ? "border-gray-800 bg-gray-50"
                     : "border-gray-200 hover:border-gray-300 bg-white"
-                }`}
+                  }`}
               >
-                <span className="font-radikal font-light text-gray-800">
+                <span className="font-sans font-light text-gray-800">
                   {variant.title}
                 </span>
-                <span className="font-radikal font-bold text-gray-800">
+                <span className="font-sans font-bold text-gray-800">
                   <span className="currency-symbol">$</span>
                   {variant.price.amount} {variant.price.currencyCode}
                 </span>
@@ -112,7 +111,7 @@ export default function ProductAddToCart({
 
       {/* Quantity Selector */}
       <div className="space-y-4">
-        <h3 className="font-radikal font-light text-xl text-gray-800">
+        <h3 className="font-sans font-light text-xl text-gray-800">
           Quantity
         </h3>
         <div className="flex items-center space-x-4">
@@ -122,7 +121,7 @@ export default function ProductAddToCart({
           >
             <Minus className="h-5 w-5" />
           </button>
-          <span className="font-radikal font-light text-xl w-16 text-center">
+          <span className="font-sans font-light text-xl w-16 text-center">
             {quantity}
           </span>
           <button
@@ -139,7 +138,7 @@ export default function ProductAddToCart({
         <button
           onClick={handleAddToCart}
           disabled={!selectedVariant || addingToCart}
-          className="w-full bg-gray-800 text-white px-8 py-4 rounded-lg font-radikal font-medium text-lg hover:bg-gray-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-3"
+          className="w-full bg-gray-800 text-white px-8 py-4 rounded-lg font-sans font-medium text-lg hover:bg-gray-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-3"
         >
           <ShoppingCart className="h-5 w-5" />
           <span>{addingToCart ? "Adding to Cart..." : "Add to Cart"}</span>
@@ -147,7 +146,7 @@ export default function ProductAddToCart({
 
         <Link
           href="/shop/cart"
-          className="block w-full text-center bg-transparent border-2 border-gray-800 text-gray-800 px-8 py-4 rounded-lg font-radikal font-medium text-lg hover:bg-gray-800 hover:text-white transition-all duration-300"
+          className="block w-full text-center bg-transparent border-2 border-gray-800 text-gray-800 px-8 py-4 rounded-lg font-sans font-medium text-lg hover:bg-gray-800 hover:text-white transition-all duration-300"
         >
           View Cart
         </Link>
@@ -156,7 +155,7 @@ export default function ProductAddToCart({
       {/* Add to Cart Notification */}
       {showNotification && (
         <div className="fixed bottom-4 right-4 bg-white text-gray-800 p-4 rounded-lg shadow-lg z-50 border border-gray-200">
-          <p className="font-radikal font-medium">
+          <p className=" font-medium">
             Added {quantity} {quantity === 1 ? "item" : "items"} to cart!
           </p>
           <button

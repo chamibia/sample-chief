@@ -45,10 +45,6 @@ body {
 }
 
 /* Font utility classes */
-.font-radikal {
-  font-family: "Radikal", sans-serif;
-  letter-spacing: 0.09em;
-}
 
 .font-alte {
   font-family: "AlteHaasGrotesk", sans-serif;
