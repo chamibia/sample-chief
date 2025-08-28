@@ -74,7 +74,7 @@ export default async function ShopPage() {
                 Shop Our Collection
               </h1>
               <p className="font-sans font-light mb-8 leading-relaxed text-base md:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto">
-                Merchandise for the Movement. Enjoy our curated collections
+                Merchandise for the Movement. Enjoy our limited edition collections.
               </p>
             </div>
 
