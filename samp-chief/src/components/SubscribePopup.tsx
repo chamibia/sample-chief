@@ -144,11 +144,11 @@ export default function SubscribePopup() {
             </div>
           )}
 
-          <form onSubmit={onSubmit} className="w-full space-y-4 font-sans">
+          <form onSubmit={onSubmit} className=" font-sans font-light w-full space-y-4">
             <div className="flex flex-col">
               <label
                 htmlFor="email"
-                className="mb-1 text-sm font-medium text-gray-700 font-sans"
+                className="font-sans font-lightmb-1 text-sm font-medium text-black"
               >
                 Email
               </label>
@@ -156,7 +156,7 @@ export default function SubscribePopup() {
                 id="email"
                 type="email"
                 placeholder="you@example.com"
-                className="w-full font-ruder"
+                className="w-full font-sans"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={isSubmitting}
@@ -166,18 +166,18 @@ export default function SubscribePopup() {
             <div className="flex flex-col">
               <label
                 htmlFor="country"
-                className="mb-1 text-sm font-medium text-gray-700 font-sans"
+                className="mb-1 text-sm font-medium text-black font-sans"
               >
                 Country
               </label>
               <select
                 id="country"
-                className="w-full rounded border border-gray-300 bg-white px-3 py-2 font-ruder text-gray-700 focus:border-[#2E8B57] focus:outline-none"
+                className="w-full rounded font-light border border-gray-300 bg-white px-3 py-2 font-alte text-gray-700 focus:border-[#2E8B57] focus:outline-none"
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
                 disabled={isSubmitting}
               >
-                <option value="">Select a country</option>
+                <option className="font-alte" value="">Select a country</option>
                 {countries.map((c) => (
                   <option key={c} value={c}>
                     {c}
@@ -188,7 +188,7 @@ export default function SubscribePopup() {
 
             <Button
               type="submit"
-              className="w-full font-ruder text-sm sm:text-base text-white bg-[#07693A] hover:bg-[#2E8B57]/90"
+              className="w-full font-sans text-sm sm:text-base text-white bg-[#07693A] hover:bg-[#2E8B57]/90"
               disabled={isSubmitting}
             >
               {isSubmitting ? "Subscribing..." : "Subscribe"}

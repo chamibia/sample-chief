@@ -10,7 +10,16 @@ import ClientLayout from "./ClientLayout";
 import { CartProvider } from "@/components/CartProvider";
 
 export const metadata: Metadata = {
-  /* ...unchanged... */
+  title: {
+    default: "Sample Chief",
+    template: "%s | Sample Chief",
+  },
+  description: "Sample Chief - Merchandise for the Movement",
+  icons: {
+    icon: "/assets/favicon.ico",
+    shortcut: "/assets/favicon.ico",
+    apple: "/assets/favicon.ico",
+  },
 };
 export const viewport: Viewport = {
   /* ...unchanged... */
