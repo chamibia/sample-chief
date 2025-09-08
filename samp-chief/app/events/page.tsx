@@ -47,6 +47,20 @@ const eventData = [
     ticketLink:
       "https://docs.google.com/forms/d/e/1FAIpQLScEnyFLRuDOPs7vZxZiEJ9fG1EUjc9nNaDBwW5kt5Cx48UGew/viewform?usp=header",
   },
+    {
+    id: 4,
+    title: "My Father's Shadow - Official Afterparty",
+    description:
+      "Join us for an evening of drinks and music to celebrate the North American premiere of My Father’s Shadow, at an exclusive afterparty hosted by local·global, in collaboration with Sample Chief.",
+    startDate: "2025-09-10",
+    endDate: "2025-09-11",
+    time: "7pm - 12am",
+    venue:
+      "Civil Works, 50 Brant Street Toronto, M5V 3G9 Canada",
+    imageUrl: "/assets/IMG_6056.PNG",
+    ticketLink:
+      "https://bit.ly/myfathersshadowafterparty",
+  },
 ];
 
 export default function Events() {
