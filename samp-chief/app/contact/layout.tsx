@@ -1,4 +1,9 @@
+import Navbar from "../../src/components/layout/Navbar";
+import Footer from "../../src/components/layout/Footer";
+import { CartProvider } from "../../src/components/CartProvider";
+import React from "react";
 import { Metadata } from "next";
+
 
 export const metadata: Metadata = {
   title: "Join Our Community",
@@ -24,10 +29,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ContactLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return <>{children}</>;
+
+export default function ContactLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <CartProvider>
+      <Navbar />
+      {children}
+      <Footer />
+    </CartProvider>
+  );
 }

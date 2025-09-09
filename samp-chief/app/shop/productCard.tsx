@@ -65,22 +65,24 @@ export default function ProductCard({ node }: { node: any }) {
         </Link>
       </div>
 
-      {/* Info block BELOW image - centered */}
-      <div className="px-2 text-center">
-        <h3 className="font-sans font-light text-[15px] leading-6 tracking-[0.06em] uppercase text-black">
-          {node.title}
-        </h3>
-        {subtitle ? (
-          <p className="mt-1 italic text-[15px] leading-6 text-black/80 font-sans">
-            {subtitle}
-          </p>
-        ) : null}
-        {node.variants?.edges?.[0]?.node?.price && (
-          <p className="mt-2 font-sans font-medium text-[15px] text-black">
-            <span className="font-sans">$</span>
-            {node.variants.edges[0].node.price.amount}
-          </p>
-        )}
+      {/* Info block BELOW image - left-justified */}
+      <div className="px-2 text-left">
+        <Link href={`/shop/${node.handle}`} aria-label={node.title} className="block group">
+          <h3 className="font-sans font-bold text-[15px] leading-6 tracking-[0.06em] uppercase text-black group-hover:underline">
+            {node.title}
+          </h3>
+          {subtitle ? (
+            <p className="mt-1 italic text-[15px] leading-6 text-black/80 font-sans">
+              {subtitle}
+            </p>
+          ) : null}
+          {node.variants?.edges?.[0]?.node?.price && (
+            <p className="mt-2 font-sans font-medium text-[15px] text-black">
+              <span className="font-sans">$</span>
+              {parseInt(node.variants.edges[0].node.price.amount, 10)}
+            </p>
+          )}
+        </Link>
       </div>
     </div>
   );

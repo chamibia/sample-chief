@@ -1,13 +1,7 @@
 // app/layout.tsx (Server Component)
 import { Metadata, Viewport } from "next";
 import "../styles/globals.css";
-import Navbar from "../src/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import SubscribePopup from "@/components/SubscribePopup";
-import ClientLayout from "./ClientLayout";
 
-// ✅ add this
-import { CartProvider } from "@/components/CartProvider";
 
 export const metadata: Metadata = {
   title: {
@@ -89,15 +83,7 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased font-sans">
-        {/* ✅ Cart context available everywhere */}
-        <CartProvider>
-          <ClientLayout>
-            <Navbar />
-            <main className="flex-1">{children}</main>
-            <Footer />
-            <SubscribePopup />
-          </ClientLayout>
-        </CartProvider>
+        {children}
       </body>
     </html>
   );

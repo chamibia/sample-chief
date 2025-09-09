@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -11,6 +12,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { CarouselProgressBar } from "@/components/ui/carousel-progress-bar";
 
 export default function MusicPage() {
   const playlists = [
@@ -211,7 +213,7 @@ export default function MusicPage() {
       transition={{ delay }}
       className="mb-12"
     >
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-end justify-between mb-6">
         <h2 className="font-ruder leading-relaxed text-3xl md:text-4xl text-[#202020] tracking-wider">
           {title}
         </h2>
@@ -219,9 +221,11 @@ export default function MusicPage() {
           href={seeAllLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-sans font-light leading-relaxed text-base text-[#07693A] hover:underline transition-all duration-300"
+          className="font-sans font-light leading-relaxed text-base text-[#07693A] hover:underline transition-all duration-300 inline-flex items-center pb-[2px]"
+          style={{ gap: '5px' }}
         >
           See all
+          <ExternalLink className="w-4 h-4 inline-block align-text-bottom" aria-label="Opens external link" />
         </Link>
       </div>
 
@@ -253,8 +257,12 @@ export default function MusicPage() {
                           {item.title}
                         </h3>
                       </div>
+                      {/* External link icon top right on hover */}
+                      <div className="absolute top-4 right-4 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <ExternalLink className="w-5 h-5 text-white" aria-label="Opens external link" />
+                      </div>
                       <div className="absolute bottom-4 left-4 z-30">
-                        <p className="font-sans text-white text-sm pr-4">
+                        <p className="font-sans text-white text-sm pr-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           {item.subtitle}
                         </p>
                       </div>
@@ -269,49 +277,50 @@ export default function MusicPage() {
         <CarouselNext className="flex md:hidden bg-white border-2 border-gray-300 text-gray-700 hover:bg-[#2E8B57] hover:border-[#2E8B57] hover:text-white transition-all duration-300 -right-2 top-1/2 -translate-y-1/2 h-8 w-8" />
         <CarouselPrevious className="hidden md:flex bg-white border-2 border-gray-300 text-gray-700 hover:bg-[#2E8B57] hover:border-[#2E8B57] hover:text-white transition-all duration-300 -left-6 top-1/2 -translate-y-1/2" />
         <CarouselNext className="hidden md:flex bg-white border-2 border-gray-300 text-gray-700 hover:bg-[#2E8B57] hover:border-[#2E8B57] hover:text-white transition-all duration-300 -right-6 top-1/2 -translate-y-1/2" />
+        {/* Progress bar below carousel */}
+        <CarouselProgressBar />
       </Carousel>
     </motion.div>
   );
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <div className="flex-1 w-full px-5 md:px-9 text-gray-800 pt-20">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-16"
-          >
-            <h1 className="font-ruder leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-[#202020]">
-              From Our Ears to Yours
-            </h1>
-            <p className="font-sans font-light leading-relaxed text-lg md:text-xl lg:text-2xl text-[#202020] max-w-2xl mx-auto">
-              Enjoy our selection of playlists and mixes, curated for every mood
-            </p>
-          </motion.div>
+    <>
+      {/* Header and intro */}
 
-          <CarouselSection
-            title="Playlists"
-            items={playlists}
-            seeAllLink="https://open.spotify.com/user/x3zc0sdr8mdvs4b7uzqxqdnnf/playlists"
-            delay={0.2}
-          />
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h1 className="font-ruder font-medium text-4xl md:text-5xl lg:text-6xl text-left mb-6 leading-tight tracking-wider text-[#202020]">
+          From Our Ears to Yours
+        </h1>
+        <p className="font-sans font-light text-lg md:text-xl lg:text-2xl text-left max-w-2xl leading-loose tracking-wider mb-10">
+          Enjoy our selection of playlists and mixes, curated for every mood
+        </p>
+      </motion.div>
 
-          <CarouselSection
-            title="Mixes"
-            items={mixes}
-            seeAllLink="https://soundcloud.com/samplechief"
-            delay={0.4}
-          />
-        </div>
-      </div>
+      {/* Add space above Playlists section */}
+      <div className="mb-2" />
 
+      <CarouselSection
+        title="Playlists"
+        items={playlists}
+        seeAllLink="https://open.spotify.com/user/x3zc0sdr8mdvs4b7uzqxqdnnf/playlists"
+        delay={0.2}
+      />
+
+      <CarouselSection
+        title="Mixes"
+        items={mixes}
+        seeAllLink="https://soundcloud.com/samplechief"
+        delay={0.4}
+      />
       {/* Fixed bottom spacing for mobile */}
       <div
         className="pb-24 md:pb-16"
         style={{ paddingBottom: "calc(6rem + env(safe-area-inset-bottom))" }}
       />
-    </div>
+    </>
   );
 }

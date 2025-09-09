@@ -30,7 +30,7 @@ export default function Footer() {
           ? "bg-black text-white"
           : "bg-white text-black",
         // Add consistent padding and safe area support for mobile
-        "px-2 py-4 md:py-6 pb-safe"
+        "px-2 py-4 md:py-6 pb-safe border-none rounded-none"
       )}
       style={{
         // Ensure footer is always visible on mobile
@@ -40,6 +40,9 @@ export default function Footer() {
       }}
     >
       <div className="flex flex-col md:relative items-center justify-center w-full px-4 pt-4 pb-2">
+        <div className="font-ruder font-bold mt-4 md:mt-0 md:absolute md:left-4 text-sm">
+          Supported by Ontario Creates
+        </div>
         <div className="flex items-center space-x-6">
           <Link
             href="https://www.instagram.com/samplechief/?hl=en"
@@ -105,9 +108,7 @@ export default function Footer() {
             <SiSpotify className="h-6 w-6" />
           </Link>
         </div>
-        <div className="font-ruder font-bold mt-4 md:mt-0 md:absolute md:right-4 text-sm">
-          Supported by Ontario Creates
-        </div>
+
       </div>
     </footer>
   );

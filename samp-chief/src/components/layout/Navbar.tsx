@@ -56,8 +56,8 @@ export default function Navbar() {
       isHome ? "absolute top-0 left-0 right-0" : "sticky top-0"
     } z-50 transition-all duration-300 ease-in-out 
     ${backgroundColor} ${textColor} 
-    ${isScrolled ? "py-2 shadow-sm" : isHome ? "py-4" : "py-6 md:py-8"} 
-    ${isHome ? "" : "rounded-b-2xl"}
+    ${isScrolled ? "py-2 shadow-sm" : isHome ? "py-4" : "py-6 md:py-8"}
+    border-none rounded-none
   `;
 
   const links = ["ABOUT", "EVENTS", "MUSIC", "SHOP", "CONTACT"];
@@ -96,11 +96,13 @@ export default function Navbar() {
                       <NavigationMenuLink
                         className={`group inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-lg font-ruder font-bold transition-all duration-200 ease-out transform hover:scale-105 ${
                           isHome && !isScrolled
-                            ? "text-white hover:text-white"
-                            : "text-[#202020] hover:text-[#202020]"
+                            ? "text-white hover:text-white hover:underline hover:underline-offset-4 hover:decoration-2 hover:decoration-white"
+                            : "text-[#202020] hover:text-[#202020] hover:underline hover:underline-offset-4 hover:decoration-2"
                         } ${
                           isActive
-                            ? "underline underline-offset-4 decoration-2"
+                            ? isHome && !isScrolled
+                              ? "underline underline-offset-4 decoration-2 decoration-white"
+                              : "underline underline-offset-4 decoration-2"
                             : ""
                         }`}
                       >
@@ -151,7 +153,7 @@ export default function Navbar() {
         {/* Mobile nav dropdown - positioned absolutely within header */}
         {isMenuOpen && (
           <div
-            className={`md:hidden absolute top-full left-0 right-0 z-50 ${backgroundColor} rounded-b-2xl overflow-hidden`}
+            className={`md:hidden absolute top-full left-0 right-0 z-50 ${backgroundColor} overflow-hidden border-none rounded-none`}
           >
             <nav className="flex flex-col items-start space-y-3 px-6 py-3">
               {links.map((label) => {
