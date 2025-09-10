@@ -113,6 +113,12 @@ export default function Events() {
   return (
     <div className="min-h-screen flex flex-col">
       <div className="flex-1 w-full px-5 md:px-9 text-[#202020] pt-10">
+        {/* Section Title */}
+        <div className="mb-8">
+          <h1 className="font-ruder font-medium text-4xl md:text-5xl lg:text-6xl text-left mb-4 leading-tight tracking-wider text-[#202020]">
+            Next Up
+          </h1>
+        </div>
         <div>
           {eventData
             .slice()

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function AboutLink() {
   return (
-    <Link href="/about" scroll={true} passHref legacyBehavior>
+    <Link href="/about" scroll={true}>
       <img 
         src="/assets/logo-white.png" 
         alt="Sample Chief Logo"

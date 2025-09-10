@@ -82,7 +82,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body className="antialiased font-sans">
+  <body className="antialiased font-sans">
         {children}
       </body>
     </html>

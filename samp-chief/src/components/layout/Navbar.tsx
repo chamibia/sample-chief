@@ -92,8 +92,9 @@ export default function Navbar() {
 
                 return (
                   <NavigationMenuItem key={label}>
-                    <Link href={path} legacyBehavior passHref>
-                      <NavigationMenuLink
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href={path}
                         className={`group inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-lg font-ruder font-bold transition-all duration-200 ease-out transform hover:scale-105 ${
                           isHome && !isScrolled
                             ? "text-white hover:text-white hover:underline hover:underline-offset-4 hover:decoration-2 hover:decoration-white"
@@ -107,8 +108,8 @@ export default function Navbar() {
                         }`}
                       >
                         {label}
-                      </NavigationMenuLink>
-                    </Link>
+                      </Link>
+                    </NavigationMenuLink>
                   </NavigationMenuItem>
                 );
               })}
