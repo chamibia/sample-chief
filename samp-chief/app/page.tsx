@@ -1,13 +1,9 @@
 import Image from "next/image";
 import { Metadata } from "next";
 
-import { CartProvider } from "../src/components/CartProvider";
-
-import Navbar from "../src/components/layout/Navbar";
-import Footer from "../src/components/layout/Footer";
 import VideoHeroSection from "../src/components/VideoHeroSection";
-import AboutLink from "../src/components/AboutLink";
 import ClientAudioManager from "../src/components/ClientAudioManager";
+import Link from "next/link";
 
 
 export const metadata: Metadata = {
@@ -51,9 +47,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <CartProvider>
       <ClientAudioManager>
-        <Navbar />
         <div className="relative w-full">
           <section className="relative w-full h-[100vh]">
             <VideoHeroSection />
@@ -126,7 +120,7 @@ export default function Home() {
                 className="absolute inset-0 w-full h-full object-cover object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent">
-                <div className="absolute left-0 right-0 p-8 md:p-16 flex flex-col" style={{ top: 'calc(60%)', transform: 'translateY(-50%)' }}>
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-8 md:p-16">
                   <div className="max-w-4xl mx-auto text-center text-white flex flex-col items-center">
                     <div className="mb-8">
                       <h2 className="text-2xl font-regular text-white leading-tight max-w-2xl mx-auto">
@@ -154,7 +148,13 @@ export default function Home() {
                           </svg>
                         </div>
                         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center shadow-lg z-20 transition-transform duration-300 ">
-                          <AboutLink />
+                        <Link href="/about" scroll={true}>
+                          <img 
+                            src="/assets/logo-white.png" 
+                            alt="Sample Chief Logo"
+                            className="w-12 h-12 md:w-16 md:h-16 transition-transform duration-300 hover:scale-110 cursor-pointer"
+                          />
+                        </Link>                        
                         </div>
                       </div>
                     </div>
@@ -164,8 +164,6 @@ export default function Home() {
             </div>
           </section>
         </div>
-        <Footer />
       </ClientAudioManager>
-    </CartProvider>
   );
 }

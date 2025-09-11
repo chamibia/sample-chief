@@ -5,13 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext,CarouselPrevious } from "@/components/ui/carousel";
 import { CarouselProgressBar } from "@/components/ui/carousel-progress-bar";
 
 export default function MusicPage() {
@@ -253,7 +247,7 @@ export default function MusicPage() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent z-20" />
 
                       <div className="absolute top-4 left-4 z-30">
-                        <h3 className="font-sans text-white text-lg">
+                        <h3 className="font-sans font-bold text-white text-lg">
                           {item.title}
                         </h3>
                       </div>
@@ -286,7 +280,6 @@ export default function MusicPage() {
   return (
     <>
       {/* Header and intro */}
-
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

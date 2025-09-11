@@ -1,9 +1,8 @@
+
 "use client";
 
-import { useCart } from "@/components/CartProvider";
-
 // Full viewport background for cart page
-function CartBg() {
+const CartBg = React.memo(function CartBg() {
   return (
     <div
       aria-hidden="true"
@@ -11,22 +10,102 @@ function CartBg() {
       style={{ minHeight: '100dvh', minWidth: '100vw' }}
     />
   );
-}
-import { Minus, Plus, Trash2, ArrowLeft } from "lucide-react";
+});
+
+import { useCart } from "@/components/CartProvider";
+import dynamic from "next/dynamic";
+
+import React from "react";
 import Link from "next/link";
-import Image from "next/image";
+
+// Full viewport background for cart page
+// ...existing code...
+const Minus = dynamic(() => import("lucide-react").then(m => m.Minus), { ssr: false });
+const Plus = dynamic(() => import("lucide-react").then(m => m.Plus), { ssr: false });
+const Trash2 = dynamic(() => import("lucide-react").then(m => m.Trash2), { ssr: false });
+const ArrowLeft = dynamic(() => import("lucide-react").then(m => m.ArrowLeft), { ssr: false });
+const Image = dynamic(() => import("next/image"));
 
 export default function CartPage() {
-  const { cart, removeFromCart, updateQuantity, goToCheckout, loading } =
-    useCart();
+
+  const { cart, removeFromCart, updateQuantity, goToCheckout, loading } = useCart();
+
+  const memoizedCartItems = React.useMemo(() => (
+    cart.items.map((item) => (
+      <div
+        key={item.id}
+        className="bg-black/20 rounded-2xl p-6 border border-gray-800/50"
+      >
+        <div className="flex items-center space-x-4">
+          {/* Product Image */}
+          <div className="w-20 h-20 rounded-lg overflow-hidden bg-gray-800 flex-shrink-0">
+            {item.image ? (
+              <Image
+                src={item.image}
+                alt={item.title}
+                width={80}
+                height={80}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center text-gray-600 text-xs">
+                No Image
+              </div>
+            )}
+          </div>
+
+          {/* Product Info */}
+          <div className="flex-1 min-w-0">
+            <h3 className="font-sans font-medium text-lg text-white mb-2">
+              {item.title}
+            </h3>
+            <p className="font-sans font-bold text-xl text-white">
+              <span className="currency-symbol">$</span>
+              {item.price} {item.currencyCode}
+            </p>
+          </div>
+
+          {/* Quantity Controls */}
+          <div className="flex items-center space-x-3">
+            <button
+              onClick={() =>
+                updateQuantity(item.id, item.quantity - 1)
+              }
+              className="w-8 h-8 border border-gray-600 rounded flex items-center justify-center hover:border-gray-500 transition-colors bg-black/20"
+            >
+              <Minus className="h-4 w-4" />
+            </button>
+            <span className="font-sans font-light text-lg w-8 text-center">
+              {item.quantity}
+            </span>
+            <button
+              onClick={() =>
+                updateQuantity(item.id, item.quantity + 1)
+              }
+              className="w-8 h-8 border border-gray-600 rounded flex items-center justify-center hover:border-gray-500 transition-colors bg-black/20"
+            >
+              <Plus className="h-4 w-4" />
+            </button>
+          </div>
+
+          {/* Remove Button */}
+          <button
+            onClick={() => removeFromCart(item.id)}
+            className="text-red-400 hover:text-red-300 transition-colors p-2"
+          >
+            <Trash2 className="h-5 w-5" />
+          </button>
+        </div>
+      </div>
+    ))
+  ), [cart.items, removeFromCart, updateQuantity]);
 
   if (cart.items.length === 0) {
     return (
       <>
         <CartBg />
         <div className="min-h-screen text-white">
-          <div className="flex-1 w-full px-5 md:px-9 pt-20">
-            <div className="max-w-4xl mx-auto">
+          <div className="flex-1 w-full px-5 md:px-9">
               <div className="mb-8">
                 <Link
                   href="/shop"
@@ -35,7 +114,7 @@ export default function CartPage() {
                   <ArrowLeft className="h-4 w-4 mr-2" />
                   Back to Shop
                 </Link>
-              </div>
+              </div><div className="max-w-4xl mx-auto">
               <div className="text-center py-20">
                 <h1 className="font-ruder font-light text-4xl md:text-5xl mb-6 tracking-wider text-white">
                   Your Cart
@@ -59,8 +138,9 @@ export default function CartPage() {
     <>
       <CartBg />
       <div className="min-h-screen text-white">
-        <div className="flex-1 w-full px-5 md:px-9 pt-20">
-          <div>
+        <div className="flex-1 w-full px-5 md:px-9">
+          <div className="max-w-7xl mx-auto">
+            {/* Back Button */}
             <div className="mb-8">
               <Link
                 href="/shop"
@@ -70,81 +150,13 @@ export default function CartPage() {
                 Back to Shop
               </Link>
             </div>
-
             <h1 className="font-ruder font-light text-4xl md:text-5xl mb-8 tracking-wider text-white">
               Your Cart
             </h1>
-
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Cart Items */}
               <div className="lg:col-span-2 space-y-4">
-                {cart.items.map((item) => (
-                  <div
-                    key={item.id}
-                    className="bg-black/20 rounded-2xl p-6 border border-gray-800/50"
-                  >
-                    <div className="flex items-center space-x-4">
-                      {/* Product Image */}
-                      <div className="w-20 h-20 rounded-lg overflow-hidden bg-gray-800 flex-shrink-0">
-                        {item.image ? (
-                          <Image
-                            src={item.image}
-                            alt={item.title}
-                            width={80}
-                            height={80}
-                            className="w-full h-full object-cover"
-                          />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center text-gray-600 text-xs">
-                            No Image
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Product Info */}
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-sans font-medium text-lg text-white mb-2">
-                          {item.title}
-                        </h3>
-                        <p className="font-sans font-bold text-xl text-white">
-                          <span className="currency-symbol">$</span>
-                          {item.price} {item.currencyCode}
-                        </p>
-                      </div>
-
-                      {/* Quantity Controls */}
-                      <div className="flex items-center space-x-3">
-                        <button
-                          onClick={() =>
-                            updateQuantity(item.id, item.quantity - 1)
-                          }
-                          className="w-8 h-8 border border-gray-600 rounded flex items-center justify-center hover:border-gray-500 transition-colors bg-black/20"
-                        >
-                          <Minus className="h-4 w-4" />
-                        </button>
-                        <span className="font-sans font-light text-lg w-8 text-center">
-                          {item.quantity}
-                        </span>
-                        <button
-                          onClick={() =>
-                            updateQuantity(item.id, item.quantity + 1)
-                          }
-                          className="w-8 h-8 border border-gray-600 rounded flex items-center justify-center hover:border-gray-500 transition-colors bg-black/20"
-                        >
-                          <Plus className="h-4 w-4" />
-                        </button>
-                      </div>
-
-                      {/* Remove Button */}
-                      <button
-                        onClick={() => removeFromCart(item.id)}
-                        className="text-red-400 hover:text-red-300 transition-colors p-2"
-                      >
-                        <Trash2 className="h-5 w-5" />
-                      </button>
-                    </div>
-                  </div>
-                ))}
+                {memoizedCartItems}
               </div>
 
               {/* Order Summary */}

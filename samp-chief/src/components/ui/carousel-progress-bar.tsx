@@ -24,11 +24,15 @@ export function CarouselProgressBar({ className = "" }: { className?: string }) 
   return (
     <div className={`flex justify-center items-center gap-2 mt-4 ${className}`}>
       {Array.from({ length: slideCount }).map((_, idx) => (
-        <div
+        <button
           key={idx}
-          className={`w-1 h-3 rounded-full transition-all duration-300 ${
-            idx === selectedIndex ? "bg-[#07693A] scale-y-110" : "bg-gray-300"
+          type="button"
+          aria-label={`Go to slide ${idx + 1}`}
+          onClick={() => api && api.scrollTo(idx)}
+          className={`w-1 h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#07693A] ${
+            idx === selectedIndex ? "bg-[#07693A] scale-y-110" : "bg-gray-300 hover:bg-[#07693A]/60"
           }`}
+          style={{ cursor: 'pointer' }}
         />
       ))}
     </div>

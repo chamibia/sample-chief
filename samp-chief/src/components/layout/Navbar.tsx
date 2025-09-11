@@ -65,6 +65,9 @@ export default function Navbar() {
   // Choose logo based on page and scroll state
   const currentLogo = isHome && !isScrolled ? whiteLogo : logo;
 
+  // Determine mobile dropdown text color
+  const mobileDropdownTextColor = backgroundColor === "bg-white" ? "text-[#202020] hover:text-gray-700" : "text-white hover:text-gray-300";
+
   return (
     <header className={headerClasses}>
       <div className="relative flex items-center justify-between mx-auto px-4 md:px-6 w-full">
@@ -165,7 +168,7 @@ export default function Navbar() {
                   <Link
                     key={label}
                     href={path}
-                    className="block w-full text-left font-ruder font-bold text-lg md:text-xl uppercase py-2 px-3 transition duration-150 rounded-lg text-white hover:text-gray-300"
+                    className={`block w-full text-left font-ruder font-bold text-lg md:text-xl uppercase py-2 px-3 transition duration-150 rounded-lg ${mobileDropdownTextColor} ${isActive ? "underline underline-offset-4 decoration-2" : ""}`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {label}
@@ -176,7 +179,7 @@ export default function Navbar() {
               {/* Mobile Cart Link */}
               <Link
                 href="/shop/cart"
-                className="block w-full text-left font-ruder font-bold text-lg md:text-xl uppercase py-2 px-3 transition duration-150 rounded-lg text-white hover:text-gray-300"
+                className={`block w-full text-left font-ruder font-bold text-lg md:text-xl uppercase py-2 px-3 transition duration-150 rounded-lg ${mobileDropdownTextColor}`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 CART {cart.totalQuantity > 0 && `(${cart.totalQuantity})`}

@@ -111,167 +111,163 @@ export default function Events() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <div className="flex-1 w-full px-5 md:px-9 text-[#202020] pt-10">
-        {/* Section Title */}
-        <div className="mb-8">
-          <h1 className="font-ruder font-medium text-4xl md:text-5xl lg:text-6xl text-left mb-4 leading-tight tracking-wider text-[#202020]">
-            Next Up
-          </h1>
-        </div>
-        <div>
-          {eventData
-            .slice()
-            .reverse()
-            .map((event) => (
-              <motion.div
-                key={event.id}
-                className="text-2xl md:text-[1.5rem] leading-[1.2] mb-16 pt-10"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={{
-                  hidden: { opacity: 0, y: 50 },
-                  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-                }}
-              >
-                <div className="grid grid-cols-1 md:grid-cols-12 md:gap-x-8 items-stretch">
+    <>
+      {/* Section Title */}
+      <h1 className="font-ruder font-medium text-4xl md:text-5xl lg:text-6xl text-left mb-6 leading-tight tracking-wider text-[#202020]">
+        Next Up
+      </h1>
+      <div>
+        {eventData
+          .slice()
+          .reverse()
+          .map((event) => (
+            <motion.div
+              key={event.id}
+              className="text-2xl md:text-[1.5rem] leading-[1.2] mb-16 pt-10"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={{
+                hidden: { opacity: 0, y: 50 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+              }}
+            >
+              <div className="grid grid-cols-1 md:grid-cols-12 md:gap-x-8 items-stretch">
+                <motion.div
+                  className="md:col-span-4 mb-6 md:mb-0"
+                  variants={{
+                    hidden: { opacity: 0, scale: 0.95 },
+                    visible: {
+                      opacity: 1,
+                      scale: 1,
+                      transition: { duration: 0.7, delay: 0.2 },
+                    },
+                    hover: { scale: 1.03, transition: { duration: 0.3 } },
+                  }}
+                  initial="hidden"
+                  whileInView="visible"
+                  whileHover="hover"
+                  viewport={{ once: true }}
+                >
+                  <div className="h-full overflow-hidden rounded-lg">
+                    <Link
+                      href={event.ticketLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block h-full"
+                    >
+                      <Image
+                        src={event.imageUrl}
+                        alt={event.title}
+                        width={400}
+                        height={200}
+                        loading="lazy"
+                        className="event-image object-cover transition-all duration-500"
+                      />
+                    </Link>
+                  </div>
+                </motion.div>
+                <div className="md:col-span-7 flex flex-col">
+                  <div className="space-y-4">
+                    <motion.h1
+                      className="font-ruder font-light leading-relaxed text-3xl md:text-4xl lg:text-5xl text-[#202020]"
+                      variants={{
+                        hidden: { opacity: 0, y: -20 },
+                        visible: {
+                          opacity: 1,
+                          y: 0,
+                          transition: { duration: 0.5, delay: 0.1 },
+                        },
+                      }}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true }}
+                    >
+                      {event.title}
+                    </motion.h1>
+                    <motion.p
+                      className="font-sans font-light text-base md:text-lg text-[#202020]"
+                      variants={{
+                        hidden: { opacity: 0, x: -20 },
+                        visible: {
+                          opacity: 1,
+                          x: 0,
+                          transition: { duration: 0.5, delay: 0.4 },
+                        },
+                      }}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true }}
+                    >
+                      {event.description}
+                    </motion.p>
+                    <motion.div
+                      className="space-y-3"
+                      variants={{
+                        hidden: { opacity: 0, x: -20 },
+                        visible: {
+                          opacity: 1,
+                          x: 0,
+                          transition: { duration: 0.5, delay: 0.4 },
+                        },
+                      }}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true }}
+                    >
+                      <div className="flex items-center">
+                        <MapPin className="h-5 w-5 mr-3 text-[#202020] flex-shrink-0" />
+                        <span className="font-sans font-light text-[#202020] leading-relaxed text-sm md:text-base">
+                          {event.venue}, {event.address}
+                        </span>
+                      </div>
+                      <div className="flex items-center">
+                        <Calendar className="h-5 w-5 mr-3 text-[#202020] flex-shrink-0" />
+                        <span className="font-sans font-light text-sm md:text-base leading-relaxed text-[#202020]">
+                          {formatDate(event.startDate)}
+                        </span>
+                      </div>
+                    </motion.div>
+                  </div>
+
                   <motion.div
-                    className="md:col-span-4 mb-6 md:mb-0"
-                    variants={{
-                      hidden: { opacity: 0, scale: 0.95 },
-                      visible: {
-                        opacity: 1,
-                        scale: 1,
-                        transition: { duration: 0.7, delay: 0.2 },
-                      },
-                      hover: { scale: 1.03, transition: { duration: 0.3 } },
-                    }}
-                    initial="hidden"
-                    whileInView="visible"
-                    whileHover="hover"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4, duration: 0.2 }}
                     viewport={{ once: true }}
+                    className="flex flex-col sm:flex-row gap-4 mt-10"
                   >
-                    <div className="h-full overflow-hidden rounded-lg">
+                    <motion.div whileHover={{ scale: 1.02 }}>
                       <Link
                         href={event.ticketLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block h-full"
+                        className="font-sans font-light leading-relaxed text-[#202020] inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 border-2 rounded-full text-sm md:text-base hover:bg-[#202020] hover:text-white transition-all duration-200 min-w-[120px] md:min-w-[140px]"
                       >
-                        <Image
-                          src={event.imageUrl}
-                          alt={event.title}
-                          width={400}
-                          height={200}
-                          loading="lazy"
-                          className="event-image object-cover transition-all duration-500"
-                        />
+                        Tickets
                       </Link>
-                    </div>
-                  </motion.div>
-                  <div className="md:col-span-7 flex flex-col">
-                    <div className="space-y-4">
-                      <motion.h1
-                        className="font-ruder font-light leading-relaxed text-3xl md:text-4xl lg:text-5xl text-[#202020]"
-                        variants={{
-                          hidden: { opacity: 0, y: -20 },
-                          visible: {
-                            opacity: 1,
-                            y: 0,
-                            transition: { duration: 0.5, delay: 0.1 },
-                          },
-                        }}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                      >
-                        {event.title}
-                      </motion.h1>
-                      <motion.p
-                        className="font-sans font-light text-base md:text-lg text-[#202020]"
-                        variants={{
-                          hidden: { opacity: 0, x: -20 },
-                          visible: {
-                            opacity: 1,
-                            x: 0,
-                            transition: { duration: 0.5, delay: 0.4 },
-                          },
-                        }}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                      >
-                        {event.description}
-                      </motion.p>
-                      <motion.div
-                        className="space-y-3"
-                        variants={{
-                          hidden: { opacity: 0, x: -20 },
-                          visible: {
-                            opacity: 1,
-                            x: 0,
-                            transition: { duration: 0.5, delay: 0.4 },
-                          },
-                        }}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                      >
-                        <div className="flex items-center">
-                          <MapPin className="h-5 w-5 mr-3 text-[#202020] flex-shrink-0" />
-                          <span className="font-sans font-light text-[#202020] leading-relaxed text-sm md:text-base">
-                            {event.venue}, {event.address}
-                          </span>
-                        </div>
-                        <div className="flex items-center">
-                          <Calendar className="h-5 w-5 mr-3 text-[#202020] flex-shrink-0" />
-                          <span className="font-sans font-light text-sm md:text-base leading-relaxed text-[#202020]">
-                            {formatDate(event.startDate)}
-                          </span>
-                        </div>
-                      </motion.div>
-                    </div>
-
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.4, duration: 0.2 }}
-                      viewport={{ once: true }}
-                      className="flex flex-col sm:flex-row gap-4 mt-10"
-                    >
-                      <motion.div whileHover={{ scale: 1.02 }}>
-                        <Link
-                          href={event.ticketLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="font-sans font-light leading-relaxed text-[#202020] inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 border-2 rounded-full text-sm md:text-base hover:bg-[#202020] hover:text-white transition-all duration-200 min-w-[120px] md:min-w-[140px]"
-                        >
-                          Tickets
-                        </Link>
-                      </motion.div>
-                      <motion.div whileHover={{ scale: 1.02 }}>
-                        <Link
-                          href={generateCalendarLink(event)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="font-sans font-light leading-relaxed inline-flex items-center justify-center px-4 py-3 md:px-6 md:py-4 rounded-lg text-sm md:text-base text-[#202020] hover:text-[#202020] transition-all duration-200"
-                        >
-                          <CalendarPlus className="h-5 w-5 mr-2" />
-                          Add to Calendar
-                        </Link>
-                      </motion.div>
                     </motion.div>
-                  </div>
+                    <motion.div whileHover={{ scale: 1.02 }}>
+                      <Link
+                        href={generateCalendarLink(event)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-sans font-light leading-relaxed inline-flex items-center justify-center px-4 py-3 md:px-6 md:py-4 rounded-lg text-sm md:text-base text-[#202020] hover:text-[#202020] transition-all duration-200"
+                      >
+                        <CalendarPlus className="h-5 w-5 mr-2" />
+                        Add to Calendar
+                      </Link>
+                    </motion.div>
+                  </motion.div>
                 </div>
-              </motion.div>
-            ))}
-        </div>
+              </div>
+            </motion.div>
+          ))}
       </div>
       <div
         className="pb-24 md:pb-16"
         style={{ paddingBottom: "calc(6rem + env(safe-area-inset-bottom))" }}
       />
-    </div>
+    </>
   );
 }

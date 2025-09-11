@@ -110,9 +110,14 @@ export default async function ProductPage({ params }: PageProps) {
     ? product.variants.edges.map((edge) => edge.node)
     : [];
 
+  // Helper to format price to two decimals
+  function formatPrice(amount: string) {
+    return Number(amount).toFixed(2);
+  }
+
   return (
     <div className="min-h-screen bg-white text-gray-800">
-      <div className="flex-1 w-full px-5 md:px-9 pt-20">
+  <div className="flex-1 w-full px-5 md:px-9">
         <div className="max-w-7xl mx-auto">
           {/* Back Button */}
           <div className="mb-8">
@@ -180,7 +185,7 @@ export default async function ProductPage({ params }: PageProps) {
                   <div className="mb-8">
                     <span className="font-sans font-bold text-3xl text-gray-800">
                       <span className="currency-symbol">$</span>
-                      {variants[0].price.amount}{" "}
+                      {formatPrice(variants[0].price.amount)}{' '}
                       <span className="text-gray-500 text-lg">
                         {variants[0].price.currencyCode}
                       </span>
@@ -191,7 +196,7 @@ export default async function ProductPage({ params }: PageProps) {
 
               {product.description && (
                 <div className="space-y-4">
-                  <h3 className="font-ruder font-light text-xl text-gray-800">
+                  <h3 className="font-sans font-light text-xl text-gray-800">
                     Description
                   </h3>
                   <p className="font-sans font-light leading-relaxed text-gray-600">
@@ -202,25 +207,9 @@ export default async function ProductPage({ params }: PageProps) {
 
               {hasVariants && variants.length > 1 && (
                 <div className="space-y-4">
-                  <h3 className="font-ruder font-light text-xl text-gray-800">
+                  <h3 className="font-sans font-light text-xl text-gray-800">
                     Options
                   </h3>
-                  <div className="space-y-3">
-                    {variants.map((variant) => (
-                      <div
-                        key={variant.id}
-                        className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:border-gray-300 transition-colors bg-white"
-                      >
-                        <span className="font-sans font-light text-gray-800">
-                          {variant.title}
-                        </span>
-                        <span className="font-sans font-bold text-gray-800">
-                          <span className="currency-symbol">$</span>
-                          {variant.price.amount} {variant.price.currencyCode}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               )}
 
@@ -230,7 +219,7 @@ export default async function ProductPage({ params }: PageProps) {
               {/* Stock Info */}
               {hasVariants && variants[0].quantityAvailable !== undefined && (
                 <div className="text-center">
-                  <span className="font-sans font-light text-sm text-gray-500">
+                  <span className="font-sans font-light text-base text-gray-500">
                     {variants[0].quantityAvailable > 0
                       ? `${variants[0].quantityAvailable} in stock`
                       : "Out of stock"}

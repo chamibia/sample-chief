@@ -126,7 +126,7 @@ export default function About() {
         {/* Contact Button */}
         <motion.div
           variants={sectionVariants}
-          className="flex justify-start mt-20"
+          className="flex justify-center md:justify-start mt-20"
         >
           <Link
             href="/contact"

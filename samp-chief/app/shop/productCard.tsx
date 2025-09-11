@@ -79,7 +79,7 @@ export default function ProductCard({ node }: { node: any }) {
           {node.variants?.edges?.[0]?.node?.price && (
             <p className="mt-2 font-sans font-medium text-[15px] text-black">
               <span className="font-sans">$</span>
-              {parseInt(node.variants.edges[0].node.price.amount, 10)}
+              {Number(node.variants.edges[0].node.price.amount).toFixed(2)}
             </p>
           )}
         </Link>
