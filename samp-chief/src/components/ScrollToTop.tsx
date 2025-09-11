@@ -9,11 +9,14 @@ export default function ScrollToTop() {
   useEffect(() => {
     // Add a small delay to ensure the page has fully loaded
     const timer = setTimeout(() => {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "instant",
+      window.scrollTo({ 
+        top: 0, 
+        left: 0, 
+        behavior: "auto" 
       });
+      // Also try scrolling document root and body (for some browsers)
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
     }, 100);
 
     return () => clearTimeout(timer);
