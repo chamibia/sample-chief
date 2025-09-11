@@ -16,9 +16,9 @@ export const metadata: Metadata = {
   },
   description: "Sample Chief - Merchandise for the Movement",
   icons: {
-    icon: "/assets/favicon.ico",
-    shortcut: "/assets/favicon.ico",
-    apple: "/assets/favicon.ico",
+    icon: "/assets/favicon-white.ico",
+    shortcut: "/assets/favicon-white.ico",
+    apple: "/assets/favicon-white.ico",
   },
 };
 export const viewport: Viewport = {
