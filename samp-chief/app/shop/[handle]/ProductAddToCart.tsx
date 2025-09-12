@@ -83,9 +83,6 @@ export default function ProductAddToCart({
       {/* Variant Selection */}
       {variants.length > 1 && (
         <div className="space-y-4">
-          <h3 className="font-sans font-light text-xl text-gray-800">
-            Options
-          </h3>
           <div className="space-y-3">
             {variants.map((variant) => (
               <button

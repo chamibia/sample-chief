@@ -1,7 +1,8 @@
 import { Metadata } from "next";
+import SpecialPageLayout from "../../src/components/layout/SpecialPageLayout";
 
 export const metadata: Metadata = {
-  title: "About Sample Chief",
+  title: "About",
   description: "Learn about Sample Chief - a global community that celebrates African music culture through immersive experiences.",
   openGraph: {
     title: "About Sample Chief",
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    title: "About Sample Chief",
+    title: "About | Sample Chief",
     description: "Learn about Sample Chief - a global community that celebrates African music culture through immersive experiences.",
   },
 };
@@ -26,5 +27,5 @@ export default function AboutLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return <SpecialPageLayout>{children}</SpecialPageLayout>;
 }

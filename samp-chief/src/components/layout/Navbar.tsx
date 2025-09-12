@@ -4,8 +4,8 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import logo from "../../../public/assets/logo.png";
-import whiteLogo from "../../../public/assets/white-logo.png";
+import logo from "../../../public/assets/logos/logo.png";
+import whiteLogo from "../../../public/assets/logos/white-logo.png";
 import { Menu, X, ShoppingCart } from "lucide-react";
 import { useCart } from "@/components/CartProvider";
 import {
@@ -56,14 +56,17 @@ export default function Navbar() {
       isHome ? "absolute top-0 left-0 right-0" : "sticky top-0"
     } z-50 transition-all duration-300 ease-in-out 
     ${backgroundColor} ${textColor} 
-    ${isScrolled ? "py-2 shadow-sm" : isHome ? "py-4" : "py-6 md:py-8"} 
-    ${isHome ? "" : "rounded-b-2xl"}
+    ${isScrolled ? "py-2 shadow-sm" : isHome ? "py-4" : "py-6 md:py-8"}
+    border-none rounded-none
   `;
 
   const links = ["ABOUT", "EVENTS", "MUSIC", "SHOP", "CONTACT"];
 
   // Choose logo based on page and scroll state
   const currentLogo = isHome && !isScrolled ? whiteLogo : logo;
+
+  // Determine mobile dropdown text color
+  const mobileDropdownTextColor = backgroundColor === "bg-white" ? "text-[#202020] hover:text-gray-700" : "text-white hover:text-gray-300";
 
   return (
     <header className={headerClasses}>
@@ -79,6 +82,7 @@ export default function Navbar() {
             width={isScrolled ? 180 : 160}
             height={isScrolled ? 120 : 140}
             className="transition-all duration-300 ease-in-out md:w-auto w-32"
+            priority
           />
         </Link>
 
@@ -92,21 +96,24 @@ export default function Navbar() {
 
                 return (
                   <NavigationMenuItem key={label}>
-                    <Link href={path} legacyBehavior passHref>
-                      <NavigationMenuLink
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href={path}
                         className={`group inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-lg font-ruder font-bold transition-all duration-200 ease-out transform hover:scale-105 ${
                           isHome && !isScrolled
-                            ? "text-white hover:text-white"
-                            : "text-[#202020] hover:text-[#202020]"
+                            ? "text-white hover:text-white hover:underline hover:underline-offset-4 hover:decoration-2 hover:decoration-white"
+                            : "text-[#202020] hover:text-[#202020] hover:underline hover:underline-offset-4 hover:decoration-2"
                         } ${
                           isActive
-                            ? "underline underline-offset-4 decoration-2"
+                            ? isHome && !isScrolled
+                              ? "underline underline-offset-4 decoration-2 decoration-white"
+                              : "underline underline-offset-4 decoration-2"
                             : ""
                         }`}
                       >
                         {label}
-                      </NavigationMenuLink>
-                    </Link>
+                      </Link>
+                    </NavigationMenuLink>
                   </NavigationMenuItem>
                 );
               })}
@@ -151,7 +158,7 @@ export default function Navbar() {
         {/* Mobile nav dropdown - positioned absolutely within header */}
         {isMenuOpen && (
           <div
-            className={`md:hidden absolute top-full left-0 right-0 z-50 ${backgroundColor} rounded-b-2xl overflow-hidden`}
+            className={`md:hidden absolute top-full left-0 right-0 z-50 ${backgroundColor} overflow-hidden border-none rounded-none`}
           >
             <nav className="flex flex-col items-start space-y-3 px-6 py-3">
               {links.map((label) => {
@@ -162,7 +169,7 @@ export default function Navbar() {
                   <Link
                     key={label}
                     href={path}
-                    className="block w-full text-left font-ruder font-bold text-lg md:text-xl uppercase py-2 px-3 transition duration-150 rounded-lg text-white hover:text-gray-300"
+                    className={`block w-full text-left font-ruder font-bold text-lg md:text-xl uppercase py-2 px-3 transition duration-150 rounded-lg ${mobileDropdownTextColor} ${isActive ? "underline underline-offset-4 decoration-2" : ""}`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {label}
@@ -173,7 +180,7 @@ export default function Navbar() {
               {/* Mobile Cart Link */}
               <Link
                 href="/shop/cart"
-                className="block w-full text-left font-ruder font-bold text-lg md:text-xl uppercase py-2 px-3 transition duration-150 rounded-lg text-white hover:text-gray-300"
+                className={`block w-full text-left font-ruder font-bold text-lg md:text-xl uppercase py-2 px-3 transition duration-150 rounded-lg ${mobileDropdownTextColor}`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 CART {cart.totalQuantity > 0 && `(${cart.totalQuantity})`}

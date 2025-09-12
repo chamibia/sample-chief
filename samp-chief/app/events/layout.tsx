@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import SpecialPageLayout from "../../src/components/layout/SpecialPageLayout";
 
 export const metadata: Metadata = {
   title: "Events",
@@ -29,5 +30,5 @@ export default function EventsLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return <SpecialPageLayout>{children}</SpecialPageLayout>;
 }

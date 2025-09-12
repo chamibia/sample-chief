@@ -3,7 +3,7 @@
 /* RuderPlakatLL Font */
 @font-face {
   font-family: "RuderPlakatLL";
-  src: url("/fonts/RuderPlakatLL-Regular.otf") format("opentype");
+  src: url("/assets/fonts/RuderPlakatLL-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -12,14 +12,14 @@
 /* AlteHaasGrotesk Fonts */
 @font-face {
   font-family: "AlteHaasGrotesk";
-  src: url("/fonts/AlteHaasGroteskRegular.ttf") format("truetype");
+  src: url("/assets/fonts/AlteHaasGroteskRegular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "AlteHaasGrotesk";
-  src: url("/fonts/AlteHaasGroteskBold.ttf") format("truetype");
+  src: url("/assets/fonts/AlteHaasGroteskBold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
