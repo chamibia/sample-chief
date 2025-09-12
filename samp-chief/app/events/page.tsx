@@ -10,14 +10,13 @@ const eventData = [
   {
     id: 1,
     title: "Village Boogie",
-    description:
-      "Standard Time welcomes the return of Sample Chief and the highly anticipated Village Boogie! on May 11 in Toronto. Inspired by diverse dance genres from the Motherland—from groovy 80s Afrodisco to heavy GQOM and Amapiano—Sample Chief leads an immersive sonic expedition in African dance music.",
+    description: "Standard Time welcomes the return of Sample Chief and the highly anticipated Village Boogie! on May 11 in Toronto. Inspired by diverse dance genres from the Motherland—from groovy 80s Afrodisco to heavy GQOM and Amapiano—Sample Chief leads an immersive sonic expedition in African dance music.",
     startDate: "2025-05-17",
     endDate: "2025-05-17",
     time: "9PM - LATE",
     venue: "Standard Time",
     address: "165 Geary Ave Toronto, Canada",
-    imageUrl: "/assets/may_17.jpg",
+    imageUrl: "/assets/events/may_17.jpg",
     ticketLink: "https://ra.co/events/2150643",
   },
   {
@@ -29,37 +28,31 @@ const eventData = [
     endDate: "2025-06-07",
     time: "9pm - LATE",
     venue: "The Little Jerry, 418 College Street, Toronto, Canada",
-    imageUrl: "/assets/social-vinyl-night.jpg",
+  imageUrl: "/assets/events/social-vinyl-night.jpg",
     ticketLink:
       "https://docs.google.com/forms/d/e/1FAIpQLSfzD1A6wJYXnRrFXAT0DgOVkJwbexESCO5cV1uupaeYnSAcGg/viewform",
   },
   {
     id: 3,
     title: "Sample Chief Social UK",
-    description:
-      "Join us at Sweeties, The Standard on Thursday June 19th. Please note: Due to limited venue capacity, an RSVP does not guarantee entry",
+    description: "Join us at Sweeties, The Standard on Thursday June 19th. Please note: Due to limited venue capacity, an RSVP does not guarantee entry",
     startDate: "2025-06-19",
     endDate: "2025-06-20",
     time: "9pm - LATE",
-    venue:
-      "Sweeties, 10th Floor, 10 Argyle St, London WC1H 8EG, United Kingdom",
-    imageUrl: "/assets/london_june_19.jpeg",
-    ticketLink:
-      "https://docs.google.com/forms/d/e/1FAIpQLScEnyFLRuDOPs7vZxZiEJ9fG1EUjc9nNaDBwW5kt5Cx48UGew/viewform?usp=header",
+    venue: "Sweeties, 10th Floor, 10 Argyle St, London WC1H 8EG, United Kingdom",
+    imageUrl: "/assets/events/london_june_19.jpeg",
+    ticketLink: "https://docs.google.com/forms/d/e/1FAIpQLScEnyFLRuDOPs7vZxZiEJ9fG1EUjc9nNaDBwW5kt5Cx48UGew/viewform?usp=header",
   },
     {
     id: 4,
     title: "My Father's Shadow - Official Afterparty",
-    description:
-      "Join us for an evening of drinks and music to celebrate the North American premiere of My Father’s Shadow, at an exclusive afterparty hosted by local·global, in collaboration with Sample Chief.",
+    description: "Join us for an evening of drinks and music to celebrate the North American premiere of My Father’s Shadow, at an exclusive afterparty hosted by local·global, in collaboration with Sample Chief.",
     startDate: "2025-09-10",
     endDate: "2025-09-11",
     time: "7pm - 12am",
-    venue:
-      "Civil Works, 50 Brant Street Toronto, M5V 3G9 Canada",
-    imageUrl: "/assets/IMG_6056.PNG",
-    ticketLink:
-      "https://bit.ly/myfathersshadowafterparty",
+    venue: "Civil Works, 50 Brant Street Toronto, M5V 3G9 Canada",
+    imageUrl: "/assets/events/IMG_6056.PNG",
+    ticketLink: "https://bit.ly/myfathersshadowafterparty",
   },
 ];
 

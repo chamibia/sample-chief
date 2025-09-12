@@ -18,7 +18,7 @@ export default function ClientAudioManager({ children }: ClientAudioManagerProps
   useEffect(() => {
     if (isHomePage) {
       const timer = setTimeout(() => {
-        const video = document.querySelector('video[src="/videos/sample.mp4"]') as HTMLVideoElement;
+        const video = document.querySelector('video[src="/assets/videos/sample.mp4"]') as HTMLVideoElement;
         videoRef.current = video;
       }, 100);
       

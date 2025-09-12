@@ -59,7 +59,7 @@ export default function VideoHeroSection() {
     <section className="relative w-full h-[100vh] bg-black" id="hero-section">
       <video
         ref={videoRef}
-        src="/videos/sample.mp4"
+        src="/assets/videos/sample.mp4"
         autoPlay
         loop
         muted

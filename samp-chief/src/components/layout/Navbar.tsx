@@ -4,8 +4,8 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import logo from "../../../public/assets/logo.png";
-import whiteLogo from "../../../public/assets/white-logo.png";
+import logo from "../../../public/assets/logos/logo.png";
+import whiteLogo from "../../../public/assets/logos/white-logo.png";
 import { Menu, X, ShoppingCart } from "lucide-react";
 import { useCart } from "@/components/CartProvider";
 import {
@@ -82,6 +82,7 @@ export default function Navbar() {
             width={isScrolled ? 180 : 160}
             height={isScrolled ? 120 : 140}
             className="transition-all duration-300 ease-in-out md:w-auto w-32"
+            priority
           />
         </Link>
 

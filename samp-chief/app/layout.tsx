@@ -10,15 +10,16 @@ import ClientLayout from "./ClientLayout";
 import { CartProvider } from "@/components/CartProvider";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.samplechief.com/"),
   title: {
     default: "Sample Chief",
     template: "%s | Sample Chief",
   },
   description: "Sample Chief - Merchandise for the Movement",
   icons: {
-    icon: "/assets/favicon-white.ico",
-    shortcut: "/assets/favicon-white.ico",
-    apple: "/assets/favicon-white.ico",
+    icon: "/assets/logos/favicon-white.svg",
+    shortcut: "/assets/logos/favicon-white.svg",
+    apple: "/assets/logos/favicon-white.svg",
   },
 };
 export const viewport: Viewport = {
@@ -36,14 +37,14 @@ export default function RootLayout({
         {/* Preload AlteHaasGrotesk fonts */}
         <link
           rel="preload"
-          href="/fonts/AlteHaasGroteskRegular.ttf"
+          href="/assets/fonts/AlteHaasGroteskRegular.ttf"
           as="font"
           type="font/ttf"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href="/fonts/AlteHaasGroteskBold.ttf"
+          href="/assets/fonts/AlteHaasGroteskBold.ttf"
           as="font"
           type="font/ttf"
           crossOrigin="anonymous"
@@ -52,41 +53,41 @@ export default function RootLayout({
         {/* Preload RuderPlakatLL font */}
         <link
           rel="preload"
-          href="/fonts/RuderPlakatLL-Regular.otf"
+          href="/assets/fonts/RuderPlakatLL-Regular.otf"
           as="font"
           type="font/otf"
           crossOrigin="anonymous"
         />
 
         {/* Preload key Radikal fonts */}
-        <link
+        {/* <link
           rel="preload"
-          href="/app/fonts/RadikalTrial-Regular.otf"
+          href="/assets/fonts/RadikalTrial-Regular.otf"
           as="font"
           type="font/otf"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href="/app/fonts/RadikalTrial-Bold.otf"
+          href="/assets/fonts/RadikalTrial-Bold.otf"
           as="font"
           type="font/otf"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href="/app/fonts/RadikalTrial-Light.otf"
+          href="/assets/fonts/RadikalTrial-Light.otf"
           as="font"
           type="font/otf"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href="/app/fonts/RadikalTrial-Medium.otf"
+          href="/assets/fonts/RadikalTrial-Medium.otf"
           as="font"
           type="font/otf"
           crossOrigin="anonymous"
-        />
+        /> */}
       </head>
       <body className="antialiased font-sans">
         {/* ✅ Cart context available everywhere */}

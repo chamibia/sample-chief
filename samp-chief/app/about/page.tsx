@@ -50,13 +50,13 @@ const logoItem = {
 };
 
 const partners = [
-  { id: 1, logo: "/assets/ace.png", name: "Ace" },
-  { id: 2, logo: "/assets/holts.png", name: "Holts" },
-  { id: 3, logo: "/assets/okay.png", name: "Okay" },
-  { id: 4, logo: "/assets/sony.png", name: "Sony" },
-  { id: 5, logo: "/assets/standard.jpg", name: "Standard" },
-  { id: 6, logo: "/assets/sway.png", name: "Sway" },
-  { id: 7, logo: "/assets/universal_logo.svg", name: "Universal" },
+  { id: 1, logo: "/assets/brands/ace.png", name: "Ace" },
+  { id: 2, logo: "/assets/brands/holts.png", name: "Holts" },
+  { id: 3, logo: "/assets/brands/okay.png", name: "Okay" },
+  { id: 4, logo: "/assets/brands/sony.png", name: "Sony" },
+  { id: 5, logo: "/assets/brands/standard.jpg", name: "Standard" },
+  { id: 6, logo: "/assets/brands/sway.png", name: "Sway" },
+  { id: 7, logo: "/assets/brands/universal_logo.svg", name: "Universal" },
 ];
 
 

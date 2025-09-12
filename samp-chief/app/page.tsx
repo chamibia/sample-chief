@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     siteName: "Sample Chief",
     images: [
       {
-        url: "/assets/og-image.png",
+  url: "/assets/logos/og-image.png",
         width: 1200,
         height: 630,
         alt: "Sample Chief",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title: "Sample Chief | African Music Culture",
     description:
       "Sample Chief is a global community celebrating African music culture through immersive experiences, events, and digital content.",
-    images: ["/assets/og-image.png"],
+  images: ["/assets/logos/og-image.png"],
   },
 };
 
@@ -57,9 +57,10 @@ export default function Home() {
             <div className="grid grid-cols-3 auto-rows-[70vh]">
               <div className="relative bg-gray-100">
                 <Image
-                  src="/assets/home1.webp"
+                  src="/assets/images/home1.webp"
                   alt="Sample Chief girls"
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
                   loading="lazy"
                   className="object-cover object-center"
                 />
@@ -67,9 +68,10 @@ export default function Home() {
 
               <div className="relative bg-gray-100">
                 <Image
-                  src="/assets/holts.webp"
+                  src="/assets/images/holts.webp"
                   alt="Holt Renfrew store front"
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
                   loading="lazy"
                   className="object-cover object-center"
                 />
@@ -77,9 +79,10 @@ export default function Home() {
 
               <div className="relative bg-gray-100">
                 <Image
-                  src="/assets/home9.webp"
+                  src="/assets/images/home9.webp"
                   alt="Sample Chief talk"
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
                   loading="lazy"
                   className="object-cover object-center"
                 />
@@ -91,9 +94,10 @@ export default function Home() {
             <div className="grid grid-cols-2 h-[90vh]">
               <div className="relative bg-gray-100">
                 <Image
-                  src="/assets/home8.webp"
+                  src="/assets/images/home8.webp"
                   alt="Sami on decks"
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
                   loading="lazy"
                   className="object-cover object-center"
                 />
@@ -101,7 +105,7 @@ export default function Home() {
 
               <div className="relative bg-gray-100">
                 <video
-                  src="/videos/sample2.MP4"
+                  src="/assets/videos/sample2.MP4"
                   autoPlay
                   loop
                   muted
@@ -115,7 +119,7 @@ export default function Home() {
           <section className="relative w-full">
             <div className="relative bg-gray-100 min-h-[100vh]">
               <img 
-                src="/assets/home10.webp" 
+                src="/assets/images/home10.webp" 
                 alt="Holts Renfrew event"
                 className="absolute inset-0 w-full h-full object-cover object-center"
               />
@@ -149,10 +153,13 @@ export default function Home() {
                         </div>
                         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center shadow-lg z-20 transition-transform duration-300 ">
                         <Link href="/about" scroll={true}>
-                          <img 
-                            src="/assets/logo-white.png" 
+                          <Image
+                            src="/assets/logos/round-logo-white.png"
                             alt="Sample Chief Logo"
+                            width={64}
+                            height={64}
                             className="w-12 h-12 md:w-16 md:h-16 transition-transform duration-300 hover:scale-110 cursor-pointer"
+                            priority
                           />
                         </Link>                        
                         </div>

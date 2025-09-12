@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { getNames } from "country-list";
 import { X } from "lucide-react";
-import popupImage from "../../public/assets/popupimage.jpeg";
+import popupImage from "../../public/assets/images/popupimage.jpeg";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
@@ -122,6 +122,7 @@ export default function SubscribePopup() {
             fill
             sizes="(max-width: 640px) 100vw, 280px"
             className="object-cover object-top"
+            priority
           />
         </div>
 
