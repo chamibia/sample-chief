@@ -94,7 +94,7 @@ export default async function ShopPage() {
             Shop
           </h1>
           <p className="font-sans font-light text-lg md:text-xl lg:text-2xl text-left max-w-2xl leading-loose tracking-wider">
-            Merchandise for the Movement. Enjoy our curated collections
+            Merchandise for the Movement. Enjoy our curated collections.
           </p>
         </div>
         <div className="py-20 text-center">
@@ -117,7 +117,7 @@ export default async function ShopPage() {
           Shop
         </h1>
         <p className="font-sans font-light text-lg md:text-xl lg:text-2xl text-left max-w-2xl leading-loose tracking-wider">
-          Merchandise for the Movement. Enjoy our curated collections
+          Merchandise for the Movement. Enjoy our curated collections.
         </p>
       </div>
 

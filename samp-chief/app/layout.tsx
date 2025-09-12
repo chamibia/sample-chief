@@ -1,8 +1,9 @@
 // app/layout.tsx (Server Component)
 import { Metadata, Viewport } from "next";
 import "../styles/globals.css";
+
 import Navbar from "../src/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import FooterVisibilityWrapper from "@/components/layout/FooterVisibilityWrapper";
 import SubscribePopup from "@/components/SubscribePopup";
 import ClientLayout from "./ClientLayout";
 
@@ -25,11 +26,9 @@ export const viewport: Viewport = {
   /* ...unchanged... */
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  // Use a client-side check for pathname to conditionally hide Footer on home page mobile
+  // This must be a Client Component for usePathname, so wrap Footer in a client-only check
   return (
     <html lang="en">
       <head>
@@ -64,7 +63,8 @@ export default function RootLayout({
           <ClientLayout>
             <Navbar />
             <main className="flex-1">{children}</main>
-            <Footer />
+            {/* Hide Footer on mobile if on home page, show otherwise */}
+            <FooterVisibilityWrapper />
             <SubscribePopup />
           </ClientLayout>
         </CartProvider>
@@ -72,3 +72,4 @@ export default function RootLayout({
     </html>
   );
 }
+

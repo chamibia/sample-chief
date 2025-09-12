@@ -161,6 +161,7 @@ export default function SubscribePopup() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={isSubmitting}
+                autoComplete="email"
               />
             </div>
 
@@ -177,6 +178,7 @@ export default function SubscribePopup() {
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
                 disabled={isSubmitting}
+                autoComplete="country-name"
               >
                 <option className="font-alte" value="">Select a country</option>
                 {countries.map((c) => (
