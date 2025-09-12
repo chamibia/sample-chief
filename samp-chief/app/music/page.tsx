@@ -1,57 +1,58 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext,CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { CarouselProgressBar } from "@/components/ui/carousel-progress-bar";
 
 export default function MusicPage() {
   const playlists = [
     {
-        id: 1,
-        image: "/assets/music-covers/amapiano.avif",
+      id: 1,
+      image: "/assets/music-covers/amapiano.avif",
       link: "https://open.spotify.com/playlist/6WsIf9FtJQ3xX7ksYXHznq",
       title: "Amapiano Anthems",
       subtitle:
         "Log drums. Soul. Street heat. The biggest Amapiano tracks, all here",
     },
     {
-        id: 2,
-        image: "/assets/music-covers/guitar.webp",
+      id: 2,
+      image: "/assets/music-covers/guitar.webp",
       link: "https://open.spotify.com/playlist/7KlCMmUFJVdGfhZolbst3n",
       title: "Strings of Africa",
       subtitle:
         "Timeless riffs and rhythms — African guitar classics from coast to coast",
     },
     {
-        id: 3,
-        image: "/assets/music-covers/divas.jpg",
+      id: 3,
+      image: "/assets/music-covers/divas.jpg",
       link: "https://open.spotify.com/playlist/4tpdZBRLlf8jZcO0y1gUuD",
       title: "Disco Divas",
       subtitle: "Dancefloor magic from the queens of African disco and funk",
     },
     {
-        id: 4,
-        image: "/assets/music-covers/kwaito.jpg",
+      id: 4,
+      image: "/assets/music-covers/kwaito.jpg",
       link: "https://open.spotify.com/playlist/7chMRFAkUlghZhq5yuQ88j",
       title: "Kwaito Klassics",
       subtitle:
         "Trompies, Alaska, Brothers of Peace and more - Kwaito’s golden era lives here",
     },
     {
-        id: 5,
-        image: "/assets/music-covers/retro.jpeg",
+      id: 5,
+      image: "/assets/music-covers/retro.jpeg",
       link: "https://open.spotify.com/playlist/5xJldtAX9Ss9iNvZlHhQOl",
       title: "Global Retro SA Pop",
       subtitle:
         "Neon nights and township vibes. Feel the nostalgia of SA bubblegum pop",
     },
     {
-        id: 6,
-        image: "/assets/music-covers/wassolou.jpg",
+      id: 6,
+      image: "/assets/music-covers/wassolou.jpg",
       link: "https://open.spotify.com/playlist/6PZXfm7wG56T6s4tnvllBL",
       title: "Women of Wassoulou",
       subtitle:
@@ -59,14 +60,14 @@ export default function MusicPage() {
     },
     {
         id: 7,
-        image: "/assets/music-covers/connecting.png",
-      link: "https://open.spotify.com/playlist/6PZXfm7wG56T6s4tnvllBL",
+      image: "/assets/music-covers/connecting.png",
+    link: "https://open.spotify.com/playlist/6PZXfm7wG56T6s4tnvllBL",
       title: "Connecting Continents",
       subtitle: "A musical journey curated by Sample Chief x Holt Renfrew.",
     },
     {
-        id: 8,
-        image: "/assets/music-covers/feeling-flute.jpg",
+      id: 8,
+      image: "/assets/music-covers/feeling-flute.jpg",
       link: "https://open.spotify.com/playlist/3mrVbtIitb4TtYFQz9MBJq?si=X4Thj_JATkK5px3en1w3WQ",
       title: "Feeling Flute-y?",
       subtitle: "The finest of African flute sounds",
@@ -193,12 +194,15 @@ export default function MusicPage() {
     delay?: number;
   }
 
-  const CarouselSection = ({
+  const CarouselSection = React.memo(({
     title,
     items,
     seeAllLink,
     delay = 0,
-  }: CarouselSectionProps) => (
+  }: CarouselSectionProps) => {
+    // Memoize items to avoid unnecessary re-renders
+    const memoizedItems = useMemo(() => items, [items]);
+    return (
     <motion.div
       variants={sectionVariants}
       initial="hidden"
@@ -225,7 +229,7 @@ export default function MusicPage() {
 
       <Carousel className="w-full" opts={{ slidesToScroll: 2 }}>
         <CarouselContent className="-ml-2 md:-ml-4">
-          {items.map((item) => (
+          {memoizedItems.map((item, idx) => (
             <CarouselItem
               key={item.id}
               className="pl-2 md:pl-4 basis-1/2 md:basis-1/3"
@@ -239,9 +243,15 @@ export default function MusicPage() {
                 <Card className="bg-transparent border-0 cursor-pointer">
                   <CardContent className="p-0">
                     <div className="aspect-square relative">
-                      <img
+                      <Image
                         src={item.image}
+                        alt={item.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        placeholder="blur"
+                        blurDataURL="data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='16' fill='%23e5e7eb'/%3E%3C/svg%3E"
+                        {...(idx === 0 ? { priority: true } : idx < 3 ? { loading: "eager" } : { loading: "lazy" })}
                       />
                       <div className="absolute inset-0 bg-neutral-700/30 group-hover:opacity-0 transition-opacity duration-500 z-10" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent z-20" />
@@ -275,7 +285,8 @@ export default function MusicPage() {
         <CarouselProgressBar />
       </Carousel>
     </motion.div>
-  );
+    );
+  });
 
   return (
     <>

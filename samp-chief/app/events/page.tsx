@@ -156,6 +156,8 @@ export default function Events() {
                         height={200}
                         loading="lazy"
                         className="event-image object-cover transition-all duration-500"
+                        placeholder="blur"
+                        blurDataURL="data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='16' fill='%23e5e7eb'/%3E%3C/svg%3E"
                       />
                     </Link>
                   </div>
