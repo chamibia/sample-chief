@@ -1,5 +1,10 @@
-
 "use client";
+
+import React from "react";
+import { useCart } from "@/components/CartProvider";
+import { Minus, Plus, Trash2, ArrowLeft } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
 
 // Full viewport background for cart page
 const CartBg = React.memo(function CartBg() {
@@ -12,24 +17,10 @@ const CartBg = React.memo(function CartBg() {
   );
 });
 
-import { useCart } from "@/components/CartProvider";
-import dynamic from "next/dynamic";
-
-import React from "react";
-import Link from "next/link";
-
-// Full viewport background for cart page
-// ...existing code...
-const Minus = dynamic(() => import("lucide-react").then(m => m.Minus), { ssr: false });
-const Plus = dynamic(() => import("lucide-react").then(m => m.Plus), { ssr: false });
-const Trash2 = dynamic(() => import("lucide-react").then(m => m.Trash2), { ssr: false });
-const ArrowLeft = dynamic(() => import("lucide-react").then(m => m.ArrowLeft), { ssr: false });
-const Image = dynamic(() => import("next/image"));
-
 export default function CartPage() {
-
   const { cart, removeFromCart, updateQuantity, goToCheckout, loading } = useCart();
 
+  // Memoize cart items for performance
   const memoizedCartItems = React.useMemo(() => (
     cart.items.map((item) => (
       <div
@@ -68,9 +59,7 @@ export default function CartPage() {
           {/* Quantity Controls */}
           <div className="flex items-center space-x-3">
             <button
-              onClick={() =>
-                updateQuantity(item.id, item.quantity - 1)
-              }
+              onClick={() => updateQuantity(item.id, item.quantity - 1)}
               className="w-8 h-8 border border-gray-600 rounded flex items-center justify-center hover:border-gray-500 transition-colors bg-black/20"
             >
               <Minus className="h-4 w-4" />
@@ -79,9 +68,7 @@ export default function CartPage() {
               {item.quantity}
             </span>
             <button
-              onClick={() =>
-                updateQuantity(item.id, item.quantity + 1)
-              }
+              onClick={() => updateQuantity(item.id, item.quantity + 1)}
               className="w-8 h-8 border border-gray-600 rounded flex items-center justify-center hover:border-gray-500 transition-colors bg-black/20"
             >
               <Plus className="h-4 w-4" />
@@ -106,15 +93,16 @@ export default function CartPage() {
         <CartBg />
         <div className="min-h-screen text-white">
           <div className="flex-1 w-full px-5 md:px-9">
-              <div className="mb-8">
-                <Link
-                  href="/shop"
-                  className="inline-flex items-center text-gray-300 hover:text-white transition-colors"
-                >
-                  <ArrowLeft className="h-4 w-4 mr-2" />
-                  Back to Shop
-                </Link>
-              </div><div className="max-w-4xl mx-auto">
+            <div className="mb-8">
+              <Link
+                href="/shop"
+                className="inline-flex items-center text-gray-300 hover:text-white transition-colors"
+              >
+                <ArrowLeft className="h-4 w-4 mr-2" />
+                Back to Shop
+              </Link>
+            </div>
+            <div className="max-w-4xl mx-auto">
               <div className="text-center py-20">
                 <h1 className="font-ruder font-light text-4xl md:text-5xl mb-6 tracking-wider text-white">
                   Your Cart

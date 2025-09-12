@@ -6,7 +6,6 @@ import Footer from "@/components/layout/Footer";
 import SubscribePopup from "@/components/SubscribePopup";
 import ClientLayout from "./ClientLayout";
 
-// ✅ add this
 import { CartProvider } from "@/components/CartProvider";
 
 export const metadata: Metadata = {
@@ -58,36 +57,6 @@ export default function RootLayout({
           type="font/otf"
           crossOrigin="anonymous"
         />
-
-        {/* Preload key Radikal fonts */}
-        {/* <link
-          rel="preload"
-          href="/assets/fonts/RadikalTrial-Regular.otf"
-          as="font"
-          type="font/otf"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/assets/fonts/RadikalTrial-Bold.otf"
-          as="font"
-          type="font/otf"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/assets/fonts/RadikalTrial-Light.otf"
-          as="font"
-          type="font/otf"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/assets/fonts/RadikalTrial-Medium.otf"
-          as="font"
-          type="font/otf"
-          crossOrigin="anonymous"
-        /> */}
       </head>
       <body className="antialiased font-sans">
         {/* ✅ Cart context available everywhere */}
