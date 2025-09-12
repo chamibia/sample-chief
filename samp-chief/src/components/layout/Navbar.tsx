@@ -35,7 +35,20 @@ export default function Navbar() {
   const isContact = pathname === "/contact";
   const isShop = pathname === "/shop";
 
-  const backgroundColor = isHome
+
+  // Detect mobile using a media query (client-side only)
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // On home page and mobile, keep transparent until menu is open, then white bg/black text
+  const backgroundColor = isHome && isMobile && isMenuOpen
+    ? "bg-white"
+    : isHome
     ? "bg-transparent"
     : isAbout
     ? "bg-[#F8C722]"
@@ -49,7 +62,7 @@ export default function Navbar() {
     ? "bg-[#F8C722]"
     : "bg-white";
 
-  const textColor = isHome && !isScrolled ? "text-white" : "text-gray-800";
+  const textColor = isHome && !isScrolled && (!isMobile || (isMobile && !isMenuOpen)) ? "text-white" : "text-gray-800";
 
   const headerClasses = `
     ${
@@ -63,7 +76,7 @@ export default function Navbar() {
   const links = ["ABOUT", "EVENTS", "MUSIC", "SHOP", "CONTACT"];
 
   // Choose logo based on page and scroll state
-  const currentLogo = isHome && !isScrolled ? whiteLogo : logo;
+  const currentLogo = isHome && !isScrolled && (!isMobile || (isMobile && !isMenuOpen)) ? whiteLogo : logo;
 
   // Determine mobile dropdown text color
   const mobileDropdownTextColor = backgroundColor === "bg-white" ? "text-[#202020] hover:text-gray-700" : "text-white hover:text-gray-300";
@@ -143,7 +156,11 @@ export default function Navbar() {
           {isMenuOpen ? (
             <X
               className={`h-6 w-6 ${
-                isHome && !isScrolled ? "text-white" : "text-[#202020]"
+                isHome && isMobile && isMenuOpen
+                  ? "text-[#202020]"
+                  : isHome && !isScrolled
+                  ? "text-white"
+                  : "text-[#202020]"
               }`}
             />
           ) : (

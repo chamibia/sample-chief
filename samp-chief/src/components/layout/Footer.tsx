@@ -25,12 +25,12 @@ export default function Footer() {
     <footer
       className={cn(
         isHome
-          ? "absolute inset-x-0 bottom-0 z-30 bg-transparent text-white/75"
+          ? "relative mt-auto w-full bg-transparent text-white/75 sm:absolute sm:inset-x-0 sm:bottom-0 sm:z-30"
           : isAbout || isEvent || isMusic || isNewsletter || isShop
           ? "bg-black text-white"
           : "bg-white text-black",
-        // Add consistent padding and safe area support for mobile
-        "px-2 py-4 md:py-6 pb-safe border-none rounded-none"
+          // Add consistent padding and safe area support for mobile
+          "px-2 py-4 md:py-6 pb-safe border-none border-t-0 shadow-none rounded-none !border-0"
       )}
       style={{
         // Ensure footer is always visible on mobile

@@ -300,7 +300,7 @@ export default function MusicPage() {
           From Our Ears to Yours
         </h1>
         <p className="font-sans font-light text-lg md:text-xl lg:text-2xl text-left max-w-2xl leading-loose tracking-wider mb-10">
-          Enjoy our selection of playlists and mixes, curated for every mood
+          Enjoy our selection of playlists and mixes, curated for every mood.
         </p>
       </motion.div>
 
