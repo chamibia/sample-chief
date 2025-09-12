@@ -25,7 +25,7 @@ export default function Footer() {
     <footer
       className={cn(
         isHome
-          ? "relative mt-auto w-full bg-transparent text-white/75 sm:bg-black sm:absolute sm:inset-x-0 sm:bottom-0 sm:z-30"
+          ? "relative mt-auto w-full bg-transparent text-white/75 sm:absolute sm:inset-x-0 sm:bottom-0 sm:z-30"
           : isAbout || isEvent || isMusic || isNewsletter || isShop
           ? "bg-black text-white"
           : "bg-white text-black",
