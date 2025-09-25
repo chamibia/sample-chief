@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { easeOut } from "framer-motion";
 
 const sectionVariants = {
   hidden: {
@@ -15,7 +16,7 @@ const sectionVariants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: "easeOut",
+      ease: easeOut,
     },
   },
 };
@@ -45,7 +46,7 @@ const logoItem = {
   visible: {
     y: 0,
     opacity: 1,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: { duration: 0.6, ease: easeOut },
   },
 };
 
@@ -91,7 +92,6 @@ export default function About() {
           <span className="block mt-2">We are a global movement dedicated to celebrating African music and culture</span>
         </div>
       </motion.div>
-
       <motion.div
         variants={staggerContainer}
         initial="hidden"

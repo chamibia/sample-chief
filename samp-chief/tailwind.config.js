@@ -7,15 +7,13 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        // default body
-        sans: ["AlteHaasGroteskRegular", "system-ui", "sans-serif"],
-        // utilities
-        alte: ["AlteHaasGroteskBold", "system-ui", "sans-serif"],
-        ruder: ["RuderPlakatLL", "sans-serif"],
-        // Symbol fallback font stack
-        symbols: ["AlteHaasGroteskRegular", "system-ui", "sans-serif"],
-      },
+fontFamily: {
+      // default body and headings
+      sans: ["AlteHaasGrotesk", "system-ui", "sans-serif"],
+      ruder: ["RuderPlakatLL", "sans-serif"],
+      // Symbol fallback font stack
+      symbols: ["AlteHaasGrotesk", "system-ui", "sans-serif"],
+          },
       fontWeight: {
         // Radikal font weights
         "ultra-thin": "100",

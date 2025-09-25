@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { getNames } from "country-list";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { easeOut } from "framer-motion";
 
 export default function NewsletterSignup() {
   const [showBanner, setShowBanner] = useState(true);
@@ -22,7 +23,7 @@ export default function NewsletterSignup() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: { duration: 0.6, ease: easeOut },
     },
   };
 
