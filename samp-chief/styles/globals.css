@@ -1,3 +1,7 @@
+/* Lock grid row height for project cards */
+.fixed-row-height {
+  grid-auto-rows: 16rem;
+}
 @import "tailwindcss";
 
 /* Font-face definitions */

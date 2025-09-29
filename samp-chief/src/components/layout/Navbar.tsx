@@ -34,6 +34,7 @@ export default function Navbar() {
   const isMusic = pathname === "/music";
   const isContact = pathname === "/contact";
   const isShop = pathname === "/shop";
+  const isProjects = pathname === "/projects";
 
 
   // Detect mobile using a media query (client-side only)
@@ -60,6 +61,8 @@ export default function Navbar() {
     ? "bg-[#F8C722]"
     : isShop
     ? "bg-[#F8C722]"
+    : isProjects
+    ? "bg-[#F8C722]"
     : "bg-white";
 
   const textColor = isHome && !isScrolled && (!isMobile || (isMobile && !isMenuOpen)) ? "text-white" : "text-gray-800";
@@ -73,7 +76,7 @@ export default function Navbar() {
     border-none rounded-none
   `;
 
-  const links = ["ABOUT", "EVENTS", "MUSIC", "SHOP", "CONTACT"];
+  const links = ["ABOUT", "PROJECTS", "EVENTS", "MUSIC", "SHOP", "CONTACT"];
 
   // Choose logo based on page and scroll state
   const currentLogo = isHome && !isScrolled && (!isMobile || (isMobile && !isMenuOpen)) ? whiteLogo : logo;

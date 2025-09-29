@@ -20,13 +20,14 @@ export default function Footer() {
   const isMusic = pathname === "/music";
   const isNewsletter = pathname === "/contact";
   const isShop = pathname === "/shop";
+  const isProjects = pathname === "/projects";
 
   return (
     <footer
       className={cn(
         isHome
           ? "relative mt-auto w-full bg-transparent text-white/75 sm:absolute sm:inset-x-0 sm:bottom-0 sm:z-30"
-          : isAbout || isEvent || isMusic || isNewsletter || isShop
+          : isAbout || isEvent || isMusic || isNewsletter || isShop || isProjects
           ? "bg-black text-white"
           : "bg-white text-black",
           // Add consistent padding and safe area support for mobile
