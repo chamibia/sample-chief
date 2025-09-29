@@ -107,7 +107,7 @@ export default function Events() {
     <>
       {/* Section Title */}
       <h1 className="font-ruder font-medium text-4xl md:text-5xl lg:text-6xl text-left mb-6 leading-tight tracking-wider text-[#202020]">
-        Next Up
+        IRL
       </h1>
       <div>
         {eventData
