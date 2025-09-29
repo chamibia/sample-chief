@@ -50,73 +50,73 @@ export default function Home() {
   return (
     <ClientAudioManager>
       {/* Mobile flex column layout for sticky footer */}
-  <div className="flex flex-col min-h-screen sm:block w-full">
+      <div className="flex flex-col min-h-screen sm:block w-full">
         <section className="relative w-full h-[100vh]">
           <VideoHeroSection />
         </section>
 
-          <section className="w-full">
-            <div className="grid grid-cols-3 auto-rows-[70vh]">
-              <div className="relative bg-gray-100">
-                <Image
-                  src="/assets/images/home1.webp"
-                  alt="Sample Chief girls"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
-                  loading="lazy"
-                  className="object-cover object-center"
-                />
-              </div>
-
-              <div className="relative bg-gray-100">
-                <Image
-                  src="/assets/images/holts.webp"
-                  alt="Holt Renfrew store front"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
-                  loading="lazy"
-                  className="object-cover object-center"
-                />
-              </div>
-
-              <div className="relative bg-gray-100">
-                <Image
-                  src="/assets/images/home9.webp"
-                  alt="Sample Chief talk"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
-                  loading="lazy"
-                  className="object-cover object-center"
-                />
-              </div>
+        <section className="w-full">
+          <div className="grid grid-cols-1 md:grid-cols-3 auto-rows-[70vh]">
+            <div className="relative bg-gray-100">
+              <Image
+                src="/assets/images/home1.webp"
+                alt="Sample Chief girls"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
+                loading="lazy"
+                className="object-cover object-center"
+              />
             </div>
-          </section>
 
-          <section className="w-full">
-            <div className="grid grid-cols-2 h-[90vh]">
-              <div className="relative bg-gray-100">
-                <Image
-                  src="/assets/images/home8.webp"
-                  alt="Sami on decks"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
-                  loading="lazy"
-                  className="object-cover object-center"
-                />
-              </div>
-
-              <div className="relative bg-gray-100">
-                <video
-                  src="/assets/videos/sample2.MP4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              </div>
+            <div className="relative bg-gray-100">
+              <Image
+                src="/assets/images/holts.webp"
+                alt="Holt Renfrew store front"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
+                loading="lazy"
+                className="object-cover object-center"
+              />
             </div>
-          </section>
+
+            <div className="relative bg-gray-100">
+              <Image
+                src="/assets/images/home9.webp"
+                alt="Sample Chief talk"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
+                loading="lazy"
+                className="object-cover object-center"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 h-[90vh]">
+            <div className="relative bg-gray-100">
+              <Image
+                src="/assets/images/home8.webp"
+                alt="Sami on decks"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+                loading="lazy"
+                className="object-cover object-center"
+              />
+            </div>
+
+            <div className="relative bg-gray-100">
+              <video
+                src="/assets/videos/sample2.MP4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </section>
 
         <section className="relative w-full">
           <div className="relative bg-gray-100 min-h-[100vh]">
