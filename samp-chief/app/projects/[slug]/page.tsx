@@ -10,8 +10,9 @@ export async function generateStaticParams() {
   return events.map(event => ({ slug: event.slug }));
 }
 
-export default async function ProjectDetailPage({ params }: { params: { slug: string } }) {
-  const event = events.find(e => e.slug === params.slug);
+export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const event = events.find(e => e.slug === slug);
   if (!event) return notFound();
 
   const folderPath = path.join(process.cwd(), "public/assets/projects", event.imageFolder);
