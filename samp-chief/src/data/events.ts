@@ -17,7 +17,7 @@ export const events: Event[] = [
     {
       title: "Ace Hotel",
       date: "2025-06-19",
-      image: "/assets/projects/ace-hotel/1.jpg",
+      image: "/assets/projects/ace-hotel/3.jpg",
       description: "A great event in London.",
       tags: ["music", "live"],
       slug: "ace-hotel",
@@ -27,28 +27,16 @@ export const events: Event[] = [
       rowStart: "row-start-1"
     },
     {
-      title: "Holt Renfrew",
-      date: "2025-05-17",
-      image: "/assets/projects/holt-renfrew/1.jpg",
-      description: "May event with special guests.",
-      tags: ["community"],
-      slug: "holt-renfrew",
-      imageFolder: "holt-renfrew",
-      gridSpan: "col-span-1 row-span-2",
-      colStart: "col-start-2",
-      rowStart: "row-start-1"
-    },
-    {
       title: "Kops Record Store",
       date: "2025-05-17",
-      image: "/assets/projects/kops/1.jpg",
+      image: "/assets/projects/kops/2.jpg",
       description: "May event with special guests.",
       tags: ["community"],
       slug: "kops-record-store",
       imageFolder: "kops",
       gridSpan: "col-span-1 row-span-2",
       colStart: "col-start-2",
-      rowStart: "row-start-3"
+      rowStart: "row-start-1"
     },
     {
       title: "U of T Event",
@@ -58,6 +46,19 @@ export const events: Event[] = [
       tags: ["community"],
       slug: "u-of-t",
       imageFolder: "u-of-t",
+      gridSpan: "col-span-1 row-span-2",
+      colStart: "col-start-2",
+      rowStart: "row-start-3"
+    },
+
+    {
+      title: "Holt Renfrew",
+      date: "2025-05-17",
+      image: "/assets/projects/holt-renfrew/6.jpg",
+      description: "May event with special guests.",
+      tags: ["community"],
+      slug: "holt-renfrew",
+      imageFolder: "holt-renfrew",
       gridSpan: "col-span-2 row-span-4",
       colStart: "col-start-3",
       rowStart: "row-start-1"
