@@ -127,7 +127,7 @@ export default function SubscribePopup() {
         </div>
 
         <div className="w-full p-3 sm:p-4 flex flex-col items-center">
-          <h2 className="font-ruder mb-2 text-lg sm:text-xl font-bold text-center">
+          <h2 className="font-ruder mb-4 text-2xl sm:text-3xl font-bold text-center">
             Stay in the loop
           </h2>
           <p className="font-sans mb-3 sm:mb-4 text-sm sm:text-base text-gray-600 text-center">
