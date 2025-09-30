@@ -37,7 +37,7 @@ const ProjectsPage = () => {
         {events.map((event) => (
           <Link key={event.slug} href={`/projects/${event.slug}`} className="block bg-transparent rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 cursor-pointer w-full h-[30rem] relative mb-6">
             <div className="relative w-full h-full">
-              <ProjectImageWithOverlay src={event.image} alt={event.title} />
+              <ProjectImageWithOverlay src={event.projectcard} alt={event.title} />
               <div className="absolute inset-0 w-full h-full z-20 flex flex-col items-start justify-start p-4">
                 <h3 className="font-semibold text-lg text-white mb-2 z-30 text-left">{event.title}</h3>
                 <p className="text-white text-sm z-30 text-left pr-4">{event.description}</p>
@@ -56,11 +56,24 @@ const ProjectsPage = () => {
             className={`bg-transparent rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 cursor-pointer h-full w-full relative block group ${event.gridSpan ? event.gridSpan : ''} ${event.colStart ? event.colStart : ''} ${event.rowStart ? event.rowStart : ''}`}
           >
             <div className="relative w-full h-full">
-              <ProjectImageWithOverlay src={event.image} alt={event.title} />
+              <ProjectImageWithOverlay src={event.projectcard} alt={event.title} />
               {/* Hover overlay fills card */}
               <div className="absolute inset-0 w-full h-full bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 flex flex-col items-start justify-start p-4 h-full">
                 <h3 className="font-semibold text-lg text-white mb-2 z-30 text-left">{event.title}</h3>
                 <p className="text-white text-sm z-30 text-left pr-4">{event.description}</p>
+                {/* Brand logo overlay in top right */}
+                {event.brandLogo && (
+                  <div className="absolute top-3 right-3 z-30">
+                    <Image
+                      src={event.brandLogo}
+                      alt={event.title + ' brand logo'}
+                      width={96}
+                      height={96}
+                      quality={100}
+                      className="object-contain" style={{ filter: 'invert(1)' }}
+                    />
+                  </div>
+                )}
               </div>
             </div>
           </Link>
