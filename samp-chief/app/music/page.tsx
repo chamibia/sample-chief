@@ -238,7 +238,7 @@ export default function MusicPage() {
                 href={item.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block rounded-2xl overflow-hidden"
+                className="group block rounded-lg overflow-hidden"
               >
                 <Card className="bg-transparent border-0 cursor-pointer">
                   <CardContent className="p-0">

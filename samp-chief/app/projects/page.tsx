@@ -11,7 +11,7 @@ const ProjectImageWithOverlay = ({ src, alt }: { src: string; alt: string }) => 
       src={src}
       alt={alt}
       fill
-      className="object-cover object-center rounded-2xl"
+  className="object-cover object-center rounded-lg"
       placeholder="blur"
       blurDataURL="data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='16' fill='%23e5e7eb'/%3E%3C/svg%3E"
       priority
@@ -36,7 +36,7 @@ const ProjectsPage = () => {
       <div className="block md:hidden w-full p-4">
         {/* First card full width */}
         {events[0] && (
-          <Link key={events[0].slug} href={`/projects/${events[0].slug}`} className="block bg-transparent rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 cursor-pointer w-full h-[18rem] relative mb-6">
+          <Link key={events[0].slug} href={`/projects/${events[0].slug}`} className="block bg-transparent rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 cursor-pointer w-full h-[18rem] relative mb-6">
             <div className="relative w-full h-full">
               <ProjectImageWithOverlay src={events[0].projectcard} alt={events[0].title} />
               <div className="absolute inset-0 w-full h-full z-20 flex flex-col items-start justify-start p-4">
@@ -48,7 +48,7 @@ const ProjectsPage = () => {
         {/* Second and third cards side-by-side */}
         <div className="grid grid-cols-2 gap-4 mb-6">
           {events.slice(1, 3).map((event) => (
-            <Link key={event.slug} href={`/projects/${event.slug}`} className="bg-transparent rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 cursor-pointer w-full h-[18rem] relative">
+            <Link key={event.slug} href={`/projects/${event.slug}`} className="bg-transparent rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 cursor-pointer w-full h-[18rem] relative">
               <div className="relative w-full h-full">
                 <ProjectImageWithOverlay src={event.projectcard} alt={event.title} />
                 <div className="absolute inset-0 w-full h-full z-20 flex flex-col items-start justify-start p-4">
@@ -60,7 +60,7 @@ const ProjectsPage = () => {
         </div>
         {/* Remaining cards stacked */}
         {events.slice(3).map((event) => (
-          <Link key={event.slug} href={`/projects/${event.slug}`} className="block bg-transparent rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 cursor-pointer w-full h-[18rem] relative mb-6">
+          <Link key={event.slug} href={`/projects/${event.slug}`} className="block bg-transparent rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 cursor-pointer w-full h-[18rem] relative mb-6">
             <div className="relative w-full h-full">
               <ProjectImageWithOverlay src={event.projectcard} alt={event.title} />
               <div className="absolute inset-0 w-full h-full z-20 flex flex-col items-start justify-start p-4">
@@ -77,7 +77,7 @@ const ProjectsPage = () => {
           <Link
             key={event.slug}
             href={`/projects/${event.slug}`}
-            className={`bg-transparent rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 cursor-pointer h-full w-full relative block group ${event.gridSpan ? event.gridSpan : ''} ${event.colStart ? event.colStart : ''} ${event.rowStart ? event.rowStart : ''}`}
+            className={`bg-transparent rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 cursor-pointer h-full w-full relative block group ${event.gridSpan ? event.gridSpan : ''} ${event.colStart ? event.colStart : ''} ${event.rowStart ? event.rowStart : ''}`}
           >
             <div className="relative w-full h-full">
               <ProjectImageWithOverlay src={event.projectcard} alt={event.title} />

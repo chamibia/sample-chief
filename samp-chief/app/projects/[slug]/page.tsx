@@ -57,7 +57,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           </div>
           {/* Ethos, Description, Services, Tags */}
           <div className="relative z-10 p-6 h-full w-1/2 ml-auto flex items-start">
-            <div className="relative bg-white rounded p-6 text-black w-full">
+            <div className="relative bg-white rounded-lg p-6 text-black w-full">
               {/* Text content */}
               <div className="relative flex flex-col items-start self-start h-full w-full">
                 <h3 className="font-bold text-lg mb-2">Ethos</h3>
