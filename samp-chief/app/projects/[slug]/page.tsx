@@ -32,7 +32,6 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       <div className="grid grid-rows-[auto_auto] w-full">
         {/* First section: full width, one column */}
         <div className="relative w-full h-screen flex flex-row justify-between items-center text-white">
-          {/* Absolutely positioned image background using Next.js Image */}
           {(event.heroImage || images[0]) && (
             <Image
               src={event.heroImage || images[0]}
@@ -48,60 +47,36 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           {/* Project title and location */}
           <div className="relative z-10 p-6 flex flex-col justify-between h-full w-1/2">
             <div>
-              <div className="font-bold text-4xl mb-6">{event.title}</div>
-              {event.brandLogo && (
-                <div className="mb-6">
-                  <Image
-                    src={event.brandLogo}
-                    alt={event.title + ' brand logo'}
-                    width={64}
-                    height={64}
-                    quality={100}
-                    className="object-contain" style={{ filter: 'invert(1)' }}
-                  />
-                </div>
-              )}
-              <div className="text-base mb-4">{event.location || "-"}</div>
+              <div className="mb-6">
+                <h1 className="font-ruder font-medium text-white leading-tight text-4xl md:text-5xl">
+                  {event.title}
+                </h1>
+              </div>
+              <div className="text-base font-bold mb-4">{event.location || "-"}</div>
             </div>
           </div>
-          {/* Event poster, Ethos, Description, Services, Tags */}
+          {/* Ethos, Description, Services, Tags */}
           <div className="relative z-10 p-6 h-full w-1/2 ml-auto flex items-start">
-            <div className="relative bg-white/80 rounded p-6 text-black w-full flex flex-row items-start gap-6 h-1/2 justify-between">
-              <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6 w-full h-full">
-                {/* Left: Text content */}
-                <div className="relative flex flex-col items-start self-start h-full">
-                  <h3 className="font-bold text-lg mb-2">Ethos</h3>
-                  <div className="mb-4">{event.ethos || "-"}</div>
-                  <h3 className="font-bold text-lg mb-2">Description</h3>
-                  <div className="mb-4">{event.description}</div>
-                  {/* Services Provided tags at bottom left of text content */}
-                  <div className="absolute left-0 bottom-0 flex items-center">
-                    <p className="font-semibold text-sm mr-2">Services</p>
-                    {event.services ? (
-                      <div className="flex flex-wrap gap-2">
-                        {event.services.split(',').map(service => (
-                          <span
-                            key={service.trim()}
-                            className="px-2 py-1 rounded text-xs font-semibold"
-                            style={{ backgroundColor: '#F8C722', color: '#000' }}
-                          >
-                            {service.trim()}
-                          </span>
-                        ))}
-                      </div>
-                    ) : (
-                      <span>-</span>
-                    )}
-                  </div>
+            <div className="relative bg-white rounded p-6 text-black w-full">
+              {/* Text content */}
+              <div className="relative flex flex-col items-start self-start h-full w-full">
+                <h3 className="font-bold text-lg mb-2">Ethos</h3>
+                <div className="mb-6">{event.ethos || "-"}</div>
+                <h3 className="font-bold text-lg mb-2">Description</h3>
+                <div className="mb-10">
+                  {event.description.split(/\n+/).map((para, idx) => (
+                    <p key={idx} className="mb-4" dangerouslySetInnerHTML={{ __html: para.trim() }} />
+                  ))}
                 </div>
-                {/* Right: Event poster */}
-                <div className="flex items-center justify-end w-full h-full">
-                  {event.poster && (
-                    <img
-                      src={event.poster}
-                      alt={event.title + ' poster'}
-                      className="max-w-xs w-full h-auto md:h-full rounded object-cover"
-                    />
+                {/* Services Provided tags at bottom left of text content */}
+                <div className="absolute left-0 bottom-0 flex items-center">
+                  <p className="font-bold text-sm mr-2">SERVICES</p>
+                  {event.services ? (
+                    <span className="text-sm font-medium">
+                      {event.services.split(',').map(s => s.trim()).join(' / ')}
+                    </span>
+                  ) : (
+                    <span>-</span>
                   )}
                 </div>
               </div>

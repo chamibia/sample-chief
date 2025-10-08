@@ -32,15 +32,39 @@ const ProjectsPage = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Mobile: vertical stack */}
+      {/* Mobile: first card full width, second and third side-by-side, rest stacked */}
       <div className="block md:hidden w-full p-4">
-        {events.map((event) => (
-          <Link key={event.slug} href={`/projects/${event.slug}`} className="block bg-transparent rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 cursor-pointer w-full h-[30rem] relative mb-6">
+        {/* First card full width */}
+        {events[0] && (
+          <Link key={events[0].slug} href={`/projects/${events[0].slug}`} className="block bg-transparent rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 cursor-pointer w-full h-[18rem] relative mb-6">
+            <div className="relative w-full h-full">
+              <ProjectImageWithOverlay src={events[0].projectcard} alt={events[0].title} />
+              <div className="absolute inset-0 w-full h-full z-20 flex flex-col items-start justify-start p-4">
+                <h1 className="font-ruder font-medium text-white leading-tight text-2xl md:text-3xl pl-2">{events[0].title}</h1>
+              </div>
+            </div>
+          </Link>
+        )}
+        {/* Second and third cards side-by-side */}
+        <div className="grid grid-cols-2 gap-4 mb-6">
+          {events.slice(1, 3).map((event) => (
+            <Link key={event.slug} href={`/projects/${event.slug}`} className="bg-transparent rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 cursor-pointer w-full h-[18rem] relative">
+              <div className="relative w-full h-full">
+                <ProjectImageWithOverlay src={event.projectcard} alt={event.title} />
+                <div className="absolute inset-0 w-full h-full z-20 flex flex-col items-start justify-start p-4">
+                  <h1 className="font-ruder font-medium text-white leading-tight text-2xl md:text-3xl pl-2">{event.title}</h1>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+        {/* Remaining cards stacked */}
+        {events.slice(3).map((event) => (
+          <Link key={event.slug} href={`/projects/${event.slug}`} className="block bg-transparent rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 cursor-pointer w-full h-[18rem] relative mb-6">
             <div className="relative w-full h-full">
               <ProjectImageWithOverlay src={event.projectcard} alt={event.title} />
               <div className="absolute inset-0 w-full h-full z-20 flex flex-col items-start justify-start p-4">
-                <h3 className="font-semibold text-lg text-white mb-2 z-30 text-left">{event.title}</h3>
-                <p className="text-white text-sm z-30 text-left pr-4">{event.description}</p>
+                <h1 className="font-ruder font-medium text-white leading-tight text-2xl md:text-3xl pl-2">{event.title}</h1>
               </div>
             </div>
           </Link>
@@ -59,21 +83,9 @@ const ProjectsPage = () => {
               <ProjectImageWithOverlay src={event.projectcard} alt={event.title} />
               {/* Hover overlay fills card */}
               <div className="absolute inset-0 w-full h-full bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 flex flex-col items-start justify-start p-4 h-full">
-                <h3 className="font-semibold text-lg text-white mb-2 z-30 text-left">{event.title}</h3>
-                <p className="text-white text-sm z-30 text-left pr-4">{event.description}</p>
-                {/* Brand logo overlay in top right */}
-                {event.brandLogo && (
-                  <div className="absolute top-3 right-3 z-30">
-                    <Image
-                      src={event.brandLogo}
-                      alt={event.title + ' brand logo'}
-                      width={96}
-                      height={96}
-                      quality={100}
-                      className="object-contain" style={{ filter: 'invert(1)' }}
-                    />
-                  </div>
-                )}
+                <h1 className="font-ruder font-medium text-white leading-tight text-3xl md:text-4xl pl-3">
+                  {event.title}
+                </h1>
               </div>
             </div>
           </Link>
