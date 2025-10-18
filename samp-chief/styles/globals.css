@@ -137,3 +137,8 @@ p {
   content: "$";
   font-family: Arial, Helvetica, system-ui, sans-serif;
 }
+
+.prose-lg {
+  font-size: 1.0625rem; /* 17px */
+  line-height: 1.8;
+}

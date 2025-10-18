@@ -15,6 +15,8 @@ const ProjectImageWithOverlay = ({ src, alt }: { src: string; alt: string }) => 
       placeholder="blur"
       blurDataURL="data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='16' fill='%23e5e7eb'/%3E%3C/svg%3E"
       priority
+      quality={85}
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
     />
   );
 };
