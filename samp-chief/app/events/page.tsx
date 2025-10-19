@@ -54,6 +54,17 @@ const eventData = [
     imageUrl: "/assets/events/IMG_6056.PNG",
     ticketLink: "https://bit.ly/myfathersshadowafterparty",
   },
+      {
+    id: 5,
+    title: "AFRIKA MAGIK: Toronto Listening Party",
+    description: "Join us for a special preview of Show Dem Camp's latest project, AFRIKA MAGIK. Brought to you by local·global and Sample Chief.",
+    startDate: "2025-10-22",
+    endDate: "2025-10-22",
+    time: "8PM - 12AM",
+    venue: "296 Brunswick Avenue Toronto, ON M5S 1X9",
+    imageUrl: "/assets/events/afrika-magik-toronto-poster.png",
+    ticketLink: "https://www.eventbrite.ca/e/afrika-magik-toronto-listening-party-tickets-1836211551179?aff=erelexpmlt",
+  },
 ];
 
 export default function Events() {
@@ -79,7 +90,7 @@ export default function Events() {
   };
 
   const generateCalendarLink = (event: (typeof eventData)[0]) => {
-    const startDate = new Date(`${event.startDate}T21:00:00`);
+    const startDate = new Date(`${event.startDate}T20:00:00`);
     const endDate = new Date(`${event.endDate}T23:59:00`);
 
     const formatDateForGoogle = (date: Date) => {
