@@ -95,9 +95,9 @@ export default function Navbar() {
           <Image
             src={currentLogo}
             alt="Sample Chief Logo"
-            width={isScrolled ? 114 : 95}
-            height={isScrolled ? 74 : 82}
-            className="transition-all duration-300 ease-in-out md:w-auto w-20 max-h-[46px] md:max-h-[53px]"
+            width={isScrolled ? 80 : 66}
+            height={isScrolled ? 53 : 58}
+            className="transition-all duration-300 ease-in-out md:w-auto w-[66px] max-h-[33px] md:max-h-[37px]"
             priority
           />
         </Link>
