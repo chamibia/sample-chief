@@ -63,21 +63,21 @@ export const events: Event[] = [
       ethos: "Let’s congregate the African vinyl community.",
       location: "Toronto, Canada",
       services: "Event Curation / Music Curation / Merchandise",
-      heroImage: "/assets/projects/kops/1.jpg",
+      heroImage: "/assets/projects/kops/1.JPG",
       contentBlocks: [
         { type: 'image', src: "/assets/projects/kops/6.jpeg", gridSpan: "col-span-1 row-span-2" },
         { type: 'image', src: "/assets/projects/kops/poster.JPG", gridSpan: "col-span-1 row-span-2" },
         { type: 'video', src: "/assets/projects/kops/video.mp4", gridSpan: "col-span-2 row-span-2" },
-        { type: 'image', src: "/assets/projects/kops/2.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/kops/2.JPG", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/kops/7.jpg", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/kops/cover.jpeg", gridSpan: "col-span-2 row-span-2" },
-        { type: 'image', src: "/assets/projects/kops/3.jpg" },
-        { type: 'image', src: "/assets/projects/kops/4.jpg" },
+        { type: 'image', src: "/assets/projects/kops/3.JPG" },
+        { type: 'image', src: "/assets/projects/kops/4.JPG" },
         { type: 'image', src: "/assets/projects/kops/5.jpeg", gridSpan: "col-span-2 row-span-1" }
       ]
     },
     {
-      title: "UofT",
+      title: "University of Toronto",
       projectcard: "/assets/projects/u-of-t/cover.jpg",
       brandLogo: "/assets/projects/u-of-t/uoftlogo.png",
       description: "The University of Toronto’s Black History Month Luncheon is a long-standing celebration of Black culture and achievement. For 2025’s edition, Sample Chief curated a powerful musical program featuring Juno Award-winning artist Töme and Kunle, an acclaimed singer, music director and composer, nominated for the Dora Award (2024) and Ontario Premier’s Award (2022), and recognized as a Stonebridge Furch Guitar artist. The performances were carefully selected to honor Black Canadian legacy and excellence, creating an atmosphere that was both vibrant and accessible, energizing the room while resonating with a diverse audience.",
@@ -93,7 +93,7 @@ export const events: Event[] = [
       contentBlocks: [
           { type: 'image', src: "/assets/projects/u-of-t/cover.jpg", gridSpan: "col-span-2 row-span-4", colStart: "col-start-1", rowStart: "row-start-1" },
           { type: 'image', src: "/assets/projects/u-of-t/2.jpg", gridSpan: "col-span-2 row-span-2", colStart: "col-start-3", rowStart: "row-start-1" },
-          { type: 'image', src: "/assets/projects/u-of-t/3.jpg", gridSpan: "col-span-2 row-span-2", colStart: "col-start-3", rowStart: "row-start-3" }
+          { type: 'image', src: "/assets/projects/u-of-t/3.JPG", gridSpan: "col-span-2 row-span-2", colStart: "col-start-3", rowStart: "row-start-3" }
         ]
     },
 
@@ -123,7 +123,7 @@ export const events: Event[] = [
         { type: 'image', src: "/assets/projects/holt-renfrew/poster.JPG", gridSpan: "col-span-1 row-span-2" },
         { type: 'image', src: "/assets/projects/holt-renfrew/5.jpg", gridSpan: "col-span-1 row-span-2" },
         { type: 'image', src: "/assets/projects/holt-renfrew/1.jpg", gridSpan: "col-span-1 row-span-2" },
-        { type: 'image', src: "/assets/projects/holt-renfrew/6.JPG", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/holt-renfrew/6.jpg", gridSpan: "col-span-1 row-span-2" },
         { type: 'video', src: "/assets/projects/holt-renfrew/video1.MOV", gridSpan: "col-span-2 row-span-3" },
         { type: 'image', src: "/assets/projects/holt-renfrew/cover.jpg", gridSpan: "col-span-2 row-span-1" },
       ]
