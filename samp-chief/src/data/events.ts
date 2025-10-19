@@ -66,7 +66,7 @@ export const events: Event[] = [
       heroImage: "/assets/projects/kops/1.jpg",
       contentBlocks: [
         { type: 'image', src: "/assets/projects/kops/6.jpeg", gridSpan: "col-span-1 row-span-2" },
-        { type: 'image', src: "/assets/projects/kops/poster.jpg", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/kops/poster.JPG", gridSpan: "col-span-1 row-span-2" },
         { type: 'video', src: "/assets/projects/kops/video.mp4", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/kops/2.jpg", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/kops/7.jpg", gridSpan: "col-span-2 row-span-2" },
@@ -98,7 +98,7 @@ export const events: Event[] = [
     },
 
     {
-      title: "Sample Chief Social",
+      title: "Holt Renfrew",
       projectcard: "/assets/projects/holt-renfrew/cover.jpg",
       brandLogo: "/assets/brands/holts.png",
       description: `In February 2025, luxury retailer Holt Renfrew partnered with Sample Chief to celebrate Black music history in Canada and its vibrant community. Together, we launched a multi-platform campaign that blended storytelling, performance, and cultural engagement.
@@ -120,10 +120,10 @@ export const events: Event[] = [
         { type: 'image', src: "/assets/projects/holt-renfrew/8.jpeg" },
         { type: 'image', src: "/assets/projects/holt-renfrew/2.jpeg" },
         { type: 'image', src: "/assets/projects/holt-renfrew/3.jpg", gridSpan: "col-span-2 row-span-2" },
-        { type: 'image', src: "/assets/projects/holt-renfrew/poster.jpg", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/holt-renfrew/poster.JPG", gridSpan: "col-span-1 row-span-2" },
         { type: 'image', src: "/assets/projects/holt-renfrew/5.jpg", gridSpan: "col-span-1 row-span-2" },
         { type: 'image', src: "/assets/projects/holt-renfrew/1.jpg", gridSpan: "col-span-1 row-span-2" },
-        { type: 'image', src: "/assets/projects/holt-renfrew/6.jpg", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/holt-renfrew/6.JPG", gridSpan: "col-span-1 row-span-2" },
         { type: 'video', src: "/assets/projects/holt-renfrew/video1.MOV", gridSpan: "col-span-2 row-span-3" },
         { type: 'image', src: "/assets/projects/holt-renfrew/cover.jpg", gridSpan: "col-span-2 row-span-1" },
       ]
@@ -146,7 +146,7 @@ export const events: Event[] = [
         { type: 'video', src: "/assets/projects/village-boogie/video1.mp4", gridSpan: "col-span-1 row-span-2" },
         { type: 'text', html: `<p>We’re seeking partners to help us scale this movement, whether through sponsorship, brand activations, or international collaborations. Together, we can bring Village Boogie’s unique energy to even wider audiences.</p>`, gridSpan: "col-span-1" },
         { type: 'image', src: "/assets/projects/village-boogie/2.jpg", gridSpan: "col-span-2 row-span-2" },
-        { type: 'image', src: "/assets/projects/village-boogie/7.jpg" },
+        { type: 'image', src: "/assets/projects/village-boogie/7.JPG" },
         { type: 'image', src: "/assets/projects/village-boogie/6.jpg", gridSpan: "col-span-1 row-span-2" },
         { type: 'image', src: "/assets/projects/village-boogie/4.jpg", gridSpan: "col-span-1 row-span-2" },
         { type: 'image', src: "/assets/projects/village-boogie/3.jpg", gridSpan: "col-span-1 row-span-2" },
