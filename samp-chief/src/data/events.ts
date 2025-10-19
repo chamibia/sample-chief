@@ -144,7 +144,7 @@ export const events: Event[] = [
       heroImage: "/assets/projects/village-boogie/cover.jpg",
       contentBlocks: [
         { type: 'video', src: "/assets/projects/village-boogie/video1.mp4", gridSpan: "col-span-1 row-span-2" },
-        { type: 'text', html: `<h2>Village Boogie — A Cultural Gathering</h2><p>Village Boogie brings together DJs and dancers from across the African diaspora to celebrate rhythm, dance, and community.</p>`, gridSpan: "col-span-1" },
+        { type: 'text', html: `<p>We’re seeking partners to help us scale this movement, whether through sponsorship, brand activations, or international collaborations. Together, we can bring Village Boogie’s unique energy to even wider audiences.</p>`, gridSpan: "col-span-1" },
         { type: 'image', src: "/assets/projects/village-boogie/2.jpg", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/village-boogie/7.jpg" },
         { type: 'image', src: "/assets/projects/village-boogie/6.jpg", gridSpan: "col-span-1 row-span-2" },

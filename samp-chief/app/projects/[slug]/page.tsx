@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
 import { events } from "@/data/events";
-import fs from "fs";
-import path from "path";
 import React from "react";
 import Image from "next/image";
+import fs from 'fs';
+import path from 'path';
 
 export async function generateStaticParams() {
   return events.map(event => ({ slug: event.slug }));
@@ -15,29 +15,50 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
     const event = events.find(e => e.slug === slug);
     if (!event) return notFound();
 
-    const folderPath = path.join(process.cwd(), "public/assets/projects", event.imageFolder);
-    let images: string[] = [];
+    // Prefer a small pre-generated manifest (created by scripts/generate-media-manifest.js)
+    // that lists files in each project folder. The manifest is written to
+    // `public/assets/projects/manifest.json` by the `prebuild` script so reading it
+    // is cheap and does not cause Next to trace large numbers of files into the
+    // server function. If the manifest is missing, fall back to contentBlocks or
+    // event.images declared in code.
+    let manifest: Record<string, string[]> | null = null;
     try {
-      images = fs.readdirSync(folderPath)
-        .filter(file => /\.(jpg|jpeg|png|webp)$/i.test(file))
-        .map(file => `/assets/projects/${event.imageFolder}/${file}`);
-    } catch {
-      images = [];
+      const manifestPath = path.join(process.cwd(), 'public', 'assets', 'projects', 'manifest.json');
+      if (fs.existsSync(manifestPath)) {
+        const raw = fs.readFileSync(manifestPath, 'utf-8');
+        manifest = JSON.parse(raw);
+      }
+    } catch (err) {
+      // ignore and fall back
+      manifest = null;
     }
 
-    // Prefer contentBlocks (rich content) if provided, otherwise fall back to images
-    const projectBlocks = (event as any).contentBlocks && (event as any).contentBlocks.length
-      ? (event as any).contentBlocks
-      : (event.images || []).map(img => ({ type: 'image', src: img.src, gridSpan: img.gridSpan, colStart: img.colStart, rowStart: img.rowStart }));
+    // Build project blocks with layout metadata when available.
+    // Prefer explicit `contentBlocks` declared in `events.ts` because they include
+    // grid layout hints (gridSpan, colStart, rowStart). Only fall back to the
+    // generated manifest when no contentBlocks are present for the event.
+    let projectBlocks: any[] = [];
+    if ((event as any).contentBlocks && (event as any).contentBlocks.length) {
+      projectBlocks = (event as any).contentBlocks;
+    } else if (manifest && manifest[event.imageFolder] && manifest[event.imageFolder].length) {
+      projectBlocks = manifest[event.imageFolder].map(src => ({ type: 'image', src }));
+    } else if ((event as any).images && (event as any).images.length) {
+      projectBlocks = (event as any).images.map((img: any) => ({ type: 'image', src: img.src, gridSpan: img.gridSpan, colStart: img.colStart, rowStart: img.rowStart }));
+    }
+
+    // derive hero source from explicit heroImage, first contentBlock image, or first event.image
+    const heroSrc = event.heroImage || (
+      Array.isArray((event as any).contentBlocks) && (event as any).contentBlocks.find((b: any) => b.type !== 'text' && b.src)?.src
+    ) || ((event as any).images && (event as any).images[0] && (event as any).images[0].src) || null;
 
     return (
       <div className="w-full px-0">
         <div className="grid grid-rows-[auto_auto] w-full">
           {/* First section: full width, one column */}
           <div className="relative w-full h-screen flex flex-row justify-between items-center text-white">
-            {(event.heroImage || images[0]) && (
+            {heroSrc && (
               <Image
-                src={event.heroImage || images[0]}
+                src={heroSrc}
                 alt={event.title + " main image"}
                 fill
                 sizes="100vw"

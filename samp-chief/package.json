@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node ./scripts/generate-media-manifest.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
-  },
+    },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
     "@mailchimp/mailchimp_marketing": "^3.0.80",

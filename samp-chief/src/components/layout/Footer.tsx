@@ -1,16 +1,19 @@
 "use client";
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import {
-  SiInstagram,
-  SiX,
-  SiLinkedin,
-  SiTiktok,
-  SiSoundcloud,
-  SiYoutube,
-  SiSpotify,
-} from "react-icons/si";
 import { cn } from "@/lib/utils";
+
+// Dynamically import react-icons on the client only to avoid server-side
+// vendor-chunk references in dev (prevents server trying to require
+// ./vendor-chunks/react-icons.js).
+const SiInstagram = dynamic(() => import("react-icons/si").then((m) => m.SiInstagram), { ssr: false });
+const SiX = dynamic(() => import("react-icons/si").then((m) => m.SiX), { ssr: false });
+const SiLinkedin = dynamic(() => import("react-icons/si").then((m) => m.SiLinkedin), { ssr: false });
+const SiTiktok = dynamic(() => import("react-icons/si").then((m) => m.SiTiktok), { ssr: false });
+const SiSoundcloud = dynamic(() => import("react-icons/si").then((m) => m.SiSoundcloud), { ssr: false });
+const SiYoutube = dynamic(() => import("react-icons/si").then((m) => m.SiYoutube), { ssr: false });
+const SiSpotify = dynamic(() => import("react-icons/si").then((m) => m.SiSpotify), { ssr: false });
 
 export default function Footer() {
   const pathname = usePathname();
