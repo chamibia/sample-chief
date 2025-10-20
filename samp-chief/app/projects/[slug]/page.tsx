@@ -176,6 +176,62 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 }
 
                 // default: image
+                // Support per-block `fit` property (cover, contain, fill, none, scale-down)
+                const fit = block.fit || 'cover';
+                const fitClass = (() => {
+                  switch (fit) {
+                    case 'contain':
+                      return 'object-contain';
+                    case 'fill':
+                      return 'object-fill';
+                    case 'none':
+                      return 'object-none';
+                    case 'scale-down':
+                      return 'object-scale-down';
+                    case 'cover':
+                    default:
+                      return 'object-cover';
+                  }
+                })();
+
+                // position: prefer Tailwind object-position classes for common values,
+                // otherwise apply inline style via objectPosition.
+                const position = block.position || '';
+                const positionClass = (() => {
+                  switch ((position || '').toLowerCase()) {
+                    case 'top':
+                      return 'object-top';
+                    case 'bottom':
+                      return 'object-bottom';
+                    case 'left':
+                      return 'object-left';
+                    case 'right':
+                      return 'object-right';
+                    case 'center':
+                      return 'object-center';
+                    case 'top-left':
+                    case 'left-top':
+                      return 'object-top object-left';
+                    case 'top-right':
+                    case 'right-top':
+                      return 'object-top object-right';
+                    case 'bottom-left':
+                    case 'left-bottom':
+                      return 'object-bottom object-left';
+                    case 'bottom-right':
+                    case 'right-bottom':
+                      return 'object-bottom object-right';
+                    default:
+                      return '';
+                  }
+                })();
+
+                const inlineStyle: React.CSSProperties = {};
+                if (!positionClass && position) {
+                  // arbitrary CSS object-position value (e.g. '10% 0%', 'center top')
+                  inlineStyle.objectPosition = position;
+                }
+
                 return (
                   <div key={block.src || idx} className={classes}>
                     <Image
@@ -183,8 +239,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                       alt={event.title + ' project image ' + (idx + 1)}
                       fill
                       sizes="(min-width:1280px) 18vw, (min-width:1024px) 24vw, (min-width:640px) 40vw, 80vw"
-                      className="object-cover object-center"
+                      className={`${fitClass} ${positionClass || 'object-center'}`}
                       priority={idx === 0}
+                      style={inlineStyle}
                     />
                   </div>
                 );

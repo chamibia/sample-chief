@@ -1,7 +1,7 @@
 export type Event = {
   title: string;
   projectcard: string;  // project card image
-  brandLogo?: string; // brand logo image path for card overlay
+  brandLogo?: string;
   description: string;
   slug: string;
   imageFolder: string;
@@ -11,16 +11,17 @@ export type Event = {
   ethos?: string;
   location?: string;
   services?: string;
-  heroImage?: string; // New property for hero image
+  heroImage?: string;
   images?: Array<{
     src: string;
     gridSpan?: string;
     colStart?: string;
     rowStart?: string;
+    fit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
+    position?: 'top' | 'bottom' | 'left' | 'right' | 'center' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
   }>;
-  // Optional contentBlocks allow mixing images, video, and text in the project grid.
   contentBlocks?: Array<
-    | ({ type?: 'image' } & { src: string; alt?: string; gridSpan?: string; colStart?: string; rowStart?: string })
+    | ({ type?: 'image' } & { src: string; alt?: string; gridSpan?: string; colStart?: string; rowStart?: string; fit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down'; position?: 'top' | 'bottom' | 'left' | 'right' | 'center' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' })
     | ({ type: 'video' } & { src: string; alt?: string; gridSpan?: string; colStart?: string; rowStart?: string })
     | ({ type: 'text' } & { html: string; gridSpan?: string; colStart?: string; rowStart?: string })
   >;
@@ -91,7 +92,7 @@ export const events: Event[] = [
       services: "Music curation",
       heroImage: "/assets/projects/u-of-t/1.jpg",
       contentBlocks: [
-          { type: 'image', src: "/assets/projects/u-of-t/cover.jpg", gridSpan: "col-span-2 row-span-4", colStart: "col-start-1", rowStart: "row-start-1" },
+          { type: 'image', src: "/assets/projects/u-of-t/4.jpg", gridSpan: "col-span-2 row-span-4", colStart: "col-start-1", rowStart: "row-start-1" },
           { type: 'image', src: "/assets/projects/u-of-t/2.jpg", gridSpan: "col-span-2 row-span-2", colStart: "col-start-3", rowStart: "row-start-1" },
           { type: 'image', src: "/assets/projects/u-of-t/3.JPG", gridSpan: "col-span-2 row-span-2", colStart: "col-start-3", rowStart: "row-start-3" }
         ]
@@ -120,12 +121,17 @@ export const events: Event[] = [
         { type: 'image', src: "/assets/projects/holt-renfrew/8.jpeg" },
         { type: 'image', src: "/assets/projects/holt-renfrew/2.jpeg" },
         { type: 'image', src: "/assets/projects/holt-renfrew/3.jpg", gridSpan: "col-span-2 row-span-2" },
-        { type: 'image', src: "/assets/projects/holt-renfrew/poster.JPG", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/holt-renfrew/poster.JPG", gridSpan: "col-span-1 row-span-2", fit: 'fill' },
         { type: 'image', src: "/assets/projects/holt-renfrew/5.jpg", gridSpan: "col-span-1 row-span-2" },
-        { type: 'image', src: "/assets/projects/holt-renfrew/1.jpg", gridSpan: "col-span-1 row-span-2" },
-        { type: 'image', src: "/assets/projects/holt-renfrew/6.jpg", gridSpan: "col-span-1 row-span-2" },
-        { type: 'video', src: "/assets/projects/holt-renfrew/video1.MOV", gridSpan: "col-span-2 row-span-3" },
-        { type: 'image', src: "/assets/projects/holt-renfrew/cover.jpg", gridSpan: "col-span-2 row-span-1" },
+        { type: 'image', src: "/assets/projects/holt-renfrew/12.jpg", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/holt-renfrew/6.jpg", gridSpan: "col-span-1 row-span-2", fit: 'fill' },
+        { type: 'video', src: "/assets/videos/sample2.MP4", gridSpan: "col-span-2 row-span-3" },
+        { type: 'text', html: `<p>The partnership extended beyond digital and in-store activations with a music trivia night and a live celebration featuring DJs and performances by No Tourists, Onii-Sama, Big Jacks, Savvv, and more. To tie it all together, we produced a collectible zine distributed nationwide across Holt Renfrew stores and at both events, further amplifying the stories and legacy of Black Canadian music.</p>`, gridSpan: "col-span-2" },
+        { type: 'image', src: "/assets/projects/holt-renfrew/11.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/holt-renfrew/cover.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/holt-renfrew/14.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/holt-renfrew/1.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/holt-renfrew/13.jpeg", gridSpan: "col-span-4 row-span-3" }
       ]
     },
     {
@@ -152,6 +158,8 @@ export const events: Event[] = [
         { type: 'image', src: "/assets/projects/village-boogie/3.jpg", gridSpan: "col-span-1 row-span-2" },
         { type: 'image', src: "/assets/projects/village-boogie/8.jpg", gridSpan: "col-span-1 row-span-2" },
         { type: 'image', src: "/assets/projects/village-boogie/9.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'video', src: "/assets/videos/sample.mp4", gridSpan: "col-span-2 row-span-2" },
+        { type: 'video', src: "/assets/projects/village-boogie/10.mov", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/village-boogie/5.jpg", gridSpan: "col-span-2 row-span-2" }
       ]
     }
