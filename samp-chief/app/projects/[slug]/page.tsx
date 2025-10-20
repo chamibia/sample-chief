@@ -46,16 +46,17 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       projectBlocks = (event as any).images.map((img: any) => ({ type: 'image', src: img.src, gridSpan: img.gridSpan, colStart: img.colStart, rowStart: img.rowStart }));
     }
 
-    // derive hero source from explicit heroImage, first contentBlock image, or first event.image
     const heroSrc = event.heroImage || (
       Array.isArray((event as any).contentBlocks) && (event as any).contentBlocks.find((b: any) => b.type !== 'text' && b.src)?.src
     ) || ((event as any).images && (event as any).images[0] && (event as any).images[0].src) || null;
+
+    const servicesArray = event.services ? event.services.split(',').map((s: string) => s.trim()).filter(Boolean) : [];
 
     return (
       <div className="w-full px-0">
         <div className="grid grid-rows-[auto_auto] w-full">
           {/* First section: full width, one column */}
-          <div className="relative w-full h-screen flex flex-row justify-between items-center text-white">
+          <div className="relative w-full h-[50vh] md:h-screen flex flex-row justify-between items-center text-white">
             {heroSrc && (
               <Image
                 src={heroSrc}
@@ -80,9 +81,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               </div>
             </div>
             {/* Ethos, Description, Services, Tags */}
-            {/* On mobile the info panel should sit at the bottom of the hero. */}
-            <div className="absolute left-0 right-0 bottom-0 p-4 z-10 flex items-start md:static md:p-6 md:h-full md:w-1/2 md:ml-auto">
-              <div className="relative bg-white rounded-lg p-4 md:p-6 text-black w-full shadow-lg md:shadow-sm">
+            {/* Desktop/tablet: keep the info panel positioned inside the hero area */}
+            <div className="hidden md:block md:static md:p-6 md:h-full md:w-1/2 md:ml-auto">
+              <div className="relative bg-white rounded-lg p-4 md:p-6 text-black w-full">
                 {/* Text content */}
                 <div className="relative flex flex-col items-start self-start w-full md:h-full">
                   <h3 className="font-bold text-lg mb-2">Ethos</h3>
@@ -93,91 +94,65 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                       <p key={idx} className="mb-4" dangerouslySetInnerHTML={{ __html: para.trim() }} />
                     ))}
                   </div>
-                  {/* Services: on mobile show inline under description; on md+ keep absolute bottom-left */}
-                  {(() => {
-                    const servicesArray = event.services ? event.services.split(',').map(s => s.trim()).filter(Boolean) : [];
-                    return (
-                      <>
-                        {/* Mobile inline */}
-                        <div className="block md:hidden mt-2 w-full">
-                          <p className="font-bold text-sm mb-1">SERVICES</p>
-                          {servicesArray.length ? (
-                            <div className="text-sm font-medium">
-                              {servicesArray.map((s: string, i: number) => (
-                                <span key={i} className="inline-block mr-2">{s}{i < servicesArray.length - 1 ? ',' : ''}</span>
-                              ))}
-                            </div>
-                          ) : (
-                            <span>-</span>
-                          )}
-                        </div>
 
-                        {/* Desktop/Tablet absolute placement */}
-                        <div className="hidden md:absolute md:left-0 md:bottom-0 md:flex md:items-center">
-                          <p className="font-bold text-sm mr-2">SERVICES</p>
-                          {servicesArray.length ? (
-                            <span className="text-sm font-medium">{servicesArray.join(' / ')}</span>
-                          ) : (
-                            <span>-</span>
-                          )}
-                        </div>
-                      </>
-                    );
-                  })()}
+                  {/* Desktop/Tablet absolute placement for services */}
+                  <div className="hidden md:absolute md:left-0 md:bottom-0 md:flex md:items-center">
+                    <p className="font-bold text-sm mr-2">SERVICES</p>
+                    {servicesArray.length ? (
+                      <span className="text-sm font-medium">{servicesArray.join(' / ')}</span>
+                    ) : (
+                      <span>-</span>
+                    )}
+                  </div>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile-only ethos/description block: place after the hero so it appears as its own block on small screens */}
+          <div className="block md:hidden p-4">
+            <div className="bg-white rounded-lg p-4 text-black">
+              <h3 className="font-bold text-lg mb-2">Ethos</h3>
+              <div className="mb-6">{event.ethos || "-"}</div>
+              <h3 className="font-bold text-lg mb-2">Description</h3>
+              <div className="mb-6">
+                {event.description.split(/\n+/).map((para, idx) => (
+                  <p key={idx} className="mb-4" dangerouslySetInnerHTML={{ __html: para.trim() }} />
+                ))}
+              </div>
+              <div className="mt-2 w-full">
+                <p className="font-bold text-sm mb-1">SERVICES</p>
+                {servicesArray.length ? (
+                  <div className="text-sm font-medium">
+                    {servicesArray.map((s: string, i: number) => (
+                      <span key={i} className="inline-block mr-2">{s}{i < servicesArray.length - 1 ? ',' : ''}</span>
+                    ))}
+                  </div>
+                ) : (
+                  <span>-</span>
+                )}
               </div>
             </div>
           </div>
 
           {/* Custom grid section for project images */}
           <section className="w-full">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[30vh] gap-0 p-0">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[50vh] md:auto-rows-[30vh] gap-0 p-0">
               {Array.isArray(projectBlocks) && projectBlocks.length > 0 ? projectBlocks.map((block: any, idx: number) => {
-                const classes = `relative bg-gray-100 overflow-hidden shadow-sm h-full w-full ${block.gridSpan || ''} ${block.colStart || ''} ${block.rowStart || ''}`.trim();
+                // Ensure any grid placement hints apply only on md+ so mobile stacks blocks vertically
+                // Prefix each individual Tailwind token with `md:` so multi-token
+                // values (e.g. "col-span-2 row-span-2") become
+                // "md:col-span-2 md:row-span-2" and work correctly.
+                // Prefix tokens with `md:` but avoid double-prefixing if already present.
+                const prefixIfNeeded = (tok: string) => tok.startsWith('md:') ? tok : `md:${tok}`;
+                const mdGridSpan = block.gridSpan ? (block.gridSpan as string).split(/\s+/).map(prefixIfNeeded).join(' ') : '';
+                const mdColStart = block.colStart ? (block.colStart as string).split(/\s+/).map(prefixIfNeeded).join(' ') : '';
+                const mdRowStart = block.rowStart ? (block.rowStart as string).split(/\s+/).map(prefixIfNeeded).join(' ') : '';
+                // Add a mobile min-height so vertical blocks have room when stacked
+                const classes = `relative bg-gray-100 overflow-hidden h-full w-full min-h-[50vh] md:min-h-0 border-0 ${mdGridSpan} ${mdColStart} ${mdRowStart}`.trim();
 
-                if (block.type === 'video') {
-                  const isExternal = typeof block.src === 'string' && /youtube|vimeo/.test(block.src);
-                  return (
-                    <div key={idx} className={classes}>
-                      <div className="w-full h-full relative bg-black flex items-center justify-center">
-                        {isExternal ? (
-                          <iframe
-                            src={block.src}
-                            title={block.alt || `${event.title} video ${idx + 1}`}
-                            className="w-full h-full"
-                            frameBorder={0}
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowFullScreen
-                          />
-                        ) : (
-                          <video
-                            className="w-full h-full object-cover"
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            preload="auto"
-                          >
-                            <source src={block.src} />
-                            Your browser does not support the video tag.
-                          </video>
-                        )}
-                      </div>
-                    </div>
-                  );
-                }
-
-                if (block.type === 'text') {
-                  return (
-                    <div key={idx} className={`${classes} p-8 flex items-center justify-center`}>
-                      <div className="prose prose-lg max-w-none text-black" dangerouslySetInnerHTML={{ __html: block.html || '' }} />
-                    </div>
-                  );
-                }
-
-                // default: image
                 // Support per-block `fit` property (cover, contain, fill, none, scale-down)
-                const fit = block.fit || 'cover';
+                const fit = (block as any).fit || 'cover';
                 const fitClass = (() => {
                   switch (fit) {
                     case 'contain':
@@ -196,7 +171,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
                 // position: prefer Tailwind object-position classes for common values,
                 // otherwise apply inline style via objectPosition.
-                const position = block.position || '';
+                const position = (block as any).position || '';
                 const positionClass = (() => {
                   switch ((position || '').toLowerCase()) {
                     case 'top':
@@ -232,6 +207,48 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                   inlineStyle.objectPosition = position;
                 }
 
+                if (block.type === 'video') {
+                  const isExternal = typeof block.src === 'string' && /youtube|vimeo/.test(block.src);
+                  return (
+                    <div key={idx} className={classes}>
+                      <div className="w-full h-full relative bg-black flex items-center justify-center">
+                        {isExternal ? (
+                          <iframe
+                            src={block.src}
+                            title={block.alt || `${event.title} video ${idx + 1}`}
+                            className="w-full h-full"
+                            frameBorder={0}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                          />
+                        ) : (
+                          <video
+                            className={`w-full h-full ${fitClass} ${positionClass || 'object-center'}`}
+                            style={inlineStyle}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            preload="auto"
+                          >
+                            <source src={block.src} />
+                            Your browser does not support the video tag.
+                          </video>
+                        )}
+                      </div>
+                    </div>
+                  );
+                }
+
+                if (block.type === 'text') {
+                  return (
+                    <div key={idx} className={`${classes} p-8 flex items-center justify-center`}>
+                      <div className="prose prose-lg max-w-none text-black" dangerouslySetInnerHTML={{ __html: block.html || '' }} />
+                    </div>
+                  );
+                }
+
+                // default: image
                 return (
                   <div key={block.src || idx} className={classes}>
                     <Image

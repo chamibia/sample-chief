@@ -78,11 +78,12 @@ export default function Navbar() {
 
   const links = ["ABOUT", "PROJECTS", "EVENTS", "MUSIC", "SHOP", "CONTACT"];
 
-  // Choose logo based on page and scroll state
   const currentLogo = isHome && !isScrolled && (!isMobile || (isMobile && !isMenuOpen)) ? whiteLogo : logo;
 
-  // Determine mobile dropdown text color
   const mobileDropdownTextColor = backgroundColor === "bg-white" ? "text-[#202020] hover:text-gray-700" : "text-white hover:text-gray-300";
+
+  const logoWidth = isMobile ? (isScrolled ? 156 : 140) : (isScrolled ? 80 : 66);
+  const logoHeight = isMobile ? (isScrolled ? 92 : 84) : (isScrolled ? 53 : 58);
 
   return (
     <header className={headerClasses}>
@@ -95,10 +96,10 @@ export default function Navbar() {
           <Image
             src={currentLogo}
             alt="Sample Chief Logo"
-            width={isScrolled ? 80 : 66}
-            height={isScrolled ? 53 : 58}
-            className="transition-all duration-300 ease-in-out md:w-auto w-[66px] max-h-[33px] md:max-h-[37px]"
-            priority
+            width={logoWidth}
+            height={logoHeight}
+            className="transition-all duration-300 ease-in-out md:w-auto h-auto max-h-[84px] md:max-h-[37px]"
+            style={{ height: 'auto' }}
           />
         </Link>
 

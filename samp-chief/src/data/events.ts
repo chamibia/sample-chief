@@ -22,7 +22,7 @@ export type Event = {
   }>;
   contentBlocks?: Array<
     | ({ type?: 'image' } & { src: string; alt?: string; gridSpan?: string; colStart?: string; rowStart?: string; fit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down'; position?: 'top' | 'bottom' | 'left' | 'right' | 'center' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' })
-    | ({ type: 'video' } & { src: string; alt?: string; gridSpan?: string; colStart?: string; rowStart?: string })
+    | ({ type: 'video' } & { src: string; alt?: string; gridSpan?: string; colStart?: string; rowStart?: string; fit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down'; position?: 'top' | 'bottom' | 'left' | 'right' | 'center' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' })
     | ({ type: 'text' } & { html: string; gridSpan?: string; colStart?: string; rowStart?: string })
   >;
 };
@@ -67,7 +67,7 @@ export const events: Event[] = [
       heroImage: "/assets/projects/kops/1.JPG",
       contentBlocks: [
         { type: 'image', src: "/assets/projects/kops/6.jpeg", gridSpan: "col-span-1 row-span-2" },
-        { type: 'image', src: "/assets/projects/kops/poster.JPG", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/kops/poster.JPG", gridSpan: "col-span-1 row-span-2", fit: 'fill' },
         { type: 'video', src: "/assets/projects/kops/video.mp4", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/kops/2.JPG", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/kops/7.jpg", gridSpan: "col-span-2 row-span-2" },
@@ -149,16 +149,16 @@ export const events: Event[] = [
       services: "Event Curation / Music Curation",
       heroImage: "/assets/projects/village-boogie/cover.jpg",
       contentBlocks: [
-        { type: 'video', src: "/assets/projects/village-boogie/video1.mp4", gridSpan: "col-span-1 row-span-2" },
-        { type: 'text', html: `<p>We’re seeking partners to help us scale this movement, whether through sponsorship, brand activations, or international collaborations. Together, we can bring Village Boogie’s unique energy to even wider audiences.</p>`, gridSpan: "col-span-1" },
-        { type: 'image', src: "/assets/projects/village-boogie/2.jpg", gridSpan: "col-span-2 row-span-2" },
-        { type: 'image', src: "/assets/projects/village-boogie/7.JPG" },
         { type: 'image', src: "/assets/projects/village-boogie/6.jpg", gridSpan: "col-span-1 row-span-2" },
         { type: 'image', src: "/assets/projects/village-boogie/4.jpg", gridSpan: "col-span-1 row-span-2" },
         { type: 'image', src: "/assets/projects/village-boogie/3.jpg", gridSpan: "col-span-1 row-span-2" },
         { type: 'image', src: "/assets/projects/village-boogie/8.jpg", gridSpan: "col-span-1 row-span-2" },
         { type: 'image', src: "/assets/projects/village-boogie/9.jpg", gridSpan: "col-span-2 row-span-2" },
         { type: 'video', src: "/assets/videos/sample.mp4", gridSpan: "col-span-2 row-span-2" },
+        { type: 'video', src: "/assets/projects/village-boogie/video1.mp4", gridSpan: "col-span-1 row-span-2", fit: 'fill' },
+        { type: 'text', html: `<p>We’re seeking partners to help us scale this movement, whether through sponsorship, brand activations, or international collaborations. Together, we can bring Village Boogie’s unique energy to even wider audiences.</p>`, gridSpan: "col-span-2" },
+        { type: 'image', src: "/assets/projects/village-boogie/2.jpg", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/village-boogie/7.JPG", gridSpan: "col-span-2 row-span-1" },
         { type: 'video', src: "/assets/projects/village-boogie/10.mov", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/village-boogie/5.jpg", gridSpan: "col-span-2 row-span-2" }
       ]
