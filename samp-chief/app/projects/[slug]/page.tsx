@@ -89,21 +89,21 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                   <h3 className="font-bold text-lg mb-2">Ethos</h3>
                   <div className="mb-6">{event.ethos || "-"}</div>
                   <h3 className="font-bold text-lg mb-2">Description</h3>
-                  <div className="mb-10">
+                  <div className="mb-6">
                     {event.description.split(/\n+/).map((para, idx) => (
-                      <p key={idx} className="mb-4" dangerouslySetInnerHTML={{ __html: para.trim() }} />
+                      <p key={idx} dangerouslySetInnerHTML={{ __html: para.trim() }} />
                     ))}
                   </div>
-
-                  {/* Desktop/Tablet absolute placement for services */}
-                  <div className="hidden md:absolute md:left-0 md:bottom-0 md:flex md:items-center">
-                    <p className="font-bold text-sm mr-2">SERVICES</p>
+                  <h3 className="font-bold text-lg mb-2">Services</h3>
                     {servicesArray.length ? (
-                      <span className="text-sm font-medium">{servicesArray.join(' / ')}</span>
+                      <div className="mb-6">
+                        {servicesArray.map((s: string, i: number) => (
+                          <p key={i} className="text-gray-700 leading-relaxed">{s}</p>
+                        ))}
+                      </div>
                     ) : (
-                      <span>-</span>
+                      <div><p className="text-sm text-gray-700 leading-relaxed">-</p></div>
                     )}
-                  </div>
                 </div>
               </div>
             </div>
@@ -117,19 +117,19 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               <h3 className="font-bold text-lg mb-2">Description</h3>
               <div className="mb-6">
                 {event.description.split(/\n+/).map((para, idx) => (
-                  <p key={idx} className="mb-4" dangerouslySetInnerHTML={{ __html: para.trim() }} />
+                  <p key={idx} dangerouslySetInnerHTML={{ __html: para.trim() }} />
                 ))}
               </div>
               <div className="mt-2 w-full">
-                <p className="font-bold text-sm mb-1">SERVICES</p>
+                <h3 className="font-bold text-lg mb-2">Services</h3>
                 {servicesArray.length ? (
-                  <div className="text-sm font-medium">
+                      <div className="mb-10">
                     {servicesArray.map((s: string, i: number) => (
-                      <span key={i} className="inline-block mr-2">{s}{i < servicesArray.length - 1 ? ',' : ''}</span>
+                      <p key={i} className="text-gray-700 leading-relaxed">{s}</p>
                     ))}
                   </div>
                 ) : (
-                  <span>-</span>
+                  <div><p className="text-sm text-gray-700 leading-relaxed">-</p></div>
                 )}
               </div>
             </div>
