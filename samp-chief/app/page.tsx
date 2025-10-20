@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { Metadata } from "next";
 
-import VideoHeroSection from "../src/components/VideoHeroSection";
-import ClientAudioManager from "../src/components/ClientAudioManager";
+import LazyVideoHero from "../src/components/LazyVideoHero";
+import LazyClientAudioManager from "../src/components/LazyClientAudioManager";
 import Link from "next/link";
 import Footer from "../src/components/layout/Footer";
 
@@ -48,11 +48,11 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <ClientAudioManager>
+  <LazyClientAudioManager>
       {/* Mobile flex column layout for sticky footer */}
       <div className="flex flex-col min-h-screen sm:block w-full">
         <section className="relative w-full h-[100vh]">
-          <VideoHeroSection />
+          <LazyVideoHero />
         </section>
 
         <section className="w-full">
@@ -182,6 +182,6 @@ export default function Home() {
         </section>
 
       </div>
-    </ClientAudioManager>
+    </LazyClientAudioManager>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useState, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
@@ -7,7 +8,7 @@ interface ClientAudioManagerProps {
   children: React.ReactNode;
 }
 
-export default function ClientAudioManager({ children }: ClientAudioManagerProps) {
+export default function LazyClientAudioManager({ children }: ClientAudioManagerProps) {
   const [isMuted, setIsMuted] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);

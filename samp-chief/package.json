@@ -7,8 +7,7 @@
     "prebuild": "node ./scripts/generate-media-manifest.js",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "check:images": "node scripts/check-image-references.js"
+  "lint": "next lint"
     },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",

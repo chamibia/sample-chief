@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 
-export default function VideoHeroSection() {
+export default function LazyVideoHero() {
   const [isMuted, setIsMuted] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -64,7 +64,7 @@ export default function VideoHeroSection() {
         loop
         muted
         playsInline
-        preload="auto"
+        preload="metadata"
         className="absolute inset-0 w-full h-full object-cover z-0"
       />
 

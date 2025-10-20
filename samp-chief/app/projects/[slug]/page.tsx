@@ -58,14 +58,25 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           {/* First section: full width, one column */}
           <div className="relative w-full h-[50vh] md:h-screen flex flex-row justify-between items-center text-white">
             {heroSrc && (
-              <Image
-                src={heroSrc}
-                alt={event.title + " main image"}
-                fill
-                sizes="100vw"
-                priority
-                className="object-cover object-center z-0"
-              />
+              // Hero image: this is the LCP element. Keep it as priority, but
+              // wrap it in an explicit aspect-ratio container so the browser can
+              // reserve space for the image before it finishes loading.
+              // If Tailwind `aspect-[16/9]` is available in your config this
+              // will provide a stable intrinsic ratio. TODO: consider
+              // generating a `blurDataURL` at build time and passing
+              // `placeholder="blur"` + `blurDataURL` to improve perceived load.
+              <div className="absolute inset-0 z-0">
+                <div className="relative w-full h-full aspect-[16/9]">
+                  <Image
+                    src={heroSrc}
+                    alt={event.title + " main image"}
+                    fill
+                    sizes="100vw"
+                    priority
+                    className="object-cover object-center z-0"
+                  />
+                </div>
+              </div>
             )}
             {/* Overlay for readability */}
             <div className="absolute inset-0 bg-black/10 z-0 pointer-events-none" />
@@ -282,7 +293,6 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                       fill
                       sizes="(min-width:1280px) 18vw, (min-width:1024px) 24vw, (min-width:640px) 40vw, 80vw"
                       className={`${fitClass} ${positionClass || 'object-center'}`}
-                      priority={idx === 0}
                       style={inlineStyle}
                     />
                   </div>
