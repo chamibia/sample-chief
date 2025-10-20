@@ -44,9 +44,9 @@ export const events: Event[] = [
       heroImage: "/assets/projects/ace-hotel/5.jpg",
       contentBlocks: [
         { type: 'image', src: "/assets/projects/ace-hotel/1.jpg", gridSpan: "col-span-2 row-span-2", colStart: "col-start-1", rowStart: "row-start-1" },
-        { type: 'image', src: "/assets/projects/ace-hotel/6.jpg" },
+        { type: 'image', src: "/assets/projects/ace-hotel/6.jpg", gridSpan: "col-span-1 row-span-1" },
         { type: 'image', src: "/assets/projects/ace-hotel/cover.jpg", gridSpan: "col-span-1 row-span-2" },
-        { type: 'image', src: "/assets/projects/ace-hotel/7.jpg" },
+        { type: 'image', src: "/assets/projects/ace-hotel/7.jpg", gridSpan: "col-span-1 row-span-1"  },
         { type: 'image', src: "/assets/projects/ace-hotel/3.jpg", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/ace-hotel/4.jpg", gridSpan: "col-span-2 row-span-2"}
       ]
@@ -72,8 +72,8 @@ export const events: Event[] = [
         { type: 'image', src: "/assets/projects/kops/2.JPG", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/kops/7.jpg", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/kops/cover.jpeg", gridSpan: "col-span-2 row-span-2" },
-        { type: 'image', src: "/assets/projects/kops/3.JPG" },
-        { type: 'image', src: "/assets/projects/kops/4.JPG" },
+        { type: 'image', src: "/assets/projects/kops/3.JPG", gridSpan: "col-span-1 row-span-1"  },
+        { type: 'image', src: "/assets/projects/kops/4.JPG", gridSpan: "col-span-1 row-span-1"  },
         { type: 'image', src: "/assets/projects/kops/5.jpeg", gridSpan: "col-span-2 row-span-1" }
       ]
     },
@@ -92,9 +92,9 @@ export const events: Event[] = [
       services: "Music curation",
       heroImage: "/assets/projects/u-of-t/1.jpg",
       contentBlocks: [
-          { type: 'image', src: "/assets/projects/u-of-t/4.jpg", gridSpan: "col-span-2 row-span-4", colStart: "col-start-1", rowStart: "row-start-1" },
-          { type: 'image', src: "/assets/projects/u-of-t/2.jpg", gridSpan: "col-span-2 row-span-2", colStart: "col-start-3", rowStart: "row-start-1" },
-          { type: 'image', src: "/assets/projects/u-of-t/3.JPG", gridSpan: "col-span-2 row-span-2", colStart: "col-start-3", rowStart: "row-start-3" }
+          { type: 'image', src: "/assets/projects/u-of-t/4.jpg", gridSpan: "col-span-2 row-span-4" },
+          { type: 'image', src: "/assets/projects/u-of-t/2.jpg", gridSpan: "col-span-2 row-span-2" },
+          { type: 'image', src: "/assets/projects/u-of-t/3.JPG", gridSpan: "col-span-2 row-span-2" }
         ]
     },
 
@@ -102,9 +102,7 @@ export const events: Event[] = [
       title: "Holt Renfrew",
       projectcard: "/assets/projects/holt-renfrew/cover.jpg",
       brandLogo: "/assets/brands/holts.png",
-      description: `In February 2025, luxury retailer Holt Renfrew partnered with Sample Chief to celebrate Black music history in Canada and its vibrant community. Together, we launched a multi-platform campaign that blended storytelling, performance, and cultural engagement.
-                    
-                    Sample Chief curated an editorial feature on African music history in Canada, published on Holt Renfrew’s website, alongside a photo and video series spotlighting Toronto-based artists Ore, Deelo, and Töme as they shared their stories. At Holt Renfrew’s Yorkville location, we designed a listening booth, complete with a curated playlist and immersive visuals inspired by Sample Chief’s signature event posters, where guests could sit, reflect, and experience the music.`,
+      description: `In February 2025, luxury retailer Holt Renfrew partnered with Sample Chief to celebrate Black music history in Canada and its vibrant community. Together, we launched a multi-platform campaign that blended storytelling, performance, and cultural engagement.`,
       slug: "holt-renfrew",
       imageFolder: "holt-renfrew",
       gridSpan: "col-span-2 row-span-2",
@@ -116,10 +114,10 @@ export const events: Event[] = [
       heroImage: "/assets/projects/holt-renfrew/9.jpg",
       contentBlocks: [
         { type: 'image', src: "/assets/projects/holt-renfrew/7.jpg", gridSpan: "col-span-1 row-span-2" },
-        { type: 'text', html: `<p>The partnership extended beyond digital and in-store activations with a music trivia night and a live celebration featuring DJs and performances by No Tourists, Onii-Sama, Big Jacks, Savvv, and more. To tie it all together, we produced a collectible zine distributed nationwide across Holt Renfrew stores and at both events, further amplifying the stories and legacy of Black Canadian music.</p>`, gridSpan: "col-span-2" },
+        { type: 'image', src: "/assets/projects/holt-renfrew/8.jpeg", gridSpan: "col-span-1 row-span-1"  },
+        { type: 'image', src: "/assets/projects/holt-renfrew/2.jpeg", gridSpan: "col-span-1 row-span-1"  },
         { type: 'image', src: "/assets/projects/holt-renfrew/4.jpg", gridSpan: "col-span-1 row-span-2" },
-        { type: 'image', src: "/assets/projects/holt-renfrew/8.jpeg" },
-        { type: 'image', src: "/assets/projects/holt-renfrew/2.jpeg" },
+        { type: 'text', html: `<p>Sample Chief curated an editorial feature on African music history in Canada, published on Holt Renfrew’s website, alongside a photo and video series spotlighting Toronto-based artists Ore, Deelo, and Töme as they shared their stories. At Holt Renfrew’s Yorkville location, we designed a listening booth, complete with a curated playlist and immersive visuals inspired by Sample Chief’s signature event posters, where guests could sit, reflect, and experience the music.</p>`, gridSpan: "col-span-2" },
         { type: 'image', src: "/assets/projects/holt-renfrew/3.jpg", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/holt-renfrew/poster.JPG", gridSpan: "col-span-1 row-span-2", fit: 'fill' },
         { type: 'image', src: "/assets/projects/holt-renfrew/5.jpg", gridSpan: "col-span-1 row-span-2" },
