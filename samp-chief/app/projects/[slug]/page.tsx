@@ -15,12 +15,6 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
     const event = events.find(e => e.slug === slug);
     if (!event) return notFound();
 
-    // Prefer a small pre-generated manifest (created by scripts/generate-media-manifest.js)
-    // that lists files in each project folder. The manifest is written to
-    // `public/assets/projects/manifest.json` by the `prebuild` script so reading it
-    // is cheap and does not cause Next to trace large numbers of files into the
-    // server function. If the manifest is missing, fall back to contentBlocks or
-    // event.images declared in code.
     let manifest: Record<string, string[]> | null = null;
     try {
       const manifestPath = path.join(process.cwd(), 'public', 'assets', 'projects', 'manifest.json');
@@ -29,14 +23,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         manifest = JSON.parse(raw);
       }
     } catch (err) {
-      // ignore and fall back
       manifest = null;
     }
 
-    // Build project blocks with layout metadata when available.
-    // Prefer explicit `contentBlocks` declared in `events.ts` because they include
-    // grid layout hints (gridSpan, colStart, rowStart). Only fall back to the
-    // generated manifest when no contentBlocks are present for the event.
     let projectBlocks: any[] = [];
     if ((event as any).contentBlocks && (event as any).contentBlocks.length) {
       projectBlocks = (event as any).contentBlocks;
@@ -58,13 +47,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           {/* First section: full width, one column */}
           <div className="relative w-full h-[50vh] md:h-screen flex flex-row justify-between items-center text-white">
             {heroSrc && (
-              // Hero image: this is the LCP element. Keep it as priority, but
-              // wrap it in an explicit aspect-ratio container so the browser can
-              // reserve space for the image before it finishes loading.
-              // If Tailwind `aspect-[16/9]` is available in your config this
-              // will provide a stable intrinsic ratio. TODO: consider
-              // generating a `blurDataURL` at build time and passing
-              // `placeholder="blur"` + `blurDataURL` to improve perceived load.
+              // Hero image: this is the LCP element. Keep it as priority.
               <div className="absolute inset-0 z-0">
                 <div className="relative w-full h-full aspect-[16/9]">
                   <Image
@@ -155,11 +138,6 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <section className="w-full">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 auto-rows-auto md:auto-rows-[30vh] gap-0 p-0">
               {Array.isArray(projectBlocks) && projectBlocks.length > 0 ? projectBlocks.map((block: any, idx: number) => {
-                // Ensure any grid placement hints apply only on md+ so mobile stacks blocks vertically
-                // Prefix each individual Tailwind token with `md:` so multi-token
-                // values (e.g. "col-span-2 row-span-2") become
-                // "md:col-span-2 md:row-span-2" and work correctly.
-                // Prefix tokens with `md:` but avoid double-prefixing if already present.
                 const prefixIfNeeded = (tok: string) => tok.startsWith('md:') ? tok : `md:${tok}`;
                 const rawGridSpan = block.gridSpan ? (block.gridSpan as string).split(/\s+/).join(' ') : '';
                 const rawColStart = block.colStart ? (block.colStart as string).split(/\s+/).join(' ') : '';
@@ -167,12 +145,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 const mdGridSpan = block.gridSpan ? (block.gridSpan as string).split(/\s+/).map(prefixIfNeeded).join(' ') : '';
                 const mdColStart = block.colStart ? (block.colStart as string).split(/\s+/).map(prefixIfNeeded).join(' ') : '';
                 const mdRowStart = block.rowStart ? (block.rowStart as string).split(/\s+/).map(prefixIfNeeded).join(' ') : '';
-                // Use flexible height on mobile for text blocks. Keep explicit min-heights
-                // for media blocks so images/videos remain visually prominent.
                 const baseClasses = `relative overflow-hidden w-full ${rawGridSpan} ${rawColStart} ${rawRowStart} ${mdGridSpan} ${mdColStart} ${mdRowStart} md:bg-gray-100`.trim();
                 const mediaClasses = `relative overflow-hidden h-full w-full min-h-[60vh] md:min-h-[30vh] border-0 ${rawGridSpan} ${rawColStart} ${rawRowStart} ${mdGridSpan} ${mdColStart} ${mdRowStart} md:bg-gray-100`.trim();
 
-                // Support per-block `fit` property (cover, contain, fill, none, scale-down)
                 const fit = (block as any).fit || 'cover';
                 const fitClass = (() => {
                   switch (fit) {
@@ -190,8 +165,6 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                   }
                 })();
 
-                // position: prefer Tailwind object-position classes for common values,
-                // otherwise apply inline style via objectPosition.
                 const position = (block as any).position || '';
                 const positionClass = (() => {
                   switch ((position || '').toLowerCase()) {
@@ -224,7 +197,6 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
                 const inlineStyle: React.CSSProperties = {};
                 if (!positionClass && position) {
-                  // arbitrary CSS object-position value (e.g. '10% 0%', 'center top')
                   inlineStyle.objectPosition = position;
                 }
 
@@ -266,16 +238,16 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     <div key={idx} className={`${baseClasses}`}>
                       <div className="block md:hidden w-full bg-[#F8C722]">
                         <div className="max-w-3xl mx-auto px-4 py-6 flex items-center">
-                          <div className="bg-white rounded-lg p-4 text-black w-full py-10">
-                            <div className="text-base leading-relaxed max-w-none text-black w-full">
+                          <div className="bg-[#0F0500] rounded-lg p-4 text-white w-full py-10">
+                            <div className="text-base leading-relaxed max-w-none text-white w-full">
                               <div dangerouslySetInnerHTML={{ __html: block.html || '' }} />
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div className="hidden md:flex p-8 items-center justify-center h-full w-full bg-black min-h-[30vh]">
+                      <div className="hidden md:flex p-8 items-center justify-center h-full w-full bg-[#0F0500] min-h-[30vh]">
                         <div className="max-w-3xl w-full">
-                          <div className="bg-black rounded-lg p-6 text-white h-full flex items-center">
+                          <div className="bg-[#0F0500] rounded-lg p-6 text-white h-full flex items-center">
                             <div className="text-base leading-relaxed w-full" dangerouslySetInnerHTML={{ __html: block.html || '' }} />
                           </div>
                         </div>
@@ -284,7 +256,6 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                   );
                 }
 
-                // default: image
                 return (
                   <div key={block.src || idx} className={mediaClasses}>
                     <Image
@@ -301,14 +272,11 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 <div className="col-span-full p-8 text-center">No project media available.</div>
               )}
             </div>
-            {/* uploader removed */}
           </section>
         </div>
       </div>
     );
   } catch (err) {
-    // Log the full error server-side so you can inspect the stack trace in your terminal or logs
-    // eslint-disable-next-line no-console
     console.error('ProjectDetailPage render error:', err);
     return (
       <div className="p-8">
