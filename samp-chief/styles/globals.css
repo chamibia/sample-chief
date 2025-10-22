@@ -30,6 +30,13 @@
   font-display: swap;
 }
 
+/* Ensure bold fallback works reliably across browsers */
+.font-bold {
+  font-weight: 700;
+  /* Fallback for browsers that don't load the bold font */
+  text-shadow: 0.5px 0 0 currentColor;
+}
+
 /* Font variable for sans-serif */
 :root {
   --font-sans: 'Alte Haas Grotesk', 'AlteHaasGrotesk', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;

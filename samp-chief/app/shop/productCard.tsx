@@ -68,7 +68,7 @@ export default function ProductCard({ node }: { node: any }) {
       {/* Info block BELOW image - left-justified */}
       <div className="px-2 text-left">
         <Link href={`/shop/${node.handle}`} aria-label={node.title} className="block group">
-          <h3 className="font-sans font-bold text-[15px] leading-6 tracking-[0.06em] uppercase text-black group-hover:underline">
+          <h3 className="font-sans font-bold text-[15px] leading-6 tracking-[0.06em] uppercase text-black group-hover:underline" style={{ fontWeight: 700 }}>
             {node.title}
           </h3>
           {subtitle ? (

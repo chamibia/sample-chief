@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { events } from '@/data/events';
 
 const ProjectImageWithOverlay = ({ src, alt }: { src: string; alt: string }) => {
@@ -23,13 +23,14 @@ const ProjectImageWithOverlay = ({ src, alt }: { src: string; alt: string }) => 
 
 const ProjectsPage = () => {
 
-  // Calculate max row needed for grid-rows-N
-  // This ensures the grid has enough rows for all cards based on their rowStart and rowSpan
-  const maxRow = events.reduce((max, event) => {
-    const rowStart = event.rowStart ? parseInt(event.rowStart.replace('row-start-', ''), 10) : 1;
-    const rowSpan = event.gridSpan ? parseInt(event.gridSpan.replace('row-span-', '').split(' ')[0], 10) : 1;
-    return Math.max(max, rowStart + rowSpan - 1);
-  }, 1);
+  // Calculate max row needed for grid-rows-N (memoized for performance)
+  const maxRow = useMemo(() => {
+    return events.reduce((max, event) => {
+      const rowStart = event.rowStart ? parseInt(event.rowStart.replace('row-start-', ''), 10) : 1;
+      const rowSpan = event.gridSpan ? parseInt(event.gridSpan.replace('row-span-', '').split(' ')[0], 10) : 1;
+      return Math.max(max, rowStart + rowSpan - 1);
+    }, 1);
+  }, []);
   const gridRowsClass = `grid-rows-${maxRow}`;
 
   return (

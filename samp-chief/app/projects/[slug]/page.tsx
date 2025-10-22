@@ -4,26 +4,33 @@ import React from "react";
 import Image from "next/image";
 import fs from 'fs';
 import path from 'path';
+import LazyVideo from "@/components/LazyVideo";
 
 export async function generateStaticParams() {
   return events.map(event => ({ slug: event.slug }));
 }
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  let slug: string = '';
   try {
-    const { slug } = await params;
+    const paramsResolved = await params;
+    slug = paramsResolved.slug;
     const event = events.find(e => e.slug === slug);
     if (!event) return notFound();
 
+    // Only read manifest if we need it (no contentBlocks defined)
     let manifest: Record<string, string[]> | null = null;
-    try {
-      const manifestPath = path.join(process.cwd(), 'public', 'assets', 'projects', 'manifest.json');
-      if (fs.existsSync(manifestPath)) {
-        const raw = fs.readFileSync(manifestPath, 'utf-8');
-        manifest = JSON.parse(raw);
+    if (!(event as any).contentBlocks?.length) {
+      try {
+        const manifestPath = path.join(process.cwd(), 'public', 'assets', 'projects', 'manifest.json');
+        if (fs.existsSync(manifestPath)) {
+          const raw = fs.readFileSync(manifestPath, 'utf-8');
+          manifest = JSON.parse(raw);
+        }
+      } catch (err) {
+        console.error('Error reading manifest:', err);
+        manifest = null;
       }
-    } catch (err) {
-      manifest = null;
     }
 
     let projectBlocks: any[] = [];
@@ -56,7 +63,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     fill
                     sizes="100vw"
                     priority
+                    quality={85}
                     className="object-cover object-center z-0"
+                    placeholder="blur"
+                    blurDataURL="data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='16' fill='%23e5e7eb'/%3E%3C/svg%3E"
                   />
                 </div>
               </div>
@@ -215,18 +225,13 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                             allowFullScreen
                           />
                         ) : (
-                          <video
-                            className={`w-full h-full ${fitClass} ${positionClass || 'object-center'}`}
+                          <LazyVideo
+                            src={block.src}
+                            className=""
                             style={inlineStyle}
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            preload="auto"
-                          >
-                            <source src={block.src} />
-                            Your browser does not support the video tag.
-                          </video>
+                            fitClass={fitClass}
+                            positionClass={positionClass || 'object-center'}
+                          />
                         )}
                       </div>
                     </div>
@@ -265,6 +270,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                       sizes="(min-width:1280px) 18vw, (min-width:1024px) 24vw, (min-width:640px) 40vw, 80vw"
                       className={`${fitClass} ${positionClass || 'object-center'}`}
                       style={inlineStyle}
+                      quality={75}
+                      placeholder="blur"
+                      blurDataURL="data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='16' fill='%23e5e7eb'/%3E%3C/svg%3E"
+                      loading={idx < 4 ? "eager" : "lazy"}
                     />
                   </div>
                 );
@@ -277,11 +286,13 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       </div>
     );
   } catch (err) {
-    console.error('ProjectDetailPage render error:', err);
+    console.error('ProjectDetailPage render error for slug:', slug, err);
+    console.error('Error stack:', err instanceof Error ? err.stack : err);
     return (
       <div className="p-8">
         <h2 className="text-xl font-bold">Internal Server Error</h2>
         <p>Something went wrong rendering this project. Check server logs for details.</p>
+        <p className="text-sm text-gray-600 mt-2">Project slug: {slug}</p>
       </div>
     );
   }
