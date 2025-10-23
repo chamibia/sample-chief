@@ -30,8 +30,8 @@
   font-display: swap;
 }
 
-/* Ensure bold fallback works reliably across browsers */
-.font-bold {
+/* Ensure bold fallback works reliably across browsers for product titles specifically */
+.product-title-bold {
   font-weight: 700;
   /* Fallback for browsers that don't load the bold font */
   text-shadow: 0.5px 0 0 currentColor;
