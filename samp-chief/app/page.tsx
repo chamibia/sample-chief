@@ -121,7 +121,7 @@ export default function Home() {
         <section className="relative w-full">
           <div className="relative bg-gray-100 min-h-[100vh]">
             <img 
-              src="/assets/images/home10.webp" 
+              src="/assets/projects/holt-renfrew/9.jpg" 
               alt="Holts Renfrew event"
               className="absolute inset-0 w-full h-full object-cover object-center"
             />

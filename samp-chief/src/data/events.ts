@@ -53,7 +53,7 @@ export const events: Event[] = [
     },
     {
       title: "Kops Record Store",
-      projectcard: "/assets/projects/kops/cover.jpeg",
+      projectcard: "/assets/projects/kops/cover.jpg",
       brandLogo: "/assets/projects/kops/kopslogo.webp",
       description: "Toronto’s oldest independent record store, Kops Records, partnered with Sample Chief to bring a fresh spin to Record Store Day with a pop-up at their Queen West location. The celebration featured vinyl DJ sets, exclusive Sample Chief x Kops merchandise, and a special 25% discount on all African records designed to spark curiosity, expand collections, and inspire more listeners to explore the richness of African vinyl culture.",
       slug: "kops-record-store",
@@ -66,15 +66,15 @@ export const events: Event[] = [
       services: "Event Curation / Music Curation / Merchandise",
       heroImage: "/assets/projects/kops/1.JPG",
       contentBlocks: [
-        { type: 'image', src: "/assets/projects/kops/6.jpeg", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/kops/6.jpg", gridSpan: "col-span-1 row-span-2" },
         { type: 'image', src: "/assets/projects/kops/poster.JPG", gridSpan: "col-span-1 row-span-2", fit: 'fill' },
         { type: 'video', src: "/assets/projects/kops/video.mp4", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/kops/2.JPG", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/kops/7.jpg", gridSpan: "col-span-2 row-span-2" },
-        { type: 'image', src: "/assets/projects/kops/cover.jpeg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/kops/cover.jpg", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/kops/3.JPG", gridSpan: "col-span-1 row-span-1"  },
         { type: 'image', src: "/assets/projects/kops/4.JPG", gridSpan: "col-span-1 row-span-1"  },
-        { type: 'image', src: "/assets/projects/kops/5.jpeg", gridSpan: "col-span-2 row-span-1" }
+        { type: 'image', src: "/assets/projects/kops/5.jpg", gridSpan: "col-span-2 row-span-1" }
       ]
     },
     {
@@ -114,8 +114,8 @@ export const events: Event[] = [
       heroImage: "/assets/projects/holt-renfrew/9.jpg",
       contentBlocks: [
         { type: 'image', src: "/assets/projects/holt-renfrew/7.jpg", gridSpan: "col-span-1 row-span-2" },
-        { type: 'image', src: "/assets/projects/holt-renfrew/8.jpeg", gridSpan: "col-span-1 row-span-1"  },
-        { type: 'image', src: "/assets/projects/holt-renfrew/2.jpeg", gridSpan: "col-span-1 row-span-1"  },
+        { type: 'image', src: "/assets/projects/holt-renfrew/8.jpg", gridSpan: "col-span-1 row-span-1"  },
+        { type: 'image', src: "/assets/projects/holt-renfrew/2.jpg", gridSpan: "col-span-1 row-span-1"  },
         { type: 'image', src: "/assets/projects/holt-renfrew/4.jpg", gridSpan: "col-span-1 row-span-2" },
         { type: 'text', html: `<p>Sample Chief curated an editorial feature on African music history in Canada, published on Holt Renfrew’s website, alongside a photo and video series spotlighting Toronto-based artists Ore, Deelo, and Töme as they shared their stories. At Holt Renfrew’s Yorkville location, we designed a listening booth, complete with a curated playlist and immersive visuals inspired by Sample Chief’s signature event posters, where guests could sit, reflect, and experience the music.</p>`, gridSpan: "col-span-2" },
         { type: 'image', src: "/assets/projects/holt-renfrew/3.jpg", gridSpan: "col-span-2 row-span-2" },
@@ -129,7 +129,7 @@ export const events: Event[] = [
         { type: 'image', src: "/assets/projects/holt-renfrew/cover.jpg", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/holt-renfrew/14.jpg", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/holt-renfrew/1.jpg", gridSpan: "col-span-2 row-span-2" },
-        { type: 'image', src: "/assets/projects/holt-renfrew/13.jpeg", gridSpan: "col-span-4 row-span-3" }
+        { type: 'image', src: "/assets/projects/holt-renfrew/13.jpg", gridSpan: "col-span-4 row-span-3" }
       ]
     },
     {

@@ -107,7 +107,7 @@ export default function MusicPage() {
   const mixes = [
     {
       id: 1,
-      image: "/assets/music-covers/haruna.png",
+      image: "/assets/music-covers/haruna.jpg",
       link: "https://soundcloud.com/samplechief/sample-chief-selekta-w-haruna?si=25a8dbd70e2b4fe4858efd43d2b72e22&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
       title: "Haruna on Sample Chief Radio",
       subtitle: "",
@@ -121,7 +121,7 @@ export default function MusicPage() {
     },
     {
       id: 3,
-      image: "/assets/music-covers/michelle.PNG",
+      image: "/assets/music-covers/michelle.jpg",
       link: "https://soundcloud.com/samplechief/sample-chief-radio-w-michelle-on-n10as?si=6422569a33b94db187c403816497dbe1&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
       title: "Michelle on Sample Chief Radio",
       subtitle: "",
