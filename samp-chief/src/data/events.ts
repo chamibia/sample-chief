@@ -114,8 +114,8 @@ export const events: Event[] = [
       heroImage: "/assets/projects/holt-renfrew/9.jpg",
       contentBlocks: [
         { type: 'image', src: "/assets/projects/holt-renfrew/7.jpg", gridSpan: "col-span-1 row-span-2" },
-        { type: 'image', src: "/assets/projects/holt-renfrew/8.jpg", gridSpan: "col-span-1 row-span-1"  },
-        { type: 'image', src: "/assets/projects/holt-renfrew/2.jpg", gridSpan: "col-span-1 row-span-1"  },
+        { type: 'image', src: "/assets/projects/holt-renfrew/8.jpg", gridSpan: "col-span-1 row-span-1" },
+        { type: 'image', src: "/assets/projects/holt-renfrew/2.jpg", gridSpan: "col-span-1 row-span-1" },
         { type: 'image', src: "/assets/projects/holt-renfrew/4.jpg", gridSpan: "col-span-1 row-span-2" },
         { type: 'text', html: `<p>Sample Chief curated an editorial feature on African music history in Canada, published on Holt Renfrew’s website, alongside a photo and video series spotlighting Toronto-based artists Ore, Deelo, and Töme as they shared their stories. At Holt Renfrew’s Yorkville location, we designed a listening booth, complete with a curated playlist and immersive visuals inspired by Sample Chief’s signature event posters, where guests could sit, reflect, and experience the music.</p>`, gridSpan: "col-span-2" },
         { type: 'image', src: "/assets/projects/holt-renfrew/3.jpg", gridSpan: "col-span-2 row-span-2" },

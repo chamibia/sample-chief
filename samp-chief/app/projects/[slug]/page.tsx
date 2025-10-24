@@ -86,7 +86,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             </div>
             {/* Ethos, Description, Services, Tags */}
             {/* Desktop/tablet: keep the info panel positioned inside the hero area */}
-            <div className="hidden md:block md:static md:p-6 md:h-full md:w-1/2 md:ml-auto">
+            <div className="hidden md:block md:static md:p-6 md:h-full md:w-1/2 md:ml-auto md:mt-14">
               <div className="relative bg-white rounded-lg p-4 md:p-6 text-black w-full">
                 {/* Text content */}
                 <div className="relative flex flex-col items-start self-start w-full md:h-full">
@@ -148,15 +148,21 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <section className="w-full">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 auto-rows-auto md:auto-rows-[30vh] gap-0 p-0">
               {Array.isArray(projectBlocks) && projectBlocks.length > 0 ? projectBlocks.map((block: any, idx: number) => {
-                const prefixIfNeeded = (tok: string) => tok.startsWith('md:') ? tok : `md:${tok}`;
-                const rawGridSpan = block.gridSpan ? (block.gridSpan as string).split(/\s+/).join(' ') : '';
-                const rawColStart = block.colStart ? (block.colStart as string).split(/\s+/).join(' ') : '';
-                const rawRowStart = block.rowStart ? (block.rowStart as string).split(/\s+/).join(' ') : '';
-                const mdGridSpan = block.gridSpan ? (block.gridSpan as string).split(/\s+/).map(prefixIfNeeded).join(' ') : '';
-                const mdColStart = block.colStart ? (block.colStart as string).split(/\s+/).map(prefixIfNeeded).join(' ') : '';
-                const mdRowStart = block.rowStart ? (block.rowStart as string).split(/\s+/).map(prefixIfNeeded).join(' ') : '';
-                const baseClasses = `relative overflow-hidden w-full ${mdGridSpan} ${mdColStart} ${mdRowStart} md:bg-gray-100`.trim();
-                const mediaClasses = `relative overflow-hidden h-full w-full min-h-[60vh] md:min-h-[30vh] border-0 ${mdGridSpan} ${mdColStart} ${mdRowStart} md:bg-gray-100`.trim();
+                function toMdGridClasses(str?: string) {
+                  if (!str) return '';
+                  return str.split(/\s+/).map(cls => {
+                    if (/^col-span-\d+$/.test(cls)) return `md:col-span-${cls.split('-')[2]}`;
+                    if (/^row-span-\d+$/.test(cls)) return `md:row-span-${cls.split('-')[2]}`;
+                    if (/^col-start-\d+$/.test(cls)) return `md:col-start-${cls.split('-')[2]}`;
+                    if (/^row-start-\d+$/.test(cls)) return `md:row-start-${cls.split('-')[2]}`;
+                    return '';
+                  }).join(' ');
+                }
+                const mdGridSpan = toMdGridClasses(block.gridSpan);
+                const mdColStart = toMdGridClasses(block.colStart);
+                const mdRowStart = toMdGridClasses(block.rowStart);
+                const baseClasses = `relative overflow-hidden w-full md:bg-gray-100 ${mdGridSpan} ${mdColStart} ${mdRowStart}`.trim();
+                const mediaClasses = `relative overflow-hidden h-full w-full min-h-[60vh] md:min-h-[30vh] border-0 md:bg-gray-100 ${mdGridSpan} ${mdColStart} ${mdRowStart}`.trim();
 
                 const fit = (block as any).fit || 'cover';
                 const fitClass = (() => {

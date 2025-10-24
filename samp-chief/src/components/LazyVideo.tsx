@@ -48,8 +48,7 @@ export default function LazyVideo({ src, className = '', style, fitClass = 'obje
       playsInline
       preload="none"
       controls={false}
-      onMouseEnter={(e) => e.currentTarget.play()}
-      onMouseLeave={(e) => e.currentTarget.pause()}
+      autoPlay
     >
       <source src={src} />
       Your browser does not support the video tag.
