@@ -2,7 +2,7 @@
 
 import React, { useMemo } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, easeOut } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
@@ -107,21 +107,21 @@ export default function MusicPage() {
   const mixes = [
     {
       id: 1,
-      image: "/assets/music-covers/haruna.png",
+      image: "/assets/music-covers/haruna.jpg",
       link: "https://soundcloud.com/samplechief/sample-chief-selekta-w-haruna?si=25a8dbd70e2b4fe4858efd43d2b72e22&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
       title: "Haruna on Sample Chief Radio",
       subtitle: "",
     },
     {
       id: 2,
-      image: "/assets/events/village-b.PNG",
+      image: "/assets/music-covers/village-b.jpg",
       link: "https://soundcloud.com/samplechief/village-boogie-5-toronto?si=4d643c310415427aa4ea562e588ba79a&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
       title: "Village Boogie May 2024 mix",
       subtitle: "",
     },
     {
       id: 3,
-      image: "/assets/music-covers/michelle.PNG",
+      image: "/assets/music-covers/michelle.jpg",
       link: "https://soundcloud.com/samplechief/sample-chief-radio-w-michelle-on-n10as?si=6422569a33b94db187c403816497dbe1&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
       title: "Michelle on Sample Chief Radio",
       subtitle: "",
@@ -175,7 +175,7 @@ export default function MusicPage() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: { duration: 0.6, ease: easeOut },
     },
   };
 
@@ -238,7 +238,7 @@ export default function MusicPage() {
                 href={item.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block rounded-2xl overflow-hidden"
+                className="group block rounded-lg overflow-hidden"
               >
                 <Card className="bg-transparent border-0 cursor-pointer">
                   <CardContent className="p-0">

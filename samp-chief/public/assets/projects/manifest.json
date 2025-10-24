@@ -1,0 +1,63 @@
+{
+  "ace-hotel": [
+    "/assets/projects/ace-hotel/1.jpg",
+    "/assets/projects/ace-hotel/3.jpg",
+    "/assets/projects/ace-hotel/4.jpg",
+    "/assets/projects/ace-hotel/5.jpg",
+    "/assets/projects/ace-hotel/6.jpg",
+    "/assets/projects/ace-hotel/7.jpg",
+    "/assets/projects/ace-hotel/cover.jpg",
+    "/assets/projects/ace-hotel/poster.png"
+  ],
+  "holt-renfrew": [
+    "/assets/projects/holt-renfrew/1.jpg",
+    "/assets/projects/holt-renfrew/11.jpg",
+    "/assets/projects/holt-renfrew/12.jpg",
+    "/assets/projects/holt-renfrew/13.jpg",
+    "/assets/projects/holt-renfrew/14.jpg",
+    "/assets/projects/holt-renfrew/2.jpg",
+    "/assets/projects/holt-renfrew/3.jpg",
+    "/assets/projects/holt-renfrew/4.jpg",
+    "/assets/projects/holt-renfrew/5.jpg",
+    "/assets/projects/holt-renfrew/6.jpg",
+    "/assets/projects/holt-renfrew/7.jpg",
+    "/assets/projects/holt-renfrew/8.jpg",
+    "/assets/projects/holt-renfrew/9.jpg",
+    "/assets/projects/holt-renfrew/cover.jpg",
+    "/assets/projects/holt-renfrew/poster.JPG"
+  ],
+  "kops": [
+    "/assets/projects/kops/1.JPG",
+    "/assets/projects/kops/2.JPG",
+    "/assets/projects/kops/3.JPG",
+    "/assets/projects/kops/4.JPG",
+    "/assets/projects/kops/5.jpg",
+    "/assets/projects/kops/6.jpg",
+    "/assets/projects/kops/7.jpg",
+    "/assets/projects/kops/cover.jpg",
+    "/assets/projects/kops/kopslogo.webp",
+    "/assets/projects/kops/poster.JPG",
+    "/assets/projects/kops/video.mp4"
+  ],
+  "u-of-t": [
+    "/assets/projects/u-of-t/1.jpg",
+    "/assets/projects/u-of-t/2.jpg",
+    "/assets/projects/u-of-t/3.JPG",
+    "/assets/projects/u-of-t/4.jpg",
+    "/assets/projects/u-of-t/cover.jpg",
+    "/assets/projects/u-of-t/uoftlogo.png"
+  ],
+  "village-boogie": [
+    "/assets/projects/village-boogie/10.mov",
+    "/assets/projects/village-boogie/2.jpg",
+    "/assets/projects/village-boogie/3.jpg",
+    "/assets/projects/village-boogie/4.jpg",
+    "/assets/projects/village-boogie/5.jpg",
+    "/assets/projects/village-boogie/6.jpg",
+    "/assets/projects/village-boogie/7.JPG",
+    "/assets/projects/village-boogie/8.jpg",
+    "/assets/projects/village-boogie/9.jpg",
+    "/assets/projects/village-boogie/cover.jpg",
+    "/assets/projects/village-boogie/video1.mp4"
+  ]
+}

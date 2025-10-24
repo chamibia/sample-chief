@@ -1,3 +1,7 @@
+/* Lock grid row height for project cards */
+.fixed-row-height {
+  grid-auto-rows: 22rem;
+}
 @import "tailwindcss";
 
 /* Font-face definitions */
@@ -24,6 +28,13 @@
   font-weight: 700;
   font-style: normal;
   font-display: swap;
+}
+
+/* Ensure bold fallback works reliably across browsers for product titles specifically */
+.product-title-bold {
+  font-weight: 700;
+  /* Fallback for browsers that don't load the bold font */
+  text-shadow: 0.5px 0 0 currentColor;
 }
 
 /* Font variable for sans-serif */
@@ -132,4 +143,9 @@ p {
 .price-with-symbol::before {
   content: "$";
   font-family: Arial, Helvetica, system-ui, sans-serif;
+}
+
+.prose-lg {
+  font-size: 1.0625rem; /* 17px */
+  line-height: 1.8;
 }

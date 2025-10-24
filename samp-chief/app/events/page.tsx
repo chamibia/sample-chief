@@ -40,7 +40,7 @@ const eventData = [
     endDate: "2025-06-20",
     time: "9pm - LATE",
     venue: "Sweeties, 10th Floor, 10 Argyle St, London WC1H 8EG, United Kingdom",
-    imageUrl: "/assets/events/london_june_19.jpeg",
+    imageUrl: "/assets/events/london_june_19.jpg",
     ticketLink: "https://docs.google.com/forms/d/e/1FAIpQLScEnyFLRuDOPs7vZxZiEJ9fG1EUjc9nNaDBwW5kt5Cx48UGew/viewform?usp=header",
   },
     {

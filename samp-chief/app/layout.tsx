@@ -4,7 +4,7 @@ import "../styles/globals.css";
 
 import Navbar from "../src/components/layout/Navbar";
 import FooterVisibilityWrapper from "@/components/layout/FooterVisibilityWrapper";
-import SubscribePopup from "@/components/SubscribePopup";
+import LazySubscribePopup from "@/components/LazySubscribePopup";
 import ClientLayout from "./ClientLayout";
 
 import { CartProvider } from "@/components/CartProvider";
@@ -32,17 +32,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        {/* Preload AlteHaasGrotesk fonts */}
+        {/* Preload AlteHaasGrotesk fonts - Bold first since it's critical for product titles */}
         <link
           rel="preload"
-          href="/assets/fonts/AlteHaasGroteskRegular.ttf"
+          href="/assets/fonts/AlteHaasGroteskBold.ttf"
           as="font"
           type="font/ttf"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href="/assets/fonts/AlteHaasGroteskBold.ttf"
+          href="/assets/fonts/AlteHaasGroteskRegular.ttf"
           as="font"
           type="font/ttf"
           crossOrigin="anonymous"
@@ -56,6 +56,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="font/otf"
           crossOrigin="anonymous"
         />
+
+        {/* Font loading optimization */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            /* Ensure bold text renders immediately with fallback */
+            .font-bold {
+              font-weight: 700;
+            }
+            /* Critical text should use system fonts until custom fonts load */
+            .font-loading-fallback {
+              font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+              font-weight: 700;
+            }
+          `
+        }} />
       </head>
       <body className="antialiased font-sans">
         {/* ✅ Cart context available everywhere */}
@@ -65,7 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <main className="flex-1">{children}</main>
             {/* Hide Footer on mobile if on home page, show otherwise */}
             <FooterVisibilityWrapper />
-            <SubscribePopup />
+            <LazySubscribePopup />
           </ClientLayout>
         </CartProvider>
       </body>

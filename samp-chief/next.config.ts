@@ -5,7 +5,16 @@ const nextConfig: NextConfig = {
 	reactStrictMode: true,
 	devIndicators: false,
 	images: {
-		domains: ["cdn.shopify.com"],
+		unoptimized: true,
+		qualities: [85],
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'cdn.shopify.com',
+				port: '',
+				pathname: '/**',
+			},
+		],
 	},
 };
 

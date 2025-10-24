@@ -20,6 +20,26 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+
+## Project Structure & Patterns
+
+This codebase uses a container/presenter (smart/dumb) component pattern for maintainability and scalability:
+
+- **Data logic** (fetching, transformation, slicing, calculations) is handled in custom hooks or container functions (e.g., `useProjectDetailData.ts`, `useProjectsListingData.ts`).
+- **UI components** (pages, presentational components) focus only on rendering and layout, receiving data as props.
+
+### Why?
+- Makes it easier to add features (sorting, filtering, pagination, new layouts) by updating hooks, not UI code.
+- Improves testability and reusability of data logic.
+- Keeps UI components clean and focused.
+
+### Where to add new logic
+- If you need to add or change data transformation, create or update a hook in the relevant folder (e.g., `app/projects/useProjectsListingData.ts`).
+- For new UI, add or update presentational components/pages as usual.
+
+See the `app/projects/` directory for examples.
+
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

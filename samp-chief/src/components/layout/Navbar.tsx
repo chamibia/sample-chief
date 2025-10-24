@@ -34,6 +34,7 @@ export default function Navbar() {
   const isMusic = pathname === "/music";
   const isContact = pathname === "/contact";
   const isShop = pathname === "/shop";
+  const isProjects = pathname === "/projects";
 
 
   // Detect mobile using a media query (client-side only)
@@ -60,6 +61,8 @@ export default function Navbar() {
     ? "bg-[#F8C722]"
     : isShop
     ? "bg-[#F8C722]"
+    : isProjects
+    ? "bg-[#F8C722]"
     : "bg-white";
 
   const textColor = isHome && !isScrolled && (!isMobile || (isMobile && !isMenuOpen)) ? "text-white" : "text-gray-800";
@@ -69,17 +72,18 @@ export default function Navbar() {
       isHome ? "absolute top-0 left-0 right-0" : "sticky top-0"
     } z-50 transition-all duration-300 ease-in-out 
     ${backgroundColor} ${textColor} 
-    ${isScrolled ? "py-2 shadow-sm" : isHome ? "py-4" : "py-6 md:py-8"}
+    ${isScrolled ? "py-1 shadow-sm" : isHome ? "py-2" : "py-3 md:py-4"}
     border-none rounded-none
   `;
 
-  const links = ["ABOUT", "EVENTS", "MUSIC", "SHOP", "CONTACT"];
+  const links = ["ABOUT", "PROJECTS", "EVENTS", "MUSIC", "SHOP", "CONTACT"];
 
-  // Choose logo based on page and scroll state
   const currentLogo = isHome && !isScrolled && (!isMobile || (isMobile && !isMenuOpen)) ? whiteLogo : logo;
 
-  // Determine mobile dropdown text color
   const mobileDropdownTextColor = backgroundColor === "bg-white" ? "text-[#202020] hover:text-gray-700" : "text-white hover:text-gray-300";
+
+  const logoWidth = isMobile ? (isScrolled ? 156 : 140) : (isScrolled ? 80 : 66);
+  const logoHeight = isMobile ? (isScrolled ? 92 : 84) : (isScrolled ? 53 : 58);
 
   return (
     <header className={headerClasses}>
@@ -92,10 +96,10 @@ export default function Navbar() {
           <Image
             src={currentLogo}
             alt="Sample Chief Logo"
-            width={isScrolled ? 180 : 160}
-            height={isScrolled ? 120 : 140}
-            className="transition-all duration-300 ease-in-out md:w-auto w-32"
-            priority
+            width={logoWidth}
+            height={logoHeight}
+            className="transition-all duration-300 ease-in-out md:w-auto h-auto max-h-[84px] md:max-h-[37px]"
+            style={{ height: 'auto' }}
           />
         </Link>
 
