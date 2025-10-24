@@ -114,7 +114,7 @@ export default function MusicPage() {
     },
     {
       id: 2,
-      image: "/assets/events/village-b.PNG",
+      image: "/assets/music-covers/village-b.jpg",
       link: "https://soundcloud.com/samplechief/village-boogie-5-toronto?si=4d643c310415427aa4ea562e588ba79a&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
       title: "Village Boogie May 2024 mix",
       subtitle: "",
