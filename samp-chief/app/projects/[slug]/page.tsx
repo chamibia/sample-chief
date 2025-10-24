@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import React from "react";
 import { events } from "@/data/events";
-import { renderProjectBlock } from "@/components/projectBlocks";
+import ProjectBlocksClient from "@/components/ProjectBlocksClient";
 import Image from "./Image";
 import { getProjectDetailData } from "./useProjectDetailData";
 
@@ -117,8 +117,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           {/* Custom grid section for project images */}
           <section className="w-full">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 auto-rows-auto md:auto-rows-[30vh] gap-0 p-0">
-              {Array.isArray(projectBlocks) && projectBlocks.length > 0 ? projectBlocks.map((block, idx) =>
-                renderProjectBlock(block, idx, event.title)
+              {Array.isArray(projectBlocks) && projectBlocks.length > 0 ? (
+                <ProjectBlocksClient blocks={projectBlocks} eventTitle={event.title} />
               ) : (
                 <div className="col-span-full p-8 text-center">No project media available.</div>
               )}
