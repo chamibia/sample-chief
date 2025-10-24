@@ -2,8 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useMemo } from 'react';
-import { events } from '@/data/events';
+import { useProjectsListingData } from './useProjectsListingData';
 
 const ProjectImageWithOverlay = ({ src, alt }: { src: string; alt: string }) => {
   return (
@@ -21,36 +20,28 @@ const ProjectImageWithOverlay = ({ src, alt }: { src: string; alt: string }) => 
   );
 };
 
-const ProjectsPage = () => {
 
-  // Calculate max row needed for grid-rows-N (memoized for performance)
-  const maxRow = useMemo(() => {
-    return events.reduce((max, event) => {
-      const rowStart = event.rowStart ? parseInt(event.rowStart.replace('row-start-', ''), 10) : 1;
-      const rowSpan = event.gridSpan ? parseInt(event.gridSpan.replace('row-span-', '').split(' ')[0], 10) : 1;
-      return Math.max(max, rowStart + rowSpan - 1);
-    }, 1);
-  }, []);
-  const gridRowsClass = `grid-rows-${maxRow}`;
+const ProjectsPage = () => {
+  const { events, gridRowsClass, first, secondAndThird, rest } = useProjectsListingData();
 
   return (
     <div className="min-h-screen bg-white">
       {/* Mobile: first card full width, second and third side-by-side, rest stacked */}
       <div className="block md:hidden w-full p-4">
         {/* First card full width */}
-        {events[0] && (
-          <Link key={events[0].slug} href={`/projects/${events[0].slug}`} className="block bg-transparent rounded-lg overflow-hidden border-0 transition-shadow duration-300 cursor-pointer w-full h-[18rem] relative mb-6">
+        {first && (
+          <Link key={first.slug} href={`/projects/${first.slug}`} className="block bg-transparent rounded-lg overflow-hidden border-0 transition-shadow duration-300 cursor-pointer w-full h-[18rem] relative mb-6">
             <div className="relative w-full h-full">
-              <ProjectImageWithOverlay src={events[0].projectcard} alt={events[0].title} />
+              <ProjectImageWithOverlay src={first.projectcard} alt={first.title} />
               <div className="absolute inset-0 w-full h-full z-20 flex flex-col items-start justify-start p-4">
-                <h1 className="font-ruder font-medium text-white leading-tight text-2xl md:text-3xl pl-2">{events[0].title}</h1>
+                <h1 className="font-ruder font-medium text-white leading-tight text-2xl md:text-3xl pl-2">{first.title}</h1>
               </div>
             </div>
           </Link>
         )}
         {/* Second and third cards side-by-side */}
         <div className="grid grid-cols-2 gap-4 mb-6">
-            {events.slice(1, 3).map((event) => (
+            {secondAndThird.map((event) => (
             <Link key={event.slug} href={`/projects/${event.slug}`} className="bg-transparent rounded-lg overflow-hidden border-0 transition-shadow duration-300 cursor-pointer w-full h-[18rem] relative">
               <div className="relative w-full h-full">
                 <ProjectImageWithOverlay src={event.projectcard} alt={event.title} />
@@ -62,7 +53,7 @@ const ProjectsPage = () => {
           ))}
         </div>
         {/* Remaining cards stacked */}
-        {events.slice(3).map((event) => (
+        {rest.map((event) => (
           <Link key={event.slug} href={`/projects/${event.slug}`} className="block bg-transparent rounded-lg overflow-hidden border-0 transition-shadow duration-300 cursor-pointer w-full h-[18rem] relative mb-6">
             <div className="relative w-full h-full">
               <ProjectImageWithOverlay src={event.projectcard} alt={event.title} />

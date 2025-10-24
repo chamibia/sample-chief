@@ -1,29 +1,41 @@
+export type GridSpan =
+  | 'col-span-1'
+  | 'col-span-2'
+  | 'col-span-3'
+  | 'col-span-4'
+  | 'row-span-1'
+  | 'row-span-2'
+  | 'row-span-3'
+  | 'row-span-4';
+export type ColStart = 'col-start-1' | 'col-start-2' | 'col-start-3' | 'col-start-4';
+export type RowStart = 'row-start-1' | 'row-start-2' | 'row-start-3' | 'row-start-4';
+
 export type Event = {
   title: string;
-  projectcard: string;  // project card image
+  projectcard: string;
   brandLogo?: string;
   description: string;
   slug: string;
   imageFolder: string;
-  gridSpan?: string; // Tailwind grid span classes, e.g. "col-span-2 row-span-2"
-  colStart?: string; // Tailwind col-start-* class
-  rowStart?: string; // Tailwind row-start-* class
+  gridSpan?: GridSpan | `${GridSpan} ${GridSpan}`;
+  colStart?: ColStart;
+  rowStart?: RowStart;
   ethos?: string;
   location?: string;
   services?: string;
   heroImage?: string;
   images?: Array<{
     src: string;
-    gridSpan?: string;
-    colStart?: string;
-    rowStart?: string;
+    gridSpan?: GridSpan | `${GridSpan} ${GridSpan}`;
+    colStart?: ColStart;
+    rowStart?: RowStart;
     fit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
     position?: 'top' | 'bottom' | 'left' | 'right' | 'center' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
   }>;
   contentBlocks?: Array<
-    | ({ type?: 'image' } & { src: string; alt?: string; gridSpan?: string; colStart?: string; rowStart?: string; fit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down'; position?: 'top' | 'bottom' | 'left' | 'right' | 'center' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' })
-    | ({ type: 'video' } & { src: string; alt?: string; gridSpan?: string; colStart?: string; rowStart?: string; fit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down'; position?: 'top' | 'bottom' | 'left' | 'right' | 'center' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' })
-    | ({ type: 'text' } & { html: string; gridSpan?: string; colStart?: string; rowStart?: string })
+    | ({ type?: 'image' } & { src: string; alt?: string; gridSpan?: GridSpan | `${GridSpan} ${GridSpan}`; colStart?: ColStart; rowStart?: RowStart; fit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down'; position?: 'top' | 'bottom' | 'left' | 'right' | 'center' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' })
+    | ({ type: 'video' } & { src: string; alt?: string; gridSpan?: GridSpan | `${GridSpan} ${GridSpan}`; colStart?: ColStart; rowStart?: RowStart; fit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down'; position?: 'top' | 'bottom' | 'left' | 'right' | 'center' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' })
+    | ({ type: 'text' } & { html: string; gridSpan?: GridSpan | `${GridSpan} ${GridSpan}`; colStart?: ColStart; rowStart?: RowStart })
   >;
 };
 
