@@ -116,9 +116,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           {/* Mobile-only ethos/description block: place after the hero so it appears as its own block on small screens */}
           {/* Full-bleed yellow background on mobile with centered white card */}
           <div className="block md:hidden">
-            <div className="w-full bg-[#F8C722]">
+            <div className="w-full bg-white">
               <div className="max-w-3xl mx-auto px-4 py-6">
-                <div className="bg-white rounded-lg p-4 text-black">
+                <div className="bg-white p-4 text-black">
                 <h3 className="font-bold text-lg mb-2">Ethos</h3>
                 <div className="mb-6">{event.ethos || "-"}</div>
                 <h3 className="font-bold text-lg mb-2">Description</h3>
@@ -155,8 +155,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 const mdGridSpan = block.gridSpan ? (block.gridSpan as string).split(/\s+/).map(prefixIfNeeded).join(' ') : '';
                 const mdColStart = block.colStart ? (block.colStart as string).split(/\s+/).map(prefixIfNeeded).join(' ') : '';
                 const mdRowStart = block.rowStart ? (block.rowStart as string).split(/\s+/).map(prefixIfNeeded).join(' ') : '';
-                const baseClasses = `relative overflow-hidden w-full ${rawGridSpan} ${rawColStart} ${rawRowStart} ${mdGridSpan} ${mdColStart} ${mdRowStart} md:bg-gray-100`.trim();
-                const mediaClasses = `relative overflow-hidden h-full w-full min-h-[60vh] md:min-h-[30vh] border-0 ${rawGridSpan} ${rawColStart} ${rawRowStart} ${mdGridSpan} ${mdColStart} ${mdRowStart} md:bg-gray-100`.trim();
+                const baseClasses = `relative overflow-hidden w-full ${mdGridSpan} ${mdColStart} ${mdRowStart} md:bg-gray-100`.trim();
+                const mediaClasses = `relative overflow-hidden h-full w-full min-h-[60vh] md:min-h-[30vh] border-0 ${mdGridSpan} ${mdColStart} ${mdRowStart} md:bg-gray-100`.trim();
 
                 const fit = (block as any).fit || 'cover';
                 const fitClass = (() => {
@@ -241,7 +241,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 if (block.type === 'text') {
                   return (
                     <div key={idx} className={`${baseClasses}`}>
-                      <div className="block md:hidden w-full bg-[#F8C722]">
+                      <div className="block md:hidden w-full bg-[#0F0500]">
                         <div className="max-w-3xl mx-auto px-4 py-6 flex items-center">
                           <div className="bg-[#0F0500] rounded-lg p-4 text-white w-full py-10">
                             <div className="text-base leading-relaxed max-w-none text-white w-full">
