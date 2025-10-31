@@ -109,10 +109,10 @@ export default function SubscribePopup() {
       <div className="relative w-full max-w-[280px] sm:max-w-xs rounded-lg bg-white shadow-lg overflow-hidden flex flex-col">
         <button
           onClick={() => setIsOpen(false)}
-          className="absolute right-4 top-4 text-gray-500 hover:text-gray-700 z-10"
+          className="absolute right-4 top-4 z-10 bg-white border border-black rounded-full p-2 shadow-md transition-colors duration-200 flex items-center justify-center cursor-pointer hover:bg-gray-100"
           aria-label="Close"
         >
-          <X className="text-white font-bold" size={20} />
+          <X className="text-black font-bold" size={15} />
         </button>
 
         <div className="relative h-64 w-full">
@@ -191,7 +191,7 @@ export default function SubscribePopup() {
 
             <Button
               type="submit"
-              className="w-full font-sans text-sm sm:text-base text-white bg-[#07693A] hover:bg-[#2E8B57]/90"
+              className="w-full font-sans text-sm sm:text-base text-white bg-[#07693A] hover:bg-[#2E8B57]/90 cursor-pointer"
               disabled={isSubmitting}
             >
               {isSubmitting ? "Subscribing..." : "Subscribe"}

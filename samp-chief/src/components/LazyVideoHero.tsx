@@ -73,7 +73,7 @@ export default function LazyVideoHero() {
         style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }}
       >
         <div className="text-center text-white px-4 max-w-4xl">
-          <p className="text-xl md:text-2xl font-light italic -skew-x-15 max-w-2xl mx-auto mb-6">
+          <p className="text-xl md:text-2xl font-ruder italic -skew-x-15 max-w-2xl mx-auto mb-6">
             This is where culture happens
           </p>
         </div>

@@ -8,7 +8,7 @@ import Footer from "../src/components/layout/Footer";
 
 
 export const metadata: Metadata = {
-  title: "Sample Chief | African Music Culture",
+  title: "Sample Chief | Global Music Culture Agency",
   description:
     "Sample Chief is a global community celebrating African music culture through immersive experiences, events, and digital content.",
   keywords: [
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "global community",
   ],
   openGraph: {
-    title: "Sample Chief | African Music Culture",
+    title: "Sample Chief | Global Music Culture Agency",
     description:
       "Sample Chief is a global community celebrating African music culture through immersive experiences, events, and digital content.",
     url: "https://samplechief.com",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sample Chief | African Music Culture",
+    title: "Sample Chief | Global Music Culture Agency",
     description:
       "Sample Chief is a global community celebrating African music culture through immersive experiences, events, and digital content.",
   images: ["/assets/logos/og-image.png"],

@@ -267,18 +267,18 @@ export function ProjectTextBlock({ block, idx }: { block: ProjectBlock; idx: num
   const { base } = getGridClasses(block);
   return (
     <div className={base}>
-      <div className="block md:hidden w-full bg-[#0F0500]">
+      <div className="block md:hidden w-full bg-white">
         <div className="max-w-3xl mx-auto px-4 py-6 flex items-center">
-          <div className="bg-[#0F0500] rounded-lg p-4 text-white w-full py-10">
-            <div className="text-base leading-relaxed max-w-none text-white w-full">
+          <div className="bg-white rounded-lg p-4 text-black w-full py-10">
+            <div className="text-base leading-relaxed max-w-none text-black w-full">
               <div dangerouslySetInnerHTML={{ __html: block.html || '' }} />
             </div>
           </div>
         </div>
       </div>
-      <div className="hidden md:flex p-8 items-center justify-center h-full w-full bg-[#0F0500] min-h-[30vh]">
+      <div className="hidden md:flex p-8 items-center justify-center h-full w-full bg-white min-h-[30vh]">
         <div className="max-w-3xl w-full">
-          <div className="bg-[#0F0500] rounded-lg p-6 text-white h-full flex items-center">
+          <div className="bg-white rounded-lg p-6 text-black h-full flex items-center">
             <div className="text-base leading-relaxed w-full" dangerouslySetInnerHTML={{ __html: block.html || '' }} />
           </div>
         </div>

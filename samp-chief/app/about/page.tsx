@@ -123,14 +123,22 @@ export default function About() {
             {p}
           </motion.p>
         ))}
-        {/* Contact Button */}
+        {/* Projects and Contact Buttons */}
         <motion.div
           variants={sectionVariants}
-          className="flex justify-center md:justify-start mt-20"
+          className="flex flex-col md:flex-row justify-center md:justify-start mt-20 gap-4 md:gap-6"
         >
+          <Link
+            href="/projects"
+            className="font-sans font-light leading-relaxed text-base bg-transparent border-2 border-gray-800 hover:bg-[#202020] hover:border-[#202020] hover:text-white rounded-full transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center px-6 py-3 text-[#202020]"
+            style={{ minWidth: '180px' }}
+          >
+            Projects
+          </Link>
           <Link
             href="/contact"
             className="font-sans font-light leading-relaxed text-base bg-transparent border-2 border-gray-800 hover:bg-[#202020] hover:border-[#202020] hover:text-white rounded-full transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center px-6 py-3 text-[#202020]"
+            style={{ minWidth: '180px' }}
           >
             Collab With Us
           </Link>

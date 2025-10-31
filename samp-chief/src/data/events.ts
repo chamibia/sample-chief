@@ -64,7 +64,7 @@ export const events: Event[] = [
       ]
     },
     {
-      title: "Kops Record Store",
+      title: "Kops Records",
       projectcard: "/assets/projects/kops/cover.jpg",
       brandLogo: "/assets/projects/kops/kopslogo.webp",
       description: "Toronto’s oldest independent record store, Kops Records, partnered with Sample Chief to bring a fresh spin to Record Store Day with a pop-up at their Queen West location. The celebration featured vinyl DJ sets, exclusive Sample Chief x Kops merchandise, and a special 25% discount on all African records designed to spark curiosity, expand collections, and inspire more listeners to explore the richness of African vinyl culture.",

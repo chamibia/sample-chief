@@ -4,7 +4,7 @@ import "../styles/globals.css";
 
 import Navbar from "../src/components/layout/Navbar";
 import FooterVisibilityWrapper from "@/components/layout/FooterVisibilityWrapper";
-import LazySubscribePopup from "@/components/LazySubscribePopup";
+import SubscribePopup from "@/components/SubscribePopup";
 import ClientLayout from "./ClientLayout";
 
 import { CartProvider } from "@/components/CartProvider";
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     default: "Sample Chief",
     template: "%s | Sample Chief",
   },
-  description: "Sample Chief - Merchandise for the Movement",
+  description: "Global Music Culture Agency",
   icons: {
     icon: "/assets/logos/favicon-white.svg",
     shortcut: "/assets/logos/favicon-white.svg",
@@ -80,7 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <main className="flex-1">{children}</main>
             {/* Hide Footer on mobile if on home page, show otherwise */}
             <FooterVisibilityWrapper />
-            <LazySubscribePopup />
+            <SubscribePopup />
           </ClientLayout>
         </CartProvider>
       </body>
