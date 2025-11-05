@@ -28,9 +28,8 @@ const eventData = [
     endDate: "2025-06-07",
     time: "9pm - LATE",
     venue: "The Little Jerry, 418 College Street, Toronto, Canada",
-  imageUrl: "/assets/events/social-vinyl-night.jpg",
-    ticketLink:
-      "https://docs.google.com/forms/d/e/1FAIpQLSfzD1A6wJYXnRrFXAT0DgOVkJwbexESCO5cV1uupaeYnSAcGg/viewform",
+    imageUrl: "/assets/events/social-vinyl-night.jpg",
+    ticketLink: "https://docs.google.com/forms/d/e/1FAIpQLSfzD1A6wJYXnRrFXAT0DgOVkJwbexESCO5cV1uupaeYnSAcGg/viewform",
   },
   {
     id: 3,
@@ -43,7 +42,7 @@ const eventData = [
     imageUrl: "/assets/events/london_june_19.jpg",
     ticketLink: "https://docs.google.com/forms/d/e/1FAIpQLScEnyFLRuDOPs7vZxZiEJ9fG1EUjc9nNaDBwW5kt5Cx48UGew/viewform?usp=header",
   },
-    {
+  {
     id: 4,
     title: "My Father's Shadow - Official Afterparty",
     description: "Join us for an evening of drinks and music to celebrate the North American premiere of My Father’s Shadow, at an exclusive afterparty hosted by local·global, in collaboration with Sample Chief.",
@@ -54,7 +53,7 @@ const eventData = [
     imageUrl: "/assets/events/IMG_6056.PNG",
     ticketLink: "https://bit.ly/myfathersshadowafterparty",
   },
-      {
+  {
     id: 5,
     title: "AFRIKA MAGIK: Toronto Listening Party",
     description: "Join us for a special preview of Show Dem Camp's latest project, AFRIKA MAGIK. Brought to you by local·global and Sample Chief.",
@@ -64,6 +63,17 @@ const eventData = [
     venue: "296 Brunswick Avenue Toronto, ON M5S 1X9",
     imageUrl: "/assets/events/afrika-magik-toronto-poster.png",
     ticketLink: "https://www.eventbrite.ca/e/afrika-magik-toronto-listening-party-tickets-1836211551179?aff=erelexpmlt",
+  },
+  {
+    id: 6,
+    title: "TATE MODERN LATES: NIGERIAN MODERNISM",
+    description: "Catch us at the Tate Modern, providing a sonic backdrop for the ongoing Nigerian Modernism exhibition. A must see! Free entry.",
+    startDate: "2025-10-31",
+    endDate: "2025-10-31",
+    time: "6PM - 10PM",
+    venue: "Tate Modern, Bankside, London SE1 9TG, United Kingdom",
+    imageUrl: "/assets/events/tate-modern-lates.jpg",
+    learnMoreUrl: "https://www.tate.org.uk/whats-on/tate-modern/tate-modern-lates",
   },
 ];
 
@@ -154,12 +164,25 @@ export default function Events() {
                   viewport={{ once: true }}
                 >
                   <div className="h-full overflow-hidden rounded-lg">
-                    <Link
-                      href={event.ticketLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block h-full"
-                    >
+                    {event.ticketLink ? (
+                      <Link
+                        href={event.ticketLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block h-full"
+                      >
+                        <Image
+                          src={event.imageUrl}
+                          alt={event.title}
+                          width={400}
+                          height={200}
+                          loading="lazy"
+                          className="event-image object-cover transition-all duration-500"
+                          placeholder="blur"
+                          blurDataURL="data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='16' fill='%23e5e7eb'/%3E%3C/svg%3E"
+                        />
+                      </Link>
+                    ) : (
                       <Image
                         src={event.imageUrl}
                         alt={event.title}
@@ -170,7 +193,7 @@ export default function Events() {
                         placeholder="blur"
                         blurDataURL="data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='16' fill='%23e5e7eb'/%3E%3C/svg%3E"
                       />
-                    </Link>
+                    )}
                   </div>
                 </motion.div>
                 <div className="md:col-span-7 flex flex-col">
@@ -243,16 +266,30 @@ export default function Events() {
                     viewport={{ once: true }}
                     className="flex flex-col sm:flex-row gap-4 mt-10"
                   >
-                    <motion.div whileHover={{ scale: 1.02 }}>
-                      <Link
-                        href={event.ticketLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-sans font-light leading-relaxed text-[#202020] inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 border-2 rounded-full text-sm md:text-base hover:bg-[#202020] hover:text-white transition-all duration-200 min-w-[120px] md:min-w-[140px]"
-                      >
-                        Tickets
-                      </Link>
-                    </motion.div>
+                    {event.ticketLink && (
+                      <motion.div whileHover={{ scale: 1.02 }}>
+                        <Link
+                          href={event.ticketLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-sans font-light leading-relaxed text-[#202020] inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 border-2 rounded-full text-sm md:text-base hover:bg-[#202020] hover:text-white transition-all duration-200 min-w-[120px] md:min-w-[140px]"
+                        >
+                          Tickets
+                        </Link>
+                      </motion.div>
+                    )}
+                    {event.learnMoreUrl && (
+                      <motion.div whileHover={{ scale: 1.02 }}>
+                        <Link
+                          href={event.learnMoreUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-sans font-light leading-relaxed text-[#202020] inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 border-2 border-black rounded-full text-sm md:text-base hover:bg-black hover:text-white transition-all duration-200 min-w-[120px] md:min-w-[140px]"
+                        >
+                          More Info
+                        </Link>
+                      </motion.div>
+                    )}
                     <motion.div whileHover={{ scale: 1.02 }}>
                       <Link
                         href={generateCalendarLink(event)}
