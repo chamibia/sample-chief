@@ -75,6 +75,20 @@ const eventData = [
     imageUrl: "/assets/events/tate-modern-lates.jpg",
     learnMoreUrl: "https://www.tate.org.uk/whats-on/tate-modern/tate-modern-lates",
   },
+  {
+    id: 7,
+    title: "Sample Chief Social: Vinyl Night",
+    description: `
+      The Social is back! This time we're doing it big and celebrating our anniversary at The Little Jerry. Pull up for a drink, dance, and maybe some birthday cake. Free before 11PM, $10 after. Supported by Kops Records.
+      
+      Vinyl sets by: @dondestad1ego @djbigjacks @do.not.push @ore.so`,
+    startDate: "2025-11-29",
+    endDate: "2025-11-29",
+    time: "9PM - LATE",
+    venue: "The Little Jerry, 418 College Street, Toronto, Canada",
+    imageUrl: "/assets/events/Sample-Chief-Social-Vinyl-Night 2Feed copy.jpg",
+    ticketLink: "https://www.eventbrite.ca/e/sample-chief-social-tickets-1964396066515?utm_experiment=test_share_listing&aff=ebdsshios&sg=d61a0356e207522fe786cb664095b654cd619085e08a912d2417bb7ec2414cabbbffd7c7e3273513b96698aa30f713e74e7bf8a0751fbf298181333224a08fe3048fff09a893f5ba961970baa6",
+  },
 ];
 
 export default function Events() {
@@ -214,7 +228,7 @@ export default function Events() {
                     >
                       {event.title}
                     </motion.h1>
-                    <motion.p
+                    <motion.div
                       className="font-sans font-light text-base md:text-lg text-[#202020]"
                       variants={{
                         hidden: { opacity: 0, x: -20 },
@@ -228,8 +242,12 @@ export default function Events() {
                       whileInView="visible"
                       viewport={{ once: true }}
                     >
-                      {event.description}
-                    </motion.p>
+                      {event.description.split('\n').map((line, index) => (
+                        <div key={index}>
+                          {line.trim() || <br />}
+                        </div>
+                      ))}
+                    </motion.div>
                     <motion.div
                       className="space-y-3"
                       variants={{
@@ -247,7 +265,7 @@ export default function Events() {
                       <div className="flex items-center">
                         <MapPin className="h-5 w-5 mr-3 text-[#202020] flex-shrink-0" />
                         <span className="font-sans font-light text-[#202020] leading-relaxed text-sm md:text-base">
-                          {event.venue}, {event.address}
+                          {event.venue} {event.address}
                         </span>
                       </div>
                       <div className="flex items-center">
