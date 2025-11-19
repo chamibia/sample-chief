@@ -48,7 +48,7 @@ const eventData = [
     description: "Join us for an evening of drinks and music to celebrate the North American premiere of My Father’s Shadow, at an exclusive afterparty hosted by local·global, in collaboration with Sample Chief.",
     startDate: "2025-09-10",
     endDate: "2025-09-11",
-    time: "7pm - 12am",
+    time: "7pm - LATE",
     venue: "Civil Works, 50 Brant Street Toronto, M5V 3G9 Canada",
     imageUrl: "/assets/events/IMG_6056.PNG",
     ticketLink: "https://bit.ly/myfathersshadowafterparty",
@@ -59,7 +59,7 @@ const eventData = [
     description: "Join us for a special preview of Show Dem Camp's latest project, AFRIKA MAGIK. Brought to you by local·global and Sample Chief.",
     startDate: "2025-10-22",
     endDate: "2025-10-22",
-    time: "8PM - 12AM",
+    time: "8PM - LATE",
     venue: "296 Brunswick Avenue Toronto, ON M5S 1X9",
     imageUrl: "/assets/events/afrika-magik-toronto-poster.png",
     ticketLink: "https://www.eventbrite.ca/e/afrika-magik-toronto-listening-party-tickets-1836211551179?aff=erelexpmlt",
@@ -114,8 +114,42 @@ export default function Events() {
   };
 
   const generateCalendarLink = (event: (typeof eventData)[0]) => {
-    const startDate = new Date(`${event.startDate}T20:00:00`);
-    const endDate = new Date(`${event.endDate}T23:59:00`);
+    const timePattern = /(\d{1,2})(pm|PM|am|AM)/i;
+    const startMatch = event.time.match(timePattern);
+    
+    let startHour = 20;
+    if (startMatch) {
+      startHour = parseInt(startMatch[1]);
+      const isPM = startMatch[2].toLowerCase() === 'pm';
+      
+      if (isPM && startHour !== 12) startHour += 12;
+      if (!isPM && startHour === 12) startHour = 0;
+    }
+    
+    const startDate = new Date(`${event.startDate}T${startHour.toString().padStart(2, '0')}:00:00`);
+    
+    // Parse end time: use 11:59 PM only for "LATE", otherwise respect the stated end time
+    let endDate: Date;
+    if (event.time.includes('LATE')) {
+      endDate = new Date(`${event.endDate}T23:59:00`);
+    } else {
+      const endTimeMatch = event.time.match(/- ?(\d{1,2})(pm|PM|am|AM)/i);
+      if (endTimeMatch) {
+        let endHour = parseInt(endTimeMatch[1]);
+        const isEndPM = endTimeMatch[2].toLowerCase() === 'pm';
+        
+        if (isEndPM && endHour !== 12) endHour += 12;
+        if (!isEndPM && endHour === 12) endHour = 0;
+        
+        endDate = new Date(`${event.endDate}T${endHour.toString().padStart(2, '0')}:00:00`);
+        
+        if (endHour < startHour) {
+          endDate.setDate(endDate.getDate() + 1);
+        }
+      } else {
+        endDate = new Date(`${event.endDate}T23:59:00`);
+      }
+    }
 
     const formatDateForGoogle = (date: Date) => {
       return date.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
