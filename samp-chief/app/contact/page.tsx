@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { getNames } from "country-list";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { easeOut } from "framer-motion";
 
 export default function NewsletterSignup() {
@@ -95,9 +95,9 @@ export default function NewsletterSignup() {
             className="text-center mb-12"
           >
             <h1 className="font-ruder font-light leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-[#202020]">
-              Get In Touch
+              Stay Connected
             </h1>
-            <p className="font-sans font-light mb-8 leading-relaxed text-lg md:text-xl lg:text-2xl text-[#202020]">
+            <p className="font-sans font-light mb-8 leading-relaxed text-base md:text-lg text-[#202020]">
               Be part of a tribe of music lovers and tastemakers.
             </p>
             <div className="w-16 h-1 bg-[#07693A] mx-auto rounded-full" />
@@ -199,22 +199,18 @@ export default function NewsletterSignup() {
               viewport={{ once: true, amount: 0.2 }}
               className="text-center mt-12 pt-8 border-t border-gray-200"
             >
-              <h3 className="font-sans font-light leading-relaxed text-[#202020] text-xl mb-4">
+              <h1 className="font-ruder font-light leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-[#202020]">
                 Get in Touch
-              </h3>
-              <p className="font-sans font-light mb-6 leading-relaxed text-[#202020]">
-                Curious about what we do or want to collaborate? Hit us up —
-                we'd love to hear from you.
+              </h1>
+              <p className="font-sans font-light mb-8 leading-relaxed text-base md:text-lg text-[#202020]">
+                Curious about what we do or want to collaborate? Hit us up — we'd love to hear from you.
               </p>
-              <div className="flex justify-center items-center space-x-2">
-                <span className="font-sans font-light leading-relaxed text-base text-[#202020]">
-                  Email:
-                </span>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a
                   href="mailto:contactus@samplechief.com"
-                  className="text-[#07693A] hover:underline transition-all duration-300 font-sans font-light leading-relaxed text-base"
+                  className="font-sans font-light leading-relaxed text-base bg-transparent border-2 border-gray-800 hover:bg-[#202020] hover:border-[#202020] hover:text-white rounded-full transition-all duration-300 inline-flex items-center justify-center px-6 py-3 text-[#202020]"
                 >
-                  contactus@samplechief.com
+                  Email Us
                 </a>
               </div>
             </motion.div>
