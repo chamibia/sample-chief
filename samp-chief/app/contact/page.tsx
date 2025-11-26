@@ -97,7 +97,7 @@ export default function NewsletterSignup() {
             <h1 className="font-ruder font-light leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-[#202020]">
               Stay Connected
             </h1>
-            <p className="font-sans font-light mb-8 leading-relaxed text-lg md:text-xl lg:text-2xl text-[#202020]">
+            <p className="font-sans font-light mb-8 leading-relaxed text-base md:text-lg text-[#202020]">
               Be part of a tribe of music lovers and tastemakers.
             </p>
             <div className="w-16 h-1 bg-[#07693A] mx-auto rounded-full" />
@@ -202,7 +202,7 @@ export default function NewsletterSignup() {
               <h1 className="font-ruder font-light leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-[#202020]">
                 Get in Touch
               </h1>
-              <p className="font-sans font-light mb-8 leading-relaxed text-lg md:text-xl lg:text-2xl text-[#202020]">
+              <p className="font-sans font-light mb-8 leading-relaxed text-base md:text-lg text-[#202020]">
                 Curious about what we do or want to collaborate? Hit us up — we'd love to hear from you.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
