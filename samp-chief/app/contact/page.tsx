@@ -212,15 +212,6 @@ export default function NewsletterSignup() {
                 >
                   Email Us
                 </a>
-                <a
-                  href="https://samplechief.substack.com/?utm_campaign=profile_chips"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-sans font-light leading-relaxed text-base bg-transparent border-2 border-gray-800 hover:bg-[#202020] hover:border-[#202020] hover:text-white rounded-full transition-all duration-300 inline-flex items-center justify-center px-6 py-3 text-[#202020]"
-                >
-                  Editorial
-                  <ExternalLink className="h-4 w-4 ml-2" />
-                </a>
               </div>
             </motion.div>
           </motion.div>
