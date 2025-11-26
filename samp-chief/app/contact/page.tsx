@@ -206,7 +206,7 @@ export default function NewsletterSignup() {
                 Curious about what we do or want to collaborate? Hit us up —
                 we'd love to hear from you.
               </p>
-              <div className="flex justify-center items-center space-x-2">
+              <div className="flex justify-center items-center space-x-2 mb-4">
                 <span className="font-sans font-light leading-relaxed text-base text-[#202020]">
                   Email:
                 </span>
@@ -215,6 +215,19 @@ export default function NewsletterSignup() {
                   className="text-[#07693A] hover:underline transition-all duration-300 font-sans font-light leading-relaxed text-base"
                 >
                   contactus@samplechief.com
+                </a>
+              </div>
+              <div className="flex justify-center items-center space-x-2">
+                <span className="font-sans font-light leading-relaxed text-base text-[#202020]">
+                  Editorial:
+                </span>
+                <a
+                  href="https://samplechief.substack.com/?utm_campaign=profile_chips"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#07693A] hover:underline transition-all duration-300 font-sans font-light leading-relaxed text-base"
+                >
+                  samplechief.substack.com
                 </a>
               </div>
             </motion.div>

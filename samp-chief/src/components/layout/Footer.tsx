@@ -14,6 +14,7 @@ const SiTiktok = dynamic(() => import("react-icons/si").then((m) => m.SiTiktok),
 const SiSoundcloud = dynamic(() => import("react-icons/si").then((m) => m.SiSoundcloud), { ssr: false });
 const SiYoutube = dynamic(() => import("react-icons/si").then((m) => m.SiYoutube), { ssr: false });
 const SiSpotify = dynamic(() => import("react-icons/si").then((m) => m.SiSpotify), { ssr: false });
+const SiSubstack = dynamic(() => import("react-icons/si").then((m) => m.SiSubstack), { ssr: false });
 
 export default function Footer() {
   const pathname = usePathname();
@@ -110,6 +111,15 @@ export default function Footer() {
             className="transform transition-all duration-300 hover:scale-125 hover:text-[#1DB954] hover:opacity-100"
           >
             <SiSpotify className="h-6 w-6" />
+          </Link>
+          <Link
+            href="https://samplechief.substack.com/?utm_campaign=profile_chips"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Substack"
+            className="transform transition-all duration-300 hover:scale-125 hover:text-[#FF6719] hover:opacity-100"
+          >
+            <SiSubstack className="h-6 w-6" />
           </Link>
         </div>
 
