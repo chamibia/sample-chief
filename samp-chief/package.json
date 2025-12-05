@@ -30,9 +30,9 @@
     "framer-motion": "^12.7.4",
     "graphql-request": "^7.2.0",
     "lucide-react": "^0.501.0",
-    "next": "^15.5.6",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
+    "next": "^15",
+    "react": "^18",
+    "react-dom": "^18",
     "react-hook-form": "^7.55.0",
     "react-icons": "^5.5.0",
     "shadcn": "^2.7.0",
@@ -46,11 +46,11 @@
     "@tailwindcss/postcss": "^4.1.8",
     "@types/country-list": "^2.1.4",
     "@types/mailchimp__mailchimp_marketing": "^3.0.21",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/node": "^24.10.1",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.3",
-    "typescript": "^5"
+    "typescript": "^5.9.3"
   }
 }
