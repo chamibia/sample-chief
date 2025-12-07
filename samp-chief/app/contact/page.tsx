@@ -205,7 +205,7 @@ export default function NewsletterSignup() {
                     video.play().catch(console.error);
                   }}
                 >
-                  <source src="/assets/videos/sc-logo-10002-white.mp4" type="video/mp4" />
+                  <source src="/assets/videos/sample.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
@@ -341,7 +341,7 @@ export default function NewsletterSignup() {
                     video.play().catch(console.error);
                   }}
                 >
-                  <source src="/assets/videos/sc-logo-10002-white.mp4" type="video/mp4" />
+                  <source src="/assets/videos/sample.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
