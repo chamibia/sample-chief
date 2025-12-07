@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import * as React from "react";
+
 import { CartProvider } from "@/components/CartProvider";
+
 import SpecialPageLayout from "../../src/components/layout/SpecialPageLayout";
 
 export const metadata: Metadata = {

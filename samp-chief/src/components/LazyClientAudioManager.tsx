@@ -1,8 +1,10 @@
 "use client";
 
-import React from "react";
-import { useState, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import React from "react";
+import { useEffect,useRef, useState } from "react";
+
+import { createAudioFadeController } from '@/lib/audioUtils';
 
 interface ClientAudioManagerProps {
   children: React.ReactNode;
@@ -10,10 +12,10 @@ interface ClientAudioManagerProps {
 
 export default function LazyClientAudioManager({ children }: ClientAudioManagerProps) {
   const [isMuted, setIsMuted] = useState(true);
-  const [isTransitioning, setIsTransitioning] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const pathname = usePathname();
   const isHomePage = pathname === '/';
+  const audioController = createAudioFadeController();
 
   // Set video ref when component mounts
   useEffect(() => {
@@ -30,72 +32,17 @@ export default function LazyClientAudioManager({ children }: ClientAudioManagerP
   // Navigation audio fade
   useEffect(() => {
     if (!isHomePage && videoRef.current && !isMuted) {
-      fadeAudioOnNavigate();
+      audioController.fadeAudioOnNavigate(videoRef.current);
     }
   }, [pathname]);
 
-  const fadeAudio = (targetVolume: number, duration = 800) => {
-    if (!videoRef.current) return;
-    
-    setIsTransitioning(true);
-    const video = videoRef.current;
-    const startVolume = video.volume;
-    const volumeStep = (targetVolume - startVolume) / (duration / 16);
-    
-    const fade = () => {
-      if (!videoRef.current) return;
-      
-      const newVolume = videoRef.current.volume + volumeStep;
-      
-      if (
-        (volumeStep > 0 && newVolume >= targetVolume) || 
-        (volumeStep < 0 && newVolume <= targetVolume)
-      ) {
-        videoRef.current.volume = targetVolume;
-        setIsTransitioning(false);
-        return;
-      }
-      
-      videoRef.current.volume = newVolume;
-      requestAnimationFrame(fade);
-    };
-    
-    requestAnimationFrame(fade);
-  };
-
-  const fadeAudioOnNavigate = () => {
-    if (!videoRef.current) return;
-    fadeAudio(0, 400);
-    setTimeout(() => {
-      if (videoRef.current) {
-        videoRef.current.muted = true;
-        setIsMuted(true);
-      }
-    }, 400);
-  };
-
   const toggleMute = () => {
-    if (isTransitioning) return;
-    
     if (!videoRef.current) {
       setIsMuted(!isMuted);
       return;
     }
     
-    const video = videoRef.current;
-    
-    if (isMuted) {
-      video.muted = false;
-      video.volume = 0;
-      fadeAudio(0.7, 800);
-      setIsMuted(false);
-    } else {
-      fadeAudio(0, 600);
-      setTimeout(() => {
-        if (videoRef.current) videoRef.current.muted = true;
-        setIsMuted(true);
-      }, 600);
-    }
+    audioController.toggleMute(videoRef.current, isMuted, setIsMuted);
   };
 
   return (
@@ -107,7 +54,7 @@ export default function LazyClientAudioManager({ children }: ClientAudioManagerP
         <div className="fixed bottom-6 right-6 z-50">
           <button
             onClick={toggleMute}
-            disabled={isTransitioning}
+            disabled={audioController.isTransitioning}
             className="flex items-center gap-2 px-4 py-3
                      hover:bg-black hover:bg-opacity-40 transition-all duration-300 
                      text-white text-sm font-medium shadow-lg cursor-pointer rounded-full

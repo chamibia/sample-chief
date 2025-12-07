@@ -1,7 +1,8 @@
-import { events } from "@/data/events";
 import fs from "fs";
 import path from "path";
+
 import { ProjectBlock } from "@/components/projectBlocks";
+import { events } from "@/data/events";
 
 export interface ProjectDetailData {
   event: any;

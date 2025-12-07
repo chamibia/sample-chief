@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+/* Optimized font-face declarations with font-display swap */
+@font-face {
+  font-family: "AlteHaasGrotesk";
+  src: url("/assets/fonts/AlteHaasGroteskRegular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "RuderPlakatLL";
+  src: url("/assets/fonts/RuderPlakatLL-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* System font fallback for critical performance */
+:root {
+  --font-sans: "AlteHaasGrotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "RuderPlakatLL", ui-serif, Georgia, serif;
+}
+
+/* Optimized body styles */
+html,
+body {
+  font-family: var(--font-sans);
+  height: 100%;
+  overflow-x: hidden;
+  letter-spacing: 0.025em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
+}
+
+/* Essential typography */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 0.04em;
+}
+
+p {
+  letter-spacing: 0.025em;
+  line-height: 1.7;
+}
+
+/* Dynamic viewport height support */
+@supports (height: 100dvh) {
+  .min-h-screen {
+    min-height: 100dvh;
+  }
+}
+
+/* Mobile viewport fixes */
+@media (max-width: 768px) {
+  .min-h-screen {
+    min-height: calc(var(--vh, 1vh) * 100);
+  }
+}
+
+/* Minimal custom utilities - only what's actually used */
+.fixed-row-height {
+  grid-auto-rows: 22rem;
+}
+
+.font-alte {
+  font-family: var(--font-sans);
+}
+
+.font-ruder {
+  font-family: var(--font-display);
+}
+
+.mobile-safe-bottom {
+  padding-bottom: calc(2rem + var(--safe-area-inset-bottom));
+}
+
+/* Essential symbol fallbacks only */
+.currency-symbol,
+.price-symbol {
+  font-family: ui-monospace, "SF Mono", Monaco, "Cascadia Code", monospace;
+  font-feature-settings: "tnum" 1;
+}
+
+.price-with-symbol::before {
+  content: "$";
+  font-family: ui-monospace, "SF Mono", Monaco, monospace;
+}

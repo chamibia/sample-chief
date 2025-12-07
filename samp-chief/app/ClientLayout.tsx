@@ -2,7 +2,9 @@
 "use client";
 
 import { useEffect } from "react";
+
 import ScrollToTop from "@/components/ScrollToTop";
+import { optimizeBfcache } from "@/lib/bfcache";
 
 export default function ClientLayout({
   children,
@@ -32,6 +34,9 @@ export default function ClientLayout({
 
     window.addEventListener("resize", handleResize);
     window.addEventListener("orientationchange", handleOrientationChange);
+    
+    // Initialize bfcache optimization
+    optimizeBfcache();
 
     // Cleanup
     return () => {

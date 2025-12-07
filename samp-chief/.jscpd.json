@@ -1,0 +1,17 @@
+{
+  "threshold": 20,
+  "reporters": ["html", "console"],
+  "ignore": [
+    "node_modules/**",
+    ".next/**",
+    "dist/**",
+    "**/*.test.{ts,tsx,js,jsx}",
+    "**/*.spec.{ts,tsx,js,jsx}",
+    "yarn.lock",
+    "package-lock.json"
+  ],
+  "format": ["typescript", "javascript", "tsx", "jsx"],
+  "minLines": 5,
+  "minTokens": 50,
+  "output": "./report"
+}

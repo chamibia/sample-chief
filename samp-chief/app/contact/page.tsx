@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
 import { getNames } from "country-list";
-import { motion } from "framer-motion";
-import { ArrowRight, ExternalLink } from "lucide-react";
-import { easeOut } from "framer-motion";
+// Use lighter CSS animations instead of framer-motion for form
+import React, { useEffect,useState } from "react";
+
+import { SubmitButton } from "@/components/ui";
 
 export default function NewsletterSignup() {
   const [showBanner, setShowBanner] = useState(true);
@@ -17,15 +17,6 @@ export default function NewsletterSignup() {
     null
   );
   const [statusMessage, setStatusMessage] = useState("");
-
-  const bottomVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: easeOut },
-    },
-  };
 
   const countries = getNames();
 
@@ -88,11 +79,8 @@ export default function NewsletterSignup() {
     <div className="min-h-screen flex flex-col">
       <div className="flex-1 w-full px-5 md:px-9 text-gray-800 pt-20">
         <div className="max-w-2xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+          <div
+            className="text-center mb-12 animate-fade-in"
           >
             <h1 className="font-ruder font-light leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-[#202020]">
               Stay Connected
@@ -101,12 +89,10 @@ export default function NewsletterSignup() {
               Be part of a tribe of music lovers and tastemakers.
             </p>
             <div className="w-16 h-1 bg-[#07693A] mx-auto rounded-full" />
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+          <div
+            className="animate-fade-in-delayed"
           >
             {formStatus === "success" && (
               <div className="mb-4 px-4 py-2 bg-[#07693A] text-white rounded text-center font-sans font-light w-50 opacity-90">
@@ -175,29 +161,18 @@ export default function NewsletterSignup() {
               </div>
 
               <div className="text-center">
-                <button
-                  type="submit"
+                <SubmitButton 
+                  loading={isSubmitting} 
+                  loadingText="Joining..."
                   disabled={isSubmitting}
-                  className="font-sans font-light leading-relaxed text-base bg-transparent border-2 border-gray-800 hover:bg-[#202020] hover:border-[#202020] hover:text-white rounded-full transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center px-6 py-3 text-[#202020]"
                 >
-                  {isSubmitting ? (
-                    <span className="animate-pulse">Joining...</span>
-                  ) : (
-                    <>
-                      Join
-                      <ArrowRight className="h-4 w-4 ml-2" />
-                    </>
-                  )}
-                </button>
+                  Join
+                </SubmitButton>
               </div>
             </form>
 
-            <motion.div
-              variants={bottomVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              className="text-center mt-12 pt-8 border-t border-gray-200"
+            <div
+              className="text-center mt-12 pt-8 border-t border-gray-200 animate-fade-in-slow"
             >
               <h1 className="font-ruder font-light leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-[#202020]">
                 Get in Touch
@@ -213,8 +188,8 @@ export default function NewsletterSignup() {
                   Email Us
                 </a>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </div>
 

@@ -1,23 +1,17 @@
-"use client";
-import dynamic from "next/dynamic";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { 
+  FaInstagram, 
+  FaLinkedinIn, 
+  FaSoundcloud, 
+  FaSpotify, 
+  FaTiktok, 
+  FaTwitter, 
+  FaYoutube} from "react-icons/fa";
+import { SiSubstack } from "react-icons/si";
+
 import { cn } from "@/lib/utils";
 
-// Dynamically import react-icons on the client only to avoid server-side
-// vendor-chunk references in dev (prevents server trying to require
-// ./vendor-chunks/react-icons.js).
-const SiInstagram = dynamic(() => import("react-icons/si").then((m) => m.SiInstagram), { ssr: false });
-const SiX = dynamic(() => import("react-icons/si").then((m) => m.SiX), { ssr: false });
-const SiLinkedin = dynamic(() => import("react-icons/si").then((m) => m.SiLinkedin), { ssr: false });
-const SiTiktok = dynamic(() => import("react-icons/si").then((m) => m.SiTiktok), { ssr: false });
-const SiSoundcloud = dynamic(() => import("react-icons/si").then((m) => m.SiSoundcloud), { ssr: false });
-const SiYoutube = dynamic(() => import("react-icons/si").then((m) => m.SiYoutube), { ssr: false });
-const SiSpotify = dynamic(() => import("react-icons/si").then((m) => m.SiSpotify), { ssr: false });
-const SiSubstack = dynamic(() => import("react-icons/si").then((m) => m.SiSubstack), { ssr: false });
-
-export default function Footer() {
-  const pathname = usePathname();
+export default function Footer({ pathname }: { pathname: string }) {
   const isHome = pathname === "/";
   const isAbout = pathname === "/about";
   const isEvent = pathname === "/events";
@@ -45,7 +39,7 @@ export default function Footer() {
       }}
     >
       <div className="flex flex-col md:relative items-center w-full px-4 pt-4 pb-2">
-        <div className="order-2 md:order-1 font-ruder font-bold mt-4 md:mt-0 text-sm mb-2 md:mb-0 text-center md:text-left md:absolute md:left-0 md:pl-8">
+        <div className="order-2 md:order-1 font-ruder font-medium mt-4 md:mt-0 text-sm mb-2 md:mb-0 text-center md:text-left md:absolute md:left-0 md:pl-8">
           Supported by Ontario Creates
         </div>
         <div className="order-1 md:order-2 flex items-center justify-center space-x-6 md:mx-auto">
@@ -56,7 +50,7 @@ export default function Footer() {
             aria-label="Instagram"
             className="transform transition-all duration-300 hover:scale-125 hover:text-[#E1306C] hover:opacity-100"
           >
-            <SiInstagram className="h-6 w-6" />
+            <FaInstagram size={24} />
           </Link>
           <Link
             href="https://x.com/SampleChief"
@@ -65,7 +59,7 @@ export default function Footer() {
             aria-label="X (formerly Twitter)"
             className="transform transition-all duration-300 hover:scale-125 hover:text-[#1DA1F2] hover:opacity-100"
           >
-            <SiX className="h-6 w-6" />
+            <FaTwitter size={24} />
           </Link>
           <Link
             href="https://www.linkedin.com/company/sample-chief"
@@ -74,7 +68,7 @@ export default function Footer() {
             aria-label="LinkedIn"
             className="transform transition-all duration-300 hover:scale-125 hover:text-[#0077B5] hover:opacity-100"
           >
-            <SiLinkedin className="h-6 w-6" />
+            <FaLinkedinIn size={24} />
           </Link>
           <Link
             href="https://www.tiktok.com/@samplechief"
@@ -83,7 +77,7 @@ export default function Footer() {
             aria-label="TikTok"
             className="transform transition-all duration-300 hover:scale-125 hover:text-[#FF0050] hover:opacity-100"
           >
-            <SiTiktok className="h-6 w-6" />
+            <FaTiktok size={24} />
           </Link>
           <Link
             href="https://soundcloud.com/samplechief"
@@ -92,7 +86,7 @@ export default function Footer() {
             aria-label="SoundCloud"
             className="transform transition-all duration-300 hover:scale-125 hover:text-[#FF5500] hover:opacity-100"
           >
-            <SiSoundcloud className="h-6 w-6" />
+            <FaSoundcloud size={24} />
           </Link>
           <Link
             href="https://www.youtube.com/channel/UC2HjhV9Dv-_n1PXGw2P4SXg?app=desktop"
@@ -101,7 +95,7 @@ export default function Footer() {
             aria-label="YouTube"
             className="transform transition-all duration-300 hover:scale-125 hover:text-[#FF0000] hover:opacity-100"
           >
-            <SiYoutube className="h-6 w-6" />
+            <FaYoutube size={24} />
           </Link>
           <Link
             href="https://open.spotify.com/user/x3zc0sdr8mdvs4b7uzqxqdnnf"
@@ -110,7 +104,7 @@ export default function Footer() {
             aria-label="Spotify"
             className="transform transition-all duration-300 hover:scale-125 hover:text-[#1DB954] hover:opacity-100"
           >
-            <SiSpotify className="h-6 w-6" />
+            <FaSpotify size={24} />
           </Link>
           <Link
             href="https://samplechief.substack.com/?utm_campaign=profile_chips"
@@ -119,7 +113,7 @@ export default function Footer() {
             aria-label="Substack"
             className="transform transition-all duration-300 hover:scale-125 hover:text-[#FF6719] hover:opacity-100"
           >
-            <SiSubstack className="h-6 w-6" />
+            <SiSubstack size={24} />
           </Link>
         </div>
 

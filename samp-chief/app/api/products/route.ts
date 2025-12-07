@@ -1,5 +1,6 @@
-import { client } from '../../../src/lib/shopify';
 import { NextResponse } from 'next/server';
+
+import { client } from '../../../src/lib/shopify';
 
 const GET_PRODUCTS = `
   query getProducts($first: Int!) {

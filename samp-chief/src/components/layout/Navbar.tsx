@@ -1,20 +1,21 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { Menu, ShoppingCart,X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
-import logo from "../../../public/assets/logos/logo.png";
-import whiteLogo from "../../../public/assets/logos/white-logo.png";
-import { Menu, X, ShoppingCart } from "lucide-react";
+import React, { useEffect,useState } from "react";
+
 import { useCart } from "@/components/CartProvider";
 import {
   NavigationMenu,
-  NavigationMenuList,
   NavigationMenuItem,
   NavigationMenuLink,
-  navigationMenuTriggerStyle,
+  NavigationMenuList,
 } from "@/components/ui/navigation-menu";
+
+import logo from "../../../public/assets/logos/logo.png";
+import whiteLogo from "../../../public/assets/logos/white-logo.png";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,6 +36,7 @@ export default function Navbar() {
   const isContact = pathname === "/contact";
   const isShop = pathname === "/shop";
   const isProjects = pathname === "/projects";
+  const isProjectDetail = pathname.startsWith("/projects/") && pathname !== "/projects";
 
 
   // Detect mobile using a media query (client-side only)
@@ -63,6 +65,8 @@ export default function Navbar() {
     ? "bg-[#F8C722]"
     : isProjects
     ? "bg-[#F8C722]"
+    : isProjectDetail
+    ? "bg-white"
     : "bg-white";
 
   const textColor = isHome && !isScrolled && (!isMobile || (isMobile && !isMenuOpen)) ? "text-white" : "text-gray-800";
@@ -82,8 +86,8 @@ export default function Navbar() {
 
   const mobileDropdownTextColor = backgroundColor === "bg-white" ? "text-[#202020] hover:text-gray-700" : "text-white hover:text-gray-300";
 
-  const logoWidth = isMobile ? (isScrolled ? 156 : 140) : (isScrolled ? 80 : 66);
-  const logoHeight = isMobile ? (isScrolled ? 92 : 84) : (isScrolled ? 53 : 58);
+  const logoWidth = isMobile ? (isScrolled ? 195 : 175) : (isScrolled ? 150 : 138);
+  const logoHeight = isMobile ? (isScrolled ? 115 : 105) : (isScrolled ? 100 : 119);
 
   return (
     <header className={headerClasses}>
@@ -91,14 +95,14 @@ export default function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          className="transition-transform hover:scale-105 hover:-rotate-12 z-10"
+          className="transition-transform hover:scale-105 hover:-rotate-12 z-10 pt-1 mt-1"
         >
           <Image
             src={currentLogo}
             alt="Sample Chief Logo"
             width={logoWidth}
             height={logoHeight}
-            className="transition-all duration-300 ease-in-out md:w-auto h-auto max-h-[84px] md:max-h-[37px]"
+            className="transition-all duration-300 ease-in-out w-auto h-auto"
             style={{ height: 'auto' }}
           />
         </Link>
@@ -116,7 +120,7 @@ export default function Navbar() {
                     <NavigationMenuLink asChild>
                       <Link
                         href={path}
-                        className={`group inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-lg font-ruder font-bold transition-all duration-200 ease-out transform hover:scale-105 ${
+                        className={`group inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-lg font-ruder font-medium transition-all duration-200 ease-out transform hover:scale-105 ${
                           isHome && !isScrolled
                             ? "text-white hover:text-white hover:underline hover:underline-offset-4 hover:decoration-2 hover:decoration-white"
                             : "text-[#202020] hover:text-[#202020] hover:underline hover:underline-offset-4 hover:decoration-2"
@@ -190,7 +194,7 @@ export default function Navbar() {
                   <Link
                     key={label}
                     href={path}
-                    className={`block w-full text-left font-ruder font-bold text-lg md:text-xl uppercase py-2 px-3 transition duration-150 rounded-lg ${mobileDropdownTextColor} ${isActive ? "underline underline-offset-4 decoration-2" : ""}`}
+                    className={`block w-full text-left font-ruder font-medium text-lg md:text-xl uppercase py-2 px-3 transition duration-150 rounded-lg ${mobileDropdownTextColor} ${isActive ? "underline underline-offset-4 decoration-2" : ""}`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {label}
@@ -201,7 +205,7 @@ export default function Navbar() {
               {/* Mobile Cart Link */}
               <Link
                 href="/shop/cart"
-                className={`block w-full text-left font-ruder font-bold text-lg md:text-xl uppercase py-2 px-3 transition duration-150 rounded-lg ${mobileDropdownTextColor}`}
+                className={`block w-full text-left font-ruder font-medium text-lg md:text-xl uppercase py-2 px-3 transition duration-150 rounded-lg ${mobileDropdownTextColor}`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 CART {cart.totalQuantity > 0 && `(${cart.totalQuantity})`}

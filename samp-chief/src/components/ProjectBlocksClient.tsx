@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
-import { renderProjectBlock, ProjectBlock } from "@/components/projectBlocks";
+
+import { ProjectBlock,renderProjectBlock } from "@/components/projectBlocks";
 
 interface ProjectBlocksClientProps {
   blocks: ProjectBlock[];

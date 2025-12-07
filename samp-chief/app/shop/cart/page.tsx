@@ -1,10 +1,12 @@
 "use client";
 
-import React from "react";
-import { useCart } from "@/components/CartProvider";
-import { Minus, Plus, Trash2, ArrowLeft } from "lucide-react";
-import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+
+import { useCart } from "@/components/CartProvider";
+import { QuantityButton, RemoveButton } from "@/components/ui";
 
 // Full viewport background for cart page
 const CartBg = React.memo(function CartBg() {
@@ -37,6 +39,7 @@ export default function CartPage() {
                 width={80}
                 height={80}
                 className="w-full h-full object-cover"
+                style={{ width: 'auto', height: 'auto' }}
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-gray-600 text-xs">
@@ -58,30 +61,21 @@ export default function CartPage() {
 
           {/* Quantity Controls */}
           <div className="flex items-center space-x-3">
-            <button
+            <QuantityButton 
+              operation="decrease"
               onClick={() => updateQuantity(item.id, item.quantity - 1)}
-              className="w-8 h-8 border border-gray-600 rounded flex items-center justify-center hover:border-gray-500 transition-colors bg-black/20"
-            >
-              <Minus className="h-4 w-4" />
-            </button>
+            />
             <span className="font-sans font-light text-lg w-8 text-center">
               {item.quantity}
             </span>
-            <button
+            <QuantityButton 
+              operation="increase"
               onClick={() => updateQuantity(item.id, item.quantity + 1)}
-              className="w-8 h-8 border border-gray-600 rounded flex items-center justify-center hover:border-gray-500 transition-colors bg-black/20"
-            >
-              <Plus className="h-4 w-4" />
-            </button>
+            />
           </div>
 
           {/* Remove Button */}
-          <button
-            onClick={() => removeFromCart(item.id)}
-            className="text-red-400 hover:text-red-300 transition-colors p-2"
-          >
-            <Trash2 className="h-5 w-5" />
-          </button>
+          <RemoveButton onClick={() => removeFromCart(item.id)} />
         </div>
       </div>
     ))

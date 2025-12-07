@@ -1,6 +1,7 @@
 // app/api/products/[handle]/route.ts
-import { client } from '@/lib/shopify';
 import { NextResponse } from 'next/server';
+
+import { client } from '@/lib/shopify';
 
 type ProductVariant = {
   id: string;

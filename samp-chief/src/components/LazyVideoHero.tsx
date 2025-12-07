@@ -1,59 +1,16 @@
 "use client";
 
-import { useState, useRef } from "react";
+import {useRef, useState } from "react";
+
+import { createAudioFadeController } from '@/lib/audioUtils';
 
 export default function LazyVideoHero() {
   const [isMuted, setIsMuted] = useState(true);
-  const [isTransitioning, setIsTransitioning] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const audioController = createAudioFadeController();
 
-  const fadeAudio = (targetVolume: number, duration = 800) => {
-    if (!videoRef.current) return;
-    
-    setIsTransitioning(true);
-    const video = videoRef.current;
-    const startVolume = video.volume;
-    const volumeStep = (targetVolume - startVolume) / (duration / 16);
-    
-    const fade = () => {
-      if (!videoRef.current) return;
-      
-      const newVolume = videoRef.current.volume + volumeStep;
-      
-      if (
-        (volumeStep > 0 && newVolume >= targetVolume) || 
-        (volumeStep < 0 && newVolume <= targetVolume)
-      ) {
-        videoRef.current.volume = targetVolume;
-        setIsTransitioning(false);
-        return;
-      }
-      
-      videoRef.current.volume = newVolume;
-      requestAnimationFrame(fade);
-    };
-    
-    requestAnimationFrame(fade);
-  };
-
-  const toggleMute = () => {
-    if (!videoRef.current || isTransitioning) return;
-    
-    const video = videoRef.current;
-    
-    if (isMuted) {
-      video.muted = false;
-      video.volume = 0;
-      fadeAudio(0.7, 800);
-      setIsMuted(false);
-    } else {
-      fadeAudio(0, 600);
-      setTimeout(() => {
-        if (videoRef.current) videoRef.current.muted = true;
-        setIsMuted(true);
-      }, 600);
-    }
-  };
+  // Keep this component as-is since it has custom audio controls
+  // that are specific to the hero video functionality
 
   return (
     <section className="relative w-full h-[100vh] bg-black" id="hero-section">
@@ -73,7 +30,7 @@ export default function LazyVideoHero() {
         style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }}
       >
         <div className="text-center text-white px-4 max-w-4xl">
-          <p className="text-xl md:text-2xl font-ruder italic -skew-x-15 max-w-2xl mx-auto mb-6">
+          <p className="text-xl md:text-2xl font-ruder italic -skew-x-4 max-w-2xl mx-auto mb-6">
             This is where culture happens
           </p>
         </div>
