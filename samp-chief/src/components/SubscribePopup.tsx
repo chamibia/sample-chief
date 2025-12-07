@@ -23,9 +23,17 @@ export default function SubscribePopup() {
   }>({ type: null, message: "" });
 
   useEffect(() => {
+    // Check if user has already dismissed or subscribed
+    const hasSeenPopup = localStorage.getItem('subscribePopupSeen');
+    const hasSubscribed = localStorage.getItem('hasSubscribed');
+    
+    if (hasSeenPopup || hasSubscribed) {
+      return; // Don't show popup
+    }
+
     const timer = setTimeout(() => {
       setIsOpen(true);
-    }, 10000);
+    }, 6000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -72,6 +80,7 @@ export default function SubscribePopup() {
           message: successMessage,
         });
 
+        localStorage.setItem('hasSubscribed', 'true');
         setTimeout(() => setIsOpen(false), 2500);
       } else {
         // Normalize error message
@@ -107,10 +116,13 @@ export default function SubscribePopup() {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
-      <div className="relative w-full max-w-[280px] sm:max-w-xs rounded-lg bg-white shadow-lg overflow-hidden flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 animate-in fade-in duration-300 ease-in">
+      <div className="relative w-full max-w-[280px] sm:max-w-xs rounded-lg bg-white shadow-lg overflow-hidden flex flex-col animate-in slide-in-from-bottom-4 duration-500 ease-in">
         <button
-          onClick={() => setIsOpen(false)}
+          onClick={() => {
+            setIsOpen(false);
+            localStorage.setItem('subscribePopupSeen', 'true');
+          }}
           className="absolute right-4 top-4 z-10 bg-white border border-black rounded-full p-2 shadow-md transition-colors duration-200 flex items-center justify-center cursor-pointer hover:bg-gray-100"
           aria-label="Close"
         >

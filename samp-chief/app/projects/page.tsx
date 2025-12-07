@@ -7,8 +7,8 @@ export const runtime = 'nodejs';
 
 export default function Projects() {
   return (
-    <>
+    <div className="p-5">
       <ProjectGrid />
-    </>
+    </div>
   );
 }
