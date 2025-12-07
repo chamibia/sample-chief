@@ -1,7 +1,7 @@
 // app/api/subscribe/route.ts
-import { NextResponse } from 'next/server'
 import mailchimp from '@mailchimp/mailchimp_marketing'
 import crypto from 'crypto'
+import { NextResponse } from 'next/server'
 
 interface MailchimpMemberResponse {
   id: string

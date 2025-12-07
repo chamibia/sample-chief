@@ -1,6 +1,6 @@
-import { GraphQLClient, gql } from "graphql-request";
-import ProductCard from "./productCard";
-import { ExternalLink } from "lucide-react";
+import { gql,GraphQLClient } from "graphql-request";
+
+import ProductCardWrapper from "./productCard";
 
 const shopify = new GraphQLClient(
   `https://${process.env.SHOPIFY_STORE_DOMAIN}/api/2023-10/graphql.json`,
@@ -124,7 +124,7 @@ export default async function ShopPage() {
       {/* Products Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12 xl:gap-16 pb-24">
         {edges.map(({ node }) => (
-          <ProductCard key={node.id} node={node} />
+          <ProductCardWrapper key={node.id} node={node} />
         ))}
       </div>
     </>

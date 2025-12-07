@@ -1,10 +1,10 @@
-import Image from "next/image";
 import { Metadata } from "next";
-
-import LazyVideoHero from "../src/components/LazyVideoHero";
-import LazyClientAudioManager from "../src/components/LazyClientAudioManager";
+import Image from "next/image";
 import Link from "next/link";
+
 import Footer from "../src/components/layout/Footer";
+import LazyClientAudioManager from "../src/components/LazyClientAudioManager";
+import LazyVideoHero from "../src/components/LazyVideoHero";
 
 
 export const metadata: Metadata = {
@@ -62,8 +62,9 @@ export default function Home() {
                 src="/assets/images/home1.webp"
                 alt="Sample Chief girls"
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
-                loading="lazy"
+                priority={true} // Critical for LCP
+                quality={60} // Use configured quality value
+                sizes="(max-width: 768px) 100vw, 33vw"
                 className="object-cover object-center"
               />
             </div>
@@ -73,6 +74,7 @@ export default function Home() {
                 src="/assets/images/holts.webp"
                 alt="Holt Renfrew store front"
                 fill
+                quality={50} // Lower quality for lazy-loaded images
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
                 loading="lazy"
                 className="object-cover object-center"
@@ -84,6 +86,7 @@ export default function Home() {
                 src="/assets/images/home9.webp"
                 alt="Sample Chief talk"
                 fill
+                quality={50}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
                 loading="lazy"
                 className="object-cover object-center"
@@ -99,6 +102,7 @@ export default function Home() {
                 src="/assets/images/home8.webp"
                 alt="Sami on decks"
                 fill
+                quality={50}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
                 loading="lazy"
                 className="object-cover object-center"
@@ -120,10 +124,12 @@ export default function Home() {
 
         <section className="relative w-full">
           <div className="relative bg-gray-100 min-h-[100vh]">
-            <img 
+            <Image 
               src="/assets/projects/holt-renfrew/9.jpg" 
               alt="Holts Renfrew event"
               className="absolute inset-0 w-full h-full object-cover object-center"
+              fill
+              priority={true}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent">
               <div className="absolute inset-0 flex flex-col items-center justify-center p-8 md:p-16">
@@ -165,6 +171,7 @@ export default function Home() {
                             width={56}
                             height={56}
                             className="w-10 h-10 md:w-14 md:h-14 transition-transform duration-300 hover:scale-110 cursor-pointer"
+                            style={{ width: 'auto', height: 'auto' }}
                             priority
                           />
                         </Link>                        
@@ -177,7 +184,7 @@ export default function Home() {
           </div>
           {/* Sticky footer only on mobile, floating above content */}
           <div className="block sm:hidden absolute left-0 bottom-0 w-full z-30 pointer-events-auto">
-            <Footer />
+            <Footer pathname="/" />
           </div>
         </section>
 

@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 import React from "react";
-import { events } from "@/data/events";
+
 import ProjectBlocksClient from "@/components/ProjectBlocksClient";
+import { events } from "@/data/events";
+
 import Image from "./Image";
 import { getProjectDetailData } from "./useProjectDetailData";
 
@@ -33,7 +35,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     fill
                     sizes="100vw"
                     priority
-                    quality={85}
+                    quality={75}
                     className="object-cover object-center z-0"
                     placeholder="blur"
                     blurDataURL="data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='16' fill='%23e5e7eb'/%3E%3C/svg%3E"
@@ -84,10 +86,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           </div>
 
           {/* Mobile-only ethos/description block: place after the hero so it appears as its own block on small screens */}
-          {/* Full-bleed yellow background on mobile with centered white card */}
+          {/* Full-bleed background on mobile */}
           <div className="block md:hidden">
             <div className="w-full bg-white">
-              <div className="max-w-3xl mx-auto px-4 py-6">
+              <div className="w-full px-0 py-6">
                 <div className="bg-white p-4 text-black">
                 <h3 className="font-bold text-lg mb-2">Ethos</h3>
                 <div className="mb-6">{event.ethos || "-"}</div>

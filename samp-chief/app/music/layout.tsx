@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+
 import SpecialPageLayout from "../../src/components/layout/SpecialPageLayout";
 
 export const metadata: Metadata = {

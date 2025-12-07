@@ -1,6 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import Image from "next/image";
+import { useEffect,useState } from "react";
+
 import { useCart } from "@/components/CartProvider";
 
 interface CartItem {
@@ -194,10 +196,14 @@ export default function HeadlessCheckoutPage() {
             <div className="space-y-4">
               {shopifyCart.lines.edges.map(({ node: item }) => (
                 <div key={item.id} className="flex items-center space-x-4">
-                  <img
+                  <Image
                     src={item.merchandise.product.images.edges[0]?.node.url}
                     alt={item.merchandise.product.images.edges[0]?.node.altText}
                     className="w-16 h-16 object-cover rounded"
+                    width={64}
+                    height={64}
+                    loading="lazy"
+                    style={{ width: 'auto', height: 'auto' }}
                   />
                   <div className="flex-1">
                     <h3 className="font-medium">

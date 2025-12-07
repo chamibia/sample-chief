@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+
 import { events } from '@/data/events';
 
 export function useProjectsListingData() {

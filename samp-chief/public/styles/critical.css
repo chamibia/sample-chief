@@ -1,0 +1,123 @@
+/* Ultra-minimal CSS - replaces Tailwind for critical path only */
+@font-face {
+  font-family: "AlteHaasGrotesk";
+  src: url("/assets/fonts/AlteHaasGroteskRegular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Critical base styles only */
+*, ::before, ::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { 
+  font-family: "AlteHaasGrotesk", system-ui, sans-serif; 
+  height: 100%; 
+  overflow-x: hidden; 
+  letter-spacing: 0.025em; 
+  -webkit-font-smoothing: antialiased; 
+  text-rendering: optimizeSpeed;
+}
+
+/* Essential layout classes only */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+.grid { display: grid; }
+.flex { display: flex; }
+.hidden { display: none; }
+.block { display: block; }
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+.object-cover { object-fit: cover; }
+.object-center { object-position: center; }
+.overflow-hidden { overflow: hidden; }
+
+/* Essential typography */
+.text-black { color: #000; }
+.text-white { color: #fff; }
+.text-gray-600 { color: #4b5563; }
+.text-gray-800 { color: #1f2937; }
+.font-bold { font-weight: 700; }
+.font-medium { font-weight: 500; }
+.uppercase { text-transform: uppercase; }
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.underline { text-decoration: underline; }
+
+/* Essential spacing */
+.p-4 { padding: 1rem; }
+.p-8 { padding: 2rem; }
+.px-4 { padding-left: 1rem; padding-right: 1rem; }
+.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+.py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+.py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+.m-0 { margin: 0; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-8 { margin-bottom: 2rem; }
+.mt-8 { margin-top: 2rem; }
+.mt-16 { margin-top: 4rem; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+/* Essential grid */
+.col-span-2 { grid-column: span 2 / span 2; }
+.col-span-3 { grid-column: span 3 / span 3; }
+.col-span-4 { grid-column: span 4 / span 4; }
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+.gap-4 { gap: 1rem; }
+.gap-8 { gap: 2rem; }
+
+/* Essential flexbox */
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.flex-col { flex-direction: column; }
+
+/* Essential sizing */
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.min-h-screen { min-height: 100vh; }
+.min-h-\[100vh\] { min-height: 100vh; }
+.min-h-\[60vh\] { min-height: 60vh; }
+.min-h-\[30vh\] { min-height: 30vh; }
+.h-\[90vh\] { height: 90vh; }
+.auto-rows-\[70vh\] { grid-auto-rows: 70vh; }
+.max-w-4xl { max-width: 56rem; }
+
+/* Essential backgrounds */
+.bg-white { background-color: #fff; }
+.bg-black { background-color: #000; }
+.bg-gray-100 { background-color: #f3f4f6; }
+
+/* Essential borders */
+.border { border: 1px solid #e5e7eb; }
+.border-black { border-color: #000; }
+.rounded { border-radius: 0.25rem; }
+
+/* Essential responsive */
+@media (min-width: 768px) {
+  .md\\:grid { display: grid; }
+  .md\\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .md\\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .md\\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .md\\:grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .md\\:min-h-\\[30vh\\] { min-height: 30vh; }
+  .md\\:bg-gray-100 { background-color: #f3f4f6; }
+  .md\\:text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+  .md\\:text-5xl { font-size: 3rem; line-height: 1; }
+  .md\\:col-span-2 { grid-column: span 2 / span 2; }
+  .md\\:col-span-3 { grid-column: span 3 / span 3; }
+  .md\\:col-span-4 { grid-column: span 4 / span 4; }
+}
+
+/* Custom utilities */
+.fixed-row-height { grid-auto-rows: 22rem; }
+.mobile-safe-bottom { padding-bottom: calc(2rem + var(--safe-area-inset-bottom)); }
+
+/* Essential transitions */
+.transition { transition: all 0.15s ease-in-out; }
+.hover\\:underline:hover { text-decoration: underline; }
+.group:hover .group-hover\\:underline { text-decoration: underline; }

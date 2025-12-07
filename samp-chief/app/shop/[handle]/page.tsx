@@ -1,7 +1,8 @@
+import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
+
 import ProductAddToCart from "./ProductAddToCart";
 
 type ProductVariant = {
@@ -141,6 +142,7 @@ export default async function ProductPage({ params }: PageProps) {
                     width={800}
                     height={800}
                     className="w-full h-full object-cover"
+                    style={{ width: 'auto', height: 'auto' }}
                   />
                 </div>
               ) : (
@@ -167,6 +169,7 @@ export default async function ProductPage({ params }: PageProps) {
                           width={200}
                           height={200}
                           className="w-full h-full object-cover"
+                          style={{ width: 'auto', height: 'auto' }}
                         />
                       </div>
                     ))}

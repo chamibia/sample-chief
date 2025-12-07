@@ -1,12 +1,14 @@
 "use client";
 
-import Image from "next/image";
-import { useState, useEffect } from "react";
 import { getNames } from "country-list";
 import { X } from "lucide-react";
-import popupImage from "../../public/assets/images/popupimage.jpeg";
-import { Input } from "@/components/ui/input";
+import Image from "next/image";
+import { useEffect,useState } from "react";
+
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+
+import popupImage from "../../public/assets/images/popupimage.jpeg";
 
 const countries = getNames();
 
@@ -127,7 +129,7 @@ export default function SubscribePopup() {
         </div>
 
         <div className="w-full p-3 sm:p-4 flex flex-col items-center">
-          <h2 className="font-ruder mb-4 text-2xl sm:text-3xl font-bold text-center">
+          <h2 className="font-ruder mb-4 text-2xl sm:text-3xl font-medium text-center">
             Stay in the loop
           </h2>
           <p className="font-sans mb-3 sm:mb-4 text-sm sm:text-base text-gray-600 text-center">

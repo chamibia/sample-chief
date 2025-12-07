@@ -1,24 +1,10 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-type CartItem = {
-  id: string;
-  variantId: string;
-  title: string;
-  price: number;
-  currencyCode: string;
-  productHandle: string;
-  image?: string;
-  quantity: number;
-  quantityAvailable?: number;
-};
-
-type Cart = {
-  items: CartItem[];
-  totalQuantity: number;
-  totalPrice: number;
-};
+import { updateCartTotals, validateItemAvailability } from '@/lib/cartUtils';
+import { Cart, CartItem } from '@/types/shop';
 
 type Ctx = {
   cart: Cart;
@@ -39,6 +25,9 @@ export function useCart() {
 }
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const isShopPage = pathname.startsWith('/shop');
+  
   const [cart, setCart] = useState<Cart>({
     items: [],
     totalQuantity: 0,
@@ -46,8 +35,10 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   });
   const [loading, setLoading] = useState(false);
 
-  // Load cart from localStorage on mount
+  // Only load cart from localStorage on shop pages
   useEffect(() => {
+    if (!isShopPage) return;
+    
     const savedCart = localStorage.getItem("sample-chief-cart");
     if (savedCart) {
       try {
@@ -58,12 +49,14 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         localStorage.removeItem("sample-chief-cart");
       }
     }
-  }, []);
+  }, [isShopPage]);
 
-  // Save cart to localStorage whenever it changes
+  // Save cart to localStorage whenever it changes (only on shop pages)
   useEffect(() => {
-    localStorage.setItem("sample-chief-cart", JSON.stringify(cart));
-  }, [cart]);
+    if (isShopPage) {
+      localStorage.setItem("sample-chief-cart", JSON.stringify(cart));
+    }
+  }, [cart, isShopPage]);
 
   const addToCart = (item: Omit<CartItem, "quantity">) => {
     setCart((prevCart) => {
@@ -88,41 +81,19 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
             : cartItem
         );
 
-        return {
-          items: updatedItems,
-          totalQuantity: updatedItems.reduce(
-            (sum, item) => sum + item.quantity,
-            0
-          ),
-          totalPrice: updatedItems.reduce(
-            (sum, item) => sum + item.price * item.quantity,
-            0
-          ),
-        };
+        return updateCartTotals(updatedItems);
       } else {
-        // Check if we can add even 1 item
-        if (
-          item.quantityAvailable !== undefined &&
-          item.quantityAvailable <= 0
-        ) {
-          alert(`Sorry, this item is out of stock.`);
+        // Validate item availability
+        const validation = validateItemAvailability({ ...item, quantity: 1 });
+        if (!validation.isValid) {
+          alert(validation.message);
           return prevCart;
         }
 
         const newItem = { ...item, quantity: 1 };
         const updatedItems = [...prevCart.items, newItem];
 
-        return {
-          items: updatedItems,
-          totalQuantity: updatedItems.reduce(
-            (sum, item) => sum + item.quantity,
-            0
-          ),
-          totalPrice: updatedItems.reduce(
-            (sum, item) => sum + item.price * item.quantity,
-            0
-          ),
-        };
+        return updateCartTotals(updatedItems);
       }
     });
   };
@@ -130,17 +101,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const removeFromCart = (id: string) => {
     setCart((prevCart) => {
       const updatedItems = prevCart.items.filter((item) => item.id !== id);
-      return {
-        items: updatedItems,
-        totalQuantity: updatedItems.reduce(
-          (sum, item) => sum + item.quantity,
-          0
-        ),
-        totalPrice: updatedItems.reduce(
-          (sum, item) => sum + item.price * item.quantity,
-          0
-        ),
-      };
+      return updateCartTotals(updatedItems);
     });
   };
 

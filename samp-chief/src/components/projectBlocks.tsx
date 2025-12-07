@@ -1,7 +1,9 @@
 "use client";
 import React from "react";
-import Image from "../../app/projects/[slug]/Image";
+
 import LazyVideo from "@/components/LazyVideo";
+
+import Image from "../../app/projects/[slug]/Image";
 
 // --- Utility: getMediaClasses ---
 export function getMediaClasses(block: ProjectBlock) {
@@ -141,8 +143,8 @@ export function ProjectVideoBlock({ block, idx, eventTitle }: { block: ProjectBl
       videoRefLong.current.play();
       setIsPlayingLong(true);
       // Fade in sound
-      let fadeStep = 0.05;
-      let fadeInterval = setInterval(() => {
+      const fadeStep = 0.05;
+      const fadeInterval = setInterval(() => {
         if (!videoRefLong.current) return;
         if (videoRefLong.current.volume < 0.7) {
           videoRefLong.current.volume = Math.min(videoRefLong.current.volume + fadeStep, 0.7);
@@ -289,7 +291,7 @@ export function ProjectTextBlock({ block, idx }: { block: ProjectBlock; idx: num
 
 // --- Block Renderer ---
 export function renderProjectBlock(block: ProjectBlock, idx: number, eventTitle: string) {
-  let key = block.src || block.html || idx;
+  const key = block.src || block.html || idx;
   switch (block.type) {
     case 'image':
       return <ProjectImageBlock key={key} block={block} idx={idx} eventTitle={eventTitle} />;

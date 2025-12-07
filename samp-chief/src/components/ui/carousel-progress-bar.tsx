@@ -1,4 +1,7 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
+
 import { useCarousel } from "@/components/ui/carousel";
 
 export function CarouselProgressBar({ className = "" }: { className?: string }) {

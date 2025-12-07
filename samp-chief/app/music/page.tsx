@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useMemo } from "react";
-import Link from "next/link";
-import { motion, easeOut } from "framer-motion";
+import { easeOut,motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
-import Image from "next/image";
-import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
+import React, { useMemo } from "react";
+
+import { UnifiedCard } from "@/components/ui";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { CarouselProgressBar } from "@/components/ui/carousel-progress-bar";
 
@@ -240,39 +240,14 @@ export default function MusicPage() {
                 rel="noopener noreferrer"
                 className="group block rounded-lg overflow-hidden"
               >
-                <Card className="bg-transparent border-0 cursor-pointer">
-                  <CardContent className="p-0">
-                    <div className="aspect-square relative">
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                        placeholder="blur"
-                        blurDataURL="data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='16' fill='%23e5e7eb'/%3E%3C/svg%3E"
-                        {...(idx === 0 ? { priority: true } : idx < 3 ? { loading: "eager" } : { loading: "lazy" })}
-                      />
-                      <div className="absolute inset-0 bg-neutral-700/30 group-hover:opacity-0 transition-opacity duration-500 z-10" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent z-20" />
-
-                      <div className="absolute top-4 left-4 z-30">
-                        <h3 className="font-sans font-bold text-white text-lg">
-                          {item.title}
-                        </h3>
-                      </div>
-                      {/* External link icon top right on hover */}
-                      <div className="absolute top-4 right-4 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <ExternalLink className="w-5 h-5 text-white" aria-label="Opens external link" />
-                      </div>
-                      <div className="absolute bottom-4 left-4 z-30">
-                        <p className="font-sans text-white text-sm pr-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          {item.subtitle}
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+              <UnifiedCard
+                variant="music"
+                title={item.title}
+                subtitle={item.subtitle}
+                image={item.image}
+                href={item.link}
+                priority={idx === 0}
+              />
               </a>
             </CarouselItem>
           ))}

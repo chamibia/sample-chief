@@ -1,13 +1,15 @@
 // app/layout.tsx (Server Component)
-import { Metadata, Viewport } from "next";
 import "../styles/globals.css";
 
-import Navbar from "../src/components/layout/Navbar";
-import FooterVisibilityWrapper from "@/components/layout/FooterVisibilityWrapper";
-import SubscribePopup from "@/components/SubscribePopup";
-import ClientLayout from "./ClientLayout";
+import { Analytics } from '@vercel/analytics/react';
+import { Metadata, Viewport } from "next";
 
 import { CartProvider } from "@/components/CartProvider";
+import FooterVisibilityWrapper from "@/components/layout/FooterVisibilityWrapper";
+import Navbar from "@/components/layout/Navbar";
+import SubscribePopup from "@/components/SubscribePopup";
+
+import ClientLayout from "./ClientLayout";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.samplechief.com/"),
@@ -22,24 +24,22 @@ export const metadata: Metadata = {
     apple: "/assets/logos/favicon-white.svg",
   },
 };
+
 export const viewport: Viewport = {
-  /* ...unchanged... */
+  themeColor: "#ffffff",
+  colorScheme: "light",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  // Use a client-side check for pathname to conditionally hide Footer on home page mobile
-  // This must be a Client Component for usePathname, so wrap Footer in a client-only check
   return (
     <html lang="en">
       <head>
-        {/* Preload AlteHaasGrotesk fonts - Bold first since it's critical for product titles */}
-        <link
-          rel="preload"
-          href="/assets/fonts/AlteHaasGroteskBold.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin="anonymous"
-        />
+        {/* Font preloads for LCP optimization */}
         <link
           rel="preload"
           href="/assets/fonts/AlteHaasGroteskRegular.ttf"
@@ -47,8 +47,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="font/ttf"
           crossOrigin="anonymous"
         />
-
-        {/* Preload RuderPlakatLL font */}
         <link
           rel="preload"
           href="/assets/fonts/RuderPlakatLL-Regular.otf"
@@ -56,35 +54,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="font/otf"
           crossOrigin="anonymous"
         />
-
-        {/* Font loading optimization */}
-        <style dangerouslySetInnerHTML={{
-          __html: `
-            /* Ensure bold text renders immediately with fallback */
-            .font-bold {
-              font-weight: 700;
-            }
-            /* Critical text should use system fonts until custom fonts load */
-            .font-loading-fallback {
-              font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-              font-weight: 700;
-            }
-          `
-        }} />
       </head>
       <body className="antialiased font-sans">
-        {/* ✅ Cart context available everywhere */}
+        {/* Cart context available everywhere */}
         <CartProvider>
           <ClientLayout>
             <Navbar />
             <main className="flex-1">{children}</main>
             {/* Hide Footer on mobile if on home page, show otherwise */}
             <FooterVisibilityWrapper />
-            <SubscribePopup />
           </ClientLayout>
         </CartProvider>
+        
+        <SubscribePopup />
+        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   );
 }
-

@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { useCart } from "@/components/CartProvider";
 import { Minus, Plus, ShoppingCart } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
+
+import { useCart } from "@/components/CartProvider";
 
 type ProductVariant = {
   id: string;
