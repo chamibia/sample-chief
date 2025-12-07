@@ -25,7 +25,7 @@ const layoutStyles: Record<LayoutVariant, { main: string; container: string }> =
     container: ""
   },
   project: {
-    main: "flex-1 w-full pt-5 px-5 text-[#202020]",
+    main: "flex-1 w-full text-[#202020]",
     container: ""
   }
 };

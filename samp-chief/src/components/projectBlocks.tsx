@@ -258,6 +258,7 @@ export function ProjectVideoBlock({ block, idx, eventTitle }: { block: ProjectBl
             style={inlineStyle}
             fitClass={fitClass}
             positionClass={positionClass || 'object-center'}
+            autoPlay={true}
           />
         )}
       </div>
