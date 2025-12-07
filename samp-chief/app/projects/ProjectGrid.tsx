@@ -23,11 +23,16 @@ export default function ProjectGrid() {
         const isLarge = event.gridSpan?.includes('col-span-2') && event.gridSpan?.includes('row-span-2');
         const isLCP = index === 0; // First image is likely LCP
         
+        // Ensure first item is positioned optimally for LCP
+        const finalClasses = isLCP ? 
+          `md:col-span-1 md:row-span-2 md:col-start-1 md:row-start-1 ${gridClasses}` : 
+          gridClasses;
+        
         return (
           <ProjectCard
             key={event.slug}
             event={event}
-            className={`${gridClasses}`}
+            className={finalClasses}
             isLCP={isLCP}
             isLarge={isLarge}
           />

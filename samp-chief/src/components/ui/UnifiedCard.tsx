@@ -210,14 +210,14 @@ export default function UnifiedCard(props: UnifiedCardProps) {
             src={event.projectcard}
             alt={event.title}
             fill
-            sizes={isLarge ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
+            sizes={isLCP ? "(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw" : isLarge ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
             className="object-cover object-center"
             quality={isLCP ? 75 : 65}
             priority={isLCP}
             loading={isLCP ? "eager" : "lazy"}
             fetchPriority={isLCP ? "high" : "auto"}
-            placeholder={isLCP ? "empty" : "blur"}
-            blurDataURL={isLCP ? undefined : "data:image/svg+xml,%3Csvg width='350' height='350' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='350' height='350' fill='%23f3f4f6'/%3E%3C/svg%3E"}
+            placeholder="empty"
+            unoptimized={false}
           />
           
           <div className="absolute inset-0 w-full h-full z-20 flex flex-col items-start justify-start p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-150">

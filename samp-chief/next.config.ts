@@ -28,6 +28,8 @@ const nextConfig: NextConfig = {
 		minimumCacheTTL: 3600, // Increase cache time
 		dangerouslyAllowSVG: false,
 		contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+		// Ensure images are always optimized
+		loader: 'default',
 		remotePatterns: [
 			{
 				protocol: 'https',
