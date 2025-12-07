@@ -23,6 +23,10 @@ export default function ProjectGrid() {
         const isLarge = event.gridSpan?.includes('col-span-2') && event.gridSpan?.includes('row-span-2');
         const isLCP = index === 0; // First image is likely LCP
         
+        // Add entrance animation with staggered delay
+        const animationDelay = `delay-${Math.min(index * 100, 500)}`;
+        const animationClasses = `animate-fade-in transform transition-all duration-700 ease-out ${animationDelay}`;
+        
         // Custom mobile layout for cards
         let mobileClasses = '';
         if (index === 0) {
@@ -37,8 +41,8 @@ export default function ProjectGrid() {
         
         // Ensure first item is positioned optimally for LCP
         const finalClasses = isLCP ? 
-          `col-span-2 md:col-span-1 md:row-span-2 md:col-start-1 md:row-start-1` : 
-          `${mobileClasses} ${gridClasses}`;
+          `col-span-2 md:col-span-1 md:row-span-2 md:col-start-1 md:row-start-1 ${animationClasses}` : 
+          `${mobileClasses} ${gridClasses} ${animationClasses}`;
         
         return (
           <ProjectCard
