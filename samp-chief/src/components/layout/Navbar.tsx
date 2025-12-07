@@ -102,6 +102,7 @@ export default function Navbar() {
             alt="Sample Chief Logo"
             width={logoWidth}
             height={logoHeight}
+            priority
             className="transition-all duration-300 ease-in-out w-auto h-auto"
             style={{ height: 'auto' }}
           />

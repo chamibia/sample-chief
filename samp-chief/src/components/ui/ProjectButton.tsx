@@ -60,10 +60,10 @@ export default function ProjectButton({
         {loading ? (
           <span className="animate-pulse">{loadingText || 'Loading...'}</span>
         ) : (
-          <>
+          <span className="flex items-center justify-center">
             {children}
             {IconComponent && <IconComponent className="h-4 w-4 ml-2" />}
-          </>
+          </span>
         )}
       </BaseButton>
     );
@@ -86,10 +86,10 @@ export default function ProjectButton({
       {loading ? (
         <span className="animate-pulse">{loadingText || 'Loading...'}</span>
       ) : (
-        <>
+        <span className="flex items-center justify-center">
           {children}
           {IconComponent && <IconComponent className="h-4 w-4 ml-2" />}
-        </>
+        </span>
       )}
     </button>
   );

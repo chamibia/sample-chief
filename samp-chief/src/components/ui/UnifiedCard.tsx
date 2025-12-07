@@ -202,7 +202,7 @@ export default function UnifiedCard(props: UnifiedCardProps) {
     return (
       <Link
         href={`/projects/${event.slug}`}
-        className={`${styles.container} ${className}`}
+        className={`${styles.container} ${className} group`}
         style={{ minHeight: '350px' }}
       >
         <div className="relative w-full h-full">
@@ -220,8 +220,8 @@ export default function UnifiedCard(props: UnifiedCardProps) {
             unoptimized={false}
           />
           
-          <div className="absolute inset-0 w-full h-full z-20 flex flex-col items-start justify-start p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
-            <h1 className="font-ruder font-medium text-white leading-tight text-3xl md:text-4xl pl-3">
+          <div className="absolute inset-0 w-full h-full z-20 flex flex-col items-start justify-start p-4 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-150">
+            <h1 className="font-ruder font-medium text-white leading-tight text-2xl md:text-3xl pl-3">
               {event.title}
             </h1>
           </div>
