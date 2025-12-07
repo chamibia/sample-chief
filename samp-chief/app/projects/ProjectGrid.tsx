@@ -17,16 +17,28 @@ const getGridClasses = (event: any) => {
 
 export default function ProjectGrid() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-[350px] gap-4 md:gap-6 w-full mb-5">
+    <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[350px] gap-4 md:gap-6 w-full mb-5">
       {events.map((event, index) => {
         const gridClasses = getGridClasses(event);
         const isLarge = event.gridSpan?.includes('col-span-2') && event.gridSpan?.includes('row-span-2');
         const isLCP = index === 0; // First image is likely LCP
         
+        // Custom mobile layout for cards
+        let mobileClasses = '';
+        if (index === 0) {
+          mobileClasses = 'col-span-2 row-start-1'; // First card spans full width
+        } else if (index === 1) {
+          mobileClasses = 'col-span-1 row-start-2 col-start-1'; // Second card left
+        } else if (index === 2) {
+          mobileClasses = 'col-span-1 row-start-2 col-start-2'; // Third card right
+        } else {
+          mobileClasses = 'col-span-2'; // Remaining cards span full width
+        }
+        
         // Ensure first item is positioned optimally for LCP
         const finalClasses = isLCP ? 
-          `md:col-span-1 md:row-span-2 md:col-start-1 md:row-start-1 ${gridClasses}` : 
-          gridClasses;
+          `col-span-2 md:col-span-1 md:row-span-2 md:col-start-1 md:row-start-1` : 
+          `${mobileClasses} ${gridClasses}`;
         
         return (
           <ProjectCard
