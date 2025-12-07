@@ -1,4 +1,4 @@
-import { ProjectCard } from '@/components/ui';
+import { ProjectCard } from '@/components/ui/UnifiedCard';
 import { events } from '@/data/events';
 
 // Get the grid classes from the event data (original layout)

@@ -4,7 +4,7 @@ import { getNames } from "country-list";
 // Use lighter CSS animations instead of framer-motion for form
 import React, { useEffect,useState } from "react";
 
-import { SubmitButton } from "@/components/ui";
+import { SubmitButton } from "@/components/ui/ProjectButton";
 
 export default function NewsletterSignup() {
   const [showBanner, setShowBanner] = useState(true);
