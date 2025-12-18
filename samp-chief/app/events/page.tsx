@@ -89,6 +89,17 @@ const eventData = [
     imageUrl: "/assets/events/Sample-Chief-Social-Vinyl-Night 2Feed copy.jpg",
     ticketLink: "https://www.eventbrite.ca/e/sample-chief-social-tickets-1964396066515?utm_experiment=test_share_listing&aff=ebdsshios&sg=d61a0356e207522fe786cb664095b654cd619085e08a912d2417bb7ec2414cabbbffd7c7e3273513b96698aa30f713e74e7bf8a0751fbf298181333224a08fe3048fff09a893f5ba961970baa6",
   },
+  {
+    id: 8,
+    title: "Friday Night: Sample Chief AGO Takeover",
+    description: "Bringing Walker Court to life with a multi-sensory experience filled with the sounds and rhythms of the continent and the diaspora. Lose yourself in the sonics, stories, and artistry of Black and African music in an unforgettable celebration of culture and creativity.",
+    startDate: "2026-02-20",
+    endDate: "2026-02-20",
+    time: "18:00 - 21:00",
+    venue: "Art Gallery of Ontario, 317 Dundas St W, Toronto, ON M5T 1G4",
+    imageUrl: "/assets/events/ago-takeover.jpg",
+    learnMoreUrl: "https://ago.ca/events/friday-night-sample-chief-takeover",
+  }
 ];
 
 export default function Events() {
