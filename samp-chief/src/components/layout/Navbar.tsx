@@ -84,7 +84,7 @@ export default function Navbar() {
 
   const currentLogo = isHome && !isScrolled && (!isMobile || (isMobile && !isMenuOpen)) ? whiteLogo : logo;
 
-  const mobileDropdownTextColor = backgroundColor === "bg-white" ? "text-[#202020] hover:text-gray-700" : "text-white hover:text-gray-300";
+  const mobileDropdownTextColor = "text-[#202020] hover:text-gray-700";
 
   const logoWidth = isMobile ? (isScrolled ? 195 : 175) : (isScrolled ? 150 : 138);
   const logoHeight = isMobile ? (isScrolled ? 115 : 105) : (isScrolled ? 100 : 119);
