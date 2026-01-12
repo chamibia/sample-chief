@@ -14,11 +14,11 @@ const nextConfig: NextConfig = {
 	compiler: {
 		removeConsole: process.env.NODE_ENV === 'production',
 	},
-	// Experimental features for better performance
-	experimental: {
-		optimizeCss: true,
-		optimizePackageImports: ['lucide-react', 'framer-motion'],
-	},
+	// Experimental features for better performance - temporarily disabled for deployment
+	// experimental: {
+	// 	optimizeCss: true,
+	// 	optimizePackageImports: ['lucide-react', 'framer-motion'],
+	// },
 	images: {
 		unoptimized: false,
 		formats: ['image/avif', 'image/webp'],
