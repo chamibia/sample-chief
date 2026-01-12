@@ -221,7 +221,7 @@ export default function NewsletterSignup() {
                   Stay Connected
                 </h1>
                 <p className="font-sans font-light mb-8 leading-relaxed text-base xl:text-lg text-[#202020]">
-                  Be part of a tribe of music lovers and tastemakers.
+                  Join our mailing list for exclusive updates.
                 </p>
                 <div className="w-16 h-1 bg-[#07693A] rounded-full" />
               </div>

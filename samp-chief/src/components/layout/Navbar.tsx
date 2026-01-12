@@ -80,7 +80,7 @@ export default function Navbar() {
     border-none rounded-none
   `;
 
-  const links = ["ABOUT", "PROJECTS", "EVENTS", "MUSIC", "SHOP", "CONTACT"];
+  const links = ["ABOUT", "PROJECTS", "EVENTS", "MUSIC", "SHOP", "EDITORIAL", "CONTACT"];
 
   const currentLogo = isHome && !isScrolled && (!isMobile || (isMobile && !isMenuOpen)) ? whiteLogo : logo;
 
@@ -113,14 +113,18 @@ export default function Navbar() {
           <NavigationMenu>
             <NavigationMenuList className="flex space-x-6">
               {links.map((label) => {
-                const path = `/${label.toLowerCase()}`;
-                const isActive = pathname === path;
+                const isEditorial = label === "EDITORIAL";
+                const path = isEditorial ? "https://samplechief.substack.com/?utm_campaign=profile_chips" : `/${label.toLowerCase()}`;
+                const isActive = !isEditorial && pathname === path;
 
                 return (
                   <NavigationMenuItem key={label}>
                     <NavigationMenuLink asChild>
                       <Link
                         href={path}
+                        target={isEditorial ? "_blank" : undefined}
+                        rel={isEditorial ? "noopener noreferrer" : undefined}
+                        aria-label={isEditorial ? "Editorial - opens in new tab" : undefined}
                         className={`group inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-lg font-ruder font-medium transition-all duration-200 ease-out transform hover:scale-105 ${
                           isHome && !isScrolled
                             ? "text-white hover:text-white hover:underline hover:underline-offset-4 hover:decoration-2 hover:decoration-white"
@@ -188,13 +192,17 @@ export default function Navbar() {
           >
             <nav className="flex flex-col items-start space-y-3 px-6 py-3">
               {links.map((label) => {
-                const path = `/${label.toLowerCase()}`;
-                const isActive = pathname === path;
+                const isEditorial = label === "EDITORIAL";
+                const path = isEditorial ? "https://samplechief.substack.com/?utm_campaign=profile_chips" : `/${label.toLowerCase()}`;
+                const isActive = !isEditorial && pathname === path;
 
                 return (
                   <Link
                     key={label}
                     href={path}
+                    target={isEditorial ? "_blank" : undefined}
+                    rel={isEditorial ? "noopener noreferrer" : undefined}
+                    aria-label={isEditorial ? "Editorial - opens in new tab" : undefined}
                     className={`block w-full text-left font-ruder font-medium text-lg md:text-xl uppercase py-2 px-3 transition duration-150 rounded-lg ${mobileDropdownTextColor} ${isActive ? "underline underline-offset-4 decoration-2" : ""}`}
                     onClick={() => setIsMenuOpen(false)}
                   >
