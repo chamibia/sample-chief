@@ -19,7 +19,7 @@ interface ProjectGridProps {
   hoveredProject?: string | null;
 }
 
-export default function ProjectGrid({ hoveredProject }: ProjectGridProps) {
+export default function ProjectGrid({ hoveredProject }: ProjectGridProps = {}) {
   return (
     <div className="h-full flex flex-col">
       <div className="grid grid-cols-2 md:grid-cols-4 flex-1 gap-3 md:gap-4 w-full" style={{ gridAutoRows: 'minmax(0, 1fr)' }}>

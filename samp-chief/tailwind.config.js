@@ -17,7 +17,6 @@ module.exports = {
     'line-clamp-3'
   ],
   theme: {
-  theme: {
     extend: {
       fontFamily: {
             // default body and headings
@@ -39,4 +38,4 @@ module.exports = {
     },
   },
   plugins: [],
-};
+}

@@ -42,3 +42,16 @@ next-env.d.ts
 
 # image optimization backups
 *.backup
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
