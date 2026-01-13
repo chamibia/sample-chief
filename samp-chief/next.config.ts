@@ -10,6 +10,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const nextConfig: NextConfig = {
 	reactStrictMode: true,
 	devIndicators: false,
+	// Turbopack config for Next.js 16 compatibility (even when using webpack)
+	turbopack: {},
 	// Enable compiler optimizations
 	compiler: {
 		removeConsole: process.env.NODE_ENV === 'production',
@@ -139,4 +141,3 @@ const nextConfig: NextConfig = {
 };
 
 export default withBundleAnalyzer(nextConfig);
-

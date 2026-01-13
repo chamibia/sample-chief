@@ -40,6 +40,53 @@ This codebase uses a container/presenter (smart/dumb) component pattern for main
 See the `app/projects/` directory for examples.
 
 
+## Adding New Projects
+
+To add a new project to the site, follow these steps:
+
+### 1. Add Project Data
+Add a new project object to the `events` array in `src/data/events.ts`:
+
+```typescript
+{
+  title: "Project Name",
+  projectcard: "/assets/projects/project-folder/cover.jpg",
+  brandLogo: "/assets/brands/brand-logo.png", // Optional
+  description: "Brief description of the project...",
+  slug: "project-name", // URL-friendly identifier
+  imageFolder: "project-folder",
+  gridSpan: "col-span-1 row-span-1", // Grid layout (optional)
+  colStart: "col-start-1", // Grid column position (optional)
+  rowStart: "row-start-1", // Grid row position (optional)
+  ethos: "Project philosophy or approach", // Optional
+  location: "City, Country", // Optional
+  services: "Services provided", // Optional
+  heroImage: "/assets/projects/project-folder/hero.jpg", // Optional
+  images: [ // Optional array of additional images
+    {
+      src: "/assets/projects/project-folder/image1.jpg",
+      gridSpan: "col-span-2 row-span-1" // Optional grid layout
+    }
+  ]
+}
+```
+
+### 2. Add Project Assets
+Create a new folder in `public/assets/projects/` with your project slug name:
+- `public/assets/projects/project-folder/cover.jpg` - Main project image (required)
+- Add any additional project images in the same folder
+
+### 3. Add Brand Logo (Optional)
+If the project has a brand logo, add it to `public/assets/brands/` and reference it in the `brandLogo` field.
+
+### 4. Test the Changes
+1. Start the development server: `npm run dev`
+2. Navigate to `/projects` to see the new project card
+3. Click the project to view the detail page at `/projects/project-name`
+
+The project will automatically appear in both the projects grid and the sidebar navigation list.
+
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

@@ -39,6 +39,7 @@ interface ProjectCardProps extends BaseCardProps {
   event: any;
   isLCP?: boolean;
   isLarge?: boolean;
+  forceHover?: boolean;
 }
 
 interface ProductCardProps extends BaseCardProps {
@@ -197,13 +198,13 @@ export default function UnifiedCard(props: UnifiedCardProps) {
 
   // Handle project variant
   if (variant === 'project') {
-    const { event, isLCP, isLarge } = props as ProjectCardProps;
+    const { event, isLCP, isLarge, forceHover } = props as ProjectCardProps;
     
     return (
       <Link
         href={`/projects/${event.slug}`}
-        className={`${styles.container} ${className} group`}
-        style={{ minHeight: '350px' }}
+        data-project-card={event.slug}
+        className={`${styles.container} ${className} group h-full project-card`}
       >
         <div className="relative w-full h-full">
           <Image
@@ -220,13 +221,13 @@ export default function UnifiedCard(props: UnifiedCardProps) {
             unoptimized={false}
           />
           
-          <div className="absolute inset-0 w-full h-full z-20 flex flex-col items-start justify-start p-4 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-150">
-            <h1 className="font-ruder font-medium text-white leading-tight text-2xl md:text-3xl pl-3">
+          <div className={`absolute inset-0 w-full h-full z-20 flex flex-col items-start justify-start p-3 md:p-4 opacity-100 md:opacity-0 transition-opacity duration-150 ${forceHover ? 'md:opacity-100' : 'md:group-hover:opacity-100'}`}>
+            <h1 className="font-ruder font-medium text-white leading-tight text-lg md:text-2xl lg:text-3xl pl-2 md:pl-3">
               {event.title}
             </h1>
           </div>
           
-          <div className="absolute inset-0 w-full h-full bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-150 z-10"></div>
+          <div className={`absolute inset-0 w-full h-full bg-black/60 transition-opacity duration-150 z-10 ${forceHover ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}></div>
         </div>
       </Link>
     );
@@ -242,11 +243,13 @@ export function ProjectCard({
   className = '',
   isLCP = false,
   isLarge = false,
+  forceHover = false,
 }: {
   event: any;
   className?: string;
   isLCP?: boolean;
   isLarge?: boolean;
+  forceHover?: boolean;
 }) {
   return (
     <UnifiedCard
@@ -256,6 +259,7 @@ export function ProjectCard({
       className={className}
       isLCP={isLCP}
       isLarge={isLarge}
+      forceHover={forceHover}
     />
   );
 }

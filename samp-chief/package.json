@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
+    "dev:turbo": "next dev --turbopack", 
     "prebuild": "node ./scripts/generate-media-manifest.js",
-    "build": "next build",
+    "build": "next build --webpack",
+    "build:analyze": "ANALYZE=true next build",
     "start": "next start",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
@@ -16,7 +18,9 @@
     "analyze": "ANALYZE=true yarn build",
     "find-dead-code": "ts-prune",
     "find-duplicates": "jscpd ./app ./src",
-    "precommit": "./scripts/check-performance.sh"
+    "precommit": "./scripts/check-performance.sh",
+    "test:build": "yarn build && yarn start",
+    "deploy:check": "yarn lint:strict && yarn build"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
@@ -36,9 +40,9 @@
     "framer-motion": "^12.7.4",
     "graphql-request": "^7.2.0",
     "lucide-react": "^0.501.0",
-    "next": "^15",
-    "react": "^18",
-    "react-dom": "^18",
+    "next": "^16.1.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-hook-form": "^7.55.0",
     "react-icons": "^5.5.0",
     "shadcn": "^2.7.0",

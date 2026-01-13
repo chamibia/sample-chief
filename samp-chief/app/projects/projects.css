@@ -1,0 +1,40 @@
+/* Projects page tab functionality */
+
+/* Content visibility - All content hidden by default */
+#all-content {
+  display: none;
+}
+
+/* Show All content when All tab is checked */
+#all-tab:checked ~ #all-content {
+  display: block !important;
+}
+
+/* Hide Featured content when All tab is checked */
+#all-tab:checked ~ #featured-content {
+  display: none !important;
+}
+
+/* Tab styling */
+#featured-tab:checked ~ div label[for="featured-tab"] {
+  border-bottom: 2px solid #202020;
+  color: #202020;
+  margin-bottom: -1px;
+}
+
+#all-tab:checked ~ div label[for="all-tab"] {
+  border-bottom: 2px solid #202020;
+  color: #202020;
+  margin-bottom: -1px;
+}
+
+/* Hover enhancement for project cards */
+.project-card-hovered {
+  transform: scale(1.02);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+.project-card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
