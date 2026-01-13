@@ -203,7 +203,8 @@ export default function UnifiedCard(props: UnifiedCardProps) {
     return (
       <Link
         href={`/projects/${event.slug}`}
-        className={`${styles.container} ${className} group h-full`}
+        data-project-card={event.slug}
+        className={`${styles.container} ${className} group h-full project-card`}
       >
         <div className="relative w-full h-full">
           <Image

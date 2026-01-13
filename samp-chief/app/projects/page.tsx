@@ -3,6 +3,7 @@ import Link from "next/link";
 import { events } from '@/data/events';
 
 import ProjectGrid from "./ProjectGrid";
+import ProjectHoverEnhancement from "./components/ProjectHoverEnhancement";
 import "./projects.css";
 
 // Static optimization for reduced JavaScript execution
@@ -13,6 +14,7 @@ export const runtime = 'nodejs';
 export default function Projects() {
   return (
     <>
+      <ProjectHoverEnhancement />
       {/* Desktop Layout */}
       <div className="hidden md:flex h-[calc(100vh-80px)]">
         {/* Main content area */}
@@ -32,6 +34,7 @@ export default function Projects() {
                 <Link
                   key={event.slug}
                   href={`/projects/${event.slug}`}
+                  data-project-slug={event.slug}
                   className="block font-sans font-light text-[#202020] text-lg hover:bg-[#202020] hover:text-white transition-all duration-300 rounded-lg px-4 py-2"
                 >
                   {event.title}

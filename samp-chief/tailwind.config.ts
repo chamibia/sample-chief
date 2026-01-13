@@ -1,5 +1,6 @@
-// tailwind.config.js
-module.exports = {
+import type { Config } from "tailwindcss";
+
+const config = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -15,7 +16,7 @@ module.exports = {
     'md:grid-cols-3',
     // Text truncation
     'line-clamp-3'
-  ],
+  ] as string[],
   theme: {
     extend: {
       fontFamily: {
@@ -38,4 +39,6 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};
+
+export default config satisfies Config;
