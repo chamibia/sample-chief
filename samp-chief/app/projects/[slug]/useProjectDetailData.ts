@@ -36,7 +36,7 @@ export async function getProjectDetailData(slug: string): Promise<ProjectDetailD
   } else if (manifest && manifest[event.imageFolder] && manifest[event.imageFolder].length) {
     projectBlocks = manifest[event.imageFolder].map((src: string) => ({ type: "image", src }));
   } else if ((event as any).images && (event as any).images.length) {
-    projectBlocks = (event as any).images.map((img: any) => ({ type: "image", src: img.src, gridSpan: img.gridSpan, colStart: img.colStart, rowStart: img.rowStart }));
+    projectBlocks = (event as any).images.map((img: any) => ({ type: "image", src: img.src }));
   }
 
   const heroSrc =

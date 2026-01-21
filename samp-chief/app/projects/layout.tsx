@@ -1,6 +1,5 @@
 import { Metadata } from "next";
-
-import { createPageMetadata,PageLayout } from "../../src/components/ui";
+import { createPageMetadata, PageLayout } from "../../src/components/ui";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Projects",
@@ -13,7 +12,7 @@ interface ProjectsLayoutProps {
 
 export default function ProjectsLayout({ children }: ProjectsLayoutProps) {
   return (
-    <>
+    <PageLayout variant="project">
       {/* Preload LCP image for faster loading */}
       <link
         rel="preload"
@@ -22,7 +21,7 @@ export default function ProjectsLayout({ children }: ProjectsLayoutProps) {
         fetchPriority="high"
         type="image/webp"
       />
-      <PageLayout variant="project">{children}</PageLayout>
-    </>
+      {children}
+    </PageLayout>
   );
 }
