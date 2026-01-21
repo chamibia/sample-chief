@@ -17,18 +17,13 @@ export type Event = {
   description: string;
   slug: string;
   imageFolder: string;
-  gridSpan?: GridSpan | `${GridSpan} ${GridSpan}`;
-  colStart?: ColStart;
-  rowStart?: RowStart;
+  featured?: { position: 1 | 2 | 3 | 4 | 5 };
   ethos?: string;
   location?: string;
   services?: string;
   heroImage?: string;
   images?: Array<{
     src: string;
-    gridSpan?: GridSpan | `${GridSpan} ${GridSpan}`;
-    colStart?: ColStart;
-    rowStart?: RowStart;
     fit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
     position?: 'top' | 'bottom' | 'left' | 'right' | 'center' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
   }>;
@@ -47,9 +42,7 @@ export const events: Event[] = [
       description: "Boutique hotel brand Ace Hotel partnered with Sample Chief to curate an unforgettable New Year’s Eve celebration. Designed to ring in the year with style and energy, the night featured electrifying music and performances, a packed dance floor, and a photobooth experience where guests could capture their best moments.",
       slug: "ace-hotel",
       imageFolder: "ace-hotel",
-      gridSpan: "col-span-1 row-span-2",
-      colStart: "col-start-1",
-      rowStart: "row-start-1",
+      featured: { position: 1 },
       ethos: "Not just another New Year’s Eve Party.",
       location: "Toronto, Canada",
       services: "Event Curation / Music Curation",
@@ -70,9 +63,7 @@ export const events: Event[] = [
       description: "Toronto’s oldest independent record store, Kops Records, partnered with Sample Chief to bring a fresh spin to Record Store Day with a pop-up at their Queen West location. The celebration featured vinyl DJ sets, exclusive Sample Chief x Kops merchandise, and a special 25% discount on all African records designed to spark curiosity, expand collections, and inspire more listeners to explore the richness of African vinyl culture.",
       slug: "kops-record-store",
       imageFolder: "kops",
-      gridSpan: "col-span-1 row-span-1",
-      colStart: "col-start-2",
-      rowStart: "row-start-1",
+      featured: { position: 2 },
       ethos: "Let’s congregate the African vinyl community.",
       location: "Toronto, Canada",
       services: "Event Curation / Music Curation / Merchandise",
@@ -96,9 +87,7 @@ export const events: Event[] = [
       description: "The University of Toronto’s Black History Month Luncheon is a long-standing celebration of Black culture and achievement. For 2025’s edition, Sample Chief curated a powerful musical program featuring Juno Award-winning artist Töme and Kunle, an acclaimed singer, music director and composer, nominated for the Dora Award (2024) and Ontario Premier’s Award (2022), and recognized as a Stonebridge Furch Guitar artist. The performances were carefully selected to honor Black Canadian legacy and excellence, creating an atmosphere that was both vibrant and accessible, energizing the room while resonating with a diverse audience.",
       slug: "u-of-t",
       imageFolder: "u-of-t",
-      gridSpan: "col-span-1 row-span-1",
-      colStart: "col-start-2",
-      rowStart: "row-start-2",
+      featured: { position: 4 },
       ethos: "Celebrating a 23 year-old event with style.",
       location: "Toronto, Canada",
       services: "Music curation",
@@ -117,9 +106,7 @@ export const events: Event[] = [
       description: `In February 2025, luxury retailer Holt Renfrew partnered with Sample Chief to celebrate Black music history in Canada and its vibrant community. Together, we launched a multi-platform campaign that blended storytelling, performance, and cultural engagement.`,
       slug: "holt-renfrew",
       imageFolder: "holt-renfrew",
-      gridSpan: "col-span-2 row-span-2",
-      colStart: "col-start-3",
-      rowStart: "row-start-1",
+      featured: { position: 3 },
       ethos: "Connecting Continents.",
       location: "Toronto, Canada",
       services: "Editorial / Event Curation / Installation / Print Media / Music Curation / Social Media Campaign",
@@ -151,9 +138,7 @@ export const events: Event[] = [
       description: `Sample Chief’s flagship event, Village Boogie, is a high-energy journey through the heart of African dance music. From Angolan Kuduro to Ivorian Coupé-Décalé to South African Gqom, it transports audiences to the continent’s most electric dancefloors. Launched in London and now thriving in Toronto, Village Boogie unites communities through sound. Each edition features master DJs and unforgettable energy. With its vibrant campaigns and growing global following, Village Boogie has evolved into a cultural brand with impact both online and IRL.`,
       slug: "village-boogie",
       imageFolder: "village-boogie",
-      gridSpan: "col-span-4 row-span-1",
-      colStart: "col-start-1",
-      rowStart: "row-start-3",
+      featured: { position: 5 },
       ethos: "A celebration of African dance music.",
       location: "Toronto, Canada",
       services: "Event Curation / Music Curation",

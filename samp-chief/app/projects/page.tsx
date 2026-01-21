@@ -1,55 +1,41 @@
-import Link from "next/link";
+"use client";
 
-import { events } from '@/data/events';
+import { useState } from "react";
 
 import ProjectGrid from "./ProjectGrid";
-import ProjectHoverEnhancement from "./components/ProjectHoverEnhancement";
+import ProjectList from "./components/ProjectList";
+import CollabButton from "./components/CollabButton";
 import "./projects.css";
 
-// Static optimization for reduced JavaScript execution
-export const revalidate = 3600;
-export const dynamic = 'force-static';
-export const runtime = 'nodejs';
-
 export default function Projects() {
+  const [hoveredProject, setHoveredProject] = useState<string | null>(null);
+
   return (
     <>
-      <ProjectHoverEnhancement />
       {/* Desktop Layout */}
       <div className="hidden md:flex h-[calc(100vh-80px)]">
         {/* Main content area */}
         <div className="flex-1 p-5">
-          <ProjectGrid />
-        </div>
-        
-        {/* Sidebar */}
-        <div className="w-80 bg-white p-6 flex flex-col justify-between shrink-0">
-          <div className="flex flex-col min-h-0">
-            <h1 className="font-ruder font-medium text-[#202020] text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] mb-8 flex-shrink-0">
-              Projects
-            </h1>
-            
-            <div className="space-y-4 overflow-y-auto flex-1 pr-2">
-              {events.map((event) => (
-                <Link
-                  key={event.slug}
-                  href={`/projects/${event.slug}`}
-                  data-project-slug={event.slug}
-                  className="block font-sans font-light text-[#202020] text-lg hover:bg-[#202020] hover:text-white transition-all duration-300 rounded-lg px-4 py-2"
-                >
-                  {event.title}
-                </Link>
-              ))}
-            </div>
+            <ProjectGrid 
+              hoveredProject={hoveredProject}
+              onProjectHover={setHoveredProject}
+              onProjectLeave={() => setHoveredProject(null)}
+            />
           </div>
           
-          <div className="mt-8">
-            <Link 
-              href="/contact" 
-              className="font-sans font-light leading-relaxed text-base bg-transparent border-2 border-gray-800 hover:bg-[#202020] hover:border-[#202020] hover:text-white rounded-full transition-all duration-300 hover:scale-105 inline-flex items-center justify-center px-6 py-3 text-[#202020] w-full"
-            >
-              Collab with Us
-            </Link>
+          {/* Sidebar */}
+          <div className="w-80 bg-white p-6 flex flex-col justify-between shrink-0">
+            <div className="flex flex-col min-h-0">
+              <h1 className="font-ruder font-medium text-[#202020] text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] mb-8 flex-shrink-0">
+                Projects
+              </h1>
+              
+              <ProjectList 
+                variant="sidebar" 
+                hoveredProject={hoveredProject}
+                onProjectHover={setHoveredProject}
+                onProjectLeave={() => setHoveredProject(null)}
+              />
           </div>
         </div>
       </div>
@@ -93,39 +79,12 @@ export default function Projects() {
         </div>
 
         {/* All projects list - hidden by default */}
-        <div className="space-y-2 mb-0" id="all-content">
-          {events.map((event) => (
-            <Link
-              key={event.slug}
-              href={`/projects/${event.slug}`}
-              className="flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200"
-            >
-              <div className="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
-                <img
-                  src={event.projectcard}
-                  alt={event.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="flex-1">
-                <h3 className="font-ruder font-medium text-[#202020] text-lg mb-1">
-                  {event.title}
-                </h3>
-                <p className="font-sans font-light text-gray-600 text-sm">
-                  {event.ethos}
-                </p>
-              </div>
-            </Link>
-          ))}
+        <div id="all-content">
+          <ProjectList variant="mobile" />
         </div>
         
         <div className="mt-8 mb-16">
-          <Link 
-            href="/contact" 
-            className="font-sans font-light leading-relaxed text-base bg-transparent border-2 border-gray-800 hover:bg-[#202020] hover:border-[#202020] hover:text-white rounded-full transition-all duration-300 hover:scale-105 inline-flex items-center justify-center px-6 py-3 text-[#202020] w-full"
-          >
-            Collab with Us
-          </Link>
+          <CollabButton />
         </div>
       </div>
     </>
