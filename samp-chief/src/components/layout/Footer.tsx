@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { 
   FaInstagram, 
   FaLinkedinIn, 
@@ -38,11 +39,21 @@ export default function Footer({ pathname }: { pathname: string }) {
           : "calc(1rem + env(safe-area-inset-bottom))",
       }}
     >
-      <div className="flex flex-col md:relative items-center w-full px-4 pt-4 pb-2">
-        <div className="order-2 md:order-1 font-ruder font-medium mt-4 md:mt-0 text-sm mb-2 md:mb-0 text-center md:text-left md:absolute md:left-0 md:pl-8">
-          Supported by Ontario Creates
+      <div className="flex flex-col md:relative justify-center items-center w-full px-4 pt-6 md:pt-2 pb-2 min-h-[80px]">
+        <div className="order-1 md:absolute md:left-0 md:pl-8 font-ruder font-medium text-sm text-center md:text-left flex flex-col lg:flex-row items-center lg:items-center space-y-2 lg:space-y-0 lg:space-x-4">
+          <Image
+            src="/assets/logos/L_OC_BI_RGB_KO.png"
+            alt="Ontario Creates"
+            width={120}
+            height={33}
+            className="h-8 w-auto"
+            style={{ width: 'auto', height: 'auto' }}
+          />
+          <span>
+            Supported by Ontario Creates
+          </span>
         </div>
-        <div className="order-1 md:order-2 flex items-center justify-center space-x-6 md:mx-auto">
+        <div className="order-2 flex items-center justify-center space-x-6 md:mx-auto">
           <Link
             href="https://www.instagram.com/samplechief/?hl=en"
             target="_blank"
