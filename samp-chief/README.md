@@ -73,4 +73,4 @@ Projects are managed through the data file at `src/data/events.ts`. See [ADDING_
 
 ## Architecture
 
-This project uses a container/presenter component pattern with centralized data management. Components focus on UI rendering while custom hooks handle business logic and data transformation.
+This project uses a container/presenter component pattern with centralized data management. Components focus on UI rendering while custom hooks handle business logic and data transformation...
