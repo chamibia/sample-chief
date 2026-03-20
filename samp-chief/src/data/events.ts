@@ -190,7 +190,7 @@ export const events: Event[] = [
     },
     {
       title: "Pinterest",
-      projectcard: "/assets/projects/pinterest/117452646_Unknown.jpg",
+      projectcard: "/assets/projects/pinterest/117452656_Unknown.jpg",
       description: "Pinterest invited Sample Chief during Black History Month to host a maker class in beaded Ankara jewelry. It was a wholesome and educational experience for the Pinterest staff, many of who got to learn about African art and get craftsy for the first time in a while.",
       slug: "pinterest",
       imageFolder: "pinterest",
