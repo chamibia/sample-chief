@@ -200,6 +200,14 @@ export default function UnifiedCard(props: UnifiedCardProps) {
   if (variant === 'project') {
     const { event, isLCP, isLarge, forceHover } = props as ProjectCardProps;
     
+    // Quality tiers: LCP=75, large cards=85, standard=70
+    const imageQuality = isLCP ? 75 : isLarge ? 85 : 70;
+    const imageSizes = isLCP 
+      ? "(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw" 
+      : isLarge 
+      ? "(max-width: 768px) 100vw, 66vw" 
+      : "(max-width: 768px) 100vw, 33vw";
+    
     return (
       <Link
         href={`/projects/${event.slug}`}
@@ -211,9 +219,9 @@ export default function UnifiedCard(props: UnifiedCardProps) {
             src={event.projectcard}
             alt={event.title}
             fill
-            sizes={isLCP ? "(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw" : isLarge ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
+            sizes={imageSizes}
             className="object-cover object-center"
-            quality={isLCP ? 75 : 65}
+            quality={imageQuality}
             priority={isLCP}
             loading={isLCP ? "eager" : "lazy"}
             fetchPriority={isLCP ? "high" : "auto"}
