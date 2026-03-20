@@ -5,6 +5,7 @@ import { Calendar, CalendarPlus,MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect,useState } from "react";
+import { BLUR_PLACEHOLDER } from "@/lib/imageOptimization";
 
 const eventData = [
   {
@@ -239,7 +240,7 @@ export default function Events() {
                           className="event-image object-cover transition-all duration-500"
                           placeholder="blur"
                           style={{ width: 'auto', height: 'auto' }}
-                          blurDataURL="data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='16' fill='%23e5e7eb'/%3E%3C/svg%3E"
+                          blurDataURL={BLUR_PLACEHOLDER}
                         />
                       </Link>
                     ) : (
@@ -252,7 +253,7 @@ export default function Events() {
                         className="event-image object-cover transition-all duration-500"
                         placeholder="blur"
                         style={{ width: 'auto', height: 'auto' }}
-                        blurDataURL="data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='16' fill='%23e5e7eb'/%3E%3C/svg%3E"
+                        blurDataURL={BLUR_PLACEHOLDER}
                       />
                     )}
                   </div>

@@ -7,7 +7,7 @@ import { ReactNode } from 'react';
 
 import { Card, CardContent } from './card';
 import { ProductCardImage } from './OptimizedImage';
-import { getProjectCardOptimization } from '@/lib/imageOptimization';
+import { getProjectCardOptimization, BLUR_PLACEHOLDER } from '@/lib/imageOptimization';
 
 type CardVariant = 'project' | 'product' | 'event' | 'content' | 'music';
 
@@ -124,7 +124,7 @@ export default function UnifiedCard(props: UnifiedCardProps) {
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 placeholder="blur"
-                blurDataURL="data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='16' fill='%23e5e7eb'/%3E%3C/svg%3E"
+              blurDataURL={BLUR_PLACEHOLDER}
                 loading={priority ? "eager" : "lazy"}
                 priority={priority}
               />
@@ -200,7 +200,7 @@ export default function UnifiedCard(props: UnifiedCardProps) {
   // Handle project variant
   if (variant === 'project') {
     const { event, isLCP, isLarge, forceHover } = props as ProjectCardProps;
-    const { sizes: imageSizes, quality: imageQuality } = getProjectCardOptimization(isLCP, isLarge);
+    const { sizes: imageSizes, quality: imageQuality } = getProjectCardOptimization(isLCP ?? false, isLarge ?? false);
     
     return (
       <Link
