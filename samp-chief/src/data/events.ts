@@ -157,5 +157,58 @@ export const events: Event[] = [
         { type: 'video', src: "/assets/projects/village-boogie/10.mov", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/village-boogie/5.jpg", gridSpan: "col-span-2 row-span-2" }
       ]
+    },
+    {
+      title: "Art Gallery of Ontario",
+      projectcard: "/assets/projects/art-gallery-of-ontario/02-03-1W3A3764.jpg",
+      description: "In February 2026, Sample Chief partnered with the AGO to bring their Walker Court to life with a multi-sensory experience. 3D projections, a 6-piece Highlife band, DJs, delicious drinks. You really just had to be there!",
+      slug: "art-gallery-of-ontario",
+      imageFolder: "art-gallery-of-ontario",
+      ethos: "Transforming an art gallery with a multi-sensory takeover.",
+      location: "Toronto, Canada",
+      services: "Editorial / Event Curation / Creative Direction / Art Installation / Music Curation",
+      heroImage: "/assets/projects/art-gallery-of-ontario/02-03-1W3A3764.jpg",
+      contentBlocks: [
+        { type: 'image', src: "/assets/projects/art-gallery-of-ontario/13.jpg", gridSpan: "col-span-1 row-span-2" },
+        { type: 'video', src: "/assets/projects/art-gallery-of-ontario/sample-chief-ago-2026-16x9.mp4", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/art-gallery-of-ontario/01-1W3A3938.jpg", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/art-gallery-of-ontario/09-XY-1W3A3820.jpg", gridSpan: "col-span-1 row-span-1" },
+        { type: 'image', src: "/assets/projects/art-gallery-of-ontario/19.jpg", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/art-gallery-of-ontario/18.jpg", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/art-gallery-of-ontario/20.jpg", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/art-gallery-of-ontario/12.jpg", gridSpan: "col-span-1 row-span-1" },
+        { type: 'image', src: "/assets/projects/art-gallery-of-ontario/10-11.jpg", gridSpan: "col-span-4 row-span-2" },
+        { type: 'image', src: "/assets/projects/art-gallery-of-ontario/17.jpg", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/art-gallery-of-ontario/15-right-side-only.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/art-gallery-of-ontario/06-1W3A4124.jpg", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/art-gallery-of-ontario/16.jpg", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/art-gallery-of-ontario/04-1W3A3828-2.jpg", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/art-gallery-of-ontario/14.jpg", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/art-gallery-of-ontario/05-1W3A4001.jpg", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/art-gallery-of-ontario/07-08-1W3A4034.jpg", gridSpan: "col-span-4 row-span-2" }
+      ]
+    },
+    {
+      title: "Pinterest",
+      projectcard: "/assets/projects/pinterest/117452646_Unknown.jpg",
+      description: "Pinterest invited Sample Chief during Black History Month to host a maker class in beaded Ankara jewelry. It was a wholesome and educational experience for the Pinterest staff, many of who got to learn about African art and get craftsy for the first time in a while.",
+      slug: "pinterest",
+      imageFolder: "pinterest",
+      ethos: "Music meets crafts.",
+      location: "Toronto, Canada",
+      services: "Event Curation / Music Curation",
+      heroImage: "/assets/projects/pinterest/117452656_Unknown.jpg",
+      contentBlocks: [
+        { type: 'image', src: "/assets/projects/pinterest/117452640_Unknown.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/pinterest/117452720_Unknown.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/pinterest/117452912_Unknown.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/pinterest/117453120_Unknown.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/pinterest/117454880_Unknown.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/pinterest/117455424_Unknown.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/pinterest/117455584_Unknown.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/pinterest/117453312_Unknown.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/pinterest/117453664_Unknown.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/pinterest/Collage_Brightened.jpg", gridSpan: "col-span-2 row-span-2" }
+      ]
     }
   ];

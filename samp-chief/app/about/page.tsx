@@ -12,6 +12,8 @@ const partners = [
   { id: 5, logo: "/assets/brands/standard.jpg", name: "Standard" },
   { id: 6, logo: "/assets/brands/sway.png", name: "Sway" },
   { id: 7, logo: "/assets/brands/universal_logo.svg", name: "Universal" },
+  { id: 8, logo: "/assets/brands/Pinterest-logo.webp", name: "Pinterest" },
+  { id: 9, logo: "/assets/brands/ago-logo.png", name: "AGO" },
 ];
 
 export default function About() {

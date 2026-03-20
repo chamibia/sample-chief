@@ -40,9 +40,9 @@ export default function Footer({ pathname }: { pathname: string }) {
       }}
     >
       <div className="flex flex-col md:relative justify-center items-center w-full px-4 pt-6 md:pt-2 pb-2 min-h-[80px]">
-        <div className="order-1 md:absolute md:left-0 md:pl-8 font-ruder font-medium text-sm text-center md:text-left flex flex-col lg:flex-row items-center lg:items-center space-y-2 lg:space-y-0 lg:space-x-4">
+        <div className="order-1 md:absolute md:left-0 md:pl-8 font-ruder font-medium text-sm text-center md:text-left flex flex-row items-center space-x-4">
           <Image
-            src="/assets/logos/L_OC_BI_RGB_KO.png"
+            src={pathname.startsWith('/projects/') || (pathname.startsWith('/shop/') && pathname !== '/shop/cart') ? "/assets/logos/L_OC_BI_RGB.png" : "/assets/logos/L_OC_BI_RGB_KO.png"}
             alt="Ontario Creates"
             width={120}
             height={33}
@@ -53,7 +53,7 @@ export default function Footer({ pathname }: { pathname: string }) {
             Supported by Ontario Creates
           </span>
         </div>
-        <div className="order-2 flex items-center justify-center space-x-6 md:mx-auto">
+        <div className="order-2 mt-5 md:mt-0 flex items-center justify-center space-x-6 md:mx-auto">
           <Link
             href="https://www.instagram.com/samplechief/?hl=en"
             target="_blank"
