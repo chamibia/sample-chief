@@ -6,6 +6,7 @@ import { events } from "@/data/events";
 
 import Image from "./Image";
 import { getProjectDetailData } from "./useProjectDetailData";
+import { BLUR_PLACEHOLDER } from "@/lib/imageOptimization";
 
 export async function generateStaticParams() {
   return events.map(event => ({ slug: event.slug }));
@@ -38,7 +39,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     quality={75}
                     className="object-cover object-center z-0"
                     placeholder="blur"
-                    blurDataURL="data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='16' fill='%23e5e7eb'/%3E%3C/svg%3E"
+                    blurDataURL={BLUR_PLACEHOLDER}
                   />
                 </div>
               </div>

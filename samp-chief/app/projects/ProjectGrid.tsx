@@ -7,6 +7,18 @@ interface ProjectGridProps {
   onProjectLeave?: () => void;
 }
 
+// Utility: Get grid layout and size info based on featured position
+function getGridConfig(position: number) {
+  const configs: Record<number, { gridClasses: string; isLarge: boolean }> = {
+    1: { gridClasses: 'col-span-2 md:col-span-1 md:row-span-2', isLarge: true },  // Large vertical
+    2: { gridClasses: 'col-span-1 md:col-span-1 md:row-span-1', isLarge: false }, // Standard
+    3: { gridClasses: 'col-span-1 md:col-span-2 md:row-span-2', isLarge: true },  // Large square
+    4: { gridClasses: 'col-span-2 md:col-span-1 md:row-span-1', isLarge: false }, // Standard
+    5: { gridClasses: 'col-span-2 md:col-span-4 md:row-span-1', isLarge: true },  // Full width
+  };
+  return configs[position] || { gridClasses: 'col-span-1 md:col-span-1 md:row-span-1', isLarge: false };
+}
+
 export default function ProjectGrid({ hoveredProject, onProjectHover, onProjectLeave }: ProjectGridProps = {}) {
   // Filter and sort featured projects by position
   const featuredProjects = events
@@ -36,30 +48,7 @@ export default function ProjectGrid({ hoveredProject, onProjectHover, onProjectL
 
           const isLCP = index === 0; // First image is LCP
           const isHovered = hoveredProject === event.slug;
-          
-          // Fixed layout positions based on position number
-          let gridClasses = '';
-          switch (event.featured?.position) {
-            case 1:
-              gridClasses = 'col-span-2 md:col-span-1 md:row-span-2'; // Mobile: full width, Desktop: large vertical
-              break;
-            case 2:
-              gridClasses = 'col-span-1 md:col-span-1 md:row-span-1'; // Mobile: left half, Desktop: standard size
-              break;
-            case 3:
-              gridClasses = 'col-span-1 md:col-span-2 md:row-span-2'; // Mobile: right half, Desktop: large square
-              break;
-            case 4:
-              gridClasses = 'col-span-2 md:col-span-1 md:row-span-1'; // Mobile: full width, Desktop: standard size
-              break;
-            case 5:
-              gridClasses = 'col-span-2 md:col-span-4 md:row-span-1'; // Mobile: full width, Desktop: full width
-              break;
-            default:
-              gridClasses = 'col-span-1 md:col-span-1 md:row-span-1';
-          }
-
-          const isLarge = event.featured?.position === 1 || event.featured?.position === 3;
+          const { gridClasses, isLarge } = getGridConfig(event.featured!.position);
           
           return (
             <div
