@@ -7,6 +7,7 @@ import { ReactNode } from 'react';
 
 import { Card, CardContent } from './card';
 import { ProductCardImage } from './OptimizedImage';
+import { getProjectCardOptimization } from '@/lib/imageOptimization';
 
 type CardVariant = 'project' | 'product' | 'event' | 'content' | 'music';
 
@@ -199,14 +200,7 @@ export default function UnifiedCard(props: UnifiedCardProps) {
   // Handle project variant
   if (variant === 'project') {
     const { event, isLCP, isLarge, forceHover } = props as ProjectCardProps;
-    
-    // Quality tiers: LCP=75, large cards=85, standard=70
-    const imageQuality = isLCP ? 75 : isLarge ? 85 : 70;
-    const imageSizes = isLCP 
-      ? "(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw" 
-      : isLarge 
-      ? "(max-width: 768px) 100vw, 66vw" 
-      : "(max-width: 768px) 100vw, 33vw";
+    const { sizes: imageSizes, quality: imageQuality } = getProjectCardOptimization(isLCP, isLarge);
     
     return (
       <Link

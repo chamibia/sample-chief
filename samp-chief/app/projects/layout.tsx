@@ -13,14 +13,6 @@ interface ProjectsLayoutProps {
 export default function ProjectsLayout({ children }: ProjectsLayoutProps) {
   return (
     <PageLayout variant="project">
-      {/* Preload LCP image for faster loading */}
-      <link
-        rel="preload"
-        as="image"
-        href="/assets/projects/ace-hotel/cover.jpg"
-        fetchPriority="high"
-        type="image/webp"
-      />
       {children}
     </PageLayout>
   );
