@@ -100,6 +100,17 @@ const eventData = [
     venue: "Art Gallery of Ontario, 317 Dundas St W, Toronto, ON M5T 1G4",
     imageUrl: "/assets/events/ago-takeover.jpg",
     learnMoreUrl: "https://ago.ca/events/friday-night-sample-chief-takeover",
+  },
+  {
+    id: 9,
+    title: "Sample Chief Listening Lounge with H.A.R.P. Hi-Fi",
+    description: "An intimate listening experience where records become conversations. We’re teaming up with Jeremy Joo and H.A.R.P Hi-Fi to carve out a space to encourage deep listening and connect communities through music and the complex layers within it.",
+    startDate: "2026-07-15",
+    endDate: "2026-07-15",
+    time: "5PM - 9PM",
+    venue: "New Stadium, 83 Walnut Ave",
+    imageUrl: "/assets/events/listening-lounge.png",
+    ticketLink: "https://luma.com/new-5fye",
   }
 ];
 
