@@ -220,12 +220,12 @@ export const events: Event[] = [
       ethos: "Providing a sonic backdrop for the Nigerian Modernism exhibition.",
       location: "London, UK",
       services: "Music Curation",
-      heroImage: "/assets/projects/tate-modern/5.jpg",
+      heroImage: "/assets/projects/tate-modern/3.jpg",
       contentBlocks: [
         { type: 'video', src: "/assets/projects/tate-modern/4.mp4", gridSpan: "col-span-1 row-span-2" },
         { type: 'video', src: "/assets/projects/tate-modern/2.mov", gridSpan: "col-span-2 row-span-2", controlType: 'long', poster: "/assets/projects/tate-modern/2-poster.jpg" },
         { type: 'video', src: "/assets/projects/tate-modern/8.mp4", gridSpan: "col-span-1 row-span-2" },
-        { type: 'image', src: "/assets/projects/tate-modern/1.jpg", gridSpan: "col-span-2 row-span-2"},
+        { type: 'image', src: "/assets/projects/tate-modern/5.jpg", gridSpan: "col-span-2 row-span-2"},
         { type: 'image', src: "/assets/projects/tate-modern/7.jpg", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/tate-modern/10.jpg", gridSpan: "col-span-1 row-span-2" },
         { type: 'image', src: "/assets/projects/tate-modern/13.jpg", gridSpan: "col-span-1 row-span-2" },
@@ -236,7 +236,7 @@ export const events: Event[] = [
         { type: 'video', src: "/assets/projects/tate-modern/16.mov", gridSpan: "col-span-2 row-span-2", controlType: 'long', poster: "/assets/projects/tate-modern/16-poster.jpg" },
         { type: 'video', src: "/assets/projects/tate-modern/14.mp4", gridSpan: "col-span-1 row-span-2" },
         { type: 'image', src: "/assets/projects/tate-modern/15.jpg", gridSpan: "col-span-2 row-span-2" },
-        { type: 'image', src: "/assets/projects/tate-modern/3.jpg", gridSpan: "col-span-2 row-span-2" }
+        { type: 'image', src: "/assets/projects/tate-modern/1.jpg", gridSpan: "col-span-2 row-span-2" }
 
       ]
     }
