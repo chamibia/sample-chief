@@ -210,5 +210,34 @@ export const events: Event[] = [
         { type: 'image', src: "/assets/projects/pinterest/117453664_Unknown.jpg", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/pinterest/Collage_Brightened.jpg", gridSpan: "col-span-2 row-span-2" }
       ]
+    },
+    {
+      title: "Tate Modern",
+      projectcard: "/assets/projects/tate-modern/5.jpg",
+      description: "In collaboration with FF Projects, celebrating the artists, architects, and dreamers who defined a new era of Nigerian creativity, Sample Chief hosted a Tate Lates in October 2025. It was nothing short of a magical moment. On a rainy London evening, we brought the heat.",
+      slug: "tate-modern",
+      imageFolder: "tate-modern",
+      ethos: "Providing a sonic backdrop for the Nigerian Modernism exhibition.",
+      location: "London, UK",
+      services: "Music Curation",
+      heroImage: "/assets/projects/tate-modern/3.jpg",
+      contentBlocks: [
+        { type: 'video', src: "/assets/projects/tate-modern/4.mp4", gridSpan: "col-span-1 row-span-2" },
+        { type: 'video', src: "/assets/projects/tate-modern/2.mov", gridSpan: "col-span-2 row-span-2", controlType: 'long', poster: "/assets/projects/tate-modern/2-poster.jpg" },
+        { type: 'video', src: "/assets/projects/tate-modern/8.mp4", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/tate-modern/5.jpg", gridSpan: "col-span-2 row-span-2"},
+        { type: 'image', src: "/assets/projects/tate-modern/7.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/tate-modern/10.jpg", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/tate-modern/13.jpg", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/tate-modern/9.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'video', src: "/assets/projects/tate-modern/6.mp4", gridSpan: "col-span-2 row-span-2", controlType: 'long', poster: "/assets/projects/tate-modern/6-poster.jpg" },
+        { type: 'image', src: "/assets/projects/tate-modern/11.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'video', src: "/assets/projects/tate-modern/10.mp4", gridSpan: "col-span-1 row-span-2" },
+        { type: 'video', src: "/assets/projects/tate-modern/16.mov", gridSpan: "col-span-2 row-span-2", controlType: 'long', poster: "/assets/projects/tate-modern/16-poster.jpg" },
+        { type: 'video', src: "/assets/projects/tate-modern/14.mp4", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/tate-modern/15.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/tate-modern/1.jpg", gridSpan: "col-span-2 row-span-2" }
+
+      ]
     }
   ];
