@@ -84,6 +84,7 @@ export type ProjectBlock = {
   fit?: string;
   position?: string;
   controlType?: 'short' | 'long';
+  poster?: string;
 };
 
 // --- Utility: getGridClasses ---
@@ -200,6 +201,7 @@ export function ProjectVideoBlock({ block, idx, eventTitle }: { block: ProjectBl
             <video
               ref={videoRefShort}
               src={block.src || ''}
+              poster={block.poster}
               className={`w-full h-full ${fitClass} ${positionClass || 'object-center'}`}
               style={inlineStyle}
               loop
@@ -220,6 +222,7 @@ export function ProjectVideoBlock({ block, idx, eventTitle }: { block: ProjectBl
             <video
               ref={videoRefLong}
               src={block.src || ''}
+              poster={block.poster}
               className={`w-full h-full ${fitClass} ${positionClass || 'object-center'}`}
               style={inlineStyle}
               loop={false}
