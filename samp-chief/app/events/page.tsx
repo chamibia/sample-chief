@@ -4,24 +4,42 @@ import { motion } from "framer-motion";
 import { Calendar, CalendarPlus,MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect,useState } from "react";
 import { BLUR_PLACEHOLDER } from "@/lib/imageOptimization";
 
 const eventData = [
   {
     id: 1,
+    title: "Sample Chief Social",
+    description: "Sample Chief and Holt Renfrew invite you to an evening soirée with performances, music trivia, vinyl music, yummy food and drinks in Toronto’s luxury fashion capital.",
+    startDate: "2025-02-05",
+    endDate: "2025-02-05",
+    time: "7PM - 11PM",
+    venue: "Holt Renfrew, 50 Bloor St W",
+    imageUrl: "/assets/events/sample-chief-social-feb52025.JPG",
+  },
+  {
+    id: 2,
+    title: "The Get Down",
+    description: "Sample Chief and Holt Renfrew invite you to a high-energy party with performances and DJs playing a kaleidoscope of African dance and club music at one of Toronto's most dynamic venues.",
+    startDate: "2025-02-20",
+    endDate: "2025-02-20",
+    time: "9PM - 1AM",
+    venue: "Standard Time, 165 Geary Ave",
+    imageUrl: "/assets/events/the-get-down-feb202025.JPG",
+  },
+  {
+    id: 3,
     title: "Village Boogie",
     description: "Standard Time welcomes the return of Sample Chief and the highly anticipated Village Boogie! on May 11 in Toronto. Inspired by diverse dance genres from the Motherland—from groovy 80s Afrodisco to heavy GQOM and Amapiano—Sample Chief leads an immersive sonic expedition in African dance music.",
     startDate: "2025-05-17",
     endDate: "2025-05-17",
     time: "9PM - LATE",
-    venue: "Standard Time",
-    address: "165 Geary Ave Toronto, Canada",
+    venue: "Standard Time, 165 Geary Ave Toronto, Canada",
     imageUrl: "/assets/events/may_17.jpg",
     ticketLink: "https://ra.co/events/2150643",
   },
   {
-    id: 2,
+    id: 4,
     title: "Sample Chief Social: Vinyl Night",
     description:
       "Join us at The Little Jerry (418 College Street) on Friday June 6th. Please note: Due to limited venue capacity, an RSVP does not guarantee entry",
@@ -33,7 +51,7 @@ const eventData = [
     ticketLink: "https://docs.google.com/forms/d/e/1FAIpQLSfzD1A6wJYXnRrFXAT0DgOVkJwbexESCO5cV1uupaeYnSAcGg/viewform",
   },
   {
-    id: 3,
+    id: 5,
     title: "Sample Chief Social UK",
     description: "Join us at Sweeties, The Standard on Thursday June 19th. Please note: Due to limited venue capacity, an RSVP does not guarantee entry",
     startDate: "2025-06-19",
@@ -44,7 +62,7 @@ const eventData = [
     ticketLink: "https://docs.google.com/forms/d/e/1FAIpQLScEnyFLRuDOPs7vZxZiEJ9fG1EUjc9nNaDBwW5kt5Cx48UGew/viewform?usp=header",
   },
   {
-    id: 4,
+    id: 6,
     title: "My Father's Shadow - Official Afterparty",
     description: "Join us for an evening of drinks and music to celebrate the North American premiere of My Father’s Shadow, at an exclusive afterparty hosted by local·global, in collaboration with Sample Chief.",
     startDate: "2025-09-10",
@@ -55,7 +73,7 @@ const eventData = [
     ticketLink: "https://bit.ly/myfathersshadowafterparty",
   },
   {
-    id: 5,
+    id: 7,
     title: "AFRIKA MAGIK: Toronto Listening Party",
     description: "Join us for a special preview of Show Dem Camp's latest project, AFRIKA MAGIK. Brought to you by local·global and Sample Chief.",
     startDate: "2025-10-22",
@@ -66,7 +84,7 @@ const eventData = [
     ticketLink: "https://www.eventbrite.ca/e/afrika-magik-toronto-listening-party-tickets-1836211551179?aff=erelexpmlt",
   },
   {
-    id: 6,
+    id: 8,
     title: "TATE MODERN LATES: NIGERIAN MODERNISM",
     description: "Catch us at the Tate Modern, providing a sonic backdrop for the ongoing Nigerian Modernism exhibition. A must see! Free entry.",
     startDate: "2025-10-31",
@@ -77,7 +95,7 @@ const eventData = [
     learnMoreUrl: "https://www.tate.org.uk/whats-on/tate-modern/tate-modern-lates",
   },
   {
-    id: 7,
+    id: 9,
     title: "Sample Chief Social: Vinyl Night",
     description: `
       The Social is back! This time we're doing it big and celebrating our anniversary at The Little Jerry. Pull up for a drink, dance, and maybe some birthday cake. Free before 11PM, $10 after. Supported by Kops Records.
@@ -91,7 +109,7 @@ const eventData = [
     ticketLink: "https://www.eventbrite.ca/e/sample-chief-social-tickets-1964396066515?utm_experiment=test_share_listing&aff=ebdsshios&sg=d61a0356e207522fe786cb664095b654cd619085e08a912d2417bb7ec2414cabbbffd7c7e3273513b96698aa30f713e74e7bf8a0751fbf298181333224a08fe3048fff09a893f5ba961970baa6",
   },
   {
-    id: 8,
+    id: 10,
     title: "Friday Night: Sample Chief AGO Takeover",
     description: "Bringing Walker Court to life with a multi-sensory experience filled with the sounds and rhythms of the continent and the diaspora. Lose yourself in the sonics, stories, and artistry of Black and African music in an unforgettable celebration of culture and creativity.",
     startDate: "2026-02-20",
@@ -102,7 +120,7 @@ const eventData = [
     learnMoreUrl: "https://ago.ca/events/friday-night-sample-chief-takeover",
   },
   {
-    id: 9,
+    id: 11,
     title: "Sample Chief Listening Lounge with H.A.R.P. Hi-Fi",
     description: "An intimate listening experience where records become conversations. We’re teaming up with Jeremy Joo and H.A.R.P Hi-Fi to carve out a space to encourage deep listening and connect communities through music and the complex layers within it.",
     startDate: "2026-07-15",
@@ -115,14 +133,6 @@ const eventData = [
 ];
 
 export default function Events() {
-  const [showBanner, setShowBanner] = useState(true);
-
-  useEffect(() => {
-    const onScroll = () => setShowBanner(window.scrollY < 100);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   const formatDate = (dateString: string) => {
     const [year, month, day] = dateString
       .split("-")
@@ -185,7 +195,7 @@ export default function Events() {
         endDate
       )}`,
       details: encodeURIComponent(event.description),
-      location: encodeURIComponent(`${event.venue}, ${event.address}`),
+      location: encodeURIComponent(event.venue),
     };
 
     const queryString = Object.entries(params)
@@ -204,7 +214,7 @@ export default function Events() {
       <div>
         {eventData
           .slice()
-          .reverse()
+          .sort((a, b) => b.startDate.localeCompare(a.startDate))
           .map((event) => (
             <motion.div
               key={event.id}
@@ -324,7 +334,7 @@ export default function Events() {
                       <div className="flex items-center">
                         <MapPin className="h-5 w-5 mr-3 text-[#202020] flex-shrink-0" />
                         <span className="font-sans font-light text-[#202020] leading-relaxed text-sm md:text-base">
-                          {event.venue} {event.address}
+                          {event.venue}
                         </span>
                       </div>
                       <div className="flex items-center">
