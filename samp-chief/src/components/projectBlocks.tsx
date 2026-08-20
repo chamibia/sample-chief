@@ -2,6 +2,7 @@
 import React from "react";
 
 import LazyVideo from "@/components/LazyVideo";
+import PillIconButton from "@/components/ui/PillIconButton";
 import Image from "../../app/projects/[slug]/Image";
 import { getProjectBlockOptimization, BLUR_PLACEHOLDER } from "@/lib/imageOptimization";
 
@@ -48,11 +49,11 @@ function PlayPauseButton({ isPlaying, onClick, className, style }: {
   style?: React.CSSProperties;
 }) {
   return (
-    <button
+    <PillIconButton
       onClick={onClick}
-      className={`flex items-center gap-2 px-4 py-3 hover:bg-black hover:bg-opacity-40 hover:border-transparent transition-all duration-300 text-white text-sm font-medium cursor-pointer rounded-full border border-white ${className || ''}`}
+      className={`gap-2 px-4 py-3 text-sm font-medium ${className || ''}`}
       style={style}
-      aria-label={isPlaying ? 'Pause video' : 'Play video'}
+      ariaLabel={isPlaying ? 'Pause video' : 'Play video'}
     >
       {isPlaying ? (
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -65,7 +66,7 @@ function PlayPauseButton({ isPlaying, onClick, className, style }: {
         </svg>
       )}
       <span className="hidden sm:inline">Play/Pause</span>
-    </button>
+    </PillIconButton>
   );
 }
 

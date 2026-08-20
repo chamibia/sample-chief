@@ -2,6 +2,7 @@
 
 import {useRef, useState } from "react";
 
+import FullBleedVideo from "@/components/ui/FullBleedVideo";
 import { createAudioFadeController } from '@/lib/audioUtils';
 
 export default function LazyVideoHero() {
@@ -14,16 +15,7 @@ export default function LazyVideoHero() {
 
   return (
     <section className="relative w-full h-[100vh] bg-black" id="hero-section">
-      <video
-        ref={videoRef}
-        src="/assets/videos/sample.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="metadata"
-        className="absolute inset-0 w-full h-full object-cover z-0"
-      />
+      <FullBleedVideo ref={videoRef} src="/assets/videos/sample.mp4" />
 
       <div 
         className="absolute inset-0 flex items-center justify-center pointer-events-none z-10"

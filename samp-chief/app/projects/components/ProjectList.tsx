@@ -12,9 +12,10 @@ interface ProjectListProps {
 
 export default function ProjectList({ variant, hoveredProject, onProjectHover, onProjectLeave }: ProjectListProps) {
   if (variant === 'sidebar') {
+    const sortedEvents = [...events].sort((a, b) => a.title.localeCompare(b.title));
     return (
       <div className="space-y-4 overflow-y-auto flex-1 pr-2">
-        {events.map((event) => {
+        {sortedEvents.map((event) => {
           const isHighlighted = hoveredProject === event.slug;
           return (
             <Link
