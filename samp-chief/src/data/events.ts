@@ -68,6 +68,7 @@ export const events: Event[] = [
       ethos: "Let’s congregate the African vinyl community.",
       location: "Toronto, Canada",
       services: "Event Curation / Music Curation / Merchandise",
+      heroImage: "/assets/projects/kops/1.JPG",
       heroVideo: "/assets/projects/kops/video.mp4",
       contentBlocks: [
         { type: 'image', src: "/assets/projects/kops/6.jpg", gridSpan: "col-span-1 row-span-2" },
