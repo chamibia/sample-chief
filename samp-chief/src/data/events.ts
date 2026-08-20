@@ -91,9 +91,9 @@ export const events: Event[] = [
       ethos: "Celebrating a 23 year-old event with style.",
       location: "Toronto, Canada",
       services: "Music curation",
-      heroImage: "/assets/projects/u-of-t/1.jpg",
+      heroImage: "/assets/projects/u-of-t/cover.jpg",
       contentBlocks: [
-          { type: 'image', src: "/assets/projects/u-of-t/4.jpg", gridSpan: "col-span-2 row-span-4" },
+          { type: 'image', src: "/assets/projects/u-of-t/1.jpg", gridSpan: "col-span-4 row-span-2" },
           { type: 'image', src: "/assets/projects/u-of-t/2.jpg", gridSpan: "col-span-2 row-span-2" },
           { type: 'image', src: "/assets/projects/u-of-t/3.JPG", gridSpan: "col-span-2 row-span-2" }
         ]
