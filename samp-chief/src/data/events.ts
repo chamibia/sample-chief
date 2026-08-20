@@ -22,6 +22,7 @@ export type Event = {
   location?: string;
   services?: string;
   heroImage?: string;
+  heroVideo?: string;
   images?: Array<{
     src: string;
     fit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
@@ -67,11 +68,10 @@ export const events: Event[] = [
       ethos: "Let’s congregate the African vinyl community.",
       location: "Toronto, Canada",
       services: "Event Curation / Music Curation / Merchandise",
-      heroImage: "/assets/projects/kops/1.JPG",
+      heroVideo: "/assets/projects/kops/video.mp4",
       contentBlocks: [
         { type: 'image', src: "/assets/projects/kops/6.jpg", gridSpan: "col-span-1 row-span-2" },
         { type: 'image', src: "/assets/projects/kops/poster.JPG", gridSpan: "col-span-1 row-span-2", fit: 'fill' },
-        { type: 'video', src: "/assets/projects/kops/video.mp4", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/kops/2.JPG", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/kops/7.jpg", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/kops/cover.jpg", gridSpan: "col-span-2 row-span-2" },

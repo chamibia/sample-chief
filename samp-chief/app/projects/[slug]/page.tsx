@@ -26,7 +26,20 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         <div className="grid grid-rows-[auto_auto] w-full">
           {/* First section: full width, one column */}
           <div className="relative w-full h-[50vh] md:h-[85vh] flex flex-row justify-between items-center text-white">
-            {heroSrc && (
+            {event.heroVideo ? (
+              <div className="absolute inset-0 z-0">
+                <video
+                  src={event.heroVideo}
+                  poster={event.heroImage || undefined}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  className="absolute inset-0 w-full h-full object-cover object-center z-0"
+                />
+              </div>
+            ) : heroSrc && (
               // Hero image: this is the LCP element. Keep it as priority.
               <div className="absolute inset-0 z-0">
                 <div className="relative w-full h-full aspect-[16/9]">
