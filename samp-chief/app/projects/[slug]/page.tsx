@@ -88,7 +88,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     {servicesArray.length ? (
                       <div className="mb-6">
                         {servicesArray.map((s: string, i: number) => (
-                          <p key={i} className="text-gray-700 leading-relaxed">{s}</p>
+                          <p key={i} className="text-sm text-gray-700 leading-relaxed uppercase">{s}</p>
                         ))}
                       </div>
                     ) : (
@@ -131,7 +131,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     {servicesArray.length ? (
                       <div className="mb-10">
                         {servicesArray.map((s: string, i: number) => (
-                          <p key={i} className="text-gray-700 leading-relaxed">{s}</p>
+                          <p key={i} className="text-sm text-gray-700 leading-relaxed uppercase">{s}</p>
                         ))}
                       </div>
                     ) : (
