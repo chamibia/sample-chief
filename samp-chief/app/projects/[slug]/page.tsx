@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import React from "react";
 
 import ProjectBlocksClient from "@/components/ProjectBlocksClient";
+import FullBleedVideo from "@/components/ui/FullBleedVideo";
+import PillIconButton from "@/components/ui/PillIconButton";
 import { events } from "@/data/events";
 
 import Image from "./Image";
@@ -10,6 +12,43 @@ import { BLUR_PLACEHOLDER } from "@/lib/imageOptimization";
 
 export async function generateStaticParams() {
   return events.map(event => ({ slug: event.slug }));
+}
+
+function ProjectInfoPanel({
+  event,
+  servicesArray,
+  servicesWrapperClassName = "",
+  servicesListClassName = "mb-6",
+}: {
+  event: any;
+  servicesArray: string[];
+  servicesWrapperClassName?: string;
+  servicesListClassName?: string;
+}) {
+  return (
+    <>
+      <h3 className="font-bold text-lg mb-2">Ethos</h3>
+      <div className="mb-6">{event.ethos || "-"}</div>
+      <h3 className="font-bold text-lg mb-2">Description</h3>
+      <div className="mb-6">
+        {event.description.split(/\n+/).map((para: string, idx: number) => (
+          <p key={idx} dangerouslySetInnerHTML={{ __html: para.trim() }} />
+        ))}
+      </div>
+      <div className={servicesWrapperClassName}>
+        <h3 className="font-bold text-lg mb-2">Services</h3>
+        {servicesArray.length ? (
+          <div className={servicesListClassName}>
+            {servicesArray.map((s: string, i: number) => (
+              <p key={i} className="text-sm text-gray-700 leading-relaxed uppercase">{s}</p>
+            ))}
+          </div>
+        ) : (
+          <div><p className="text-sm text-gray-700 leading-relaxed">-</p></div>
+        )}
+      </div>
+    </>
+  );
 }
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -25,8 +64,16 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       <div className="w-full px-0">
         <div className="grid grid-rows-[auto_auto] w-full">
           {/* First section: full width, one column */}
-          <div className="relative w-full h-[50vh] md:h-screen flex flex-row justify-between items-center text-white">
-            {heroSrc && (
+          <div className="relative w-full h-[50vh] md:h-[85vh] flex flex-row justify-between items-center text-white">
+            {event.heroVideo ? (
+              <div className="absolute inset-0 z-0">
+                <FullBleedVideo
+                  src={event.heroVideo}
+                  poster={event.heroImage || undefined}
+                  className="object-center"
+                />
+              </div>
+            ) : heroSrc && (
               // Hero image: this is the LCP element. Keep it as priority.
               <div className="absolute inset-0 z-0">
                 <div className="relative w-full h-full aspect-[16/9]">
@@ -63,70 +110,54 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               <div className="relative bg-white rounded-lg p-4 md:p-6 text-black w-full">
                 {/* Text content */}
                 <div className="relative flex flex-col items-start self-start w-full md:h-full">
-                  <h3 className="font-bold text-lg mb-2">Ethos</h3>
-                  <div className="mb-6">{event.ethos || "-"}</div>
-                  <h3 className="font-bold text-lg mb-2">Description</h3>
-                  <div className="mb-6">
-                    {event.description.split(/\n+/).map((para: string, idx: number) => (
-                      <p key={idx} dangerouslySetInnerHTML={{ __html: para.trim() }} />
-                    ))}
+                  <ProjectInfoPanel event={event} servicesArray={servicesArray} />
+                </div>
+              </div>
+            </div>
+
+            {/* Scroll-down indicator */}
+            <PillIconButton
+              as="a"
+              href="#project-below-fold"
+              className="absolute bottom-6 right-6 z-20 p-3"
+              ariaLabel="Scroll to content"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <polyline points="6,13 12,19 18,13" />
+              </svg>
+            </PillIconButton>
+          </div>
+
+          <div id="project-below-fold">
+            {/* Mobile-only ethos/description block: place after the hero so it appears as its own block on small screens */}
+            {/* Full-bleed background on mobile */}
+            <div className="block md:hidden">
+              <div className="w-full bg-white">
+                <div className="w-full px-0 py-6">
+                  <div className="bg-white p-4 text-black">
+                    <ProjectInfoPanel
+                      event={event}
+                      servicesArray={servicesArray}
+                      servicesWrapperClassName="mt-2 w-full"
+                      servicesListClassName="mb-10"
+                    />
                   </div>
-                  <h3 className="font-bold text-lg mb-2">Services</h3>
-                    {servicesArray.length ? (
-                      <div className="mb-6">
-                        {servicesArray.map((s: string, i: number) => (
-                          <p key={i} className="text-gray-700 leading-relaxed">{s}</p>
-                        ))}
-                      </div>
-                    ) : (
-                      <div><p className="text-sm text-gray-700 leading-relaxed">-</p></div>
-                    )}
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Mobile-only ethos/description block: place after the hero so it appears as its own block on small screens */}
-          {/* Full-bleed background on mobile */}
-          <div className="block md:hidden">
-            <div className="w-full bg-white">
-              <div className="w-full px-0 py-6">
-                <div className="bg-white p-4 text-black">
-                <h3 className="font-bold text-lg mb-2">Ethos</h3>
-                <div className="mb-6">{event.ethos || "-"}</div>
-                <h3 className="font-bold text-lg mb-2">Description</h3>
-                <div className="mb-6">
-                  {event.description.split(/\n+/).map((para: string, idx: number) => (
-                    <p key={idx} dangerouslySetInnerHTML={{ __html: para.trim() }} />
-                  ))}
-                </div>
-                <div className="mt-2 w-full">
-                  <h3 className="font-bold text-lg mb-2">Services</h3>
-                  {servicesArray.length ? (
-                    <div className="mb-10">
-                      {servicesArray.map((s: string, i: number) => (
-                        <p key={i} className="text-gray-700 leading-relaxed">{s}</p>
-                      ))}
-                    </div>
-                  ) : (
-                    <div><p className="text-sm text-gray-700 leading-relaxed">-</p></div>
-                  )}
-                </div>
-                </div>
+            {/* Custom grid section for project images */}
+            <section className="w-full">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 auto-rows-auto md:auto-rows-[30vh] gap-0 p-0">
+                {Array.isArray(projectBlocks) && projectBlocks.length > 0 ? (
+                  <ProjectBlocksClient blocks={projectBlocks} eventTitle={event.title} />
+                ) : (
+                  <div className="col-span-full p-8 text-center">No project media available.</div>
+                )}
               </div>
-            </div>
+            </section>
           </div>
-
-          {/* Custom grid section for project images */}
-          <section className="w-full">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 auto-rows-auto md:auto-rows-[30vh] gap-0 p-0">
-              {Array.isArray(projectBlocks) && projectBlocks.length > 0 ? (
-                <ProjectBlocksClient blocks={projectBlocks} eventTitle={event.title} />
-              ) : (
-                <div className="col-span-full p-8 text-center">No project media available.</div>
-              )}
-            </div>
-          </section>
         </div>
       </div>
     );

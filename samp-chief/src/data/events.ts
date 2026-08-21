@@ -22,6 +22,7 @@ export type Event = {
   location?: string;
   services?: string;
   heroImage?: string;
+  heroVideo?: string;
   images?: Array<{
     src: string;
     fit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
@@ -68,10 +69,10 @@ export const events: Event[] = [
       location: "Toronto, Canada",
       services: "Event Curation / Music Curation / Merchandise",
       heroImage: "/assets/projects/kops/1.JPG",
+      heroVideo: "/assets/projects/kops/video.mp4",
       contentBlocks: [
         { type: 'image', src: "/assets/projects/kops/6.jpg", gridSpan: "col-span-1 row-span-2" },
         { type: 'image', src: "/assets/projects/kops/poster.JPG", gridSpan: "col-span-1 row-span-2", fit: 'fill' },
-        { type: 'video', src: "/assets/projects/kops/video.mp4", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/kops/2.JPG", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/kops/7.jpg", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/kops/cover.jpg", gridSpan: "col-span-2 row-span-2" },
@@ -91,9 +92,9 @@ export const events: Event[] = [
       ethos: "Celebrating a 23 year-old event with style.",
       location: "Toronto, Canada",
       services: "Music curation",
-      heroImage: "/assets/projects/u-of-t/1.jpg",
+      heroImage: "/assets/projects/u-of-t/cover.jpg",
       contentBlocks: [
-          { type: 'image', src: "/assets/projects/u-of-t/4.jpg", gridSpan: "col-span-2 row-span-4" },
+          { type: 'image', src: "/assets/projects/u-of-t/1.jpg", gridSpan: "col-span-4 row-span-2" },
           { type: 'image', src: "/assets/projects/u-of-t/2.jpg", gridSpan: "col-span-2 row-span-2" },
           { type: 'image', src: "/assets/projects/u-of-t/3.JPG", gridSpan: "col-span-2 row-span-2" }
         ]

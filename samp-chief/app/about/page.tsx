@@ -18,7 +18,7 @@ const partners = [
 
 export default function About() {
   const [isVisible, setIsVisible] = useState(false);
-  
+
   useEffect(() => {
     // Trigger animations after component mounts
     const timer = setTimeout(() => setIsVisible(true), 100);
@@ -46,7 +46,7 @@ export default function About() {
         {headline.map((p, idx) => (
           <p
             key={idx}
-            className="font-sans font-light mb-8 text-[#202020] text-lg md:text-xl lg:text-2xl leading-loose tracking-wider"
+            className="font-sans font-light mb-8 text-[#202020] text-lg leading-loose tracking-wider"
           >
             {p}
           </p>
@@ -57,7 +57,7 @@ export default function About() {
         {paragraphs.map((p, idx) => (
           <p
             key={idx}
-            className="font-sans font-light mb-8 text-[#202020] text-lg md:text-xl lg:text-2xl leading-loose tracking-wider"
+            className="font-sans font-light mb-8 text-[#202020] text-lg leading-loose tracking-wider"
           >
             {p}
           </p>
@@ -84,23 +84,27 @@ export default function About() {
 
       {/* Logo section */}
       <div className={`mt-16 transform transition-all duration-700 ease-out delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-        <div className="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-16 py-6 w-full">
-          {partners.map((p, idx) => (
-            <div
-              key={p.id}
-              className={`flex-shrink-0 flex items-center justify-center hover:scale-110 transition-all duration-300 ease-out hover:-translate-y-1 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
-              style={{ transitionDelay: `${600 + idx * 100}ms` }}
-            >
-              <Image
-                src={p.logo}
-                alt={`${p.name} logo`}
-                width={120}
-                height={80}
-                className="max-h-16 max-w-[120px] object-contain transition-all duration-300"
-                style={{ width: 'auto', height: 'auto' }}
-              />
-            </div>
-          ))}
+        <div className="w-full overflow-hidden py-6">
+          <div className="flex w-max animate-marquee">
+            {[...partners, ...partners].map((p, idx) => (
+              <div
+                key={`${p.id}-${idx}`}
+                className={`flex-shrink-0 flex items-center transition-all duration-300 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
+                style={{ transitionDelay: `${600 + (idx % partners.length) * 100}ms` }}
+              >
+                <div className="flex items-center justify-center px-8 transform transition-all duration-300 ease-out hover:scale-110 hover:-translate-y-1">
+                  <Image
+                    src={p.logo}
+                    alt={`${p.name} logo`}
+                    width={120}
+                    height={80}
+                    className="max-h-16 max-w-[120px] object-contain transition-all duration-300"
+                    style={{ width: 'auto', height: 'auto' }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
