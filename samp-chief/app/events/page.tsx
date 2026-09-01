@@ -133,7 +133,7 @@ const eventData = [
   {
     id: 12,
     title: "As Loud as Freedom: Opening Night",
-    description: "Turning up the volume of artistic expression and music at the heart of revolution. Opening night at 918 Bathurst Centre for Culture, Arts, Media and Education.",
+    description: "Turning up the volume of artistic expression and music at the heart of revolution. Join us for the official exhibition opening.",
     startDate: "2026-09-17",
     endDate: "2026-09-17",
     time: "5PM - 9PM",
