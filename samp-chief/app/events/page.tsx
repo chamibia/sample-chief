@@ -129,7 +129,18 @@ const eventData = [
     venue: "New Stadium, 83 Walnut Ave",
     imageUrl: "/assets/events/listening-lounge.png",
     ticketLink: "https://luma.com/new-5fye",
-  }
+  },
+  {
+    id: 12,
+    title: "As Loud as Freedom",
+    description: "Turning up the volume of artistic expression and music at the heart of revolution. This is a series of immersive listening sessions curated by community selectors at 918 Bathurst Centre for Culture, Arts, Media and Education.",
+    startDate: "2026-09-17",
+    endDate: "2026-09-17",
+    time: "5PM - 9PM",
+    venue: "918 Bathurst St, Toronto, ON M5R 3G5, Canada",
+    imageUrl: "/assets/events/main-kv-100.jpeg",
+    ticketLink: "https://www.universe.com/events/as-loud-as-freedom-listening-lounge-tickets-HLCD1B",
+  },
 ];
 
 export default function Events() {
