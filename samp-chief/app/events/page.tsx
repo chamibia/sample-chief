@@ -139,7 +139,7 @@ const eventData = [
     time: "5PM - 9PM",
     venue: "918 Bathurst St, Toronto, ON M5R 3G5, Canada",
     imageUrl: "/assets/events/main-kv-100.jpeg",
-    ticketLink: "https://www.universe.com/events/as-loud-as-freedom-listening-lounge-tickets-HLCD1B",
+    ticketLink: "https://www.universe.com/events/as-loud-as-freedom-opening-night-tickets-7HNX6Y?ref=share-widget-buffer",
   },
 ];
 
