@@ -129,7 +129,18 @@ const eventData = [
     venue: "New Stadium, 83 Walnut Ave",
     imageUrl: "/assets/events/listening-lounge.png",
     ticketLink: "https://luma.com/new-5fye",
-  }
+  },
+  {
+    id: 12,
+    title: "As Loud as Freedom: Opening Night",
+    description: "Turning up the volume of artistic expression and music at the heart of revolution. Join us for the official exhibition opening.",
+    startDate: "2026-09-17",
+    endDate: "2026-09-17",
+    time: "5PM - 9PM",
+    venue: "918 Bathurst St, Toronto, ON M5R 3G5, Canada",
+    imageUrl: "/assets/events/main-kv-100.jpeg",
+    ticketLink: "https://www.universe.com/events/as-loud-as-freedom-opening-night-tickets-7HNX6Y?ref=share-widget-buffer",
+  },
 ];
 
 export default function Events() {
