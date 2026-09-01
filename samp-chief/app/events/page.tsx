@@ -133,7 +133,7 @@ const eventData = [
   {
     id: 12,
     title: "As Loud as Freedom",
-    description: "Turning up the volume of artistic expression and music at the heart of revolution. This is a series of immersive listening sessions curated by community selectors at 918 Bathurst Centre for Culture, Arts, Media and Education.",
+    description: "Turning up the volume of artistic expression and music at the heart of revolution.",
     startDate: "2026-09-17",
     endDate: "2026-09-17",
     time: "5PM - 9PM",
