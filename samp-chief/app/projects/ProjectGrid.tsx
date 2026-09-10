@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 import { ProjectCard } from '@/components/ui/UnifiedCard';
 import { events } from '@/data/events';
 
@@ -32,7 +34,17 @@ export default function ProjectGrid({ hoveredProject, onProjectHover, onProjectL
 
   return (
     <div className="h-full flex flex-col">
-      <div className="grid grid-cols-2 md:grid-cols-4 flex-1 gap-3 md:gap-4 w-full" style={{ gridAutoRows: 'minmax(0, 1fr)' }}>
+      <motion.div
+        className="grid grid-cols-2 md:grid-cols-4 flex-1 gap-3 md:gap-4 w-full"
+        style={{ gridAutoRows: 'minmax(0, 1fr)' }}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={{
+          hidden: { opacity: 0, y: 20 },
+          visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+        }}
+      >
         {gridSlots.map((event, index) => {
           if (!event) {
             // Empty grey placeholder card
@@ -67,7 +79,7 @@ export default function ProjectGrid({ hoveredProject, onProjectHover, onProjectL
             </div>
           );
         })}
-      </div>
+      </motion.div>
     </div>
   );
 }
