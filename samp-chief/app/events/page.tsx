@@ -222,38 +222,28 @@ export default function Events() {
       <h1 className="font-ruder font-medium text-4xl md:text-5xl lg:text-6xl text-left mb-6 leading-tight tracking-wider text-[#202020]">
         IRL
       </h1>
-      <div>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={{
+          hidden: { opacity: 0, y: 20 },
+          visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+        }}
+      >
         {eventData
           .slice()
           .sort((a, b) => b.startDate.localeCompare(a.startDate))
           .map((event) => (
-            <motion.div
+            <div
               key={event.id}
               className="text-2xl md:text-[1.5rem] leading-[1.2] mb-16 pt-10"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={{
-                hidden: { opacity: 0, y: 50 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-              }}
             >
               <div className="grid grid-cols-1 md:grid-cols-12 md:gap-x-8 items-stretch">
                 <motion.div
                   className="md:col-span-4 mb-6 md:mb-0"
-                  variants={{
-                    hidden: { opacity: 0, scale: 0.95 },
-                    visible: {
-                      opacity: 1,
-                      scale: 1,
-                      transition: { duration: 0.7, delay: 0.2 },
-                    },
-                    hover: { scale: 1.03, transition: { duration: 0.3 } },
-                  }}
-                  initial="hidden"
-                  whileInView="visible"
-                  whileHover="hover"
-                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ duration: 0.3 }}
                 >
                   <div className="h-full overflow-hidden rounded-lg">
                     {event.ticketLink ? (
@@ -292,56 +282,17 @@ export default function Events() {
                 </motion.div>
                 <div className="md:col-span-7 flex flex-col">
                   <div className="space-y-4">
-                    <motion.h1
-                      className="font-ruder font-light leading-relaxed text-3xl md:text-4xl lg:text-5xl text-[#202020]"
-                      variants={{
-                        hidden: { opacity: 0, y: -20 },
-                        visible: {
-                          opacity: 1,
-                          y: 0,
-                          transition: { duration: 0.5, delay: 0.1 },
-                        },
-                      }}
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true }}
-                    >
+                    <h1 className="font-ruder font-light leading-relaxed text-3xl md:text-4xl lg:text-5xl text-[#202020]">
                       {event.title}
-                    </motion.h1>
-                    <motion.div
-                      className="font-sans font-light text-base md:text-lg text-[#202020]"
-                      variants={{
-                        hidden: { opacity: 0, x: -20 },
-                        visible: {
-                          opacity: 1,
-                          x: 0,
-                          transition: { duration: 0.5, delay: 0.4 },
-                        },
-                      }}
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true }}
-                    >
+                    </h1>
+                    <div className="font-sans font-light text-base md:text-lg text-[#202020]">
                       {event.description.split('\n').map((line, index) => (
                         <div key={index}>
                           {line.trim() || <br />}
                         </div>
                       ))}
-                    </motion.div>
-                    <motion.div
-                      className="space-y-3"
-                      variants={{
-                        hidden: { opacity: 0, x: -20 },
-                        visible: {
-                          opacity: 1,
-                          x: 0,
-                          transition: { duration: 0.5, delay: 0.4 },
-                        },
-                      }}
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true }}
-                    >
+                    </div>
+                    <div className="space-y-3">
                       <div className="flex items-center">
                         <MapPin className="h-5 w-5 mr-3 text-[#202020] flex-shrink-0" />
                         <span className="font-sans font-light text-[#202020] leading-relaxed text-sm md:text-base">
@@ -354,16 +305,10 @@ export default function Events() {
                           {formatDate(event.startDate)}
                         </span>
                       </div>
-                    </motion.div>
+                    </div>
                   </div>
 
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4, duration: 0.2 }}
-                    viewport={{ once: true }}
-                    className="flex flex-col sm:flex-row gap-4 mt-10"
-                  >
+                  <div className="flex flex-col sm:flex-row gap-4 mt-10">
                     {event.ticketLink && (
                       <motion.div whileHover={{ scale: 1.02 }}>
                         <Link
@@ -399,12 +344,12 @@ export default function Events() {
                         Add to Calendar
                       </Link>
                     </motion.div>
-                  </motion.div>
+                  </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-      </div>
+      </motion.div>
       <div
         className="pb-24 md:pb-16"
         style={{ paddingBottom: "calc(6rem + env(safe-area-inset-bottom))" }}

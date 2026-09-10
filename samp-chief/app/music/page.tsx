@@ -234,12 +234,6 @@ export default function MusicPage() {
               key={item.id}
               className="pl-2 md:pl-4 basis-1/2 md:basis-1/3"
             >
-              <a
-                href={item.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block rounded-lg overflow-hidden"
-              >
               <UnifiedCard
                 variant="music"
                 title={item.title}
@@ -248,7 +242,6 @@ export default function MusicPage() {
                 href={item.link}
                 priority={idx === 0}
               />
-              </a>
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -266,18 +259,14 @@ export default function MusicPage() {
   return (
     <>
       {/* Header and intro */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+      <div>
         <h1 className="font-ruder font-medium text-4xl md:text-5xl lg:text-6xl text-left mb-6 leading-tight tracking-wider text-[#202020]">
           From Our Ears to Yours
         </h1>
         <p className="font-sans font-light text-lg md:text-xl lg:text-2xl text-left max-w-2xl leading-loose tracking-wider mb-10">
           Enjoy our selection of playlists and mixes, curated for every mood.
         </p>
-      </motion.div>
+      </div>
 
       {/* Add space above Playlists section */}
       <div className="mb-2" />
