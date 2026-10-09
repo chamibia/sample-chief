@@ -240,6 +240,17 @@ const eventData = [
     imageUrl: "/assets/events/sample-chief-social-uk-haruna.jpg",
     ticketLink: "https://docs.google.com/forms/d/e/1FAIpQLSdpa_W7gWnVRNKxqOeqxDCOedlTMmbY-uTFaFkK5Z39ewUy8Q/viewform",
   },
+  {
+    id: 22,
+    title: "As Loud as Freedom: Listening Lounge",
+    description: "Immersive sessions curated by community selectors.",
+    startDate: "2026-09-26",
+    endDate: "2026-09-26",
+    time: "3PM - 7PM",
+    venue: "918 Bathurst St, Toronto, ON M5R 3G5, Canada",
+    imageUrl: "/assets/events/alaf-listening-lounge.jpg",
+    ticketLink: "https://www.universe.com/events/as-loud-as-freedom-listening-lounge-tickets-HLCD1B?ref=share-widget-buffer",
+  },
 ];
 
 export default function Events() {
