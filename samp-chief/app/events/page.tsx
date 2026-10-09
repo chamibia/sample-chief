@@ -229,6 +229,17 @@ const eventData = [
     imageUrl: "/assets/events/alaf-movie-night.jpg",
     ticketLink: "https://www.universe.com/events/as-loud-as-freedom-movie-night-tickets-7RXWMD?ref=share-widget-buffer",
   },
+  {
+    id: 21,
+    title: "Sample Chief Social UK",
+    description: "Music by Haruna, Papu Raf, and open decks. Free entry, RSVP via link in bio.",
+    startDate: "2026-10-10",
+    endDate: "2026-10-11",
+    time: "10PM - 2AM",
+    venue: "Sweeties, 10th Floor, 10 Argyle St, London WC1H 8EG, United Kingdom",
+    imageUrl: "/assets/events/sample-chief-social-uk-haruna.jpg",
+    ticketLink: "https://docs.google.com/forms/d/e/1FAIpQLSdpa_W7gWnVRNKxqOeqxDCOedlTMmbY-uTFaFkK5Z39ewUy8Q/viewform",
+  },
 ];
 
 export default function Events() {
