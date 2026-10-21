@@ -242,6 +242,23 @@ export const events: Event[] = [
       ]
     },
     {
+      title: "Behind the Beat",
+      projectcard: "/assets/projects/behind-the-beat/cover.png",
+      description: "A deep dive into the architects behind our favourite hits, their influences and how they made the songs we all love. Episodes covered so far: Magicsticks (Asake), Ozedikus (One Condition – DJ Tunez, Wizkid, Fola), Progrex (Laho – Shallipopi), 2Frosh (Escaladizzy – Mavo), Chillz (TaTaTa – Burna Boy), Telz (Bundle By Bundle – Burna Boy), DOZ & JMS (Turn Down Mami – Cruel Santino). Check them out on YouTube!",
+      slug: "behind-the-beat",
+      imageFolder: "behind-the-beat",
+      ethos: "The Stories Behind Your Favourite African Songs",
+      services: "Media Production",
+      heroImage: "/assets/projects/behind-the-beat/cover.png",
+      contentBlocks: [
+        { type: 'video', src: "/assets/projects/behind-the-beat/trailer.mp4", gridSpan: "col-span-1 row-span-3", fit: 'fill', controls: true, controlType: 'long', poster: "/assets/projects/behind-the-beat/trailer-poster.jpg" },
+        { type: 'image', src: "/assets/projects/behind-the-beat/how-i-met-asake.png", gridSpan: "col-span-3 row-span-3", fit: 'fill' },
+        { type: 'video', src: "/assets/projects/behind-the-beat/dj-neptune-dull.mp4", gridSpan: "col-span-1 row-span-3", fit: 'fill', controls: true, controlType: 'long', poster: "/assets/projects/behind-the-beat/dj-neptune-dull-poster.jpg" },
+        { type: 'image', src: "/assets/projects/behind-the-beat/magicsticks.png", gridSpan: "col-span-2 row-span-3" },
+        { type: 'video', src: "/assets/projects/behind-the-beat/meeting-asake.mp4", gridSpan: "col-span-1 row-span-3", fit: 'fill', controls: true, controlType: 'long', poster: "/assets/projects/behind-the-beat/meeting-asake-poster.jpg" }
+      ]
+    },
+    {
       title: "As Loud as Freedom",
       projectcard: "/assets/projects/as-loud-as-freedom/independence-day-09.jpg",
       description: "As Loud As Freedom was a three-week exhibition celebrating bold artistic expression and the enduring power of art as a vehicle for cultural memory, identity and resistance. Featuring works by five artists, including legendary Nigerian artist Lemi Ghariokwu—renowned for designing 26 album covers for Afrobeat pioneer Fela Kuti—the exhibition brought together visual art, music and storytelling in a celebration of creativity and liberation.",

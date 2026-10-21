@@ -101,7 +101,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     {event.title}
                   </h1>
                 </div>
-                <div className="text-base font-bold mb-4">{event.location || "-"}</div>
+                {event.location && (
+                  <div className="text-base font-bold mb-4">{event.location}</div>
+                )}
               </div>
             </div>
             {/* Ethos, Description, Services, Tags */}
