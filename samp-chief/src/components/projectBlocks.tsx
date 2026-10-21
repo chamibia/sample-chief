@@ -41,6 +41,16 @@ export function getMediaClasses(block: ProjectBlock) {
   return { fitClass, positionClass, inlineStyle };
 }
 
+// --- Ensure only one project video plays at a time ---
+let activeVideo: HTMLVideoElement | null = null;
+
+function setActiveVideo(video: HTMLVideoElement) {
+  if (activeVideo && activeVideo !== video) {
+    activeVideo.pause();
+  }
+  activeVideo = video;
+}
+
 // --- Reusable PlayPauseButton ---
 function PlayPauseButton({ isPlaying, onClick, className, style }: {
   isPlaying: boolean;
@@ -142,6 +152,7 @@ export function ProjectVideoBlock({ block, idx, eventTitle }: { block: ProjectBl
   const handlePlayPauseLong = () => {
     if (!videoRefLong.current) return;
     if (videoRefLong.current.paused) {
+      setActiveVideo(videoRefLong.current);
       videoRefLong.current.muted = false;
       videoRefLong.current.volume = 0;
       videoRefLong.current.play();
@@ -177,6 +188,7 @@ export function ProjectVideoBlock({ block, idx, eventTitle }: { block: ProjectBl
   const handlePlayPauseShort = () => {
     if (!videoRefShort.current) return;
     if (videoRefShort.current.paused) {
+      setActiveVideo(videoRefShort.current);
       videoRefShort.current.play();
       setIsPlayingShort(true);
     } else {
@@ -210,6 +222,7 @@ export function ProjectVideoBlock({ block, idx, eventTitle }: { block: ProjectBl
               playsInline
               preload="auto"
               controls={false}
+              onPause={() => setIsPlayingShort(false)}
             />
             <PlayPauseButton
               isPlaying={isPlayingShort}
@@ -232,6 +245,7 @@ export function ProjectVideoBlock({ block, idx, eventTitle }: { block: ProjectBl
               preload="none"
               controls={false}
               onTimeUpdate={handleTimeUpdateLong}
+              onPause={() => setIsPlayingLong(false)}
             />
             <div className="absolute left-0 right-0 bottom-0 flex flex-col items-center w-full" style={{zIndex:2}}>
               <div className="flex items-center justify-end w-full mb-2 pr-4 pb-2">

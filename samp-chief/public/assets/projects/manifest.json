@@ -31,6 +31,14 @@
     "/assets/projects/art-gallery-of-ontario/20.jpg",
     "/assets/projects/art-gallery-of-ontario/sample-chief-ago-2026-16x9.mp4"
   ],
+  "behind-the-beat": [
+    "/assets/projects/behind-the-beat/cover.png",
+    "/assets/projects/behind-the-beat/dj-neptune-dull.mp4",
+    "/assets/projects/behind-the-beat/how-i-met-asake.png",
+    "/assets/projects/behind-the-beat/magicsticks.png",
+    "/assets/projects/behind-the-beat/meeting-asake.mp4",
+    "/assets/projects/behind-the-beat/trailer.mp4"
+  ],
   "holt-renfrew": [
     "/assets/projects/holt-renfrew/1.jpg",
     "/assets/projects/holt-renfrew/11.jpg",
@@ -74,11 +82,32 @@
     "/assets/projects/pinterest/117455584_Unknown.jpg",
     "/assets/projects/pinterest/Collage_Brightened.jpg"
   ],
+  "tate-modern": [
+    "/assets/projects/tate-modern/1.jpg",
+    "/assets/projects/tate-modern/10.jpg",
+    "/assets/projects/tate-modern/10.mp4",
+    "/assets/projects/tate-modern/11.jpg",
+    "/assets/projects/tate-modern/12.mov",
+    "/assets/projects/tate-modern/13.jpg",
+    "/assets/projects/tate-modern/14.mp4",
+    "/assets/projects/tate-modern/15.jpg",
+    "/assets/projects/tate-modern/16-poster.jpg",
+    "/assets/projects/tate-modern/16.mov",
+    "/assets/projects/tate-modern/2-poster.jpg",
+    "/assets/projects/tate-modern/2.mov",
+    "/assets/projects/tate-modern/3.jpg",
+    "/assets/projects/tate-modern/4.mp4",
+    "/assets/projects/tate-modern/5.jpg",
+    "/assets/projects/tate-modern/6-poster.jpg",
+    "/assets/projects/tate-modern/6.mp4",
+    "/assets/projects/tate-modern/7.jpg",
+    "/assets/projects/tate-modern/8.mp4",
+    "/assets/projects/tate-modern/9.jpg"
+  ],
   "u-of-t": [
     "/assets/projects/u-of-t/1.jpg",
     "/assets/projects/u-of-t/2.jpg",
     "/assets/projects/u-of-t/3.JPG",
-    "/assets/projects/u-of-t/4.jpg",
     "/assets/projects/u-of-t/cover.jpg",
     "/assets/projects/u-of-t/uoftlogo.png"
   ],

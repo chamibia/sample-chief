@@ -240,5 +240,22 @@ export const events: Event[] = [
         { type: 'image', src: "/assets/projects/tate-modern/1.jpg", gridSpan: "col-span-2 row-span-2" }
 
       ]
+    },
+    {
+      title: "Behind the Beat",
+      projectcard: "/assets/projects/behind-the-beat/cover.png",
+      description: "A deep dive into the architects behind our favourite hits, their influences and how they made the songs we all love. Episodes covered so far: Magicsticks (Asake), Ozedikus (One Condition – DJ Tunez, Wizkid, Fola), Progrex (Laho – Shallipopi), 2Frosh (Escaladizzy – Mavo), Chillz (TaTaTa – Burna Boy), Telz (Bundle By Bundle – Burna Boy), DOZ & JMS (Turn Down Mami – Cruel Santino). Check them out on YouTube!",
+      slug: "behind-the-beat",
+      imageFolder: "behind-the-beat",
+      ethos: "The Stories Behind Your Favourite African Songs",
+      services: "Media Production",
+      heroImage: "/assets/projects/behind-the-beat/how-i-met-asake.png",
+      contentBlocks: [
+        { type: 'video', src: "/assets/projects/behind-the-beat/trailer.mp4", gridSpan: "col-span-1 row-span-2", fit: 'fill', controls: true, controlType: 'long' },
+        { type: 'image', src: "/assets/projects/behind-the-beat/magicsticks.png", gridSpan: "col-span-2 row-span-2" },
+        { type: 'video', src: "/assets/projects/behind-the-beat/meeting-asake.mp4", gridSpan: "col-span-1 row-span-2", fit: 'fill', controls: true, controlType: 'long' },
+        { type: 'image', src: "/assets/projects/behind-the-beat/how-i-met-asake.png", gridSpan: "col-span-2 row-span-1" },
+        { type: 'video', src: "/assets/projects/behind-the-beat/dj-neptune-dull.mp4", gridSpan: "col-span-1 row-span-2", fit: 'fill', controls: true, controlType: 'long' }
+      ]
     }
   ];
