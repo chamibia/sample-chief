@@ -249,13 +249,13 @@ export const events: Event[] = [
       imageFolder: "behind-the-beat",
       ethos: "The Stories Behind Your Favourite African Songs",
       services: "Media Production",
-      heroImage: "/assets/projects/behind-the-beat/how-i-met-asake.png",
+      heroImage: "/assets/projects/behind-the-beat/cover.png",
       contentBlocks: [
-        { type: 'video', src: "/assets/projects/behind-the-beat/trailer.mp4", gridSpan: "col-span-1 row-span-2", fit: 'fill', controls: true, controlType: 'long' },
-        { type: 'image', src: "/assets/projects/behind-the-beat/magicsticks.png", gridSpan: "col-span-2 row-span-2" },
-        { type: 'video', src: "/assets/projects/behind-the-beat/meeting-asake.mp4", gridSpan: "col-span-1 row-span-2", fit: 'fill', controls: true, controlType: 'long' },
-        { type: 'image', src: "/assets/projects/behind-the-beat/how-i-met-asake.png", gridSpan: "col-span-2 row-span-1" },
-        { type: 'video', src: "/assets/projects/behind-the-beat/dj-neptune-dull.mp4", gridSpan: "col-span-1 row-span-2", fit: 'fill', controls: true, controlType: 'long' }
+        { type: 'video', src: "/assets/projects/behind-the-beat/trailer.mp4", gridSpan: "col-span-1 row-span-3", fit: 'fill', controls: true, controlType: 'long', poster: "/assets/projects/behind-the-beat/trailer-poster.jpg" },
+        { type: 'image', src: "/assets/projects/behind-the-beat/how-i-met-asake.png", gridSpan: "col-span-3 row-span-3", fit: 'fill' },
+        { type: 'video', src: "/assets/projects/behind-the-beat/dj-neptune-dull.mp4", gridSpan: "col-span-1 row-span-3", fit: 'fill', controls: true, controlType: 'long', poster: "/assets/projects/behind-the-beat/dj-neptune-dull-poster.jpg" },
+        { type: 'image', src: "/assets/projects/behind-the-beat/magicsticks.png", gridSpan: "col-span-2 row-span-3" },
+        { type: 'video', src: "/assets/projects/behind-the-beat/meeting-asake.mp4", gridSpan: "col-span-1 row-span-3", fit: 'fill', controls: true, controlType: 'long', poster: "/assets/projects/behind-the-beat/meeting-asake-poster.jpg" }
       ]
     }
   ];
