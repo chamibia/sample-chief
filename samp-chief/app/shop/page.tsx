@@ -38,7 +38,7 @@ const GET_PRODUCTS = gql`
               currencyCode
             }
           }
-          variants(first: 1) {
+          variants(first: 10) {
             edges {
               node {
                 id
@@ -48,6 +48,10 @@ const GET_PRODUCTS = gql`
                   currencyCode
                 }
                 quantityAvailable
+                image {
+                  url
+                  altText
+                }
               }
             }
           }

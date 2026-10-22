@@ -156,6 +156,9 @@ export default function UnifiedCard(props: UnifiedCardProps) {
     const { node } = props as ProductCardProps;
     
     const img = node.images?.edges?.[0]?.node;
+    const hoverImg = node.variants?.edges
+      ?.map((edge: { node: any }) => edge.node.image)
+      ?.find((variantImage: { url?: string } | null) => variantImage?.url && variantImage.url !== img?.url);
 
     return (
       <div className={`${styles.container} ${className}`}>
@@ -165,6 +168,7 @@ export default function UnifiedCard(props: UnifiedCardProps) {
             alt={img.altText || node.title}
             href={`/shop/${node.handle}`}
             priority={false}
+            hoverSrc={hoverImg?.url}
           />
         ) : (
           <div className="relative mb-6 aspect-square mx-auto w-[82%]">
