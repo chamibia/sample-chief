@@ -16,13 +16,14 @@ const shopify = new GraphQLClient(
 
 const GET_PRODUCTS = gql`
   query getProducts($first: Int!) {
-    products(first: $first) {
+    products(first: $first, sortKey: CREATED_AT, reverse: true) {
       edges {
         node {
           id
           title
           handle
           description
+          productType
           images(first: 1) {
             edges {
               node {
