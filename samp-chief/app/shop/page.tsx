@@ -16,13 +16,14 @@ const shopify = new GraphQLClient(
 
 const GET_PRODUCTS = gql`
   query getProducts($first: Int!) {
-    products(first: $first) {
+    products(first: $first, sortKey: CREATED_AT, reverse: true) {
       edges {
         node {
           id
           title
           handle
           description
+          productType
           images(first: 1) {
             edges {
               node {
@@ -37,7 +38,7 @@ const GET_PRODUCTS = gql`
               currencyCode
             }
           }
-          variants(first: 1) {
+          variants(first: 10) {
             edges {
               node {
                 id
@@ -47,6 +48,10 @@ const GET_PRODUCTS = gql`
                   currencyCode
                 }
                 quantityAvailable
+                image {
+                  url
+                  altText
+                }
               }
             }
           }

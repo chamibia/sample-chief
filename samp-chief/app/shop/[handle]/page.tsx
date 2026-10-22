@@ -20,6 +20,7 @@ type Product = {
   title: string;
   handle: string;
   description: string;
+  descriptionHtml: string;
   images: {
     edges: Array<{
       node: {
@@ -59,6 +60,7 @@ async function getProduct(handle: string): Promise<Product | null> {
         title
         handle
         description
+        descriptionHtml
         images(first: 5) {
           edges {
             node {
@@ -202,9 +204,10 @@ export default async function ProductPage({ params }: PageProps) {
                   <h3 className="font-sans font-light text-xl text-gray-800">
                     Description
                   </h3>
-                  <p className="font-sans font-light leading-relaxed text-gray-600">
-                    {product.description}
-                  </p>
+                  <div
+                    className="font-sans font-light leading-relaxed text-gray-600 [&>p]:mb-4 last:[&>p]:mb-0 [&>ul]:list-disc [&>ul]:pl-5 [&>ol]:list-decimal [&>ol]:pl-5"
+                    dangerouslySetInnerHTML={{ __html: product.descriptionHtml || product.description }}
+                  />
                 </div>
               )}
 

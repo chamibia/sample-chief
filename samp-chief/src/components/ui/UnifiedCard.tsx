@@ -156,7 +156,9 @@ export default function UnifiedCard(props: UnifiedCardProps) {
     const { node } = props as ProductCardProps;
     
     const img = node.images?.edges?.[0]?.node;
-    const subtitle = node?.description ? node.description.split(/[.\n]/)[0]?.trim() : "";
+    const hoverImg = node.variants?.edges
+      ?.map((edge: { node: any }) => edge.node.image)
+      ?.find((variantImage: { url?: string } | null) => variantImage?.url && variantImage.url !== img?.url);
 
     return (
       <div className={`${styles.container} ${className}`}>
@@ -166,6 +168,7 @@ export default function UnifiedCard(props: UnifiedCardProps) {
             alt={img.altText || node.title}
             href={`/shop/${node.handle}`}
             priority={false}
+            hoverSrc={hoverImg?.url}
           />
         ) : (
           <div className="relative mb-6 aspect-square mx-auto w-[82%]">
@@ -180,11 +183,6 @@ export default function UnifiedCard(props: UnifiedCardProps) {
             <h3 className={styles.title}>
               {node.title}
             </h3>
-            {subtitle && (
-              <p className={styles.description}>
-                {subtitle}
-              </p>
-            )}
             {node.variants?.edges?.[0]?.node?.price && (
               <p className="mt-2 font-sans font-medium text-[15px] text-black">
                 <span className="font-sans">$</span>
