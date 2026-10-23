@@ -30,7 +30,7 @@ interface AllProjectsGridProps {
 // list automatically (it's only matched against non-featured events).
 const NON_FEATURED_CURATION: { slug: string; position: number }[] = [
   { slug: "holt-renfrew", position: 3 },
-  { slug: "pinterest", position: 2 },
+  { slug: "kops-record-store", position: 2 },
   { slug: "ace-hotel", position: 1 },
   { slug: "u-of-t", position: 4 },
   { slug: "village-boogie", position: 5 },
