@@ -1,6 +1,5 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 import { updateCartTotals, validateItemAvailability } from '@/lib/cartUtils';
@@ -25,9 +24,6 @@ export function useCart() {
 }
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-  const isShopPage = pathname.startsWith('/shop');
-  
   const [cart, setCart] = useState<Cart>({
     items: [],
     totalQuantity: 0,
@@ -35,10 +31,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   });
   const [loading, setLoading] = useState(false);
 
-  // Only load cart from localStorage on shop pages
+  // Load the saved cart on mount so the nav bar's cart badge is accurate
+  // on every page, not just while browsing /shop.
   useEffect(() => {
-    if (!isShopPage) return;
-    
     const savedCart = localStorage.getItem("sample-chief-cart");
     if (savedCart) {
       try {
@@ -49,14 +44,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         localStorage.removeItem("sample-chief-cart");
       }
     }
-  }, [isShopPage]);
+  }, []);
 
-  // Save cart to localStorage whenever it changes (only on shop pages)
+  // Save cart to localStorage whenever it changes
   useEffect(() => {
-    if (isShopPage) {
-      localStorage.setItem("sample-chief-cart", JSON.stringify(cart));
-    }
-  }, [cart, isShopPage]);
+    localStorage.setItem("sample-chief-cart", JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (item: Omit<CartItem, "quantity">) => {
     setCart((prevCart) => {
