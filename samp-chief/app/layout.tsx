@@ -5,6 +5,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { Metadata, Viewport } from "next";
 
 import { CartProvider } from "@/components/CartProvider";
+import CookieConsent from "@/components/CookieConsent";
 import FooterVisibilityWrapper from "@/components/layout/FooterVisibilityWrapper";
 import Navbar from "@/components/layout/Navbar";
 import SubscribePopup from "@/components/SubscribePopup";
@@ -67,6 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </CartProvider>
         
         <SubscribePopup />
+        <CookieConsent />
         <Analytics />
       </body>
     </html>

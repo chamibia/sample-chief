@@ -128,6 +128,19 @@ export default function Footer({ pathname }: { pathname: string }) {
           </Link>
         </div>
 
+        {/* On home, the privacy link lives as its own bottom-center element
+            outside the footer (see HomePrivacyLink) instead of here. */}
+        {!isHome && (
+          <div className="order-3 mt-4 md:mt-0 md:absolute md:right-0 md:pr-8">
+            <Link
+              href="/privacy"
+              className="font-sans font-light text-xs underline-offset-4 hover:underline opacity-75 hover:opacity-100 transition-opacity"
+            >
+              Privacy Policy
+            </Link>
+          </div>
+        )}
+
       </div>
     </footer>
   );
