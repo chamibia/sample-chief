@@ -64,7 +64,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       <div className="w-full px-0">
         <div className="grid grid-rows-[auto_auto] w-full">
           {/* First section: full width, one column */}
-          <div className="relative w-full h-[50vh] md:h-[85vh] flex flex-row justify-between items-center text-white">
+          <div className="relative w-full h-[calc(100vh-80px)] flex flex-row justify-between items-center text-white">
             {event.heroVideo ? (
               <div className="absolute inset-0 z-0">
                 <FullBleedVideo
@@ -101,7 +101,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     {event.title}
                   </h1>
                 </div>
-                <div className="text-base font-bold mb-4">{event.location || "-"}</div>
+                {event.location && (
+                  <div className="text-base font-bold mb-4">{event.location}</div>
+                )}
               </div>
             </div>
             {/* Ethos, Description, Services, Tags */}

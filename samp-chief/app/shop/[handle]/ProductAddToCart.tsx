@@ -5,60 +5,32 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { useCart } from "@/components/CartProvider";
-
-type ProductVariant = {
-  id: string;
-  title: string;
-  price: {
-    amount: string;
-    currencyCode: string;
-  };
-  quantityAvailable: number;
-};
-
-type Product = {
-  id: string;
-  title: string;
-  handle: string;
-  description: string;
-  images: {
-    edges: Array<{
-      node: {
-        url: string;
-        altText: string;
-      };
-    }>;
-  };
-  variants: {
-    edges: Array<{
-      node: ProductVariant;
-    }>;
-  };
-};
+import { isOutOfStock } from "@/lib/cartUtils";
+import type { Product, ProductVariant } from "@/types/shop";
 
 type ProductAddToCartProps = {
   product: Product;
-  variants: ProductVariant[];
+  selectedVariant: ProductVariant | null;
+  mainImageUrl?: string;
 };
 
 export default function ProductAddToCart({
   product,
-  variants,
+  selectedVariant,
+  mainImageUrl,
 }: ProductAddToCartProps) {
-  const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(
-    variants.length > 0 ? variants[0] : null
-  );
   const [quantity, setQuantity] = useState(1);
   const [addingToCart, setAddingToCart] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
   const { addToCart } = useCart();
 
+  const isSoldOut = !selectedVariant || isOutOfStock(selectedVariant.quantityAvailable);
+
   const handleAddToCart = async () => {
-    if (!selectedVariant || addingToCart) return;
+    if (!selectedVariant || isSoldOut || addingToCart) return;
 
     setAddingToCart(true);
     try {
-      const mainImage = product?.images?.edges?.[0]?.node;
       addToCart({
         id: selectedVariant.id,
         variantId: selectedVariant.id,
@@ -66,7 +38,7 @@ export default function ProductAddToCart({
         price: parseFloat(selectedVariant.price.amount),
         currencyCode: selectedVariant.price.currencyCode,
         productHandle: product?.handle || "",
-        image: mainImage?.url,
+        image: selectedVariant.image?.url || mainImageUrl,
         quantityAvailable: selectedVariant.quantityAvailable,
       });
       setShowNotification(true);
@@ -81,32 +53,6 @@ export default function ProductAddToCart({
 
   return (
     <>
-      {/* Variant Selection */}
-      {variants.length > 1 && (
-        <div className="space-y-4">
-          <div className="space-y-3">
-            {variants.map((variant) => (
-              <button
-                key={variant.id}
-                onClick={() => setSelectedVariant(variant)}
-                className={`w-full flex items-center justify-between p-4 border rounded-lg transition-all duration-300 ${selectedVariant?.id === variant.id
-                    ? "border-gray-800 bg-gray-50"
-                    : "border-gray-200 hover:border-gray-300 bg-white"
-                  }`}
-              >
-                <span className="font-sans font-light text-gray-800">
-                  {variant.title}
-                </span>
-                <span className="font-sans font-bold text-gray-800">
-                  <span className="currency-symbol">$</span>
-                  {variant.price.amount} {variant.price.currencyCode}
-                </span>
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-
       {/* Quantity Selector */}
       <div className="space-y-4">
         <h3 className="font-sans font-light text-xl text-gray-800">
@@ -135,11 +81,17 @@ export default function ProductAddToCart({
       <div className="space-y-4">
         <button
           onClick={handleAddToCart}
-          disabled={!selectedVariant || addingToCart}
+          disabled={isSoldOut || addingToCart}
           className="w-full bg-gray-800 text-white px-8 py-4 rounded-lg font-sans font-medium text-lg hover:bg-gray-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-3"
         >
           <ShoppingCart className="h-5 w-5" />
-          <span>{addingToCart ? "Adding to Cart..." : "Add to Cart"}</span>
+          <span>
+            {addingToCart
+              ? "Adding to Cart..."
+              : isSoldOut
+              ? "Sold Out"
+              : "Add to Cart"}
+          </span>
         </button>
 
         <Link
@@ -149,6 +101,17 @@ export default function ProductAddToCart({
           View Cart
         </Link>
       </div>
+
+      {/* Stock Info (tied to the selected variant, not always the first one) */}
+      {selectedVariant && selectedVariant.quantityAvailable !== undefined && (
+        <div className="text-center">
+          <span className="font-sans font-light text-base text-gray-500">
+            {isSoldOut
+              ? "Out of stock"
+              : `${selectedVariant.quantityAvailable} in stock`}
+          </span>
+        </div>
+      )}
 
       {/* Add to Cart Notification */}
       {showNotification && (

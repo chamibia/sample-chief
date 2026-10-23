@@ -1,8 +1,6 @@
 import { Metadata } from "next";
 import * as React from "react";
 
-import { CartProvider } from "@/components/CartProvider";
-
 import SpecialPageLayout from "../../src/components/layout/SpecialPageLayout";
 
 export const metadata: Metadata = {
@@ -30,11 +28,9 @@ export const metadata: Metadata = {
 };
 
 export default function ShopLayout({ children }: { children: React.ReactNode }) {
-  // If rendering the cart page, skip this layout
-  // Next.js app directory will use the closest layout, so cart/layout.tsx will override this for /shop/cart
-  return (
-    <CartProvider>
-      <SpecialPageLayout>{children}</SpecialPageLayout>
-    </CartProvider>
-  );
+  // Cart context comes from the root layout (app/layout.tsx), which wraps
+  // the whole app including the Navbar — do not add another CartProvider
+  // here. A second instance would give shop pages their own isolated cart
+  // state, disconnected from the one the Navbar's cart badge reads from.
+  return <SpecialPageLayout>{children}</SpecialPageLayout>;
 }

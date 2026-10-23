@@ -141,12 +141,47 @@ export function ProductCardImage({
   alt,
   href,
   priority = false,
+  hoverSrc,
 }: {
   src: string;
   alt: string;
   href: string;
   priority?: boolean;
+  hoverSrc?: string;
 }) {
+  const config = variantConfigs['product-card'];
+
+  if (hoverSrc && hoverSrc !== src) {
+    const imageElement = (
+      <div className={`${config.aspectRatio} ${config.containerClass}`}>
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          priority={priority}
+          quality={priority ? 75 : 75}
+          sizes={config.defaultSizes}
+          className={`${config.imageClass} opacity-100 group-hover:opacity-0 transition-opacity duration-300`}
+        />
+        <Image
+          src={hoverSrc}
+          alt={alt}
+          fill
+          quality={75}
+          sizes={config.defaultSizes}
+          className={`${config.imageClass} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+        />
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+      </div>
+    );
+
+    return (
+      <Link href={href} className="block" aria-label={alt}>
+        {imageElement}
+      </Link>
+    );
+  }
+
   return (
     <OptimizedImage
       src={src}
