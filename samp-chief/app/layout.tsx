@@ -60,16 +60,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Cart context available everywhere */}
         <CartProvider>
           <ClientLayout>
-            {/* `relative` scopes a containing block to just the nav (not the
-                whole app, unlike an earlier attempt at this fix) — fixes the
-                home page's `position: absolute` nav resolving its width
-                against the viewport (can include the scrollbar track, and
-                caused a visible shift versus every other page's `sticky`
-                nav, which resolves against the document's actual rendered
-                width) without affecting other absolutely-positioned
-                elements elsewhere in the app, e.g. the home page's footer,
-                which must stay anchored to the viewport to keep floating
-                over the hero correctly. */}
+            {/* Scopes a containing block to just the nav, so it doesn't
+                also affect the home page footer's absolute positioning. */}
             <div className="relative">
               <Navbar />
             </div>
