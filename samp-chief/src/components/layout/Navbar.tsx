@@ -76,7 +76,7 @@ export default function Navbar() {
       isHome ? "absolute top-0 left-0 right-0" : "sticky top-0"
     } z-50 transition-all duration-300 ease-in-out 
     ${backgroundColor} ${textColor} 
-    ${isScrolled ? "py-1 shadow-sm" : isHome ? "py-2" : "py-3 md:py-4"}
+    ${isScrolled ? "py-1 shadow-sm" : "py-3 md:py-4"}
     border-none rounded-none
   `;
 

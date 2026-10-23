@@ -24,6 +24,13 @@ export function useCart() {
 }
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
+  // Guards against the exact bug this was just fixed for: a nested
+  // <CartProvider> (in some layout further down the tree) would otherwise
+  // silently create a second, disconnected cart state — e.g. the nav bar's
+  // badge reading one instance while "Add to Cart" updates another. If a
+  // provider already exists above us, don't create a second one.
+  const existing = useContext(CartContext);
+
   const [cart, setCart] = useState<Cart>({
     items: [],
     totalQuantity: 0,
@@ -34,6 +41,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   // Load the saved cart on mount so the nav bar's cart badge is accurate
   // on every page, not just while browsing /shop.
   useEffect(() => {
+    if (existing) return;
     const savedCart = localStorage.getItem("sample-chief-cart");
     if (savedCart) {
       try {
@@ -44,12 +52,29 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         localStorage.removeItem("sample-chief-cart");
       }
     }
-  }, []);
+  }, [existing]);
 
-  // Save cart to localStorage whenever it changes
+  // Save cart to localStorage whenever it changes, debounced so a burst of
+  // quantity changes (e.g. holding +/-) collapses into one write instead of
+  // one synchronous JSON.stringify + localStorage.setItem per change.
   useEffect(() => {
-    localStorage.setItem("sample-chief-cart", JSON.stringify(cart));
-  }, [cart]);
+    if (existing) return;
+    const timeout = setTimeout(() => {
+      localStorage.setItem("sample-chief-cart", JSON.stringify(cart));
+    }, 300);
+    return () => clearTimeout(timeout);
+  }, [cart, existing]);
+
+  // Already inside a provider — pass children through unchanged instead of
+  // shadowing it with a second, disconnected cart.
+  if (existing) {
+    if (process.env.NODE_ENV !== "production") {
+      console.warn(
+        "<CartProvider> was mounted inside another <CartProvider>. The nested one is a no-op — remove it."
+      );
+    }
+    return <>{children}</>;
+  }
 
   const addToCart = (item: Omit<CartItem, "quantity">) => {
     setCart((prevCart) => {

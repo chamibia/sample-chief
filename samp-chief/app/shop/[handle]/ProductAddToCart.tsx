@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { useCart } from "@/components/CartProvider";
+import { isOutOfStock } from "@/lib/cartUtils";
 import type { Product, ProductVariant } from "@/types/shop";
 
 type ProductAddToCartProps = {
@@ -23,7 +24,7 @@ export default function ProductAddToCart({
   const [showNotification, setShowNotification] = useState(false);
   const { addToCart } = useCart();
 
-  const isSoldOut = !selectedVariant || selectedVariant.quantityAvailable <= 0;
+  const isSoldOut = !selectedVariant || isOutOfStock(selectedVariant.quantityAvailable);
 
   const handleAddToCart = async () => {
     if (!selectedVariant || isSoldOut || addingToCart) return;
@@ -105,9 +106,9 @@ export default function ProductAddToCart({
       {selectedVariant && selectedVariant.quantityAvailable !== undefined && (
         <div className="text-center">
           <span className="font-sans font-light text-base text-gray-500">
-            {selectedVariant.quantityAvailable > 0
-              ? `${selectedVariant.quantityAvailable} in stock`
-              : "Out of stock"}
+            {isSoldOut
+              ? "Out of stock"
+              : `${selectedVariant.quantityAvailable} in stock`}
           </span>
         </div>
       )}

@@ -18,11 +18,7 @@ export default async function ProductPage({ params }: PageProps) {
     notFound();
   }
 
-  const hasVariants =
-    product.variants?.edges && product.variants.edges.length > 0;
-  const variants = hasVariants
-    ? product.variants.edges.map((edge) => edge.node)
-    : [];
+  const variants = product.variants?.edges?.map((edge) => edge.node) ?? [];
 
   return (
     <div className="min-h-screen bg-white text-gray-800">

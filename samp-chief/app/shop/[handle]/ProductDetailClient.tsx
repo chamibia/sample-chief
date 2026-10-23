@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
+import { formatPrice } from "@/lib/shopifyUtils";
 import type { Product, ProductVariant } from "@/types/shop";
 
 import ProductAddToCart from "./ProductAddToCart";
@@ -21,11 +22,53 @@ function variantMatchesSelection(
   );
 }
 
+function soldOutKey(optionName: string, value: string) {
+  return `${optionName}:${value}`;
+}
+
+// A color is sold out only if every size of that color is unavailable
+// (checked independent of the rest of the current selection). Every other
+// option (e.g. Size) is sold out only relative to the currently-selected
+// color, so switching color re-evaluates which sizes are greyed out for it.
+function computeSoldOutKeys(
+  variants: ProductVariant[],
+  selection: Record<string, string>
+): Set<string> {
+  const soldOut = new Set<string>();
+
+  for (const variant of variants) {
+    for (const opt of variant.selectedOptions || []) {
+      const isColorOption = opt.name.toLowerCase() === "color";
+      const key = soldOutKey(opt.name, opt.value);
+      if (soldOut.has(key)) continue;
+
+      const inStock = variants.some((v) => {
+        const matchesThisValue = v.selectedOptions?.find(
+          (o) => o.name === opt.name
+        )?.value === opt.value;
+        if (!matchesThisValue) return false;
+        if (isColorOption) return v.quantityAvailable > 0;
+        const matchesOtherSelections = (v.selectedOptions || []).every(
+          (o) => o.name === opt.name || selection[o.name] === o.value
+        );
+        return matchesOtherSelections && v.quantityAvailable > 0;
+      });
+
+      if (!inStock) soldOut.add(key);
+    }
+  }
+
+  return soldOut;
+}
+
 export default function ProductDetailClient({
   product,
   variants,
 }: ProductDetailClientProps) {
-  const options = product.options?.filter((o) => o.values.length > 1) || [];
+  const options = useMemo(
+    () => product.options?.filter((o) => o.values.length > 1) || [],
+    [product.options]
+  );
 
   const [selection, setSelection] = useState<Record<string, string>>(() => {
     const initial: Record<string, string> = {};
@@ -43,43 +86,22 @@ export default function ProductDetailClient({
     );
   }, [variants, selection]);
 
+  const soldOutKeys = useMemo(
+    () => computeSoldOutKeys(variants, selection),
+    [variants, selection]
+  );
+
   // Lets the shopper click a thumbnail to preview it as the main photo.
   // Reset whenever the variant changes so picking a new color/size still
   // jumps back to that variant's own photo rather than keeping a stale
   // manually-picked thumbnail.
   const [manualImage, setManualImage] = useState<{ url: string; altText: string } | null>(null);
-  const previousVariantId = useRef(selectedVariant?.id);
-  if (selectedVariant?.id !== previousVariantId.current) {
-    previousVariantId.current = selectedVariant?.id;
-    if (manualImage) setManualImage(null);
-  }
+  useEffect(() => {
+    setManualImage(null);
+  }, [selectedVariant?.id]);
 
-  // Color sold-out status is global (struck through only if every size of
-  // that color is unavailable); every other option (e.g. Size) is sold out
-  // only relative to the currently-selected color, so switching color
-  // re-evaluates which sizes are greyed out for it.
-  function isValueSoldOut(optionName: string, value: string) {
-    const isColorOption = optionName.toLowerCase() === "color";
-    return !variants.some((v) => {
-      const matchesThisValue = v.selectedOptions?.find(
-        (o) => o.name === optionName
-      )?.value === value;
-      if (!matchesThisValue) return false;
-      if (isColorOption) return v.quantityAvailable > 0;
-      const matchesOtherSelections = (v.selectedOptions || []).every(
-        (o) => o.name === optionName || selection[o.name] === o.value
-      );
-      return matchesOtherSelections && v.quantityAvailable > 0;
-    });
-  }
-
-  const hasImages = product.images?.edges && product.images.edges.length > 0;
-  const fallbackImage = hasImages ? product.images.edges[0].node : null;
-  const mainImage = manualImage || selectedVariant?.image || fallbackImage;
-
-  function formatPrice(amount: string) {
-    return Number(amount).toFixed(2);
-  }
+  const mainImage =
+    manualImage || selectedVariant?.image || product.images?.edges?.[0]?.node || null;
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
@@ -105,37 +127,36 @@ export default function ProductDetailClient({
         )}
 
         {/* Thumbnail Images — click to preview as the main photo */}
-        {hasImages &&
-          product.images.edges.length > 1 && (
-            <div className="grid grid-cols-4 gap-4">
-              {product.images.edges.map(({ node }, index) => {
-                const isActive = mainImage?.url === node.url;
-                return (
-                  <button
-                    key={index}
-                    type="button"
-                    onClick={() => setManualImage(node)}
-                    aria-label={`View ${node.altText || product.title} image ${index + 1}`}
-                    aria-pressed={isActive}
-                    className={`aspect-square relative overflow-hidden rounded-lg bg-gray-100 border-2 transition-colors ${
-                      isActive
-                        ? "border-gray-800"
-                        : "border-gray-200 hover:border-gray-400"
-                    }`}
-                  >
-                    <Image
-                      src={node.url}
-                      alt={node.altText || product.title}
-                      width={200}
-                      height={200}
-                      className="w-full h-full object-cover"
-                      style={{ width: 'auto', height: 'auto' }}
-                    />
-                  </button>
-                );
-              })}
-            </div>
-          )}
+        {product.images?.edges && product.images.edges.length > 1 && (
+          <div className="grid grid-cols-4 gap-4">
+            {product.images.edges.map(({ node }, index) => {
+              const isActive = mainImage?.url === node.url;
+              return (
+                <button
+                  key={index}
+                  type="button"
+                  onClick={() => setManualImage(node)}
+                  aria-label={`View ${node.altText || product.title} image ${index + 1}`}
+                  aria-pressed={isActive}
+                  className={`aspect-square relative overflow-hidden rounded-lg bg-gray-100 border-2 transition-colors ${
+                    isActive
+                      ? "border-gray-800"
+                      : "border-gray-200 hover:border-gray-400"
+                  }`}
+                >
+                  <Image
+                    src={node.url}
+                    alt={node.altText || product.title}
+                    width={200}
+                    height={200}
+                    className="w-full h-full object-cover"
+                    style={{ width: 'auto', height: 'auto' }}
+                  />
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       {/* Product Info */}
@@ -187,7 +208,7 @@ export default function ProductDetailClient({
                 <div className="flex items-center gap-3">
                   {option.values.map((value) => {
                     const isSelected = selectedValue === value;
-                    const soldOut = isValueSoldOut(option.name, value);
+                    const soldOut = soldOutKeys.has(soldOutKey(option.name, value));
                     return (
                       <button
                         key={value}
@@ -218,7 +239,7 @@ export default function ProductDetailClient({
                 <div className="flex flex-wrap items-center gap-2">
                   {option.values.map((value) => {
                     const isSelected = selectedValue === value;
-                    const soldOut = isValueSoldOut(option.name, value);
+                    const soldOut = soldOutKeys.has(soldOutKey(option.name, value));
                     return (
                       <button
                         key={value}
