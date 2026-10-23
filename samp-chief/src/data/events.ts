@@ -157,7 +157,7 @@ export const events: Event[] = [
     },
     {
       title: "Art Gallery of Ontario",
-      projectcard: "/assets/projects/art-gallery-of-ontario/02-03-1W3A3764.jpg",
+      projectcard: "/assets/projects/art-gallery-of-ontario/05-1W3A4001.jpg",
       description: "In February 2026, Sample Chief partnered with the AGO to bring their Walker Court to life with a multi-sensory experience. 3D projections, a 6-piece Highlife band, DJs, delicious drinks. You really just had to be there!",
       slug: "art-gallery-of-ontario",
       imageFolder: "art-gallery-of-ontario",
