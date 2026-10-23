@@ -60,7 +60,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Cart context available everywhere */}
         <CartProvider>
           <ClientLayout>
-            <Navbar />
+            {/* Scopes a containing block to just the nav, so it doesn't
+                also affect the home page footer's absolute positioning. */}
+            <div className="relative">
+              <Navbar />
+            </div>
             <main className="flex-1">{children}</main>
             {/* Hide Footer on mobile if on home page, show otherwise */}
             <FooterVisibilityWrapper />
