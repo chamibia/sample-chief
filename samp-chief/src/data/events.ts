@@ -250,11 +250,9 @@ export const events: Event[] = [
       services: "Media Production",
       heroImage: "/assets/projects/behind-the-beat/cover.png",
       contentBlocks: [
-        { type: 'video', src: "/assets/projects/behind-the-beat/trailer.mp4", gridSpan: "col-span-1 row-span-3", fit: 'fill', controls: true, controlType: 'long', poster: "/assets/projects/behind-the-beat/trailer-poster.jpg" },
-        { type: 'image', src: "/assets/projects/behind-the-beat/how-i-met-asake.png", gridSpan: "col-span-3 row-span-3", fit: 'fill' },
         { type: 'video', src: "/assets/projects/behind-the-beat/dj-neptune-dull.mp4", gridSpan: "col-span-1 row-span-3", fit: 'fill', controls: true, controlType: 'long', poster: "/assets/projects/behind-the-beat/dj-neptune-dull-poster.jpg" },
-        { type: 'image', src: "/assets/projects/behind-the-beat/magicsticks.png", gridSpan: "col-span-2 row-span-3" },
-        { type: 'video', src: "/assets/projects/behind-the-beat/meeting-asake.mp4", gridSpan: "col-span-1 row-span-3", fit: 'fill', controls: true, controlType: 'long', poster: "/assets/projects/behind-the-beat/meeting-asake-poster.jpg" }
+        { type: 'video', src: "/assets/projects/behind-the-beat/meeting-asake.mp4", gridSpan: "col-span-1 row-span-3", fit: 'fill', controls: true, controlType: 'long', poster: "/assets/projects/behind-the-beat/meeting-asake-poster.jpg" },
+        { type: 'image', src: "/assets/projects/behind-the-beat/magicsticks.png", gridSpan: "col-span-2 row-span-3" }
       ]
     },
     {
