@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 import type { Product, ProductVariant } from "@/types/shop";
 
@@ -43,6 +43,17 @@ export default function ProductDetailClient({
     );
   }, [variants, selection]);
 
+  // Lets the shopper click a thumbnail to preview it as the main photo.
+  // Reset whenever the variant changes so picking a new color/size still
+  // jumps back to that variant's own photo rather than keeping a stale
+  // manually-picked thumbnail.
+  const [manualImage, setManualImage] = useState<{ url: string; altText: string } | null>(null);
+  const previousVariantId = useRef(selectedVariant?.id);
+  if (selectedVariant?.id !== previousVariantId.current) {
+    previousVariantId.current = selectedVariant?.id;
+    if (manualImage) setManualImage(null);
+  }
+
   // Color sold-out status is global (struck through only if every size of
   // that color is unavailable); every other option (e.g. Size) is sold out
   // only relative to the currently-selected color, so switching color
@@ -64,7 +75,7 @@ export default function ProductDetailClient({
 
   const hasImages = product.images?.edges && product.images.edges.length > 0;
   const fallbackImage = hasImages ? product.images.edges[0].node : null;
-  const mainImage = selectedVariant?.image || fallbackImage;
+  const mainImage = manualImage || selectedVariant?.image || fallbackImage;
 
   function formatPrice(amount: string) {
     return Number(amount).toFixed(2);
@@ -93,25 +104,36 @@ export default function ProductDetailClient({
           </div>
         )}
 
-        {/* Thumbnail Images */}
+        {/* Thumbnail Images — click to preview as the main photo */}
         {hasImages &&
           product.images.edges.length > 1 && (
             <div className="grid grid-cols-4 gap-4">
-              {product.images.edges.slice(1, 5).map((edge, index) => (
-                <div
-                  key={index}
-                  className="aspect-square relative overflow-hidden rounded-lg bg-gray-100 border border-gray-200"
-                >
-                  <Image
-                    src={edge.node.url}
-                    alt={edge.node.altText || product.title}
-                    width={200}
-                    height={200}
-                    className="w-full h-full object-cover"
-                    style={{ width: 'auto', height: 'auto' }}
-                  />
-                </div>
-              ))}
+              {product.images.edges.map(({ node }, index) => {
+                const isActive = mainImage?.url === node.url;
+                return (
+                  <button
+                    key={index}
+                    type="button"
+                    onClick={() => setManualImage(node)}
+                    aria-label={`View ${node.altText || product.title} image ${index + 1}`}
+                    aria-pressed={isActive}
+                    className={`aspect-square relative overflow-hidden rounded-lg bg-gray-100 border-2 transition-colors ${
+                      isActive
+                        ? "border-gray-800"
+                        : "border-gray-200 hover:border-gray-400"
+                    }`}
+                  >
+                    <Image
+                      src={node.url}
+                      alt={node.altText || product.title}
+                      width={200}
+                      height={200}
+                      className="w-full h-full object-cover"
+                      style={{ width: 'auto', height: 'auto' }}
+                    />
+                  </button>
+                );
+              })}
             </div>
           )}
       </div>
