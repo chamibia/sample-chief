@@ -49,6 +49,9 @@ next-env.d.ts
 *.swp
 *.swo
 
+# Claude Code local tooling state
+.claude/
+
 # OS files
 Thumbs.db
 
