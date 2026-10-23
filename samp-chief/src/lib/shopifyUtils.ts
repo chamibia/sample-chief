@@ -11,6 +11,10 @@ export const GET_PRODUCT_QUERY = `
       handle
       description
       descriptionHtml
+      options {
+        name
+        values
+      }
       images(first: 10) {
         edges {
           node {
@@ -29,6 +33,14 @@ export const GET_PRODUCT_QUERY = `
               currencyCode
             }
             quantityAvailable
+            selectedOptions {
+              name
+              value
+            }
+            image {
+              url
+              altText
+            }
           }
         }
       }

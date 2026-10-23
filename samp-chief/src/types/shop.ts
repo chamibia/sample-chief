@@ -7,6 +7,13 @@ export type ProductVariant = {
     currencyCode: string;
   };
   quantityAvailable: number;
+  selectedOptions?: Array<{ name: string; value: string }>;
+  image?: { url: string; altText: string } | null;
+};
+
+export type ProductOption = {
+  name: string;
+  values: string[];
 };
 
 export type Product = {
@@ -15,6 +22,7 @@ export type Product = {
   handle: string;
   description: string;
   descriptionHtml: string;
+  options?: ProductOption[];
   images: {
     edges: Array<{
       node: {
