@@ -46,8 +46,15 @@ export default function ClientLayout({
   }, []);
 
   return (
+    // `relative` gives the home page's `position: absolute` nav (Navbar.tsx)
+    // an in-flow containing block instead of the viewport, so its width
+    // resolves the same way the `sticky` nav on every other page does
+    // (excluding the scrollbar track). Removing this reintroduces a
+    // nav-padding/scrollbar mismatch specific to the home page. Any other
+    // `absolute`-positioned element in the app now resolves against this
+    // div too unless it has its own closer positioned ancestor.
     <div
-      className="min-h-screen flex flex-col"
+      className="relative min-h-screen flex flex-col"
       style={{
         minHeight: "calc(var(--vh, 1vh) * 100)",
       }}

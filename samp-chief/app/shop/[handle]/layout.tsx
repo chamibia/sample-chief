@@ -15,13 +15,16 @@ export async function generateMetadata({
 
   if (!product) {
     return {
-      title: "Product Not Found",
+      title: "Product Not Found | Sample Chief",
       description: "The requested product could not be found.",
     };
   }
 
   return {
-    title: product.title,
+    // Set explicitly (rather than relying on the root layout's title
+    // template) because app/shop/layout.tsx sets its own plain-string
+    // title, which breaks template inheritance for nested shop routes.
+    title: `${product.title} | Sample Chief`,
     description: product.description || `Shop ${product.title}`,
   };
 }

@@ -76,7 +76,7 @@ export default function Navbar() {
       isHome ? "absolute top-0 left-0 right-0" : "sticky top-0"
     } z-50 transition-all duration-300 ease-in-out 
     ${backgroundColor} ${textColor} 
-    ${isScrolled ? "py-1 shadow-sm" : isHome ? "py-2" : "py-3 md:py-4"}
+    ${isScrolled ? "py-1 shadow-sm" : "py-3 md:py-4"}
     border-none rounded-none
   `;
 
@@ -154,7 +154,13 @@ export default function Navbar() {
               }`}
             />
             {cart.totalQuantity > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">
+              <span
+                className={`absolute -top-2 -right-2 text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold transition-colors ${
+                  isHome && !isScrolled
+                    ? "bg-white text-[#202020]"
+                    : "bg-[#202020] text-white"
+                }`}
+              >
                 {cart.totalQuantity}
               </span>
             )}

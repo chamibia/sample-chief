@@ -1,4 +1,11 @@
+import { cache } from 'react';
+
 import { Product } from '@/types/shop';
+
+// Shared price formatter (Shopify returns amounts as decimal strings).
+export function formatPrice(amount: string) {
+  return Number(amount).toFixed(2);
+}
 
 // Shared GraphQL query for product data
 export const GET_PRODUCT_QUERY = `
@@ -8,6 +15,11 @@ export const GET_PRODUCT_QUERY = `
       title
       handle
       description
+      descriptionHtml
+      options {
+        name
+        values
+      }
       images(first: 10) {
         edges {
           node {
@@ -26,6 +38,14 @@ export const GET_PRODUCT_QUERY = `
               currencyCode
             }
             quantityAvailable
+            selectedOptions {
+              name
+              value
+            }
+            image {
+              url
+              altText
+            }
           }
         }
       }
@@ -33,22 +53,28 @@ export const GET_PRODUCT_QUERY = `
   }
 `;
 
-// Shared function to fetch product data
-export async function getProduct(handle: string): Promise<Product | null> {
+// Shared function to fetch product data. Wrapped in React's cache() so
+// multiple calls for the same handle within one request (e.g. layout.tsx's
+// generateMetadata and page.tsx both needing the same product) are deduped
+// into a single network request instead of fetching twice.
+export const getProduct = cache(async (handle: string): Promise<Product | null> => {
   try {
     const { GraphQLClient, gql } = await import("graphql-request");
-    
-    const client = new GraphQLClient(process.env.SHOPIFY_STORE_DOMAIN!, {
-      headers: {
-        "X-Shopify-Storefront-Access-Token": process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!,
-      },
-    });
 
-    const data: any = await client.request(GET_PRODUCT_QUERY, { handle });
-    
+    const client = new GraphQLClient(
+      `https://${process.env.SHOPIFY_STORE_DOMAIN}/api/2023-10/graphql.json`,
+      {
+        headers: {
+          "X-Shopify-Storefront-Access-Token": process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!,
+        },
+      }
+    );
+
+    const data: any = await client.request(gql`${GET_PRODUCT_QUERY}`, { handle });
+
     return data?.productByHandle || null;
   } catch (error) {
     console.error("Error fetching product:", error);
     return null;
   }
-}
+});

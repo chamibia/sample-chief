@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
-import { CartProvider } from "@/components/CartProvider";
-
+// Cart context comes from the root layout (app/layout.tsx) — do not add
+// another CartProvider here (see app/shop/layout.tsx for why).
 export default function CheckoutLayout({ children }: { children: ReactNode }) {
-  return <CartProvider>{children}</CartProvider>;
+  return <>{children}</>;
 }

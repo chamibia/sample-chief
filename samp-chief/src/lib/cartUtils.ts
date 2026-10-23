@@ -17,12 +17,16 @@ export const updateCartTotals = (items: CartItem[]): Cart => {
   };
 };
 
+// Shared out-of-stock threshold, so callers agree on what "sold out" means.
+export const isOutOfStock = (quantityAvailable?: number): boolean =>
+  quantityAvailable !== undefined && quantityAvailable <= 0;
+
 // Validate item availability before adding to cart
 export const validateItemAvailability = (
-  item: CartItem, 
+  item: CartItem,
   requestedQuantity: number = 1
 ): { isValid: boolean; message?: string } => {
-  if (item.quantityAvailable !== undefined && item.quantityAvailable <= 0) {
+  if (isOutOfStock(item.quantityAvailable)) {
     return { 
       isValid: false, 
       message: `Sorry, ${item.title} is out of stock.` 
