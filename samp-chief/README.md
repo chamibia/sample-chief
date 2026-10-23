@@ -65,6 +65,18 @@ yarn optimize-images  # Optimize project images
 
 Projects are managed through the data file at `src/data/events.ts`. See [ADDING_PROJECTS.md](ADDING_PROJECTS.md) for detailed instructions.
 
+## Projects Page Layout
+
+`/projects` currently shows every project as a tile in a single full-width,
+tetris-style grid (`app/projects/AllProjectsGrid.tsx`) — the "Projects"
+heading and the old sidebar/mobile "all projects" list are hidden.
+
+The original layout — a fixed 5-slot featured grid (`app/projects/ProjectGrid.tsx`)
+alongside a sidebar/mobile list of every other project (`app/projects/components/ProjectList.tsx`)
+— is still fully intact in the code, just unused. To restore it, flip the
+`SHOW_ALL_PROJECTS_AS_TILES` constant at the top of `app/projects/page.tsx`
+to `false`.
+
 ## Contributing
 
 1. Follow the established component patterns

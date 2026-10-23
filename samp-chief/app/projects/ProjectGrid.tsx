@@ -10,7 +10,7 @@ interface ProjectGridProps {
 }
 
 // Utility: Get grid layout and size info based on featured position
-function getGridConfig(position: number) {
+export function getGridConfig(position: number) {
   const configs: Record<number, { gridClasses: string; isLarge: boolean }> = {
     1: { gridClasses: 'col-span-2 md:col-span-1 md:row-span-2', isLarge: true },  // Large vertical
     2: { gridClasses: 'col-span-1 md:col-span-1 md:row-span-1', isLarge: false }, // Standard
