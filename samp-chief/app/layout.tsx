@@ -5,6 +5,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { Metadata, Viewport } from "next";
 
 import { CartProvider } from "@/components/CartProvider";
+import CookieConsent from "@/components/CookieConsent";
 import FooterVisibilityWrapper from "@/components/layout/FooterVisibilityWrapper";
 import Navbar from "@/components/layout/Navbar";
 import SubscribePopup from "@/components/SubscribePopup";
@@ -59,7 +60,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Cart context available everywhere */}
         <CartProvider>
           <ClientLayout>
-            <Navbar />
+            {/* Scopes a containing block to just the nav, so it doesn't
+                also affect the home page footer's absolute positioning. */}
+            <div className="relative">
+              <Navbar />
+            </div>
             <main className="flex-1">{children}</main>
             {/* Hide Footer on mobile if on home page, show otherwise */}
             <FooterVisibilityWrapper />
@@ -67,6 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </CartProvider>
         
         <SubscribePopup />
+        <CookieConsent />
         <Analytics />
       </body>
     </html>
