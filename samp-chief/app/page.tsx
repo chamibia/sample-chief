@@ -186,6 +186,18 @@ export default function Home() {
           <div className="block sm:hidden absolute left-0 bottom-0 w-full z-30 pointer-events-auto">
             <Footer pathname="/" />
           </div>
+
+          {/* Privacy link lives on its own here (not inside Footer) so it
+              can sit bottom-center on home, independent of the footer's
+              left/center/right layout. */}
+          <div className="absolute inset-x-0 bottom-2 z-40 flex justify-center pointer-events-none">
+            <Link
+              href="/privacy"
+              className="pointer-events-auto font-sans font-light text-xs text-white/75 underline-offset-4 hover:underline hover:text-white transition-colors"
+            >
+              Privacy Policy
+            </Link>
+          </div>
         </section>
 
       </div>
