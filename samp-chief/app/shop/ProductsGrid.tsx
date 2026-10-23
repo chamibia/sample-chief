@@ -6,8 +6,14 @@ import { useMemo, useState } from "react";
 import ProductCardWrapper from "./productCard";
 
 const ALL = "All";
+const FEATURED = "Featured";
 
 export default function ProductsGrid({ edges }: { edges: Array<{ node: any }> }) {
+  const hasFeatured = useMemo(
+    () => edges.some(({ node }) => node.tags?.includes("featured")),
+    [edges]
+  );
+
   const types = useMemo(() => {
     const seen = new Set<string>();
     edges.forEach(({ node }) => {
@@ -16,14 +22,18 @@ export default function ProductsGrid({ edges }: { edges: Array<{ node: any }> })
     return Array.from(seen).sort((a, b) => a.localeCompare(b));
   }, [edges]);
 
-  const [selectedType, setSelectedType] = useState(ALL);
+  const [selectedType, setSelectedType] = useState(() =>
+    edges.some(({ node }) => node.tags?.includes("featured")) ? FEATURED : ALL
+  );
 
   const filteredEdges =
     selectedType === ALL
       ? edges
+      : selectedType === FEATURED
+      ? edges.filter(({ node }) => node.tags?.includes("featured"))
       : edges.filter(({ node }) => node.productType === selectedType);
 
-  if (types.length === 0) {
+  if (types.length === 0 && !hasFeatured) {
     return (
       <motion.div
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12 xl:gap-16 pb-24"
@@ -45,7 +55,7 @@ export default function ProductsGrid({ edges }: { edges: Array<{ node: any }> })
   return (
     <div>
       <div className="flex flex-wrap items-center gap-x-6 gap-y-3 mb-10">
-        {[ALL, ...types].map((type) => {
+        {[...(hasFeatured ? [FEATURED] : []), ...types, ALL].map((type) => {
           const isActive = selectedType === type;
           return (
             <button
