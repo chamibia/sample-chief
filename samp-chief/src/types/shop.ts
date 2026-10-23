@@ -14,6 +14,7 @@ export type Product = {
   title: string;
   handle: string;
   description: string;
+  descriptionHtml: string;
   images: {
     edges: Array<{
       node: {

@@ -53,6 +53,10 @@ export default function ProductAddToCart({
   const [showNotification, setShowNotification] = useState(false);
   const { addToCart } = useCart();
 
+  function formatPrice(amount: string) {
+    return Number(amount).toFixed(2);
+  }
+
   const handleAddToCart = async () => {
     if (!selectedVariant || addingToCart) return;
 
@@ -81,6 +85,19 @@ export default function ProductAddToCart({
 
   return (
     <>
+      {/* Price (tied to the selected variant, not always the first one) */}
+      {selectedVariant && (
+        <div className="mb-8">
+          <span className="font-sans font-bold text-3xl text-gray-800">
+            <span className="currency-symbol">$</span>
+            {formatPrice(selectedVariant.price.amount)}{' '}
+            <span className="text-gray-500 text-lg">
+              {selectedVariant.price.currencyCode}
+            </span>
+          </span>
+        </div>
+      )}
+
       {/* Variant Selection */}
       {variants.length > 1 && (
         <div className="space-y-4">
@@ -149,6 +166,17 @@ export default function ProductAddToCart({
           View Cart
         </Link>
       </div>
+
+      {/* Stock Info (tied to the selected variant, not always the first one) */}
+      {selectedVariant && selectedVariant.quantityAvailable !== undefined && (
+        <div className="text-center">
+          <span className="font-sans font-light text-base text-gray-500">
+            {selectedVariant.quantityAvailable > 0
+              ? `${selectedVariant.quantityAvailable} in stock`
+              : "Out of stock"}
+          </span>
+        </div>
+      )}
 
       {/* Add to Cart Notification */}
       {showNotification && (

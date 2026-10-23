@@ -3,99 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { getProduct } from "@/lib/shopifyUtils";
+
 import ProductAddToCart from "./ProductAddToCart";
-
-type ProductVariant = {
-  id: string;
-  title: string;
-  price: {
-    amount: string;
-    currencyCode: string;
-  };
-  quantityAvailable: number;
-};
-
-type Product = {
-  id: string;
-  title: string;
-  handle: string;
-  description: string;
-  descriptionHtml: string;
-  images: {
-    edges: Array<{
-      node: {
-        url: string;
-        altText: string;
-      };
-    }>;
-  };
-  variants: {
-    edges: Array<{
-      node: ProductVariant;
-    }>;
-  };
-};
 
 type PageProps = {
   params: Promise<{ handle: string }>;
 };
-
-async function getProduct(handle: string): Promise<Product | null> {
-  const { GraphQLClient, gql } = await import("graphql-request");
-
-  const client = new GraphQLClient(
-    `https://${process.env.SHOPIFY_STORE_DOMAIN}/api/2023-10/graphql.json`,
-    {
-      headers: {
-        "X-Shopify-Storefront-Access-Token":
-          process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!,
-      },
-    }
-  );
-
-  const GET_PRODUCT = gql`
-    query getProduct($handle: String!) {
-      product(handle: $handle) {
-        id
-        title
-        handle
-        description
-        descriptionHtml
-        images(first: 5) {
-          edges {
-            node {
-              url
-              altText
-            }
-          }
-        }
-        variants(first: 10) {
-          edges {
-            node {
-              id
-              title
-              price {
-                amount
-                currencyCode
-              }
-              quantityAvailable
-            }
-          }
-        }
-      }
-    }
-  `;
-
-  try {
-    const response = (await client.request(GET_PRODUCT, { handle })) as {
-      product: Product;
-    };
-    return response.product;
-  } catch (error) {
-    console.error("Error fetching product:", error);
-    return null;
-  }
-}
 
 export default async function ProductPage({ params }: PageProps) {
   const { handle } = await params;
@@ -112,11 +26,6 @@ export default async function ProductPage({ params }: PageProps) {
   const variants = hasVariants
     ? product.variants.edges.map((edge) => edge.node)
     : [];
-
-  // Helper to format price to two decimals
-  function formatPrice(amount: string) {
-    return Number(amount).toFixed(2);
-  }
 
   return (
     <div className="min-h-screen bg-white text-gray-800">
@@ -185,18 +94,6 @@ export default async function ProductPage({ params }: PageProps) {
                 <h1 className="font-ruder font-light leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-gray-800">
                   {product.title}
                 </h1>
-
-                {hasVariants && (
-                  <div className="mb-8">
-                    <span className="font-sans font-bold text-3xl text-gray-800">
-                      <span className="currency-symbol">$</span>
-                      {formatPrice(variants[0].price.amount)}{' '}
-                      <span className="text-gray-500 text-lg">
-                        {variants[0].price.currencyCode}
-                      </span>
-                    </span>
-                  </div>
-                )}
               </div>
 
               {product.description && (
@@ -219,19 +116,8 @@ export default async function ProductPage({ params }: PageProps) {
                 </div>
               )}
 
-              {/* Add to Cart Component */}
+              {/* Add to Cart Component (price + stock shown here, tied to the selected variant) */}
               <ProductAddToCart product={product} variants={variants} />
-
-              {/* Stock Info */}
-              {hasVariants && variants[0].quantityAvailable !== undefined && (
-                <div className="text-center">
-                  <span className="font-sans font-light text-base text-gray-500">
-                    {variants[0].quantityAvailable > 0
-                      ? `${variants[0].quantityAvailable} in stock`
-                      : "Out of stock"}
-                  </span>
-                </div>
-              )}
             </div>
           </div>
         </div>
