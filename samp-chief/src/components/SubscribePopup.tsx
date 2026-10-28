@@ -7,6 +7,7 @@ import { useEffect,useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { trackEvent } from "@/lib/analytics";
 
 import popupImage from "../../public/assets/images/popupimage.jpeg";
 
@@ -81,6 +82,7 @@ export default function SubscribePopup() {
         });
 
         localStorage.setItem('hasSubscribed', 'true');
+        trackEvent("sign_up", { method: "newsletter", source: "popup" });
         setTimeout(() => setIsOpen(false), 2500);
       } else {
         // Normalize error message

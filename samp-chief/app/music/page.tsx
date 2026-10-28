@@ -192,6 +192,7 @@ export default function MusicPage() {
     items: CarouselItem[];
     seeAllLink: string;
     delay?: number;
+    category: 'playlist' | 'mix';
   }
 
   const CarouselSection = React.memo(({
@@ -199,6 +200,7 @@ export default function MusicPage() {
     items,
     seeAllLink,
     delay = 0,
+    category,
   }: CarouselSectionProps) => {
     // Memoize items to avoid unnecessary re-renders
     const memoizedItems = useMemo(() => items, [items]);
@@ -241,6 +243,7 @@ export default function MusicPage() {
                 image={item.image}
                 href={item.link}
                 priority={idx === 0}
+                category={category}
               />
             </CarouselItem>
           ))}
@@ -276,6 +279,7 @@ export default function MusicPage() {
         items={playlists}
         seeAllLink="https://open.spotify.com/user/x3zc0sdr8mdvs4b7uzqxqdnnf/playlists"
         delay={0.2}
+        category="playlist"
       />
 
       <CarouselSection
@@ -283,6 +287,7 @@ export default function MusicPage() {
         items={mixes}
         seeAllLink="https://soundcloud.com/samplechief"
         delay={0.4}
+        category="mix"
       />
       {/* Fixed bottom spacing for mobile */}
       <div
