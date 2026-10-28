@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { useCart } from "@/components/CartProvider";
+import { trackEvent } from "@/lib/analytics";
 import { isOutOfStock } from "@/lib/cartUtils";
 import type { Product, ProductVariant } from "@/types/shop";
 
@@ -40,6 +41,13 @@ export default function ProductAddToCart({
         productHandle: product?.handle || "",
         image: selectedVariant.image?.url || mainImageUrl,
         quantityAvailable: selectedVariant.quantityAvailable,
+      });
+      trackEvent("add_to_cart", {
+        currency: selectedVariant.price.currencyCode,
+        value: parseFloat(selectedVariant.price.amount) * quantity,
+        item_id: selectedVariant.id,
+        item_name: product?.title || "",
+        quantity,
       });
       setShowNotification(true);
       setTimeout(() => setShowNotification(false), 3000);

@@ -5,6 +5,7 @@ import { getNames } from "country-list";
 import React, { useEffect,useState } from "react";
 
 import { SubmitButton } from "@/components/ui/ProjectButton";
+import { trackEvent } from "@/lib/analytics";
 
 export default function NewsletterSignup() {
   const [showBanner, setShowBanner] = useState(true);
@@ -54,6 +55,7 @@ export default function NewsletterSignup() {
       if (res.ok) {
         setFormStatus("success");
         setStatusMessage(data.message || "Thanks for subscribing!");
+        trackEvent("sign_up", { method: "newsletter", source: "contact_page" });
         if (!data.message?.includes("already subscribed")) {
           setFirstName("");
           setLastName("");

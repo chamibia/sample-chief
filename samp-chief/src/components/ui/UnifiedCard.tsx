@@ -5,9 +5,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 
+import { trackEvent } from '@/lib/analytics';
+import { BLUR_PLACEHOLDER,getProjectCardOptimization } from '@/lib/imageOptimization';
+
 import { Card, CardContent } from './card';
 import { ProductCardImage } from './OptimizedImage';
-import { getProjectCardOptimization, BLUR_PLACEHOLDER } from '@/lib/imageOptimization';
 
 type CardVariant = 'project' | 'product' | 'event' | 'content' | 'music';
 
@@ -55,6 +57,7 @@ interface MusicCardProps extends BaseCardProps {
   image: string;
   href: string;
   priority?: boolean;
+  category?: 'playlist' | 'mix';
 }
 
 interface EventCardProps extends BaseCardProps {
@@ -106,12 +109,19 @@ export default function UnifiedCard(props: UnifiedCardProps) {
 
   // Handle music variant
   if (variant === 'music') {
-    const { subtitle, image, href, priority } = props as MusicCardProps;
+    const { subtitle, image, href, priority, category } = props as MusicCardProps;
     return (
       <a
         href={href}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() =>
+          trackEvent('select_content', {
+            content_type: category || 'music',
+            item_id: title,
+            item_name: title,
+          })
+        }
         className={styles.container}
       >
         <Card className="bg-transparent border-0 cursor-pointer">
