@@ -5,10 +5,11 @@ import ProjectBlocksClient from "@/components/ProjectBlocksClient";
 import FullBleedVideo from "@/components/ui/FullBleedVideo";
 import PillIconButton from "@/components/ui/PillIconButton";
 import { events } from "@/data/events";
+import { BLUR_PLACEHOLDER } from "@/lib/imageOptimization";
 
 import Image from "./Image";
+import ProjectViewTracker from "./ProjectViewTracker";
 import { getProjectDetailData } from "./useProjectDetailData";
-import { BLUR_PLACEHOLDER } from "@/lib/imageOptimization";
 
 export async function generateStaticParams() {
   return events.map(event => ({ slug: event.slug }));
@@ -62,6 +63,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
     return (
       <div className="w-full px-0">
+        <ProjectViewTracker slug={slug} title={event.title} />
         <div className="grid grid-rows-[auto_auto] w-full">
           {/* First section: full width, one column */}
           <div className="relative w-full h-[calc(100vh-80px)] flex flex-row justify-between items-center text-white">

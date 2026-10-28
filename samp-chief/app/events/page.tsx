@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { Calendar, CalendarPlus,MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+
+import { trackEvent } from "@/lib/analytics";
 import { BLUR_PLACEHOLDER } from "@/lib/imageOptimization";
 
 const eventData = [
@@ -361,6 +363,13 @@ export default function Events() {
                         href={event.ticketLink}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() =>
+                          trackEvent("select_content", {
+                            content_type: "event_tickets",
+                            item_id: event.id,
+                            item_name: event.title,
+                          })
+                        }
                         className="block h-full"
                       >
                         <Image
@@ -425,6 +434,13 @@ export default function Events() {
                           href={event.ticketLink}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={() =>
+                            trackEvent("select_content", {
+                              content_type: "event_tickets",
+                              item_id: event.id,
+                              item_name: event.title,
+                            })
+                          }
                           className="font-sans font-light leading-relaxed text-[#202020] inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 border-2 rounded-full text-sm md:text-base hover:bg-[#202020] hover:text-white transition-all duration-200 min-w-[120px] md:min-w-[140px]"
                         >
                           Tickets
@@ -437,6 +453,13 @@ export default function Events() {
                           href={event.learnMoreUrl}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={() =>
+                            trackEvent("select_content", {
+                              content_type: "event_info",
+                              item_id: event.id,
+                              item_name: event.title,
+                            })
+                          }
                           className="font-sans font-light leading-relaxed text-[#202020] inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 border-2 border-black rounded-full text-sm md:text-base hover:bg-black hover:text-white transition-all duration-200 min-w-[120px] md:min-w-[140px]"
                         >
                           More Info

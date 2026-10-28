@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect,useState } from "react";
 
 import { useCart } from "@/components/CartProvider";
+import { trackEvent } from "@/lib/analytics";
 
 interface CartItem {
   id: string;
@@ -97,6 +98,10 @@ export default function HeadlessCheckoutPage() {
       }
 
       setShopifyCart(data.cart);
+      trackEvent("begin_checkout", {
+        currency: data.cart.cost.totalAmount.currencyCode,
+        value: parseFloat(data.cart.cost.totalAmount.amount),
+      });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to create cart");
     } finally {
