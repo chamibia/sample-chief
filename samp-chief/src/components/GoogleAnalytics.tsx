@@ -13,8 +13,6 @@ export default function GoogleAnalytics({ measurementId }: { measurementId: stri
       />
       <Script id="google-analytics-init" strategy="afterInteractive">
         {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', '${measurementId}');
         `}

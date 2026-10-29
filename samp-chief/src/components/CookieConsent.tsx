@@ -20,6 +20,9 @@ export default function CookieConsent() {
     const stored = localStorage.getItem(CONSENT_KEY);
     if (stored === "accepted" || stored === "declined") {
       setConsent(stored);
+      window.gtag?.("consent", "update", {
+        analytics_storage: stored === "accepted" ? "granted" : "denied",
+      });
     }
     setHasChecked(true);
   }, []);
@@ -27,11 +30,14 @@ export default function CookieConsent() {
   function choose(choice: ConsentChoice) {
     localStorage.setItem(CONSENT_KEY, choice);
     setConsent(choice);
+    window.gtag?.("consent", "update", {
+      analytics_storage: choice === "accepted" ? "granted" : "denied",
+    });
   }
 
   return (
     <>
-      {consent === "accepted" && <GoogleAnalytics measurementId={GA_MEASUREMENT_ID} />}
+      <GoogleAnalytics measurementId={GA_MEASUREMENT_ID} />
 
       {hasChecked && consent === null && (
         <div

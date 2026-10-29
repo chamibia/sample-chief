@@ -40,6 +40,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
+        {/* Sets a denied-by-default consent state before any tracking script
+            runs, so GA4 can load immediately and send anonymized pings for
+            visitors who haven't accepted cookies yet (Advanced Consent Mode). */}
+        <script
+          id="ga-consent-default"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              window.gtag = gtag;
+              gtag('consent', 'default', { analytics_storage: 'denied' });
+            `,
+          }}
+        />
         {/* Font preloads for LCP optimization */}
         <link
           rel="preload"
