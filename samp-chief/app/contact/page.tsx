@@ -1,6 +1,7 @@
 "use client";
 
 import { getNames } from "country-list";
+import Image from "next/image";
 // Use lighter CSS animations instead of framer-motion for form
 import React, { useEffect,useState } from "react";
 
@@ -215,7 +216,7 @@ export default function NewsletterSignup() {
           </div>
 
           {/* Desktop: 2-Column Layout */}
-          <div className="hidden lg:grid lg:grid-cols-2 lg:gap-16 lg:items-start">
+          <div className="hidden lg:grid lg:grid-cols-2 lg:gap-16">
             {/* Left Column - Stay Connected */}
             <div className="animate-fade-in">
               <div className="mb-12">
@@ -329,23 +330,14 @@ export default function NewsletterSignup() {
                 </a>
               </div>
               
-              {/* Video positioned at bottom right */}
-              <div className="flex-1 flex items-end justify-end mt-8">
-                <video
-                  className="w-full max-w-md"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="auto"
-                  onLoadedData={(e) => {
-                    const video = e.target as HTMLVideoElement;
-                    video.play().catch(console.error);
-                  }}
-                >
-                  <source src="/assets/videos/sc-logo-10002-white.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+              {/* Recent project image fills remaining height, matching the Stay Connected column */}
+              <div className="flex-1 relative mt-8 min-h-[300px] overflow-hidden rounded-lg">
+                <Image
+                  src="/assets/projects/art-gallery-of-ontario/02-03-1W3A3764.jpg"
+                  alt="Sample Chief x Art Gallery of Ontario"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </div>
           </div>
@@ -377,6 +369,25 @@ export default function NewsletterSignup() {
                 </a>
               ))}
             </div>
+          </div>
+
+          {/* Video - moved to the bottom of the page on desktop */}
+          <div className="hidden lg:flex justify-center mt-16 animate-fade-in-slow">
+            <video
+              className="w-full max-w-md"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              onLoadedData={(e) => {
+                const video = e.target as HTMLVideoElement;
+                video.play().catch(console.error);
+              }}
+            >
+              <source src="/assets/videos/sc-logo-10002-white.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </div>
