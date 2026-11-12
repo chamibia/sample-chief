@@ -351,15 +351,15 @@ export default function NewsletterSignup() {
           </div>
 
           {/* Join Our Team Section */}
-          <div className="mt-16 text-left animate-fade-in-slow">
+          <div className="mt-16 text-center lg:text-left animate-fade-in-slow">
             <h1 className="font-ruder font-light leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-[#202020]">
               Join Our Team
             </h1>
-            <p className="font-sans font-light mb-8 leading-relaxed text-base md:text-lg text-[#202020] max-w-2xl">
+            <p className="font-sans font-light mb-8 leading-relaxed text-base md:text-lg text-[#202020] max-w-2xl mx-auto lg:mx-0">
               We're always on the lookout for passionate, talented people to help grow the tribe. Explore our open roles below.
             </p>
-            <div className="w-16 h-1 bg-[#07693A] rounded-full mb-8" />
-            <div className="flex flex-col gap-4 items-start">
+            <div className="w-16 h-1 bg-[#07693A] rounded-full mb-8 mx-auto lg:mx-0" />
+            <div className="flex flex-col gap-4 items-center lg:items-start">
               {[
                 "Job Title 1",
                 "Job Title 2",
