@@ -349,6 +349,35 @@ export default function NewsletterSignup() {
               </div>
             </div>
           </div>
+
+          {/* Join Our Team Section */}
+          <div className="mt-16 text-left animate-fade-in-slow">
+            <h1 className="font-ruder font-light leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-[#202020]">
+              Join Our Team
+            </h1>
+            <p className="font-sans font-light mb-8 leading-relaxed text-base md:text-lg text-[#202020] max-w-2xl">
+              We're always on the lookout for passionate, talented people to help grow the tribe. Explore our open roles below.
+            </p>
+            <div className="w-16 h-1 bg-[#07693A] rounded-full mb-8" />
+            <div className="flex flex-col gap-4 items-start">
+              {[
+                "Job Title 1",
+                "Job Title 2",
+                "Job Title 3",
+                "Job Title 4",
+                "Job Title 5",
+                "Job Title 6",
+              ].map((title) => (
+                <a
+                  key={title}
+                  href="#"
+                  className="font-sans font-light leading-relaxed text-base text-[#202020] hover:text-[#07693A] hover:underline transition-all duration-300"
+                >
+                  {title.toUpperCase()}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
