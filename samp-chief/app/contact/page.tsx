@@ -311,7 +311,7 @@ export default function NewsletterSignup() {
 
             {/* Right Column - Get in Touch */}
             <div className="animate-fade-in-slow flex flex-col h-full">
-              <div className="mb-12">
+              <div className="mb-8">
                 <h1 className="font-ruder font-light leading-relaxed text-4xl xl:text-5xl mb-6 tracking-wider text-[#202020]">
                   Get in Touch
                 </h1>
