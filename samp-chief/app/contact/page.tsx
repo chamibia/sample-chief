@@ -386,8 +386,8 @@ export default function NewsletterSignup() {
                 ))}
               </div>
 
-              {/* Recent project image fills remaining height, extending down to match Get In Touch on the left */}
-              <div className="flex-1 relative min-h-[300px] overflow-hidden rounded-lg">
+              {/* Recent project image, fixed dimensions */}
+              <div className="relative h-80 overflow-hidden rounded-lg">
                 <Image
                   src="/assets/projects/art-gallery-of-ontario/02-03-1W3A3764.jpg"
                   alt="Sample Chief x Art Gallery of Ontario"
