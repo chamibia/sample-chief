@@ -331,7 +331,7 @@ export default function NewsletterSignup() {
               </div>
               
               {/* Recent project image fills remaining height, matching the Stay Connected column */}
-              <div className="flex-1 relative mt-8 min-h-[300px] overflow-hidden rounded-lg">
+              <div className="flex-1 relative mt-16 min-h-[300px] overflow-hidden rounded-lg">
                 <Image
                   src="/assets/projects/art-gallery-of-ontario/02-03-1W3A3764.jpg"
                   alt="Sample Chief x Art Gallery of Ontario"
