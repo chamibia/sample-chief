@@ -197,7 +197,7 @@ export default function NewsletterSignup() {
                   <a
                     key={title}
                     href="#"
-                    className="font-sans font-light leading-relaxed text-base text-[#202020] hover:text-[#07693A] hover:underline transition-all duration-300"
+                    className="font-sans font-light leading-relaxed text-base text-[#202020] hover:text-[#07693A] hover:font-bold hover:underline transition-all duration-300"
                   >
                     {title.toUpperCase()}
                   </a>
@@ -217,7 +217,7 @@ export default function NewsletterSignup() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a
                   href="mailto:contactus@samplechief.com"
-                  className="font-sans font-light leading-relaxed text-base text-[#202020] hover:text-[#07693A] hover:underline transition-all duration-300"
+                  className="font-sans font-light leading-relaxed text-base text-[#202020] hover:text-[#07693A] hover:font-bold hover:underline transition-all duration-300"
                 >
                   CONTACTUS@SAMPLECHIEF.COM
                 </a>
@@ -362,7 +362,7 @@ export default function NewsletterSignup() {
                   <a
                     key={title}
                     href="#"
-                    className="font-sans font-light leading-relaxed text-base text-[#202020] hover:text-[#07693A] hover:underline transition-all duration-300"
+                    className="font-sans font-light leading-relaxed text-base text-[#202020] hover:text-[#07693A] hover:font-bold hover:underline transition-all duration-300"
                   >
                     {title.toUpperCase()}
                   </a>
@@ -383,7 +383,7 @@ export default function NewsletterSignup() {
               <div className="w-16 h-1 bg-[#07693A] rounded-full mb-8" />
               <a
                 href="mailto:contactus@samplechief.com"
-                className="font-sans font-light leading-relaxed text-base text-[#202020] hover:text-[#07693A] hover:underline transition-all duration-300"
+                className="font-sans font-light leading-relaxed text-base text-[#202020] hover:text-[#07693A] hover:font-bold hover:underline transition-all duration-300"
               >
                 CONTACTUS@SAMPLECHIEF.COM
               </a>
