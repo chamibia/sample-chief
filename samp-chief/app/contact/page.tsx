@@ -176,6 +176,35 @@ export default function NewsletterSignup() {
               </div>
             </div>
 
+            {/* Join Our Team Section - Mobile */}
+            <div className="mb-16 text-center animate-fade-in-slow">
+              <h1 className="font-ruder font-light leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-[#202020]">
+                Join Our Team
+              </h1>
+              <p className="font-sans font-light mb-8 leading-relaxed text-base md:text-lg text-[#202020]">
+                We're always on the lookout for passionate, talented people to help grow the tribe. Explore our open roles below.
+              </p>
+              <div className="w-16 h-1 bg-[#07693A] mx-auto rounded-full mb-8" />
+              <div className="flex flex-col gap-4 items-center">
+                {[
+                  "Job Title 1",
+                  "Job Title 2",
+                  "Job Title 3",
+                  "Job Title 4",
+                  "Job Title 5",
+                  "Job Title 6",
+                ].map((title) => (
+                  <a
+                    key={title}
+                    href="#"
+                    className="font-sans font-light leading-relaxed text-base text-[#202020] hover:text-[#07693A] hover:underline transition-all duration-300"
+                  >
+                    {title.toUpperCase()}
+                  </a>
+                ))}
+              </div>
+            </div>
+
             {/* Get in Touch Section - Mobile */}
             <div className="text-center animate-fade-in-slow">
               <h1 className="font-ruder font-light leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-[#202020]">
@@ -309,65 +338,65 @@ export default function NewsletterSignup() {
               </div>
             </div>
 
-            {/* Right Column - Get in Touch */}
+            {/* Right Column - Join Our Team */}
             <div className="animate-fade-in-slow flex flex-col h-full">
               <div className="mb-8">
                 <h1 className="font-ruder font-light leading-relaxed text-4xl xl:text-5xl mb-6 tracking-wider text-[#202020]">
-                  Get In Touch
+                  Join Our Team
                 </h1>
                 <p className="font-sans font-light mb-8 leading-relaxed text-base xl:text-lg text-[#202020]">
-                  Curious about what we do or want to collaborate? Hit us up — we'd love to hear from you.
+                  We're always on the lookout for passionate, talented people to help grow the tribe. Explore our open roles below.
                 </p>
                 <div className="w-16 h-1 bg-[#07693A] rounded-full" />
               </div>
-              
-              <div className="flex flex-col gap-4">
-                <a
-                  href="mailto:contactus@samplechief.com"
-                  className="font-sans font-light leading-relaxed text-base text-[#202020] hover:text-[#07693A] hover:underline transition-all duration-300"
-                >
-                  CONTACTUS@SAMPLECHIEF.COM
-                </a>
-              </div>
-              
-              {/* Recent project image fills remaining height, matching the Stay Connected column */}
-              <div className="flex-1 relative mt-8 min-h-[300px] overflow-hidden rounded-lg">
-                <Image
-                  src="/assets/projects/art-gallery-of-ontario/02-03-1W3A3764.jpg"
-                  alt="Sample Chief x Art Gallery of Ontario"
-                  fill
-                  className="object-cover"
-                />
+
+              <div className="flex-1 flex flex-col gap-4">
+                {[
+                  "Job Title 1",
+                  "Job Title 2",
+                  "Job Title 3",
+                  "Job Title 4",
+                  "Job Title 5",
+                  "Job Title 6",
+                ].map((title) => (
+                  <a
+                    key={title}
+                    href="#"
+                    className="font-sans font-light leading-relaxed text-base text-[#202020] hover:text-[#07693A] hover:underline transition-all duration-300"
+                  >
+                    {title.toUpperCase()}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Join Our Team Section */}
-          <div className="mt-16 text-center lg:text-left animate-fade-in-slow">
-            <h1 className="font-ruder font-light leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-[#202020]">
-              Join Our Team
-            </h1>
-            <p className="font-sans font-light mb-8 leading-relaxed text-base md:text-lg text-[#202020] max-w-2xl mx-auto lg:mx-0">
-              We're always on the lookout for passionate, talented people to help grow the tribe. Explore our open roles below.
-            </p>
-            <div className="w-16 h-1 bg-[#07693A] rounded-full mb-8 mx-auto lg:mx-0" />
-            <div className="flex flex-col gap-4 items-center lg:items-start">
-              {[
-                "Job Title 1",
-                "Job Title 2",
-                "Job Title 3",
-                "Job Title 4",
-                "Job Title 5",
-                "Job Title 6",
-              ].map((title) => (
-                <a
-                  key={title}
-                  href="#"
-                  className="font-sans font-light leading-relaxed text-base text-[#202020] hover:text-[#07693A] hover:underline transition-all duration-300"
-                >
-                  {title.toUpperCase()}
-                </a>
-              ))}
+          {/* Get In Touch Section - Desktop (below grid) */}
+          <div className="hidden lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center mt-16 animate-fade-in-slow">
+            <div>
+              <h1 className="font-ruder font-light leading-relaxed text-4xl xl:text-5xl mb-6 tracking-wider text-[#202020]">
+                Get In Touch
+              </h1>
+              <p className="font-sans font-light mb-8 leading-relaxed text-base xl:text-lg text-[#202020] max-w-2xl">
+                Curious about what we do or want to collaborate? Hit us up — we'd love to hear from you.
+              </p>
+              <div className="w-16 h-1 bg-[#07693A] rounded-full mb-8" />
+              <a
+                href="mailto:contactus@samplechief.com"
+                className="font-sans font-light leading-relaxed text-base text-[#202020] hover:text-[#07693A] hover:underline transition-all duration-300"
+              >
+                CONTACTUS@SAMPLECHIEF.COM
+              </a>
+            </div>
+
+            {/* Recent project image */}
+            <div className="relative h-80 overflow-hidden rounded-lg">
+              <Image
+                src="/assets/projects/art-gallery-of-ontario/02-03-1W3A3764.jpg"
+                alt="Sample Chief x Art Gallery of Ontario"
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
 
