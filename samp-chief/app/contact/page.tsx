@@ -342,25 +342,6 @@ export default function NewsletterSignup() {
             </div>
           </div>
 
-          {/* Video - moved to desktop, before Join Our Team */}
-          <div className="hidden lg:flex justify-center mt-16 animate-fade-in-slow">
-            <video
-              className="w-full max-w-md"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              onLoadedData={(e) => {
-                const video = e.target as HTMLVideoElement;
-                video.play().catch(console.error);
-              }}
-            >
-              <source src="/assets/videos/sc-logo-10002-white.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-
           {/* Join Our Team Section */}
           <div className="mt-16 text-center lg:text-left animate-fade-in-slow">
             <h1 className="font-ruder font-light leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-[#202020]">
@@ -388,6 +369,25 @@ export default function NewsletterSignup() {
                 </a>
               ))}
             </div>
+          </div>
+
+          {/* Video - moved to the bottom of the page on desktop */}
+          <div className="hidden lg:flex justify-center mt-16 animate-fade-in-slow">
+            <video
+              className="w-full max-w-md"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              onLoadedData={(e) => {
+                const video = e.target as HTMLVideoElement;
+                video.play().catch(console.error);
+              }}
+            >
+              <source src="/assets/videos/sc-logo-10002-white.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </div>
