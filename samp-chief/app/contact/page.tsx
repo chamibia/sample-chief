@@ -246,8 +246,8 @@ export default function NewsletterSignup() {
 
           {/* Desktop: 2-Column Layout */}
           <div className="hidden lg:grid lg:grid-cols-2 lg:gap-16">
-            {/* Left Column - Stay Connected + Get In Touch */}
-            <div className="animate-fade-in flex flex-col h-full">
+            {/* Left Column - Stay Connected */}
+            <div className="animate-fade-in">
               <div className="mb-12">
                 <h1 className="font-ruder font-light leading-relaxed text-4xl xl:text-5xl mb-6 tracking-wider text-[#202020]">
                   Stay Connected
@@ -336,27 +336,10 @@ export default function NewsletterSignup() {
                   </div>
                 </form>
               </div>
-
-              {/* Get In Touch - below Stay Connected */}
-              <div className="mt-16">
-                <h1 className="font-ruder font-light leading-relaxed text-4xl xl:text-5xl mb-6 tracking-wider text-[#202020]">
-                  Get In Touch
-                </h1>
-                <p className="font-sans font-light mb-8 leading-relaxed text-base xl:text-lg text-[#202020]">
-                  Curious about what we do or want to collaborate? Hit us up — we'd love to hear from you.
-                </p>
-                <div className="w-16 h-1 bg-[#07693A] rounded-full mb-8" />
-                <a
-                  href="mailto:contactus@samplechief.com"
-                  className="font-sans font-light leading-relaxed text-base text-[#202020] hover:text-[#07693A] hover:underline transition-all duration-300"
-                >
-                  CONTACTUS@SAMPLECHIEF.COM
-                </a>
-              </div>
             </div>
 
-            {/* Right Column - Join Our Team + image */}
-            <div className="animate-fade-in-slow flex flex-col h-full">
+            {/* Right Column - Join Our Team */}
+            <div className="animate-fade-in-slow">
               <div className="mb-8">
                 <h1 className="font-ruder font-light leading-relaxed text-4xl xl:text-5xl mb-6 tracking-wider text-[#202020]">
                   Join Our Team
@@ -385,16 +368,35 @@ export default function NewsletterSignup() {
                   </a>
                 ))}
               </div>
+            </div>
+          </div>
 
-              {/* Recent project image, fixed dimensions */}
-              <div className="relative h-80 mt-8 overflow-hidden rounded-lg">
-                <Image
-                  src="/assets/projects/art-gallery-of-ontario/02-03-1W3A3764.jpg"
-                  alt="Sample Chief x Art Gallery of Ontario"
-                  fill
-                  className="object-cover"
-                />
-              </div>
+          {/* Get In Touch Section - Desktop (full width, below grid) */}
+          <div className="hidden lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center mt-16 animate-fade-in-slow">
+            <div>
+              <h1 className="font-ruder font-light leading-relaxed text-4xl xl:text-5xl mb-6 tracking-wider text-[#202020]">
+                Get In Touch
+              </h1>
+              <p className="font-sans font-light mb-8 leading-relaxed text-base xl:text-lg text-[#202020] max-w-2xl">
+                Curious about what we do or want to collaborate? Hit us up — we'd love to hear from you.
+              </p>
+              <div className="w-16 h-1 bg-[#07693A] rounded-full mb-8" />
+              <a
+                href="mailto:contactus@samplechief.com"
+                className="font-sans font-light leading-relaxed text-base text-[#202020] hover:text-[#07693A] hover:underline transition-all duration-300"
+              >
+                CONTACTUS@SAMPLECHIEF.COM
+              </a>
+            </div>
+
+            {/* Recent project image */}
+            <div className="relative h-80 overflow-hidden rounded-lg">
+              <Image
+                src="/assets/projects/art-gallery-of-ontario/02-03-1W3A3764.jpg"
+                alt="Sample Chief x Art Gallery of Ontario"
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
 
