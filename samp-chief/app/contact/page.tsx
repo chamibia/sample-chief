@@ -372,7 +372,7 @@ export default function NewsletterSignup() {
           </div>
 
           {/* Get In Touch Section - Desktop (full width, below grid) */}
-          <div className="hidden lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center mt-16 animate-fade-in-slow">
+          <div className="hidden lg:grid lg:grid-cols-2 lg:gap-16 lg:items-start mt-16 animate-fade-in-slow">
             <div>
               <h1 className="font-ruder font-light leading-relaxed text-4xl xl:text-5xl mb-6 tracking-wider text-[#202020]">
                 Get In Touch
