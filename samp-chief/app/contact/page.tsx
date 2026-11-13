@@ -179,7 +179,7 @@ export default function NewsletterSignup() {
             {/* Get in Touch Section - Mobile */}
             <div className="text-center animate-fade-in-slow">
               <h1 className="font-ruder font-light leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-[#202020]">
-                Get in Touch
+                Get In Touch
               </h1>
               <p className="font-sans font-light mb-8 leading-relaxed text-base md:text-lg text-[#202020]">
                 Curious about what we do or want to collaborate? Hit us up — we'd love to hear from you.
@@ -313,7 +313,7 @@ export default function NewsletterSignup() {
             <div className="animate-fade-in-slow flex flex-col h-full">
               <div className="mb-8">
                 <h1 className="font-ruder font-light leading-relaxed text-4xl xl:text-5xl mb-6 tracking-wider text-[#202020]">
-                  Get in Touch
+                  Get In Touch
                 </h1>
                 <p className="font-sans font-light mb-8 leading-relaxed text-base xl:text-lg text-[#202020]">
                   Curious about what we do or want to collaborate? Hit us up — we'd love to hear from you.
