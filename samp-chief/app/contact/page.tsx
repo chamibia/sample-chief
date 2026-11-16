@@ -8,6 +8,21 @@ import React, { useEffect,useState } from "react";
 import { SubmitButton } from "@/components/ui/ProjectButton";
 import { trackEvent } from "@/lib/analytics";
 
+const OPEN_ROLES = [
+  {
+    title: "Partnerships & Sales Manager",
+    href: "https://forms.gle/JF144P5buoXkPyBz5",
+  },
+  {
+    title: "Social Media & Community Manager",
+    href: "https://forms.gle/YuiyY2eoxzZhCRfS8",
+  },
+  {
+    title: "Global Events Manager",
+    href: "https://forms.gle/9SGQa83oW9B7DqdY8",
+  },
+];
+
 export default function NewsletterSignup() {
   const [showBanner, setShowBanner] = useState(true);
   const [firstName, setFirstName] = useState("");
@@ -186,20 +201,15 @@ export default function NewsletterSignup() {
               </p>
               <div className="w-16 h-1 bg-[#07693A] mx-auto rounded-full mb-8" />
               <div className="flex flex-col gap-4 items-center">
-                {[
-                  "Job Title 1",
-                  "Job Title 2",
-                  "Job Title 3",
-                  "Job Title 4",
-                  "Job Title 5",
-                  "Job Title 6",
-                ].map((title) => (
+                {OPEN_ROLES.map((role) => (
                   <a
-                    key={title}
-                    href="#"
+                    key={role.title}
+                    href={role.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="font-sans font-light leading-relaxed text-base text-[#202020] hover:text-[#07693A] hover:font-bold hover:underline transition-all duration-300"
                   >
-                    {title.toUpperCase()}
+                    {role.title.toUpperCase()}
                   </a>
                 ))}
               </div>
@@ -351,20 +361,15 @@ export default function NewsletterSignup() {
               </div>
 
               <div className="flex flex-col gap-4 mb-8">
-                {[
-                  "Job Title 1",
-                  "Job Title 2",
-                  "Job Title 3",
-                  "Job Title 4",
-                  "Job Title 5",
-                  "Job Title 6",
-                ].map((title) => (
+                {OPEN_ROLES.map((role) => (
                   <a
-                    key={title}
-                    href="#"
+                    key={role.title}
+                    href={role.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="font-sans font-light leading-relaxed text-base text-[#202020] hover:text-[#07693A] hover:font-bold hover:underline transition-all duration-300"
                   >
-                    {title.toUpperCase()}
+                    {role.title.toUpperCase()}
                   </a>
                 ))}
               </div>
