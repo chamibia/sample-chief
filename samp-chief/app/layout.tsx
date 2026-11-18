@@ -3,6 +3,7 @@ import "../styles/globals.css";
 
 import { Analytics } from '@vercel/analytics/react';
 import { Metadata, Viewport } from "next";
+import Script from "next/script";
 
 import { CartProvider } from "@/components/CartProvider";
 import CookieConsent from "@/components/CookieConsent";
@@ -43,17 +44,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Sets a denied-by-default consent state before any tracking script
             runs, so GA4 can load immediately and send anonymized pings for
             visitors who haven't accepted cookies yet (Advanced Consent Mode). */}
-        <script
-          id="ga-consent-default"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              window.gtag = gtag;
-              gtag('consent', 'default', { analytics_storage: 'denied' });
-            `,
-          }}
-        />
+        <Script id="ga-consent-default" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = gtag;
+            gtag('consent', 'default', { analytics_storage: 'denied' });
+          `}
+        </Script>
         {/* Font preloads for LCP optimization */}
         <link
           rel="preload"
