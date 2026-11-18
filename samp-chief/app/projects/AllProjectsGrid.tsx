@@ -29,6 +29,7 @@ interface AllProjectsGridProps {
 // here that later becomes `featured` in events.ts also drops out of this
 // list automatically (it's only matched against non-featured events).
 const NON_FEATURED_CURATION: { slug: string; position: number }[] = [
+  { slug: "bata-shoe-museum", position: 5 },
   { slug: "holt-renfrew", position: 3 },
   { slug: "kops-record-store", position: 2 },
   { slug: "ace-hotel", position: 1 },
