@@ -81,7 +81,7 @@ export default function AllProjectsGrid({ hoveredProject, onProjectHover, onProj
       }}
     >
       {orderedProjects.map(({ event, position }, index) => {
-        const { gridClasses, isLarge } = getGridConfig(position);
+        const { gridClasses, isLarge, isFullWidth } = getGridConfig(position);
         const isLCP = index === 0;
         const isHovered = hoveredProject === event.slug;
 
@@ -97,6 +97,7 @@ export default function AllProjectsGrid({ hoveredProject, onProjectHover, onProj
               className="w-full h-full"
               isLCP={isLCP}
               isLarge={isLarge}
+              isFullWidth={isFullWidth}
               forceHover={isHovered}
             />
           </div>
