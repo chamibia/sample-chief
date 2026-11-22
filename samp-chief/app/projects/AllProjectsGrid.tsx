@@ -29,6 +29,7 @@ interface AllProjectsGridProps {
 // here that later becomes `featured` in events.ts also drops out of this
 // list automatically (it's only matched against non-featured events).
 const NON_FEATURED_CURATION: { slug: string; position: number }[] = [
+  { slug: "bata-shoe-museum", position: 5 },
   { slug: "holt-renfrew", position: 3 },
   { slug: "kops-record-store", position: 2 },
   { slug: "ace-hotel", position: 1 },
@@ -80,7 +81,7 @@ export default function AllProjectsGrid({ hoveredProject, onProjectHover, onProj
       }}
     >
       {orderedProjects.map(({ event, position }, index) => {
-        const { gridClasses, isLarge } = getGridConfig(position);
+        const { gridClasses, isLarge, isFullWidth } = getGridConfig(position);
         const isLCP = index === 0;
         const isHovered = hoveredProject === event.slug;
 
@@ -96,6 +97,7 @@ export default function AllProjectsGrid({ hoveredProject, onProjectHover, onProj
               className="w-full h-full"
               isLCP={isLCP}
               isLarge={isLarge}
+              isFullWidth={isFullWidth}
               forceHover={isHovered}
             />
           </div>

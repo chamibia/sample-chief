@@ -35,19 +35,22 @@ export function getProjectBlockOptimization(gridSpan?: string): ImageOptimizatio
 
 /**
  * Get optimized sizes and quality for project card images
- * Quality tier: LCP (first/priority) > large cards > standard cards
+ * Quality tier: LCP (first/priority) > full-width cards > large cards > standard cards
  */
 export function getProjectCardOptimization(
   isLCP: boolean,
-  isLarge: boolean
+  isLarge: boolean,
+  isFullWidth: boolean = false
 ): ImageOptimizationConfig {
-  // Quality tiers: LCP=75, large cards=85, standard=70
-  const quality = isLCP ? 75 : isLarge ? 85 : 70;
+  // Quality tiers: LCP=75, full-width=90, large cards=85, standard=70
+  const quality = isLCP ? 75 : isFullWidth ? 90 : isLarge ? 85 : 70;
   const sizes = isLCP
     ? "(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
-    : isLarge
-      ? "(max-width: 768px) 100vw, 66vw"
-      : "(max-width: 768px) 100vw, 33vw";
+    : isFullWidth
+      ? "100vw"
+      : isLarge
+        ? "(max-width: 768px) 100vw, 66vw"
+        : "(max-width: 768px) 100vw, 33vw";
 
   return { sizes, quality };
 }

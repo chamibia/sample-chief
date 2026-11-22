@@ -42,6 +42,7 @@ interface ProjectCardProps extends BaseCardProps {
   event: any;
   isLCP?: boolean;
   isLarge?: boolean;
+  isFullWidth?: boolean;
   forceHover?: boolean;
 }
 
@@ -207,8 +208,8 @@ export default function UnifiedCard(props: UnifiedCardProps) {
 
   // Handle project variant
   if (variant === 'project') {
-    const { event, isLCP, isLarge, forceHover } = props as ProjectCardProps;
-    const { sizes: imageSizes, quality: imageQuality } = getProjectCardOptimization(isLCP ?? false, isLarge ?? false);
+    const { event, isLCP, isLarge, isFullWidth, forceHover } = props as ProjectCardProps;
+    const { sizes: imageSizes, quality: imageQuality } = getProjectCardOptimization(isLCP ?? false, isLarge ?? false, isFullWidth ?? false);
     
     return (
       <Link
@@ -253,12 +254,14 @@ export function ProjectCard({
   className = '',
   isLCP = false,
   isLarge = false,
+  isFullWidth = false,
   forceHover = false,
 }: {
   event: any;
   className?: string;
   isLCP?: boolean;
   isLarge?: boolean;
+  isFullWidth?: boolean;
   forceHover?: boolean;
 }) {
   return (
@@ -269,6 +272,7 @@ export function ProjectCard({
       className={className}
       isLCP={isLCP}
       isLarge={isLarge}
+      isFullWidth={isFullWidth}
       forceHover={forceHover}
     />
   );

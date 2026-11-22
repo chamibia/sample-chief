@@ -43,6 +43,18 @@ export default function NewsletterSignup() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // The "Join Our Team" section is duplicated for mobile/desktop layouts
+  // (one is always display:none), so #careers links need to target
+  // whichever copy is actually visible rather than a shared id.
+  useEffect(() => {
+    if (window.location.hash !== "#careers") return;
+    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+    const target = document.getElementById(
+      isDesktop ? "careers-desktop" : "careers-mobile"
+    );
+    target?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, []);
+
   // When formStatus changes (success or error), clear it after 5s
   useEffect(() => {
     if (formStatus) {
@@ -192,7 +204,7 @@ export default function NewsletterSignup() {
             </div>
 
             {/* Join Our Team Section - Mobile */}
-            <div className="mb-16 text-center animate-fade-in-slow">
+            <div id="careers-mobile" className="mb-16 text-center animate-fade-in-slow scroll-mt-24">
               <h1 className="font-ruder font-light leading-relaxed text-4xl md:text-5xl mb-6 tracking-wider text-[#202020]">
                 Join Our Team
               </h1>
@@ -349,7 +361,7 @@ export default function NewsletterSignup() {
             </div>
 
             {/* Right Column - Join Our Team */}
-            <div className="animate-fade-in-slow">
+            <div id="careers-desktop" className="animate-fade-in-slow scroll-mt-24">
               <div className="mb-8">
                 <h1 className="font-ruder font-light leading-relaxed text-4xl xl:text-5xl mb-6 tracking-wider text-[#202020]">
                   Join Our Team

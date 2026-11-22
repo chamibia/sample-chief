@@ -253,6 +253,28 @@ const eventData = [
     imageUrl: "/assets/events/alaf-listening-lounge.jpg",
     ticketLink: "https://www.universe.com/events/as-loud-as-freedom-listening-lounge-tickets-HLCD1B?ref=share-widget-buffer",
   },
+  {
+    id: 23,
+    title: "SOUNDMARK",
+    description: "SOUNDMARK explores sound, memory and the stories African and Afro-diasporic music carries across generations.\n\nThrough a vinyl listening session and panel discussion, join Glowzi, Jama Joachim and Nokliché, with moderator M'Borika Dioume, to discover the records that have shaped their musical journeys and creative practices.",
+    startDate: "2026-11-28",
+    endDate: "2026-11-28",
+    time: "6PM - 10PM",
+    venue: "6560 rue Waverly, Montréal",
+    imageUrl: "/assets/events/soundmark.png",
+    ticketLink: "https://finerobjectsinlife.com/?event=soundmark-w-sample-chief-panel-vinyl-listening-session",
+  },
+  {
+    id: 24,
+    title: "Listening Room: Kokoroko with Ic3y Mag",
+    description: "Ic3y Mag and Foil Gallery invite you to a collective listening session dedicated to Tuff Times Never Last by Kokoroko, hosted by Sample Chief and AKEMBE as part of their weekend-long activation at the gallery, following a conversation on sampling, musical heritage and the sounds that connect generations.\n\nRooted in Afrobeat and jazz, Tuff Times Never Last explores joy, resilience, community and togetherness. Drawing from neo-soul, 80s R&B, West African disco, bossa nova and funk, the album is a warm and nostalgic celebration of life's beauty, even through its most difficult moments.",
+    startDate: "2026-11-29",
+    endDate: "2026-11-29",
+    time: "8PM - LATE",
+    venue: "Foil Gallery, 6560 Waverly St, Montreal",
+    imageUrl: "/assets/events/kokoroko-listening-room.jpg",
+    ticketLink: "https://ic3ymag.com/products/tuff-times-never-last-kokoroko-8-30pm",
+  },
 ];
 
 export default function Events() {

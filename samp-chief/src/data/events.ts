@@ -240,6 +240,32 @@ export const events: Event[] = [
       ]
     },
     {
+      title: "Bata Shoe Museum",
+      projectcard: "/assets/projects/bata-shoe/3-tile.jpg",
+      description: "Celebrating ‘Brilliant: The Art of Beaded Footwear Around the World’, an exhibition on display until April 2028 at Bata Shoe Museum.\n\nSample Chief had the pleasure of curating a stunning performance by singer, songwriter and multi-instrumentalist Ṣẹwà and talking drummer, Durotimi.\n\n‘Brilliant’ traces the global history of beadwork through exceptional examples of beaded footwear from Africa, Europe, South Asia, Turtle Island (North America), and Western Asia.",
+      slug: "bata-shoe-museum",
+      imageFolder: "bata-shoe",
+      ethos: "Providing a sonic backdrop for the ‘Brilliant: The Art of Beaded Footwear Around the World’ exhibition.",
+      location: "Toronto, Canada",
+      services: "Music Curation",
+      heroImage: "/assets/projects/bata-shoe/3.jpg",
+      contentBlocks: [
+        { type: 'image', src: "/assets/projects/bata-shoe/12.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'video', src: "/assets/projects/bata-shoe/recap.mp4", gridSpan: "col-span-2 row-span-2", controlType: 'long', poster: "/assets/projects/bata-shoe/recap-poster.jpg" },
+        { type: 'image', src: "/assets/projects/bata-shoe/9.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/bata-shoe/5.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/bata-shoe/10.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/bata-shoe/4.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/bata-shoe/11.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/bata-shoe/8.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/bata-shoe/1.jpg", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/bata-shoe/2.jpg", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/bata-shoe/13.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/bata-shoe/6.jpg", gridSpan: "col-span-4 row-span-3" },
+        { type: 'text', html: `<p style="text-align: center;">Photos by Ryan Emberley and Matt Tibbo</p>`, gridSpan: "col-span-4 row-span-1" }
+      ]
+    },
+    {
       title: "Behind the Beat",
       projectcard: "/assets/projects/behind-the-beat/cover.png",
       description: "A deep dive into the architects behind our favourite hits, their influences and how they made the songs we all love. Episodes covered so far: Magicsticks (Asake), Ozedikus (One Condition – DJ Tunez, Wizkid, Fola), Progrex (Laho – Shallipopi), 2Frosh (Escaladizzy – Mavo), Chillz (TaTaTa – Burna Boy), Telz (Bundle By Bundle – Burna Boy), DOZ & JMS (Turn Down Mami – Cruel Santino). Check them out on YouTube!",

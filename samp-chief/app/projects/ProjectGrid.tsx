@@ -11,14 +11,14 @@ interface ProjectGridProps {
 
 // Utility: Get grid layout and size info based on featured position
 export function getGridConfig(position: number) {
-  const configs: Record<number, { gridClasses: string; isLarge: boolean }> = {
-    1: { gridClasses: 'col-span-2 md:col-span-1 md:row-span-2', isLarge: true },  // Large vertical
-    2: { gridClasses: 'col-span-1 md:col-span-1 md:row-span-1', isLarge: false }, // Standard
-    3: { gridClasses: 'col-span-1 md:col-span-2 md:row-span-2', isLarge: true },  // Large square
-    4: { gridClasses: 'col-span-2 md:col-span-1 md:row-span-1', isLarge: false }, // Standard
-    5: { gridClasses: 'col-span-2 md:col-span-4 md:row-span-1', isLarge: true },  // Full width
+  const configs: Record<number, { gridClasses: string; isLarge: boolean; isFullWidth: boolean }> = {
+    1: { gridClasses: 'col-span-2 md:col-span-1 md:row-span-2', isLarge: true, isFullWidth: false },  // Large vertical
+    2: { gridClasses: 'col-span-1 md:col-span-1 md:row-span-1', isLarge: false, isFullWidth: false }, // Standard
+    3: { gridClasses: 'col-span-1 md:col-span-2 md:row-span-2', isLarge: true, isFullWidth: false },  // Large square
+    4: { gridClasses: 'col-span-2 md:col-span-1 md:row-span-1', isLarge: false, isFullWidth: false }, // Standard
+    5: { gridClasses: 'col-span-2 md:col-span-4 md:row-span-1', isLarge: false, isFullWidth: true },  // Full width
   };
-  return configs[position] || { gridClasses: 'col-span-1 md:col-span-1 md:row-span-1', isLarge: false };
+  return configs[position] || { gridClasses: 'col-span-1 md:col-span-1 md:row-span-1', isLarge: false, isFullWidth: false };
 }
 
 export default function ProjectGrid({ hoveredProject, onProjectHover, onProjectLeave }: ProjectGridProps = {}) {
@@ -60,8 +60,8 @@ export default function ProjectGrid({ hoveredProject, onProjectHover, onProjectL
 
           const isLCP = index === 0; // First image is LCP
           const isHovered = hoveredProject === event.slug;
-          const { gridClasses, isLarge } = getGridConfig(event.featured!.position);
-          
+          const { gridClasses, isLarge, isFullWidth } = getGridConfig(event.featured!.position);
+
           return (
             <div
               key={event.slug}
@@ -74,6 +74,7 @@ export default function ProjectGrid({ hoveredProject, onProjectHover, onProjectL
                 className="w-full h-full"
                 isLCP={isLCP}
                 isLarge={isLarge}
+                isFullWidth={isFullWidth}
                 forceHover={isHovered}
               />
             </div>
