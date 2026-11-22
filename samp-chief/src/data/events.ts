@@ -252,17 +252,16 @@ export const events: Event[] = [
       contentBlocks: [
         { type: 'image', src: "/assets/projects/bata-shoe/12.jpg", gridSpan: "col-span-2 row-span-2" },
         { type: 'video', src: "/assets/projects/bata-shoe/recap.mp4", gridSpan: "col-span-2 row-span-2", controlType: 'long', poster: "/assets/projects/bata-shoe/recap-poster.jpg" },
-        { type: 'image', src: "/assets/projects/bata-shoe/7.jpg", gridSpan: "col-span-1 row-span-2" },
-        { type: 'image', src: "/assets/projects/bata-shoe/9.jpg", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/bata-shoe/9.jpg", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/bata-shoe/5.jpg", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/bata-shoe/10.jpg", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/bata-shoe/4.jpg", gridSpan: "col-span-2 row-span-2" },
-        { type: 'image', src: "/assets/projects/bata-shoe/6.jpg", gridSpan: "col-span-1 row-span-2" },
-        { type: 'image', src: "/assets/projects/bata-shoe/11.jpg", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/bata-shoe/11.jpg", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/bata-shoe/8.jpg", gridSpan: "col-span-2 row-span-2" },
-        { type: 'image', src: "/assets/projects/bata-shoe/13.jpg", gridSpan: "col-span-2 row-span-2" },
         { type: 'image', src: "/assets/projects/bata-shoe/1.jpg", gridSpan: "col-span-1 row-span-2" },
         { type: 'image', src: "/assets/projects/bata-shoe/2.jpg", gridSpan: "col-span-1 row-span-2" },
+        { type: 'image', src: "/assets/projects/bata-shoe/13.jpg", gridSpan: "col-span-2 row-span-2" },
+        { type: 'image', src: "/assets/projects/bata-shoe/6.jpg", gridSpan: "col-span-4 row-span-3" },
         { type: 'text', html: `<p style="text-align: center;">Photos by Ryan Emberley and Matt Tibbo</p>`, gridSpan: "col-span-4 row-span-1" }
       ]
     },
