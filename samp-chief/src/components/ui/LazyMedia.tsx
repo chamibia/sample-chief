@@ -114,7 +114,7 @@ export default function LazyMedia({
   if (type === 'video' && src) {
     return (
       <video
-        ref={elementRef as React.RefObject<HTMLVideoElement>}
+        ref={elementRef as React.RefObject<HTMLVideoElement | null>}
         className={`w-full h-full object-cover ${className}`}
         style={style}
         autoPlay={autoPlay}
@@ -134,7 +134,7 @@ export default function LazyMedia({
   if (type === 'image' && src) {
     return (
       <img
-        ref={elementRef as React.RefObject<HTMLImageElement>}
+        ref={elementRef as React.RefObject<HTMLImageElement | null>}
         src={isIntersecting || priority ? src : ''}
         alt={alt}
         className={`w-full h-full object-cover ${className}`}
@@ -148,7 +148,7 @@ export default function LazyMedia({
   if (type === 'component') {
     return (
       <div
-        ref={elementRef as React.RefObject<HTMLDivElement>}
+        ref={elementRef as React.RefObject<HTMLDivElement | null>}
         className={className}
         style={style}
       >
