@@ -7,6 +7,10 @@ export default function ScrollToTop() {
   const pathname = usePathname();
 
   useEffect(() => {
+    // Don't fight an anchor link (e.g. /contact#careers) that's trying to
+    // scroll to a specific section on load.
+    if (window.location.hash) return;
+
     // Add a small delay to ensure the page has fully loaded
     const timer = setTimeout(() => {
       window.scrollTo({

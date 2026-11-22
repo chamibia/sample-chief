@@ -52,7 +52,7 @@ export default function NewsletterSignup() {
     const target = document.getElementById(
       isDesktop ? "careers-desktop" : "careers-mobile"
     );
-    target?.scrollIntoView({ behavior: "smooth" });
+    target?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
   // When formStatus changes (success or error), clear it after 5s
