@@ -41,6 +41,21 @@ const nextConfig: NextConfig = {
 			},
 		],
 	},
+	// Vanity URLs for recruiting campaigns -> Join Our Team section on the contact page
+	async redirects() {
+		return [
+			{
+				source: '/:path([jJ][oO][bB][sS])',
+				destination: '/contact#careers',
+				permanent: true,
+			},
+			{
+				source: '/:path([cC][aA][rR][eE][eE][rR][sS])',
+				destination: '/contact#careers',
+				permanent: true,
+			},
+		];
+	},
 	// Add performance headers optimized for bfcache
 	async headers() {
 		return [
