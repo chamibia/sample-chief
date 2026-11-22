@@ -196,6 +196,7 @@ const eventData = [
     time: "6PM - 8PM",
     venue: "William Doo Auditorium, 45 Willcocks St, University of Toronto, Toronto, ON M5S 1C7",
     imageUrl: "/assets/events/alaf-curatorial-dialogue.jpg",
+    imageAspect: "square",
     ticketLink: "https://forms.cloud.microsoft/r/nBzCiKbQDM",
   },
   {
@@ -379,7 +380,11 @@ export default function Events() {
                   whileHover={{ scale: 1.03 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="h-full overflow-hidden rounded-lg">
+                  <div
+                    className={`relative overflow-hidden rounded-lg ${
+                      event.imageAspect === "square" ? "aspect-square" : "aspect-[4/5]"
+                    }`}
+                  >
                     {event.ticketLink ? (
                       <Link
                         href={event.ticketLink}
@@ -397,12 +402,11 @@ export default function Events() {
                         <Image
                           src={event.imageUrl}
                           alt={event.title}
-                          width={400}
-                          height={200}
+                          fill
+                          sizes="(min-width: 768px) 33vw, 100vw"
                           loading="lazy"
                           className="event-image object-cover transition-all duration-500"
                           placeholder="blur"
-                          style={{ width: 'auto', height: 'auto' }}
                           blurDataURL={BLUR_PLACEHOLDER}
                         />
                       </Link>
@@ -410,12 +414,11 @@ export default function Events() {
                       <Image
                         src={event.imageUrl}
                         alt={event.title}
-                        width={400}
-                        height={200}
+                        fill
+                        sizes="(min-width: 768px) 33vw, 100vw"
                         loading="lazy"
                         className="event-image object-cover transition-all duration-500"
                         placeholder="blur"
-                        style={{ width: 'auto', height: 'auto' }}
                         blurDataURL={BLUR_PLACEHOLDER}
                       />
                     )}
