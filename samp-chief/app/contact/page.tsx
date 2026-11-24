@@ -21,6 +21,10 @@ const OPEN_ROLES = [
     title: "Global Events Manager",
     href: "https://forms.gle/9SGQa83oW9B7DqdY8",
   },
+  {
+    title: "Head Content Writer",
+    href: "https://docs.google.com/forms/d/e/1FAIpQLSc-waebe43dk7I9phBGyfuPh54p-Lx9bln3zes5bd4Rnz2NKw/viewform",
+  },
 ];
 
 export default function NewsletterSignup() {

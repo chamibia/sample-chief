@@ -21,9 +21,9 @@ export const metadata: Metadata = {
   },
   description: "Global Music Culture Agency",
   icons: {
-    icon: "/assets/logos/favicon-white.svg",
-    shortcut: "/assets/logos/favicon-white.svg",
-    apple: "/assets/logos/favicon-white.svg",
+    icon: "/assets/logos/PFP-New.png",
+    shortcut: "/assets/logos/PFP-New.png",
+    apple: "/assets/logos/PFP-New.png",
   },
 };
 
