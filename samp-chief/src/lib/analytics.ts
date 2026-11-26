@@ -1,4 +1,5 @@
-type GtagEventParams = Record<string, string | number | boolean | undefined>;
+type GtagEventItem = Record<string, string | number | boolean | undefined>;
+type GtagEventParams = Record<string, string | number | boolean | undefined | GtagEventItem[]>;
 
 declare global {
   interface Window {
