@@ -45,9 +45,14 @@ export default function ProductAddToCart({
       trackEvent("add_to_cart", {
         currency: selectedVariant.price.currencyCode,
         value: parseFloat(selectedVariant.price.amount) * quantity,
-        item_id: selectedVariant.id,
-        item_name: product?.title || "",
-        quantity,
+        items: [
+          {
+            item_id: selectedVariant.id,
+            item_name: product?.title || "",
+            price: parseFloat(selectedVariant.price.amount),
+            quantity,
+          },
+        ],
       });
       setShowNotification(true);
       setTimeout(() => setShowNotification(false), 3000);

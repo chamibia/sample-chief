@@ -101,6 +101,12 @@ export default function HeadlessCheckoutPage() {
       trackEvent("begin_checkout", {
         currency: data.cart.cost.totalAmount.currencyCode,
         value: parseFloat(data.cart.cost.totalAmount.amount),
+        items: (data.cart as Cart).lines.edges.map(({ node }) => ({
+          item_id: node.merchandise.id,
+          item_name: node.merchandise.product.title,
+          price: parseFloat(node.merchandise.price.amount),
+          quantity: node.quantity,
+        })),
       });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to create cart");
